@@ -26,5 +26,12 @@ export function safeStorage() {
         /* ignore */
       }
     },
+    remove(k: string) {
+      try {
+        localStorage.removeItem(k);
+      } catch {
+        /* ignore */
+      }
+    },
   };
 }

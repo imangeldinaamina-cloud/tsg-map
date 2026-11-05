@@ -16,7 +16,8 @@ export default async function Landing() {
             <h1 className="text-3xl font-extrabold leading-tight md:text-5xl">{t("landing.h1")}</h1>
             <p className="mt-4 text-lg text-muted">{t("landing.lead")}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/onboarding" className="btn btn-primary">{t("landing.ctaMap")} →</Link>
+              <Link href="/city" className="btn btn-primary">{t("landing.ctaCity")} →</Link>
+              <Link href="/onboarding" className="btn btn-secondary">{t("landing.ctaMap")}</Link>
               <a href="#access" className="btn btn-secondary">{t("landing.ctaAccess")}</a>
             </div>
             <p className="mt-4 text-xs text-muted">{t("landing.honesty")}</p>

@@ -16,6 +16,11 @@ const TYPES = new Set([
   "waitlist_signup",
   "feedback_submit",
   "language_change",
+  "city_tab",
+  "city_filter",
+  "city_candidate",
+  "city_assumptions",
+  "city_upload",
 ]);
 
 export async function POST(req: Request) {

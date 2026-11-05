@@ -2,6 +2,33 @@ import type { Locale } from "@/i18n";
 
 export const CHANGELOG: { version: string; date: string; items: Record<Locale, string[]> }[] = [
   {
+    version: "0.2.0",
+    date: "2026-11-05",
+    items: {
+      ru: [
+        "Новый раздел «Анализ города»: население WorldPop 2021 на сетке 250 м, объекты и пешеходная сеть OSM, граница города.",
+        "Временная модель присутствия с вашими допущениями (без них показывается базовое население).",
+        "Индекс дефицита услуг по 6 категориям и пешей доступности 400/800/1200 м, карта пешего расстояния, список потенциально недообслуженных ячеек.",
+        "Анализ локаций: до 4 вариантов, конкуренты, присутствие по периодам, пешеходная сеть и объяснимая оценка.",
+        "Страница источников данных и ограничений, загрузка своих данных о населении (CSV).",
+      ],
+      kk: [
+        "Жаңа «Қала талдауы» бөлімі: 250 м торда WorldPop 2021 халқы, OSM нысандары мен жаяу желі, қала шекарасы.",
+        "Сіздің болжамдарыңызбен болудың уақыттық моделі (болжамсыз базалық халық көрсетіледі).",
+        "6 санат пен 400/800/1200 м жаяу қолжетімділік бойынша қызмет тапшылығы индексі, жаяу қашықтық картасы, қызметі жеткіліксіз ұяшықтар тізімі.",
+        "Орын талдауы: 4 нұсқаға дейін, бәсекелестер, кезеңдер бойынша болу, жаяу желі және түсіндірілетін бағалау.",
+        "Дереккөздер мен шектеулер беті, өз халық деректеріңізді жүктеу (CSV).",
+      ],
+      en: [
+        "New City analysis workspace: WorldPop 2021 population on a 250 m grid, OSM facilities and walk network, city boundary.",
+        "Temporal presence model driven by your assumptions (without them the residential baseline is shown).",
+        "Service Gap Index for 6 categories and 400/800/1200 m walking catchments, walking-distance map, list of potentially underserved cells.",
+        "Location analysis: up to 4 candidates, competitors, presence by period, walk network and an explainable assessment.",
+        "Data sources & limitations page, upload of your own population data (CSV).",
+      ],
+    },
+  },
+  {
     version: "0.1.0",
     date: "2026-11-05",
     items: {

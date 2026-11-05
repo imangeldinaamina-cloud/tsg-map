@@ -1,0 +1,64 @@
+{
+ "city": "Taldykorgan",
+ "built_at": "2026-11-05T09:54:38.237Z",
+ "boundary": {
+  "name": "Талдықорған қалалық әкімдігі",
+  "osm_id": "relation/3392135",
+  "admin_level": "6",
+  "bbox": [
+   78.1145816,
+   44.932466,
+   78.5327999,
+   45.1593153
+  ]
+ },
+ "grid": {
+  "cell_m": 250,
+  "cells": 2475
+ },
+ "datasets": {
+  "osm": {
+   "source": "OpenStreetMap contributors (ODbL)",
+   "endpoint": "https://overpass-api.de/api/interpreter",
+   "osm_base": "2026-11-05T08:13:08Z",
+   "extracted_at": "2026-11-05T09:54:38.237Z",
+   "snapshots": {
+    "boundary": "2026-11-05T08:13:08Z",
+    "roads": "2026-11-05T09:53:21Z",
+    "landuse": "2026-11-05T09:44:13Z",
+    "pois": "2026-11-05T09:47:18Z"
+   }
+  },
+  "worldpop": {
+   "source": "WorldPop Global2 R2025A, constrained, 100 m, Kazakhstan, 2021",
+   "url": "https://data.worldpop.org/GIS/Population/Global_2015_2030/R2025A/2021/KAZ/v1/100m/constrained/kaz_pop_2021_CN_100m_R2025A_v1.tif",
+   "license": "CC BY 4.0",
+   "resolution_m": 100,
+   "year": 2021,
+   "pixels_in_boundary": 19859,
+   "population_sum": 176584
+  },
+  "roads": {
+   "ways": 5867,
+   "nodes": 33855,
+   "length_km": 2055
+  },
+  "landuse": {
+   "polygons": 81
+  },
+  "facilities": {
+   "restaurant": 74,
+   "healthcare": 98,
+   "cafe": 170,
+   "grocery": 85,
+   "pharmacy": 44,
+   "education": 114
+  },
+  "pois_in_boundary": 2133,
+  "access": {
+   "cutoff_m": 1200,
+   "max_snap_m": 400,
+   "pairs": 20661
+  }
+ }
+}

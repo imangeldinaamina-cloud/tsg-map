@@ -117,3 +117,28 @@ body {
 .maplibregl-ctrl-attrib a {
   color: #1e3a8a !important;
 }
+
+/* City analysis: numbered candidate pins */
+.city-candidate,
+.city-candidate-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px 9999px 9999px 2px;
+  background: #0f172a;
+  color: #fff;
+  font: 700 13px/1 var(--font-sans), system-ui, sans-serif;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.45);
+}
+.city-candidate {
+  transform: rotate(-45deg);
+}
+.city-candidate-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  font-size: 12px;
+}

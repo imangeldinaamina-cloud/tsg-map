@@ -1,3 +1,4 @@
+import city from "./city/en";
 import type { Dict } from "./ru";
 
 const en: Dict = {
@@ -6,6 +7,7 @@ const en: Dict = {
     description: "A map of temporal service gaps (TSG index) for small businesses and residents of Taldykorgan.",
   },
   nav: {
+    city: "City analysis",
     home: "Home",
     map: "Map",
     ranking: "Ranking",
@@ -160,6 +162,7 @@ const en: Dict = {
     privacy: "We do not share your email with third parties or use it for advertising.",
   },
   landing: {
+    ctaCity: "Open city analysis",
     eyebrow: "Taldykorgan · research prototype",
     h1: "Where and when the city lacks services",
     lead: "TSG Map shows in which parts of Taldykorgan, and at which hours, there are more people than nearby pharmacies, shops and cafés. It helps businesses choose a place and time — and residents see how well their area is served.",
@@ -347,6 +350,7 @@ const en: Dict = {
       too_long: "Value too long (max 64 characters)",
     },
   },
+  city,
 };
 
 export default en;

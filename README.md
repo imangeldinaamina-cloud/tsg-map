@@ -11,6 +11,13 @@ TSG = (D − S) / (D + S)        range −1 … +1, positive = shortage
 - **S** (supply): OpenStreetMap services within walking distance (default 500 m, configurable)
 - Slots: morning 08–10, midday 12–14, evening 17–19
 
+The app has two parts:
+
+- **City analysis (`/city`)** — the spatial-intelligence workspace: WorldPop population on a 250 m grid,
+  OSM facilities and walk network, a configurable temporal presence model, the Service Gap Index and a
+  candidate-location comparison. Data sources and limitations: `/city/data`.
+- **Field TSG map (`/map`)** — observation points measured in the field (camera counts), ranking and admin import.
+
 Stack: Next.js 15 (App Router, TypeScript) · Tailwind CSS 4 · MapLibre GL + OSM raster tiles · Supabase (Postgres + admin auth) · Vitest.
 
 ---
@@ -27,10 +34,40 @@ Stack: Next.js 15 (App Router, TypeScript) · Tailwind CSS 4 · MapLibre GL + OS
 | Detector accuracy | ⚠️ Not verified | methodology page | YOLOv8n counts not yet manually checked. |
 | Validation (holdout, block CV, survey) | 📝 Plan only | methodology page | No results yet. |
 | Feedback, analytics, waitlist | ✅ Real (stored) | Supabase or `.data/` locally | No personal data except waitlist email with consent. |
+| **City analysis** | | | |
+| City boundary | ✅ Real, OSM | `public/data/taldykorgan/boundary.json` | OSM relation 3392135 (city akimat, admin_level 6) — includes surrounding settlements. |
+| Walk network | ✅ Real, OSM | `roads.json`, `src/data/city/graph.json` | 5 867 walkable ways, ~2 055 km, largest connected component (OSM snapshot 2026-11-05). Street centrelines, sidewalks rarely mapped. |
+| Facilities (6 categories) | ✅ Real, OSM | `facilities.json` | 585 objects; tag rules in `scripts/build-city.mjs` and `src/lib/city/types.ts`. OSM is incomplete (e.g. only 44 pharmacies) → gaps are overstated. |
+| Residents | ✅ Real, WorldPop | `grid.json` | WorldPop Global2 R2025A constrained 100 m, 2021 (CC BY 4.0): 176 584 people in the boundary, summed into 2 475 cells of 250 m. A model, not a count. |
+| Census 2021 total | ⏳ Not loaded | model settings | Optional proportional rescaling once you enter the verified figure. |
+| Presence by time of day | ⏳ **Assumption-driven, not set** | `src/lib/city/model.ts` | Until you enter s(t) and β, every period shows the residential baseline (labelled). No random or invented hourly values. |
+| Walking access | ✅ Computed | `access.json` | Dijkstra on the walk network, ≤1 200 m, from cell centres. |
+| Service Gap Index | ✅ Computed | `src/lib/city/gap.ts` | TSG formula on city-wide shares; tested. |
+| Location assessment | ✅ Rule-based | `src/lib/city/location.ts`, `/api/location` | Explainable comparisons with numbers; no revenue prediction. |
 | Kazakh translation | ⚠️ Draft | `src/i18n/kk.ts` | Needs review by a native speaker. |
 | Payments | ❌ Not built (by design) | — | Freemium is a test: "Pro" gate + waitlist + click counting + free preview. |
 
 ---
+
+## City data pipeline
+
+```bash
+npm run city:build              # builds public/data/taldykorgan/* and src/data/city/graph.json
+npm run city:build -- --refresh # re-download OpenStreetMap (raw files are cached in ./data-raw, gitignored)
+```
+
+Downloads the WorldPop raster (~50 MB) on first run. Pure Node (`geotiff`), no GDAL/Python needed.
+
+### City analysis methods
+
+- **Baseline**: WorldPop residents per 250 m cell; optional census rescaling `R' = R · census / ΣR`.
+- **Temporal model** (only when you set it): `P(i,t) = s(t)·R(i) + (1 − s(t))·ΣR·w(i)/Σw`, `w(i) = Σ β_k · count_k(i)`
+  over OSM attractor counts (shops, food, offices/public services, education, health, markets). Total population is conserved.
+- **Walking access**: shortest path on OSM walkable ways (`foot!=no`, `access!=private`), plus straight-line snap to the network.
+- **Service Gap Index**: `SGI = (d − s)/(d + s)`, `d = P(i)/ΣP`, `s = S(i)/ΣS`, `S(i)` = facilities within the catchment
+  (400/800/1 200 m). Each facility counts 1; no distance decay. "Potentially underserved" = SGI ≥ 0.5 and presence ≥ median populated cell.
+- **Location assessment**: residents/presence within the walk catchment, competitors, nearest competitor, people per outlet
+  `P/(competitors+1)`, walk-network length and intersections, cell SGI → rule-based findings (see `assess()`).
 
 ## Setup
 

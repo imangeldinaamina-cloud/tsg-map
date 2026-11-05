@@ -3,6 +3,7 @@ import { getI18n } from "@/i18n/server";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const LINKS = [
+  ["/city", "nav.city"],
   ["/map", "nav.map"],
   ["/ranking", "nav.ranking"],
   ["/methodology", "nav.methodology"],
