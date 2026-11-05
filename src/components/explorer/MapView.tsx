@@ -57,7 +57,11 @@ export default function MapView({ results, radiusM, selected, onSelect, services
       return;
     }
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
-    m.on("load", () => {
+    // "style.load" fires before tiles finish downloading, so areas show immediately.
+    let initialised = false;
+    const setup = () => {
+      if (initialised) return;
+      initialised = true;
       m.addSource("areas", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
       m.addSource("services", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
       m.addLayer({ id: "areas-fill", type: "fill", source: "areas", paint: { "fill-color": ["get", "color"], "fill-opacity": 0.5 } });
@@ -80,7 +84,9 @@ export default function MapView({ results, radiusM, selected, onSelect, services
       m.on("mouseenter", "areas-fill", () => (m.getCanvas().style.cursor = "pointer"));
       m.on("mouseleave", "areas-fill", () => (m.getCanvas().style.cursor = ""));
       setReady(true);
-    });
+    };
+    m.once("style.load", setup);
+    m.once("load", setup); // fallback
     m.on("error", (e) => console.warn("map error", e.error?.message));
     map.current = m;
     return () => {

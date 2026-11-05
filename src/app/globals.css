@@ -50,6 +50,8 @@ body {
   border-radius: 4px;
 }
 
+/* In a layer so Tailwind utilities (e.g. md:hidden) can override these. */
+@layer components {
 .btn {
   display: inline-flex;
   align-items: center;
@@ -103,6 +105,8 @@ body {
   list-style: decimal;
   padding-left: 1.25rem;
 }
+}
+
 .sr-only-focusable:not(:focus) {
   position: absolute;
   width: 1px;
