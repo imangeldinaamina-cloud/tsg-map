@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TSG Map
 
-## Getting Started
+A web app for Taldykorgan (Kazakhstan) that shows **where and when services are missing**, using the
+Temporal Service Gap index:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+TSG = (D − S) / (D + S)        range −1 … +1, positive = shortage
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **D** (demand): people present in a time slot (dynamic mode), or registered residents (static mode)
+- **S** (supply): OpenStreetMap services within walking distance (default 500 m, configurable)
+- Slots: morning 08–10, midday 12–14, evening 17–19
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Stack: Next.js 15 (App Router, TypeScript) · Tailwind CSS 4 · MapLibre GL + OSM raster tiles · Supabase (Postgres + admin auth) · Vitest.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## What is real vs demo
 
-To learn more about Next.js, take a look at the following resources:
+| Part | Status | Where | Notes |
+|---|---|---|---|
+| TSG formula | ✅ Real | `src/lib/tsg.ts` | Tested: D=S=0 → undefined (`null`), only D → +1, only S → −1 |
+| Services (S) | ✅ Real, OSM | `src/data/osm/services.json` | 575 places, extracted 2026-11-05 via an Overpass mirror; **OSM snapshot date 2026-06-01** (the mirror lags). OSM coverage is incomplete. Re-run `npm run osm:fetch`. |
+| People present (D, dynamic) | ⏳ **No real data yet** | admin import → `observations` table | Imported via `/admin` CSV. Until then the map shows demo data. |
+| Demo points + counts | ⚠️ **DEMO, synthetic** | `src/data/demo/demo-data.ts` | 10 arbitrary locations, invented numbers. Always shown with a "DEMO DATA" banner and badges. Never mixed with real data. |
+| Residents (D, static) | ⚠️ **PLACEHOLDER** | `src/data/population.ts` | All `null` for real points → static mode shows "population not provided". Demo points have demo population. |
+| Detector accuracy | ⚠️ Not verified | methodology page | YOLOv8n counts not yet manually checked. |
+| Validation (holdout, block CV, survey) | 📝 Plan only | methodology page | No results yet. |
+| Feedback, analytics, waitlist | ✅ Real (stored) | Supabase or `.data/` locally | No personal data except waitlist email with consent. |
+| Kazakh translation | ⚠️ Draft | `src/i18n/kk.ts` | Needs review by a native speaker. |
+| Payments | ❌ Not built (by design) | — | Freemium is a test: "Pro" gate + waitlist + click counting + free preview. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Setup
 
-## Deploy on Vercel
+```bash
+npm install
+cp .env.example .env.local   # optional for local dev, see below
+npm run dev                  # http://localhost:3000
+npm test                     # unit tests (TSG, CSV importer, aggregation, i18n parity)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Without Supabase** (no `.env.local`), the app runs in **local dev mode**: imported observations,
+feedback, analytics and waitlist entries go to `./.data/*.json` (git-ignored), and `/admin` needs no login.
+This mode is disabled in production builds.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Supabase (needed for production)
+
+1. Create a project at supabase.com (your account).
+2. SQL editor → run `supabase/migrations/0001_init.sql`.
+3. Authentication → Users → **Add user** with email + password for each admin.
+4. Fill `.env.local` (and Vercel env vars):
+
+| Variable | Where to find it |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Project Settings → API → Project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Project Settings → API → `anon` public key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Project Settings → API → `service_role` key (**server only, never commit**) |
+| `ADMIN_EMAILS` | Comma-separated admin emails (must match users from step 3) |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Public contact for privacy/deletion requests (shown on `/privacy`) |
+
+### Deploy (Vercel)
+
+1. Push this folder to a GitHub repository.
+2. vercel.com → New Project → import the repo (framework auto-detected).
+3. Add the environment variables above → Deploy.
+
+### Map tiles
+
+The map uses the public `tile.openstreetmap.org` server, which is fine for an MVP/demo but has a
+[usage policy](https://operations.osmfoundation.org/policies/tiles/). For real traffic switch to a tile
+provider (e.g. MapTiler, Stadia, or self-hosted) in `src/components/explorer/MapView.tsx`.
+
+---
+
+## Data format (observations CSV)
+
+One row = one 10-minute observation session at one point.
+
+| Column | Type | Rules |
+|---|---|---|
+| `point_id` | text | required, ≤ 64 chars |
+| `point_type` | text | required, e.g. `residential`, `commercial`, `transit` |
+| `lat`, `lon` | number | WGS84; warning if outside Taldykorgan bbox; decimal comma accepted |
+| `date` | `YYYY-MM-DD` | valid date; warning on weekends (methodology = weekdays) |
+| `time_start` | `HH:MM` | warning if outside the slot window |
+| `slot` | `morning` \| `midday` \| `evening` | case-insensitive |
+| `frames` | integer > 0 | warning if ≠ 20 (10 min × 30 s) |
+| `mean_people_per_frame` | number ≥ 0 | presence = this value |
+| `holdout` | `yes` \| `no` | validation points |
+
+Comma, semicolon or tab separators and an Excel BOM are accepted. `(point_id, date, slot)` must be unique.
+Rows with errors are skipped; warnings do not block import. The server re-validates with the same parser.
+Re-importing the same `(point_id, date, slot)` overwrites it; "Replace all" wipes previous observations.
+
+Aggregation: for each point and slot, D = mean of `mean_people_per_frame` across days.
+Data-quality badge: 1 day = low, 2 = medium, ≥ 3 with full frames = good.
+
+Template: `/admin` → "Download CSV template".
+
+---
+
+## Project layout
+
+```
+src/lib/tsg.ts             TSG formula, levels, colours (blue↔orange + symbols + text)
+src/lib/csv-import.ts      CSV parser/validator (pure, tested)
+src/lib/compute.ts         aggregation, service counting, ranking
+src/lib/server/store.ts    Supabase / local JSON storage adapter
+src/data/osm/              OSM extract (real) — scripts/fetch-osm.mjs
+src/data/demo/             DEMO data (synthetic)
+src/data/population.ts     population PLACEHOLDER
+src/i18n/{ru,kk,en}.ts     all UI text; parity enforced by tests
+src/app/                   pages: / (landing) /onboarding /map /ranking /methodology /roadmap /changelog /privacy /admin
+supabase/migrations/       database schema + RLS
+```
+
+## Privacy
+
+- Only aggregated counts are stored — no images, faces or video.
+- Analytics: whitelisted event types with short scalar props; no cookies, no IP, no user agent, no user ID.
+- Waitlist: email only, explicit consent checkbox, consent version stored.
+
+## Freemium test
+
+Free = map + one slot (midday, `FREE_SLOT` in `src/lib/domain.ts`). Pro = all slots, ranking, CSV export.
+Locked features open a "Join Pro waitlist" modal (`pro_click` events counted) with an option to continue
+in free preview mode during testing (`pro_preview`). Results are on `/admin`.

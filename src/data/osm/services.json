@@ -1,0 +1,4040 @@
+{
+ "source": "OpenStreetMap contributors (ODbL), via Overpass API",
+ "endpoint": "https://overpass.private.coffee/api/interpreter",
+ "extracted_at": "2026-11-05T05:04:10.699Z",
+ "osm_base": "2026-06-01T08:52:28Z",
+ "bbox": [
+  44.95,
+  78.28,
+  45.08,
+  78.48
+ ],
+ "count": 575,
+ "services": [
+  {
+   "id": "node/616561512",
+   "lat": 45.019145,
+   "lon": 78.380443,
+   "category": "food",
+   "name": "Hessen Pub"
+  },
+  {
+   "id": "node/2489522579",
+   "lat": 44.998756,
+   "lon": 78.355089,
+   "category": "health",
+   "name": "Алмас"
+  },
+  {
+   "id": "node/2775659044",
+   "lat": 44.995054,
+   "lon": 78.39468,
+   "category": "food",
+   "name": "У Петровича"
+  },
+  {
+   "id": "node/3889434465",
+   "lat": 45.017145,
+   "lon": 78.401142,
+   "category": "grocery",
+   "name": "Magnum"
+  },
+  {
+   "id": "node/3889434466",
+   "lat": 45.011065,
+   "lon": 78.359427,
+   "category": "pharmacy",
+   "name": "Europharma"
+  },
+  {
+   "id": "node/3889434661",
+   "lat": 45.013759,
+   "lon": 78.386409,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/3889434820",
+   "lat": 45.013445,
+   "lon": 78.377413,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/3889903173",
+   "lat": 44.978354,
+   "lon": 78.320713,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/4204209289",
+   "lat": 45.012606,
+   "lon": 78.369042,
+   "category": "food",
+   "name": "Алым"
+  },
+  {
+   "id": "node/4328334268",
+   "lat": 45.017739,
+   "lon": 78.361861,
+   "category": "grocery",
+   "name": "Добрый"
+  },
+  {
+   "id": "node/4328344422",
+   "lat": 45.021968,
+   "lon": 78.36352,
+   "category": "grocery",
+   "name": "Молдир"
+  },
+  {
+   "id": "node/4329309200",
+   "lat": 45.039348,
+   "lon": 78.367445,
+   "category": "grocery",
+   "name": "Тараз"
+  },
+  {
+   "id": "node/4332292091",
+   "lat": 44.995778,
+   "lon": 78.369355,
+   "category": "health",
+   "name": "Психоневрологиялық диспансер"
+  },
+  {
+   "id": "node/4333440489",
+   "lat": 45.021147,
+   "lon": 78.374453,
+   "category": "health",
+   "name": "Женская консультация"
+  },
+  {
+   "id": "node/4333612300",
+   "lat": 45.01504,
+   "lon": 78.375839,
+   "category": "food",
+   "name": "Фортуна"
+  },
+  {
+   "id": "node/4349444090",
+   "lat": 45.017137,
+   "lon": 78.355872,
+   "category": "food",
+   "name": "Кишлак"
+  },
+  {
+   "id": "node/4356513909",
+   "lat": 45.017639,
+   "lon": 78.375065,
+   "category": "finance",
+   "name": "\"Рахат\""
+  },
+  {
+   "id": "node/4357584193",
+   "lat": 45.009103,
+   "lon": 78.382962,
+   "category": "health",
+   "name": "Поликлиника Психдиспансера"
+  },
+  {
+   "id": "node/4357630190",
+   "lat": 45.009781,
+   "lon": 78.384253,
+   "category": "health",
+   "name": "Областной онкологический диспансер"
+  },
+  {
+   "id": "node/4357813989",
+   "lat": 45.02269,
+   "lon": 78.363038,
+   "category": "health",
+   "name": "Медецинский вытрезвитель"
+  },
+  {
+   "id": "node/4357852596",
+   "lat": 45.021993,
+   "lon": 78.357048,
+   "category": "grocery",
+   "name": "Продукты"
+  },
+  {
+   "id": "node/4357890692",
+   "lat": 45.024622,
+   "lon": 78.361138,
+   "category": "grocery",
+   "name": "Продукты"
+  },
+  {
+   "id": "node/4357894203",
+   "lat": 44.99623,
+   "lon": 78.365502,
+   "category": "food",
+   "name": "Балхаш"
+  },
+  {
+   "id": "node/4359972514",
+   "lat": 45.030157,
+   "lon": 78.359858,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/4360006389",
+   "lat": 45.009106,
+   "lon": 78.3831,
+   "category": "health",
+   "name": "Поликлиника ПНД"
+  },
+  {
+   "id": "node/4361424198",
+   "lat": 45.021002,
+   "lon": 78.377233,
+   "category": "grocery",
+   "name": "Торговый дом \"Альдибек\""
+  },
+  {
+   "id": "node/4361458406",
+   "lat": 45.01704,
+   "lon": 78.376494,
+   "category": "food",
+   "name": "Жетысу"
+  },
+  {
+   "id": "node/4361525989",
+   "lat": 45.023742,
+   "lon": 78.361437,
+   "category": "grocery",
+   "name": "Продукты"
+  },
+  {
+   "id": "node/4361526389",
+   "lat": 45.019811,
+   "lon": 78.370609,
+   "category": "grocery",
+   "name": "Строймарт"
+  },
+  {
+   "id": "node/4365886390",
+   "lat": 45.017041,
+   "lon": 78.368635,
+   "category": "finance",
+   "name": "Банк ЦентрКредит"
+  },
+  {
+   "id": "node/4365886391",
+   "lat": 45.01679,
+   "lon": 78.369533,
+   "category": "finance",
+   "name": "банкоматы \"Халык банк\""
+  },
+  {
+   "id": "node/4375138489",
+   "lat": 45.016195,
+   "lon": 78.354887,
+   "category": "food",
+   "name": "Белое солнце"
+  },
+  {
+   "id": "node/4386660691",
+   "lat": 45.011533,
+   "lon": 78.387366,
+   "category": "finance",
+   "name": "Bereke Bank"
+  },
+  {
+   "id": "node/4397651290",
+   "lat": 45.020877,
+   "lon": 78.359123,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/4397652390",
+   "lat": 45.024468,
+   "lon": 78.355552,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/4397680989",
+   "lat": 45.020928,
+   "lon": 78.361679,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/4414684007",
+   "lat": 45.019384,
+   "lon": 78.379712,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/4516681994",
+   "lat": 45.016941,
+   "lon": 78.36577,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/4516754290",
+   "lat": 45.016135,
+   "lon": 78.364476,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/4562940689",
+   "lat": 45.017925,
+   "lon": 78.375653,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/4769498669",
+   "lat": 45.02075,
+   "lon": 78.377607,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/4832216239",
+   "lat": 45.015356,
+   "lon": 78.386882,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/4872603823",
+   "lat": 44.996315,
+   "lon": 78.35427,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/4872625622",
+   "lat": 45.003555,
+   "lon": 78.355638,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/4875764124",
+   "lat": 44.993895,
+   "lon": 78.401804,
+   "category": "health",
+   "name": "Областной кардиологический центр"
+  },
+  {
+   "id": "node/4918102603",
+   "lat": 44.996562,
+   "lon": 78.364426,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/4959799521",
+   "lat": 45.019606,
+   "lon": 78.377711,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/5046075121",
+   "lat": 45.014537,
+   "lon": 78.375553,
+   "category": "food",
+   "name": "Emar"
+  },
+  {
+   "id": "node/5172821123",
+   "lat": 45.020463,
+   "lon": 78.389336,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/5172821124",
+   "lat": 45.050289,
+   "lon": 78.340879,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/5172821125",
+   "lat": 45.002772,
+   "lon": 78.35099,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/5172821126",
+   "lat": 45.016654,
+   "lon": 78.370765,
+   "category": "food",
+   "name": "PartyFood"
+  },
+  {
+   "id": "node/5190581528",
+   "lat": 45.018854,
+   "lon": 78.386704,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/5285908122",
+   "lat": 45.014619,
+   "lon": 78.376708,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/5619199521",
+   "lat": 45.01432,
+   "lon": 78.380216,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/5847488097",
+   "lat": 45.018091,
+   "lon": 78.375642,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/5847488098",
+   "lat": 45.019385,
+   "lon": 78.375078,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/5847488987",
+   "lat": 45.021737,
+   "lon": 78.377835,
+   "category": "grocery",
+   "name": "Кок базар"
+  },
+  {
+   "id": "node/5868755385",
+   "lat": 44.996451,
+   "lon": 78.399287,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/5868771885",
+   "lat": 44.994679,
+   "lon": 78.401508,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/5868772085",
+   "lat": 44.996362,
+   "lon": 78.40045,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6106259142",
+   "lat": 45.008055,
+   "lon": 78.403677,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6124934785",
+   "lat": 45.013797,
+   "lon": 78.386176,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/6170479986",
+   "lat": 44.998906,
+   "lon": 78.403826,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6232871685",
+   "lat": 44.996344,
+   "lon": 78.405489,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6261234085",
+   "lat": 44.998025,
+   "lon": 78.404723,
+   "category": "food",
+   "name": "Акбосага"
+  },
+  {
+   "id": "node/6373594087",
+   "lat": 44.967103,
+   "lon": 78.409357,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6373606386",
+   "lat": 44.994566,
+   "lon": 78.394879,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/6373614586",
+   "lat": 44.995548,
+   "lon": 78.395213,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6377705985",
+   "lat": 45.004943,
+   "lon": 78.401026,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6400092485",
+   "lat": 45.014533,
+   "lon": 78.400934,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/6427634585",
+   "lat": 45.015684,
+   "lon": 78.401213,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/6427634685",
+   "lat": 45.012312,
+   "lon": 78.402247,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6427634785",
+   "lat": 45.007236,
+   "lon": 78.402762,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6428491688",
+   "lat": 45.003293,
+   "lon": 78.405078,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6428524286",
+   "lat": 45.003657,
+   "lon": 78.404385,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6428531385",
+   "lat": 45.008932,
+   "lon": 78.401927,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/6537383185",
+   "lat": 45.018424,
+   "lon": 78.390607,
+   "category": "food",
+   "name": "Кымызхана Нуржау"
+  },
+  {
+   "id": "node/7887242159",
+   "lat": 45.020784,
+   "lon": 78.377105,
+   "category": "pharmacy",
+   "name": "Europharma"
+  },
+  {
+   "id": "node/7887242161",
+   "lat": 44.999159,
+   "lon": 78.355388,
+   "category": "pharmacy",
+   "name": "Europharma"
+  },
+  {
+   "id": "node/7887242162",
+   "lat": 45.020022,
+   "lon": 78.376041,
+   "category": "pharmacy",
+   "name": "Europharma"
+  },
+  {
+   "id": "node/8082044349",
+   "lat": 44.995964,
+   "lon": 78.341709,
+   "category": "grocery",
+   "name": "Seven"
+  },
+  {
+   "id": "node/8367024488",
+   "lat": 45.017267,
+   "lon": 78.402396,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/8367024839",
+   "lat": 45.014071,
+   "lon": 78.358328,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/8521138337",
+   "lat": 45.008324,
+   "lon": 78.342583,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/8592417001",
+   "lat": 45.016253,
+   "lon": 78.356093,
+   "category": "food",
+   "name": "Bazilik"
+  },
+  {
+   "id": "node/8610788831",
+   "lat": 45.014742,
+   "lon": 78.38794,
+   "category": "finance",
+   "name": "Kaspi.kz"
+  },
+  {
+   "id": "node/8611611574",
+   "lat": 45.017881,
+   "lon": 78.369038,
+   "category": "finance",
+   "name": "Kaspi.kz"
+  },
+  {
+   "id": "node/8944235515",
+   "lat": 45.017274,
+   "lon": 78.401817,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/9102532942",
+   "lat": 45.011193,
+   "lon": 78.384408,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9102538845",
+   "lat": 45.011546,
+   "lon": 78.384741,
+   "category": "food",
+   "name": "Мимино"
+  },
+  {
+   "id": "node/9102756988",
+   "lat": 45.013021,
+   "lon": 78.384518,
+   "category": "food",
+   "name": "Лужайка"
+  },
+  {
+   "id": "node/9454160092",
+   "lat": 45.00613,
+   "lon": 78.348292,
+   "category": "food",
+   "name": "Казына"
+  },
+  {
+   "id": "node/9454160114",
+   "lat": 45.009513,
+   "lon": 78.344823,
+   "category": "food",
+   "name": "Жания"
+  },
+  {
+   "id": "node/9454160115",
+   "lat": 45.009469,
+   "lon": 78.344377,
+   "category": "food",
+   "name": "Ramen"
+  },
+  {
+   "id": "node/9454185628",
+   "lat": 45.009542,
+   "lon": 78.343955,
+   "category": "food",
+   "name": "Аксу"
+  },
+  {
+   "id": "node/9454185630",
+   "lat": 45.009068,
+   "lon": 78.343901,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9454185631",
+   "lat": 45.009046,
+   "lon": 78.343799,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9454185638",
+   "lat": 45.006834,
+   "lon": 78.342402,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9454221039",
+   "lat": 45.005783,
+   "lon": 78.341473,
+   "category": "pharmacy",
+   "name": "Mural pharm"
+  },
+  {
+   "id": "node/9454221041",
+   "lat": 45.004825,
+   "lon": 78.340549,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9454326332",
+   "lat": 45.013857,
+   "lon": 78.34091,
+   "category": "food",
+   "name": "Катя"
+  },
+  {
+   "id": "node/9454326338",
+   "lat": 45.01369,
+   "lon": 78.340854,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9454326366",
+   "lat": 45.011947,
+   "lon": 78.340979,
+   "category": "food",
+   "name": "Aq Niet"
+  },
+  {
+   "id": "node/9454343391",
+   "lat": 44.991608,
+   "lon": 78.403217,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9454343394",
+   "lat": 44.991404,
+   "lon": 78.403249,
+   "category": "food",
+   "name": "Сарыбел"
+  },
+  {
+   "id": "node/9454343395",
+   "lat": 44.990943,
+   "lon": 78.402344,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9457364578",
+   "lat": 44.98497,
+   "lon": 78.40524,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9457465845",
+   "lat": 44.990594,
+   "lon": 78.404857,
+   "category": "health",
+   "name": "Детская больница"
+  },
+  {
+   "id": "node/9457465947",
+   "lat": 44.992584,
+   "lon": 78.404307,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9457465948",
+   "lat": 44.99086,
+   "lon": 78.404646,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9457465988",
+   "lat": 44.993084,
+   "lon": 78.405775,
+   "category": "health",
+   "name": "Морг"
+  },
+  {
+   "id": "node/9457466074",
+   "lat": 44.989528,
+   "lon": 78.400155,
+   "category": "health",
+   "name": "Детский ортопедический центр"
+  },
+  {
+   "id": "node/9457495753",
+   "lat": 44.996106,
+   "lon": 78.405138,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9457495759",
+   "lat": 44.996669,
+   "lon": 78.404766,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9457495772",
+   "lat": 44.997716,
+   "lon": 78.404933,
+   "category": "food",
+   "name": "Aq Bosaga"
+  },
+  {
+   "id": "node/9457519068",
+   "lat": 44.997385,
+   "lon": 78.393373,
+   "category": "grocery",
+   "name": "Гастроном"
+  },
+  {
+   "id": "node/9457519079",
+   "lat": 44.997232,
+   "lon": 78.393268,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9457519090",
+   "lat": 44.998684,
+   "lon": 78.392419,
+   "category": "food",
+   "name": "Магнит"
+  },
+  {
+   "id": "node/9457538544",
+   "lat": 45.002798,
+   "lon": 78.390867,
+   "category": "food",
+   "name": "Сарқан"
+  },
+  {
+   "id": "node/9457538545",
+   "lat": 45.003434,
+   "lon": 78.405225,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9467965284",
+   "lat": 45.007307,
+   "lon": 78.402769,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9467965307",
+   "lat": 45.008305,
+   "lon": 78.403218,
+   "category": "food",
+   "name": "Алаколь"
+  },
+  {
+   "id": "node/9468006955",
+   "lat": 45.014489,
+   "lon": 78.398856,
+   "category": "food",
+   "name": "Ханшайым"
+  },
+  {
+   "id": "node/9468007001",
+   "lat": 45.005468,
+   "lon": 78.400912,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9468007007",
+   "lat": 45.013859,
+   "lon": 78.387843,
+   "category": "health",
+   "name": "Диагностический центр Volina"
+  },
+  {
+   "id": "node/9468038238",
+   "lat": 45.013639,
+   "lon": 78.387939,
+   "category": "finance",
+   "name": "Нурбанк"
+  },
+  {
+   "id": "node/9468038253",
+   "lat": 45.013814,
+   "lon": 78.388001,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9468038327",
+   "lat": 45.008207,
+   "lon": 78.388907,
+   "category": "finance",
+   "name": "Банк ЦентрКредит"
+  },
+  {
+   "id": "node/9504445864",
+   "lat": 45.001243,
+   "lon": 78.359153,
+   "category": "grocery",
+   "name": "Small"
+  },
+  {
+   "id": "node/9504445889",
+   "lat": 45.014794,
+   "lon": 78.382771,
+   "category": "grocery",
+   "name": "Small"
+  },
+  {
+   "id": "node/9504445894",
+   "lat": 45.014853,
+   "lon": 78.348071,
+   "category": "grocery",
+   "name": "Small"
+  },
+  {
+   "id": "node/9526559564",
+   "lat": 45.010185,
+   "lon": 78.387644,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9526559594",
+   "lat": 45.011778,
+   "lon": 78.387242,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9526559642",
+   "lat": 45.013745,
+   "lon": 78.38615,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9526559645",
+   "lat": 45.012049,
+   "lon": 78.386629,
+   "category": "health",
+   "name": "Шипагер"
+  },
+  {
+   "id": "node/9526559647",
+   "lat": 45.01385,
+   "lon": 78.386854,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9526559694",
+   "lat": 45.011579,
+   "lon": 78.381648,
+   "category": "health",
+   "name": "Кожвен"
+  },
+  {
+   "id": "node/9526563883",
+   "lat": 45.011243,
+   "lon": 78.383475,
+   "category": "health",
+   "name": "Областной наркологический диспансер"
+  },
+  {
+   "id": "node/9544802339",
+   "lat": 45.008816,
+   "lon": 78.379212,
+   "category": "food",
+   "name": "Portafino"
+  },
+  {
+   "id": "node/9544802391",
+   "lat": 45.007897,
+   "lon": 78.376735,
+   "category": "personal",
+   "name": "istanbul"
+  },
+  {
+   "id": "node/9544802405",
+   "lat": 45.004977,
+   "lon": 78.377127,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9544802414",
+   "lat": 45.006423,
+   "lon": 78.376851,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9544802450",
+   "lat": 45.012736,
+   "lon": 78.375605,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9544802451",
+   "lat": 45.012402,
+   "lon": 78.372233,
+   "category": "pharmacy",
+   "name": "Городская аптека"
+  },
+  {
+   "id": "node/9544802456",
+   "lat": 45.01066,
+   "lon": 78.373065,
+   "category": "food",
+   "name": "Эдем"
+  },
+  {
+   "id": "node/9544802501",
+   "lat": 45.01102,
+   "lon": 78.369735,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9544802502",
+   "lat": 45.011233,
+   "lon": 78.36972,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9544802507",
+   "lat": 45.010276,
+   "lon": 78.36983,
+   "category": "food",
+   "name": "Байтерек"
+  },
+  {
+   "id": "node/9544802552",
+   "lat": 45.012172,
+   "lon": 78.369154,
+   "category": "food",
+   "name": "Iftar"
+  },
+  {
+   "id": "node/9546493509",
+   "lat": 45.005419,
+   "lon": 78.363528,
+   "category": "grocery",
+   "name": "Magnit"
+  },
+  {
+   "id": "node/9546493510",
+   "lat": 45.005294,
+   "lon": 78.363461,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9546493517",
+   "lat": 45.006397,
+   "lon": 78.363414,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9546493541",
+   "lat": 45.010824,
+   "lon": 78.363106,
+   "category": "grocery",
+   "name": "Tamerlan"
+  },
+  {
+   "id": "node/9546493542",
+   "lat": 45.010625,
+   "lon": 78.362578,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9546493639",
+   "lat": 45.011356,
+   "lon": 78.363612,
+   "category": "food",
+   "name": "Семья"
+  },
+  {
+   "id": "node/9546506165",
+   "lat": 45.007535,
+   "lon": 78.357837,
+   "category": "food",
+   "name": "Шах-Нур"
+  },
+  {
+   "id": "node/9546908759",
+   "lat": 45.009194,
+   "lon": 78.356821,
+   "category": "food",
+   "name": "BeerLoga"
+  },
+  {
+   "id": "node/9546975087",
+   "lat": 45.00884,
+   "lon": 78.356477,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9546975117",
+   "lat": 45.008506,
+   "lon": 78.353345,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9546975124",
+   "lat": 45.007915,
+   "lon": 78.351986,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9551627913",
+   "lat": 45.01017,
+   "lon": 78.354788,
+   "category": "food",
+   "name": "На Кирова"
+  },
+  {
+   "id": "node/9551661101",
+   "lat": 45.00327,
+   "lon": 78.350738,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9551944432",
+   "lat": 45.002685,
+   "lon": 78.351754,
+   "category": "health",
+   "name": "MARTEBE"
+  },
+  {
+   "id": "node/9551978164",
+   "lat": 44.999502,
+   "lon": 78.354494,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9551978182",
+   "lat": 45.000082,
+   "lon": 78.35348,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9551978195",
+   "lat": 44.99978,
+   "lon": 78.354708,
+   "category": "food",
+   "name": "Пятница"
+  },
+  {
+   "id": "node/9551978196",
+   "lat": 44.999615,
+   "lon": 78.354736,
+   "category": "food",
+   "name": "Doner kebab"
+  },
+  {
+   "id": "node/9551978225",
+   "lat": 45.000951,
+   "lon": 78.355377,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9551978226",
+   "lat": 45.001259,
+   "lon": 78.355636,
+   "category": "food",
+   "name": "Adal"
+  },
+  {
+   "id": "node/9551978244",
+   "lat": 45.001834,
+   "lon": 78.35429,
+   "category": "food",
+   "name": "Нурайдын"
+  },
+  {
+   "id": "node/9553242904",
+   "lat": 44.998187,
+   "lon": 78.349307,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553323928",
+   "lat": 44.997548,
+   "lon": 78.351445,
+   "category": "food",
+   "name": "Diamond"
+  },
+  {
+   "id": "node/9553324131",
+   "lat": 44.995366,
+   "lon": 78.348648,
+   "category": "health",
+   "name": "Врачебная амбулатория"
+  },
+  {
+   "id": "node/9553392213",
+   "lat": 44.996014,
+   "lon": 78.363442,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9553392325",
+   "lat": 44.995926,
+   "lon": 78.361492,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9553392327",
+   "lat": 44.996138,
+   "lon": 78.362141,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9553392348",
+   "lat": 44.993498,
+   "lon": 78.363051,
+   "category": "food",
+   "name": "Дадам"
+  },
+  {
+   "id": "node/9553392359",
+   "lat": 44.994592,
+   "lon": 78.360932,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553392458",
+   "lat": 44.995063,
+   "lon": 78.357989,
+   "category": "food",
+   "name": "Шашу"
+  },
+  {
+   "id": "node/9553444017",
+   "lat": 44.994871,
+   "lon": 78.352873,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9553444306",
+   "lat": 44.985346,
+   "lon": 78.358857,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553680353",
+   "lat": 44.995728,
+   "lon": 78.356184,
+   "category": "personal",
+   "name": "Жанна"
+  },
+  {
+   "id": "node/9553680360",
+   "lat": 44.995768,
+   "lon": 78.355754,
+   "category": "health",
+   "name": "Айболит"
+  },
+  {
+   "id": "node/9553680365",
+   "lat": 44.996639,
+   "lon": 78.355196,
+   "category": "finance",
+   "name": "Ботагоз"
+  },
+  {
+   "id": "node/9553692827",
+   "lat": 44.996375,
+   "lon": 78.356043,
+   "category": "health",
+   "name": "Кайнар"
+  },
+  {
+   "id": "node/9553692833",
+   "lat": 44.996207,
+   "lon": 78.356441,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9553692855",
+   "lat": 44.996237,
+   "lon": 78.356774,
+   "category": "pharmacy",
+   "name": "Семейная"
+  },
+  {
+   "id": "node/9553692904",
+   "lat": 44.997665,
+   "lon": 78.354295,
+   "category": "health",
+   "name": "Eva-Dest"
+  },
+  {
+   "id": "node/9553692984",
+   "lat": 44.999373,
+   "lon": 78.355542,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9553693065",
+   "lat": 44.999851,
+   "lon": 78.356018,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9553693076",
+   "lat": 44.999975,
+   "lon": 78.35608,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553693080",
+   "lat": 45.000348,
+   "lon": 78.356358,
+   "category": "personal",
+   "name": "Fantasy"
+  },
+  {
+   "id": "node/9553693179",
+   "lat": 44.999031,
+   "lon": 78.361391,
+   "category": "food",
+   "name": "Tokyo"
+  },
+  {
+   "id": "node/9553693180",
+   "lat": 44.999087,
+   "lon": 78.361555,
+   "category": "food",
+   "name": "Париж"
+  },
+  {
+   "id": "node/9553693181",
+   "lat": 44.998838,
+   "lon": 78.361651,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9553693182",
+   "lat": 44.99893,
+   "lon": 78.361929,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553693296",
+   "lat": 44.996486,
+   "lon": 78.36217,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9553693297",
+   "lat": 44.996474,
+   "lon": 78.362054,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553693298",
+   "lat": 44.996462,
+   "lon": 78.36192,
+   "category": "personal",
+   "name": "Адеми"
+  },
+  {
+   "id": "node/9553693299",
+   "lat": 44.996341,
+   "lon": 78.360719,
+   "category": "personal",
+   "name": "Ару"
+  },
+  {
+   "id": "node/9553693310",
+   "lat": 44.996682,
+   "lon": 78.364626,
+   "category": "food",
+   "name": "Perekrestok"
+  },
+  {
+   "id": "node/9553693312",
+   "lat": 44.99664,
+   "lon": 78.362576,
+   "category": "grocery",
+   "name": "Жастар"
+  },
+  {
+   "id": "node/9553758220",
+   "lat": 44.997944,
+   "lon": 78.363762,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9553758221",
+   "lat": 44.997731,
+   "lon": 78.363595,
+   "category": "food",
+   "name": "Мадирус"
+  },
+  {
+   "id": "node/9553758246",
+   "lat": 44.998497,
+   "lon": 78.364447,
+   "category": "food",
+   "name": "MangaMix"
+  },
+  {
+   "id": "node/9553758254",
+   "lat": 44.998683,
+   "lon": 78.362914,
+   "category": "personal",
+   "name": "Персона"
+  },
+  {
+   "id": "node/9553759559",
+   "lat": 44.999255,
+   "lon": 78.364418,
+   "category": "food",
+   "name": "Et-Qoi"
+  },
+  {
+   "id": "node/9553759564",
+   "lat": 44.999239,
+   "lon": 78.36424,
+   "category": "food",
+   "name": "Рандеву"
+  },
+  {
+   "id": "node/9553759591",
+   "lat": 44.999376,
+   "lon": 78.362197,
+   "category": "food",
+   "name": "Рум 13"
+  },
+  {
+   "id": "node/9553759610",
+   "lat": 45.001006,
+   "lon": 78.363949,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9553759754",
+   "lat": 45.002332,
+   "lon": 78.359632,
+   "category": "food",
+   "name": "Айкуным"
+  },
+  {
+   "id": "node/9555483662",
+   "lat": 45.012438,
+   "lon": 78.348186,
+   "category": "food",
+   "name": "Ниагара"
+  },
+  {
+   "id": "node/9555483711",
+   "lat": 45.013466,
+   "lon": 78.349642,
+   "category": "food",
+   "name": "УлыДала"
+  },
+  {
+   "id": "node/9555504658",
+   "lat": 45.011101,
+   "lon": 78.356287,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9555504660",
+   "lat": 45.011171,
+   "lon": 78.356739,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9555504669",
+   "lat": 45.013204,
+   "lon": 78.35549,
+   "category": "food",
+   "name": "Grill Bar"
+  },
+  {
+   "id": "node/9555504670",
+   "lat": 45.011282,
+   "lon": 78.358047,
+   "category": "food",
+   "name": "Is Smile"
+  },
+  {
+   "id": "node/9555504673",
+   "lat": 45.011291,
+   "lon": 78.358544,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9555504674",
+   "lat": 45.011411,
+   "lon": 78.359389,
+   "category": "food",
+   "name": "Doner Gril"
+  },
+  {
+   "id": "node/9555504684",
+   "lat": 45.013361,
+   "lon": 78.358298,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9555513573",
+   "lat": 45.011096,
+   "lon": 78.355473,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9566131569",
+   "lat": 45.014917,
+   "lon": 78.358421,
+   "category": "food",
+   "name": "Panda Food"
+  },
+  {
+   "id": "node/9566131570",
+   "lat": 45.014453,
+   "lon": 78.358369,
+   "category": "finance",
+   "name": "Eurasian Bank"
+  },
+  {
+   "id": "node/9566131594",
+   "lat": 45.01399,
+   "lon": 78.358374,
+   "category": "finance",
+   "name": "ForteBank"
+  },
+  {
+   "id": "node/9566240473",
+   "lat": 45.011471,
+   "lon": 78.359824,
+   "category": "food",
+   "name": "Emar Kebab"
+  },
+  {
+   "id": "node/9566240476",
+   "lat": 45.012196,
+   "lon": 78.362907,
+   "category": "pharmacy",
+   "name": "ShipA"
+  },
+  {
+   "id": "node/9566241566",
+   "lat": 45.0138,
+   "lon": 78.359915,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9566241618",
+   "lat": 45.015406,
+   "lon": 78.36528,
+   "category": "food",
+   "name": "Карина"
+  },
+  {
+   "id": "node/9566241630",
+   "lat": 45.012192,
+   "lon": 78.365677,
+   "category": "food",
+   "name": "Карина"
+  },
+  {
+   "id": "node/9566241695",
+   "lat": 45.013934,
+   "lon": 78.367834,
+   "category": "food",
+   "name": "Байхан"
+  },
+  {
+   "id": "node/9566241722",
+   "lat": 45.012348,
+   "lon": 78.366826,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9566241746",
+   "lat": 45.012662,
+   "lon": 78.368443,
+   "category": "food",
+   "name": "Royal Thermo"
+  },
+  {
+   "id": "node/9566241763",
+   "lat": 45.013244,
+   "lon": 78.369113,
+   "category": "personal",
+   "name": "AlRisto"
+  },
+  {
+   "id": "node/9566241776",
+   "lat": 45.013674,
+   "lon": 78.369126,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9566241779",
+   "lat": 45.014684,
+   "lon": 78.36938,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9566241782",
+   "lat": 45.015444,
+   "lon": 78.368921,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9566241790",
+   "lat": 45.016133,
+   "lon": 78.369294,
+   "category": "food",
+   "name": "Кокос"
+  },
+  {
+   "id": "node/9566241806",
+   "lat": 45.013479,
+   "lon": 78.369348,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9592128613",
+   "lat": 45.016445,
+   "lon": 78.369368,
+   "category": "personal",
+   "name": "Натэль"
+  },
+  {
+   "id": "node/9592138020",
+   "lat": 45.016627,
+   "lon": 78.370501,
+   "category": "finance",
+   "name": "Halyk Bank"
+  },
+  {
+   "id": "node/9592138021",
+   "lat": 45.016629,
+   "lon": 78.370634,
+   "category": "food",
+   "name": "Tandoor"
+  },
+  {
+   "id": "node/9592138022",
+   "lat": 45.016651,
+   "lon": 78.371124,
+   "category": "food",
+   "name": "MeatPoint"
+  },
+  {
+   "id": "node/9592138024",
+   "lat": 45.016535,
+   "lon": 78.371493,
+   "category": "personal",
+   "name": "StyleTyme"
+  },
+  {
+   "id": "node/9592138071",
+   "lat": 45.016238,
+   "lon": 78.371054,
+   "category": "personal",
+   "name": "Амелия"
+  },
+  {
+   "id": "node/9592138131",
+   "lat": 45.014632,
+   "lon": 78.370169,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9592138276",
+   "lat": 45.012595,
+   "lon": 78.369795,
+   "category": "personal",
+   "name": "Шугаринг от Юлии Шабаевой"
+  },
+  {
+   "id": "node/9592138277",
+   "lat": 45.012686,
+   "lon": 78.370471,
+   "category": "grocery",
+   "name": "Aruzhan"
+  },
+  {
+   "id": "node/9592138278",
+   "lat": 45.012706,
+   "lon": 78.370554,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9592165916",
+   "lat": 45.016933,
+   "lon": 78.375152,
+   "category": "food",
+   "name": "Аминат"
+  },
+  {
+   "id": "node/9592198717",
+   "lat": 45.016741,
+   "lon": 78.375098,
+   "category": "personal",
+   "name": "Лапочка"
+  },
+  {
+   "id": "node/9592198756",
+   "lat": 45.016161,
+   "lon": 78.373554,
+   "category": "personal",
+   "name": "Ханшайым"
+  },
+  {
+   "id": "node/9592198781",
+   "lat": 45.016131,
+   "lon": 78.375133,
+   "category": "personal",
+   "name": "Garden"
+  },
+  {
+   "id": "node/9592198783",
+   "lat": 45.015786,
+   "lon": 78.375151,
+   "category": "food",
+   "name": "Мангал"
+  },
+  {
+   "id": "node/9592198796",
+   "lat": 45.015209,
+   "lon": 78.375208,
+   "category": "food",
+   "name": "Корейская кухня"
+  },
+  {
+   "id": "node/9592198811",
+   "lat": 45.014925,
+   "lon": 78.374583,
+   "category": "personal",
+   "name": "Зодиак"
+  },
+  {
+   "id": "node/9592198917",
+   "lat": 45.014561,
+   "lon": 78.375243,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9592198918",
+   "lat": 45.014111,
+   "lon": 78.372931,
+   "category": "health",
+   "name": "Alice Stom"
+  },
+  {
+   "id": "node/9592198919",
+   "lat": 45.013641,
+   "lon": 78.372958,
+   "category": "grocery",
+   "name": "Березка"
+  },
+  {
+   "id": "node/9592198949",
+   "lat": 45.012997,
+   "lon": 78.372938,
+   "category": "food",
+   "name": "Жеруйык"
+  },
+  {
+   "id": "node/9592198971",
+   "lat": 45.013178,
+   "lon": 78.374535,
+   "category": "grocery",
+   "name": "Атаба"
+  },
+  {
+   "id": "node/9592198972",
+   "lat": 45.013016,
+   "lon": 78.373593,
+   "category": "health",
+   "name": "Dentalika"
+  },
+  {
+   "id": "node/9592198974",
+   "lat": 45.013281,
+   "lon": 78.375361,
+   "category": "personal",
+   "name": "Beauty"
+  },
+  {
+   "id": "node/9593177522",
+   "lat": 45.017007,
+   "lon": 78.375758,
+   "category": "grocery",
+   "name": "Алем"
+  },
+  {
+   "id": "node/9593177523",
+   "lat": 45.017023,
+   "lon": 78.375905,
+   "category": "personal",
+   "name": "У Людмилы"
+  },
+  {
+   "id": "node/9593177537",
+   "lat": 45.017029,
+   "lon": 78.376343,
+   "category": "food",
+   "name": "Nefis"
+  },
+  {
+   "id": "node/9593177564",
+   "lat": 45.017028,
+   "lon": 78.37728,
+   "category": "pharmacy",
+   "name": "Алтынай"
+  },
+  {
+   "id": "node/9593177565",
+   "lat": 45.016913,
+   "lon": 78.377201,
+   "category": "food",
+   "name": "Korean House"
+  },
+  {
+   "id": "node/9593346869",
+   "lat": 45.016611,
+   "lon": 78.375749,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9593346870",
+   "lat": 45.016548,
+   "lon": 78.375749,
+   "category": "personal",
+   "name": "Barber Shop"
+  },
+  {
+   "id": "node/9593346872",
+   "lat": 45.016166,
+   "lon": 78.375801,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9593346873",
+   "lat": 45.016086,
+   "lon": 78.375801,
+   "category": "personal",
+   "name": "Статус"
+  },
+  {
+   "id": "node/9593346875",
+   "lat": 45.015815,
+   "lon": 78.375825,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9593346876",
+   "lat": 45.015636,
+   "lon": 78.375872,
+   "category": "personal",
+   "name": "DANA"
+  },
+  {
+   "id": "node/9593346877",
+   "lat": 45.01529,
+   "lon": 78.3759,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593361357",
+   "lat": 45.016276,
+   "lon": 78.377284,
+   "category": "health",
+   "name": "Асем"
+  },
+  {
+   "id": "node/9593361361",
+   "lat": 45.016002,
+   "lon": 78.377302,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593361386",
+   "lat": 45.013772,
+   "lon": 78.37598,
+   "category": "food",
+   "name": "Lavash"
+  },
+  {
+   "id": "node/9593361387",
+   "lat": 45.013638,
+   "lon": 78.376028,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593361449",
+   "lat": 45.014072,
+   "lon": 78.377376,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9593361505",
+   "lat": 45.013718,
+   "lon": 78.38041,
+   "category": "pharmacy",
+   "name": "Росфера"
+  },
+  {
+   "id": "node/9593361509",
+   "lat": 45.014544,
+   "lon": 78.377717,
+   "category": "personal",
+   "name": "Every Day"
+  },
+  {
+   "id": "node/9593456894",
+   "lat": 45.015247,
+   "lon": 78.377907,
+   "category": "finance",
+   "name": "Жилстройсбербанк"
+  },
+  {
+   "id": "node/9593456903",
+   "lat": 45.015524,
+   "lon": 78.377935,
+   "category": "finance",
+   "name": "ATF Bank"
+  },
+  {
+   "id": "node/9593463233",
+   "lat": 45.015898,
+   "lon": 78.377849,
+   "category": "finance",
+   "name": "ForteBank"
+  },
+  {
+   "id": "node/9593463253",
+   "lat": 45.017159,
+   "lon": 78.377796,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9593463254",
+   "lat": 45.017119,
+   "lon": 78.377793,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593463255",
+   "lat": 45.017228,
+   "lon": 78.377861,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/9593463256",
+   "lat": 45.01723,
+   "lon": 78.377788,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/9593463303",
+   "lat": 45.016997,
+   "lon": 78.379961,
+   "category": "food",
+   "name": "Банка Бар"
+  },
+  {
+   "id": "node/9593463326",
+   "lat": 45.016803,
+   "lon": 78.379991,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593463327",
+   "lat": 45.016148,
+   "lon": 78.38023,
+   "category": "food",
+   "name": "Шаган"
+  },
+  {
+   "id": "node/9593463360",
+   "lat": 45.016427,
+   "lon": 78.378,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593463361",
+   "lat": 45.016601,
+   "lon": 78.377994,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9593463397",
+   "lat": 45.013853,
+   "lon": 78.381929,
+   "category": "personal",
+   "name": "ROLEX"
+  },
+  {
+   "id": "node/9593463429",
+   "lat": 45.013864,
+   "lon": 78.382432,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9593463432",
+   "lat": 45.014058,
+   "lon": 78.383758,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593463487",
+   "lat": 45.015144,
+   "lon": 78.381574,
+   "category": "finance",
+   "name": "АльфаБанк"
+  },
+  {
+   "id": "node/9593463530",
+   "lat": 45.015208,
+   "lon": 78.383594,
+   "category": "finance",
+   "name": "EurasianBank"
+  },
+  {
+   "id": "node/9593483514",
+   "lat": 45.015605,
+   "lon": 78.382681,
+   "category": "food",
+   "name": "Пинта"
+  },
+  {
+   "id": "node/9593483543",
+   "lat": 45.016262,
+   "lon": 78.38075,
+   "category": "finance",
+   "name": "ВТБ"
+  },
+  {
+   "id": "node/9593852789",
+   "lat": 45.015445,
+   "lon": 78.386861,
+   "category": "finance",
+   "name": "AO «Народный Банк Казахстана»"
+  },
+  {
+   "id": "node/9593852865",
+   "lat": 45.014376,
+   "lon": 78.387035,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9593852906",
+   "lat": 45.016819,
+   "lon": 78.384102,
+   "category": "health",
+   "name": "Талдыкорганский Кожно-венерологический диспансер"
+  },
+  {
+   "id": "node/9593852950",
+   "lat": 45.017545,
+   "lon": 78.384954,
+   "category": "health",
+   "name": "ГКП ПХФ Талдыкорганская детская поликлиника"
+  },
+  {
+   "id": "node/9593852992",
+   "lat": 45.015943,
+   "lon": 78.385317,
+   "category": "finance",
+   "name": "Аоф РГУ Национальный банк РК"
+  },
+  {
+   "id": "node/9593853107",
+   "lat": 45.014981,
+   "lon": 78.387784,
+   "category": "finance",
+   "name": "KaspiBank"
+  },
+  {
+   "id": "node/9593853108",
+   "lat": 45.015236,
+   "lon": 78.387835,
+   "category": "finance",
+   "name": "Home Credit Bank"
+  },
+  {
+   "id": "node/9593914368",
+   "lat": 45.016292,
+   "lon": 78.390253,
+   "category": "health",
+   "name": "Скорая помощь"
+  },
+  {
+   "id": "node/9593919440",
+   "lat": 45.01604,
+   "lon": 78.387868,
+   "category": "food",
+   "name": "Шайкен"
+  },
+  {
+   "id": "node/9593919441",
+   "lat": 45.01624,
+   "lon": 78.387778,
+   "category": "food",
+   "name": "Лагманная"
+  },
+  {
+   "id": "node/9593919556",
+   "lat": 45.018131,
+   "lon": 78.39198,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593919557",
+   "lat": 45.018181,
+   "lon": 78.392746,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9593919558",
+   "lat": 45.018523,
+   "lon": 78.391858,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9593919583",
+   "lat": 45.017194,
+   "lon": 78.394217,
+   "category": "food",
+   "name": "NUR"
+  },
+  {
+   "id": "node/9593919596",
+   "lat": 45.018213,
+   "lon": 78.394251,
+   "category": "food",
+   "name": "Ауыл"
+  },
+  {
+   "id": "node/9593919597",
+   "lat": 45.018188,
+   "lon": 78.394086,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9593919626",
+   "lat": 45.018483,
+   "lon": 78.395536,
+   "category": "food",
+   "name": "Мясной Гурман"
+  },
+  {
+   "id": "node/9594292130",
+   "lat": 45.015516,
+   "lon": 78.398965,
+   "category": "finance",
+   "name": "Halyk Bank"
+  },
+  {
+   "id": "node/9594292153",
+   "lat": 45.015785,
+   "lon": 78.40028,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9594292211",
+   "lat": 45.018344,
+   "lon": 78.40025,
+   "category": "food",
+   "name": "Del Papa"
+  },
+  {
+   "id": "node/9594292264",
+   "lat": 45.016672,
+   "lon": 78.400211,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/9594292302",
+   "lat": 45.015638,
+   "lon": 78.401159,
+   "category": "food",
+   "name": "Цент Шашлыка"
+  },
+  {
+   "id": "node/9594316826",
+   "lat": 45.020742,
+   "lon": 78.398114,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9597046543",
+   "lat": 45.018523,
+   "lon": 78.38748,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9597046568",
+   "lat": 45.018641,
+   "lon": 78.386217,
+   "category": "food",
+   "name": "Летник Арена"
+  },
+  {
+   "id": "node/9597046577",
+   "lat": 45.018436,
+   "lon": 78.386698,
+   "category": "food",
+   "name": "Сказка"
+  },
+  {
+   "id": "node/9597046692",
+   "lat": 45.019402,
+   "lon": 78.380436,
+   "category": "food",
+   "name": "Сеним"
+  },
+  {
+   "id": "node/9597046693",
+   "lat": 45.018921,
+   "lon": 78.380484,
+   "category": "food",
+   "name": "Hessen"
+  },
+  {
+   "id": "node/9597046774",
+   "lat": 45.019206,
+   "lon": 78.379745,
+   "category": "food",
+   "name": "Degirmen"
+  },
+  {
+   "id": "node/9655468922",
+   "lat": 45.018082,
+   "lon": 78.378014,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9655468953",
+   "lat": 45.018442,
+   "lon": 78.377725,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9655469019",
+   "lat": 45.018931,
+   "lon": 78.377762,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9655469021",
+   "lat": 45.019659,
+   "lon": 78.378257,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9655469081",
+   "lat": 45.019626,
+   "lon": 78.377138,
+   "category": "food",
+   "name": "Арбат"
+  },
+  {
+   "id": "node/9655469082",
+   "lat": 45.019519,
+   "lon": 78.377113,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9655469083",
+   "lat": 45.019484,
+   "lon": 78.377095,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9655469090",
+   "lat": 45.019554,
+   "lon": 78.375925,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9655469093",
+   "lat": 45.019513,
+   "lon": 78.376279,
+   "category": "food",
+   "name": "Сеул"
+  },
+  {
+   "id": "node/9655469095",
+   "lat": 45.019458,
+   "lon": 78.376076,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9655469100",
+   "lat": 45.019608,
+   "lon": 78.375529,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9655469177",
+   "lat": 45.01888,
+   "lon": 78.375618,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9655469178",
+   "lat": 45.018977,
+   "lon": 78.375553,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9655469180",
+   "lat": 45.019191,
+   "lon": 78.375544,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9655469182",
+   "lat": 45.019311,
+   "lon": 78.37553,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "node/9655469192",
+   "lat": 45.018058,
+   "lon": 78.375627,
+   "category": "food",
+   "name": "Донер"
+  },
+  {
+   "id": "node/9655469194",
+   "lat": 45.017724,
+   "lon": 78.375661,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9655469212",
+   "lat": 45.018262,
+   "lon": 78.376024,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9692624333",
+   "lat": 45.020133,
+   "lon": 78.381062,
+   "category": "finance",
+   "name": "ВТБ Банк"
+  },
+  {
+   "id": "node/9697352467",
+   "lat": 45.017535,
+   "lon": 78.374965,
+   "category": "finance",
+   "name": "Народный банк"
+  },
+  {
+   "id": "node/9697352468",
+   "lat": 45.017468,
+   "lon": 78.375258,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/9697352473",
+   "lat": 45.017437,
+   "lon": 78.375109,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/9697352479",
+   "lat": 45.017419,
+   "lon": 78.374679,
+   "category": "food",
+   "name": "Пинта"
+  },
+  {
+   "id": "node/9697352481",
+   "lat": 45.017331,
+   "lon": 78.373568,
+   "category": "food",
+   "name": "Chocolate"
+  },
+  {
+   "id": "node/9697352484",
+   "lat": 45.017298,
+   "lon": 78.373119,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9697352485",
+   "lat": 45.018482,
+   "lon": 78.375145,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9697352488",
+   "lat": 45.018263,
+   "lon": 78.375171,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9697352490",
+   "lat": 45.01781,
+   "lon": 78.375103,
+   "category": "pharmacy",
+   "name": "Авицена"
+  },
+  {
+   "id": "node/9697352492",
+   "lat": 45.019194,
+   "lon": 78.375091,
+   "category": "personal",
+   "name": "Инкар"
+  },
+  {
+   "id": "node/9697352498",
+   "lat": 45.019527,
+   "lon": 78.373732,
+   "category": "pharmacy",
+   "name": "Социальная"
+  },
+  {
+   "id": "node/9697352499",
+   "lat": 45.01952,
+   "lon": 78.374116,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9697352505",
+   "lat": 45.019583,
+   "lon": 78.375084,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9697352507",
+   "lat": 45.018632,
+   "lon": 78.373869,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9697352524",
+   "lat": 45.018461,
+   "lon": 78.372833,
+   "category": "food",
+   "name": "Arafat"
+  },
+  {
+   "id": "node/9697352527",
+   "lat": 45.019537,
+   "lon": 78.372199,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/9697352529",
+   "lat": 45.019484,
+   "lon": 78.372296,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9697352530",
+   "lat": 45.019477,
+   "lon": 78.371906,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9697352531",
+   "lat": 45.019293,
+   "lon": 78.372292,
+   "category": "health",
+   "name": "Esta"
+  },
+  {
+   "id": "node/9697690143",
+   "lat": 45.01952,
+   "lon": 78.370752,
+   "category": "personal",
+   "name": "Young Studio"
+  },
+  {
+   "id": "node/9697694635",
+   "lat": 45.017117,
+   "lon": 78.367953,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "node/9697694636",
+   "lat": 45.017079,
+   "lon": 78.367344,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/9697694712",
+   "lat": 45.01667,
+   "lon": 78.36488,
+   "category": "food",
+   "name": "Суши"
+  },
+  {
+   "id": "node/9697694719",
+   "lat": 45.016673,
+   "lon": 78.363798,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9697694720",
+   "lat": 45.016605,
+   "lon": 78.362931,
+   "category": "food",
+   "name": "Жетыказына"
+  },
+  {
+   "id": "node/9697694734",
+   "lat": 45.017721,
+   "lon": 78.363429,
+   "category": "food",
+   "name": "Кендала"
+  },
+  {
+   "id": "node/9776569778",
+   "lat": 45.016712,
+   "lon": 78.360941,
+   "category": "food",
+   "name": "Деликатесы"
+  },
+  {
+   "id": "node/9776569941",
+   "lat": 45.016202,
+   "lon": 78.354993,
+   "category": "food",
+   "name": "BSP"
+  },
+  {
+   "id": "node/9776570205",
+   "lat": 45.015653,
+   "lon": 78.349025,
+   "category": "food",
+   "name": "Казахстан"
+  },
+  {
+   "id": "node/9776570206",
+   "lat": 45.015453,
+   "lon": 78.348262,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9776570229",
+   "lat": 45.015333,
+   "lon": 78.347988,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/9868223342",
+   "lat": 45.018521,
+   "lon": 78.377243,
+   "category": "health",
+   "name": "Invitro"
+  },
+  {
+   "id": "node/10108011162",
+   "lat": 45.013437,
+   "lon": 78.368829,
+   "category": "food",
+   "name": "Lanzhou"
+  },
+  {
+   "id": "node/10255676578",
+   "lat": 44.991279,
+   "lon": 78.403282,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10255676580",
+   "lat": 45.002783,
+   "lon": 78.351853,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10255676583",
+   "lat": 45.020059,
+   "lon": 78.372396,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10255676584",
+   "lat": 45.003938,
+   "lon": 78.347926,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10255676585",
+   "lat": 44.995909,
+   "lon": 78.361929,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10567197331",
+   "lat": 45.026776,
+   "lon": 78.411672,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10567197334",
+   "lat": 44.989627,
+   "lon": 78.302109,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10567197336",
+   "lat": 44.979014,
+   "lon": 78.300258,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10567197337",
+   "lat": 44.997127,
+   "lon": 78.394473,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10567197421",
+   "lat": 45.0007,
+   "lon": 78.355157,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10567197425",
+   "lat": 45.015283,
+   "lon": 78.412272,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10824064089",
+   "lat": 45.016007,
+   "lon": 78.350989,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/10841655522",
+   "lat": 44.995939,
+   "lon": 78.341772,
+   "category": "grocery",
+   "name": "Мясной двор"
+  },
+  {
+   "id": "node/10850763271",
+   "lat": 45.020055,
+   "lon": 78.377075,
+   "category": "grocery",
+   "name": "Фиалка"
+  },
+  {
+   "id": "node/10899430034",
+   "lat": 44.996467,
+   "lon": 78.355638,
+   "category": "grocery",
+   "name": "Арзан"
+  },
+  {
+   "id": "node/10899430215",
+   "lat": 44.996913,
+   "lon": 78.362555,
+   "category": "grocery",
+   "name": "Чечил бар"
+  },
+  {
+   "id": "node/10899430216",
+   "lat": 44.997805,
+   "lon": 78.362391,
+   "category": "grocery",
+   "name": "Продукты"
+  },
+  {
+   "id": "node/10899430229",
+   "lat": 44.997976,
+   "lon": 78.362775,
+   "category": "grocery",
+   "name": "Аврора"
+  },
+  {
+   "id": "node/10899704520",
+   "lat": 44.996376,
+   "lon": 78.346567,
+   "category": "health",
+   "name": "Поликлиника 6 микрорайон"
+  },
+  {
+   "id": "node/10899708217",
+   "lat": 45.04641,
+   "lon": 78.356711,
+   "category": "health",
+   "name": "Поликлиника Желтоксан"
+  },
+  {
+   "id": "node/10904455537",
+   "lat": 45.003816,
+   "lon": 78.389636,
+   "category": "food",
+   "name": "Априори"
+  },
+  {
+   "id": "node/10909070972",
+   "lat": 45.052699,
+   "lon": 78.420904,
+   "category": "grocery",
+   "name": "Малика"
+  },
+  {
+   "id": "node/10924619211",
+   "lat": 44.969901,
+   "lon": 78.307028,
+   "category": "grocery",
+   "name": "Продукты"
+  },
+  {
+   "id": "node/10924620576",
+   "lat": 44.95961,
+   "lon": 78.304497,
+   "category": "grocery",
+   "name": "Кенжыра"
+  },
+  {
+   "id": "node/10941605277",
+   "lat": 45.016337,
+   "lon": 78.367777,
+   "category": "grocery",
+   "name": "Small"
+  },
+  {
+   "id": "node/10976256559",
+   "lat": 44.997773,
+   "lon": 78.351074,
+   "category": "food",
+   "name": "Искандер"
+  },
+  {
+   "id": "node/10976256561",
+   "lat": 44.999369,
+   "lon": 78.344457,
+   "category": "grocery",
+   "name": "Жетису"
+  },
+  {
+   "id": "node/11089077527",
+   "lat": 45.013017,
+   "lon": 78.373817,
+   "category": "health",
+   "name": "Invivo"
+  },
+  {
+   "id": "node/11268482522",
+   "lat": 45.016672,
+   "lon": 78.36467,
+   "category": "food",
+   "name": "Rucola MaxCream Katana"
+  },
+  {
+   "id": "node/11478318905",
+   "lat": 45.013679,
+   "lon": 78.30437,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "node/11645117392",
+   "lat": 45.003845,
+   "lon": 78.430152,
+   "category": "grocery",
+   "name": "Дана"
+  },
+  {
+   "id": "node/11693020277",
+   "lat": 45.014512,
+   "lon": 78.348367,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/11693020278",
+   "lat": 45.014466,
+   "lon": 78.348334,
+   "category": "personal",
+   "name": "Aiym"
+  },
+  {
+   "id": "node/11693020280",
+   "lat": 45.014328,
+   "lon": 78.34819,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "node/11693020281",
+   "lat": 45.013898,
+   "lon": 78.347864,
+   "category": "health",
+   "name": "Невропатолог"
+  },
+  {
+   "id": "node/11693020282",
+   "lat": 45.013825,
+   "lon": 78.347804,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/11693020283",
+   "lat": 45.013741,
+   "lon": 78.347712,
+   "category": "food",
+   "name": "Акпейил"
+  },
+  {
+   "id": "node/11693020284",
+   "lat": 45.013157,
+   "lon": 78.347259,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "node/11693020285",
+   "lat": 45.013077,
+   "lon": 78.347182,
+   "category": "pharmacy",
+   "name": "Биосфера"
+  },
+  {
+   "id": "node/12049265836",
+   "lat": 45.000564,
+   "lon": 78.357494,
+   "category": "finance",
+   "name": "Bank CenterCredit"
+  },
+  {
+   "id": "node/12063106437",
+   "lat": 45.021837,
+   "lon": 78.373638,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/12063106438",
+   "lat": 45.015285,
+   "lon": 78.387819,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "node/12093496742",
+   "lat": 45.019977,
+   "lon": 78.370698,
+   "category": "grocery",
+   "name": "Доброцен"
+  },
+  {
+   "id": "node/12165542137",
+   "lat": 45.021259,
+   "lon": 78.382489,
+   "category": "finance",
+   "name": "Bank RBK"
+  },
+  {
+   "id": "node/13108573101",
+   "lat": 45.020341,
+   "lon": 78.386692,
+   "category": "food",
+   "name": "Tino Pizza"
+  },
+  {
+   "id": "node/13110213201",
+   "lat": 45.013963,
+   "lon": 78.369113,
+   "category": "food",
+   "name": "Olivia"
+  },
+  {
+   "id": "way/241020112",
+   "lat": 45.004036,
+   "lon": 78.354424,
+   "category": "health",
+   "name": "Дом ребенка"
+  },
+  {
+   "id": "way/272333885",
+   "lat": 45.008197,
+   "lon": 78.388916,
+   "category": "finance",
+   "name": "АО \"Банк ЦентрКредит\""
+  },
+  {
+   "id": "way/272548192",
+   "lat": 44.994932,
+   "lon": 78.394762,
+   "category": "food",
+   "name": "У Петровича"
+  },
+  {
+   "id": "way/272550278",
+   "lat": 44.998718,
+   "lon": 78.392723,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/272550282",
+   "lat": 44.99746,
+   "lon": 78.393462,
+   "category": "grocery",
+   "name": "Гастроном"
+  },
+  {
+   "id": "way/272625350",
+   "lat": 44.994422,
+   "lon": 78.389066,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "way/385607566",
+   "lat": 45.01063,
+   "lon": 78.36239,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/420490324",
+   "lat": 45.017861,
+   "lon": 78.37678,
+   "category": "grocery",
+   "name": "ЦУМ"
+  },
+  {
+   "id": "way/434962078",
+   "lat": 45.046338,
+   "lon": 78.357907,
+   "category": "health",
+   "name": "Областной противотуберкулезный диспансер"
+  },
+  {
+   "id": "way/441241609",
+   "lat": 45.020288,
+   "lon": 78.372364,
+   "category": "health",
+   "name": "Городская поликлиника №2"
+  },
+  {
+   "id": "way/441241612",
+   "lat": 45.020854,
+   "lon": 78.373476,
+   "category": "health",
+   "name": "Городская поликлиника №1"
+  },
+  {
+   "id": "way/441241619",
+   "lat": 45.020291,
+   "lon": 78.373273,
+   "category": "health",
+   "name": "Областной Врачебно-физкультурный диспансер"
+  },
+  {
+   "id": "way/441241620",
+   "lat": 45.020943,
+   "lon": 78.372755,
+   "category": "health",
+   "name": "Управление здравоохранения области Жетысу"
+  },
+  {
+   "id": "way/500847971",
+   "lat": 45.002699,
+   "lon": 78.351844,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/500848026",
+   "lat": 44.996612,
+   "lon": 78.36447,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/500848049",
+   "lat": 44.99641,
+   "lon": 78.35619,
+   "category": "health",
+   "name": "Кайнар медицинский центр"
+  },
+  {
+   "id": "way/500848051",
+   "lat": 44.994982,
+   "lon": 78.35795,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/500895881",
+   "lat": 45.002406,
+   "lon": 78.359657,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/500895919",
+   "lat": 45.001886,
+   "lon": 78.346184,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/501625374",
+   "lat": 45.008761,
+   "lon": 78.353464,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/501682540",
+   "lat": 45.007561,
+   "lon": 78.358118,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/502058913",
+   "lat": 45.009429,
+   "lon": 78.344419,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/502366981",
+   "lat": 45.012402,
+   "lon": 78.348123,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/502590458",
+   "lat": 45.012337,
+   "lon": 78.372217,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "way/502649726",
+   "lat": 45.010675,
+   "lon": 78.373171,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/502854119",
+   "lat": 44.993065,
+   "lon": 78.401575,
+   "category": "health",
+   "name": "Нур-Авиценум Медицинский центр"
+  },
+  {
+   "id": "way/502854121",
+   "lat": 44.993508,
+   "lon": 78.401515,
+   "category": "health",
+   "name": "Областной кардиологический центр"
+  },
+  {
+   "id": "way/502854122",
+   "lat": 44.993925,
+   "lon": 78.401276,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/502857427",
+   "lat": 44.989615,
+   "lon": 78.400128,
+   "category": "health",
+   "name": "Детский ортопедический центр"
+  },
+  {
+   "id": "way/502857439",
+   "lat": 44.993088,
+   "lon": 78.40577,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/502864111",
+   "lat": 45.002567,
+   "lon": 78.405558,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/502864112",
+   "lat": 45.002837,
+   "lon": 78.407052,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/503325577",
+   "lat": 45.008535,
+   "lon": 78.379534,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/503330925",
+   "lat": 45.01206,
+   "lon": 78.386602,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/503330963",
+   "lat": 45.011587,
+   "lon": 78.381599,
+   "category": "health",
+   "name": "Региональный кожно-венерологический диспансер"
+  },
+  {
+   "id": "way/503499603",
+   "lat": 45.011521,
+   "lon": 78.387291,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/503499605",
+   "lat": 45.010196,
+   "lon": 78.387599,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "way/503499643",
+   "lat": 45.011552,
+   "lon": 78.384799,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/503714080",
+   "lat": 44.9857,
+   "lon": 78.35888,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/503725348",
+   "lat": 45.017203,
+   "lon": 78.394415,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/503725367",
+   "lat": 45.01813,
+   "lon": 78.39419,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/503732341",
+   "lat": 45.020362,
+   "lon": 78.394072,
+   "category": "health",
+   "name": "Зере"
+  },
+  {
+   "id": "way/503732342",
+   "lat": 45.020693,
+   "lon": 78.393699,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/503732343",
+   "lat": 45.020713,
+   "lon": 78.394016,
+   "category": "health",
+   "name": "Зере"
+  },
+  {
+   "id": "way/503746836",
+   "lat": 45.018858,
+   "lon": 78.386618,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/503750232",
+   "lat": 45.01607,
+   "lon": 78.385267,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/503750233",
+   "lat": 45.017554,
+   "lon": 78.384987,
+   "category": "health",
+   "name": "Детская поликлиника"
+  },
+  {
+   "id": "way/503750253",
+   "lat": 45.016842,
+   "lon": 78.384138,
+   "category": "health",
+   "name": "Талдыкорганский Кожно-венерологический диспансер"
+  },
+  {
+   "id": "way/503750266",
+   "lat": 45.015599,
+   "lon": 78.3813,
+   "category": "food",
+   "name": "zheka's doner house"
+  },
+  {
+   "id": "way/503750269",
+   "lat": 45.016273,
+   "lon": 78.380784,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/503750272",
+   "lat": 45.015256,
+   "lon": 78.377971,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/503750303",
+   "lat": 45.0155,
+   "lon": 78.386851,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/503750304",
+   "lat": 45.014862,
+   "lon": 78.382897,
+   "category": "grocery",
+   "name": "SMALL"
+  },
+  {
+   "id": "way/503750308",
+   "lat": 45.014959,
+   "lon": 78.383625,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "way/503750335",
+   "lat": 45.01499,
+   "lon": 78.387822,
+   "category": "finance",
+   "name": "Kaspi"
+  },
+  {
+   "id": "way/503750336",
+   "lat": 45.015232,
+   "lon": 78.387879,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/503750350",
+   "lat": 45.014704,
+   "lon": 78.387934,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/504666510",
+   "lat": 45.020364,
+   "lon": 78.380445,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504670000",
+   "lat": 45.017057,
+   "lon": 78.368575,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/504670040",
+   "lat": 45.016607,
+   "lon": 78.3629,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504670057",
+   "lat": 45.017005,
+   "lon": 78.360954,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504670079",
+   "lat": 45.016271,
+   "lon": 78.355007,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504670150",
+   "lat": 45.012985,
+   "lon": 78.355704,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504670167",
+   "lat": 45.011251,
+   "lon": 78.357157,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504685089",
+   "lat": 45.015388,
+   "lon": 78.365128,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504685169",
+   "lat": 45.013956,
+   "lon": 78.359845,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504685195",
+   "lat": 45.013969,
+   "lon": 78.358218,
+   "category": "finance",
+   "name": "Forte Bank"
+  },
+  {
+   "id": "way/504685260",
+   "lat": 45.012706,
+   "lon": 78.369052,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504685261",
+   "lat": 45.012839,
+   "lon": 78.368394,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/504685281",
+   "lat": 45.013892,
+   "lon": 78.367815,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/505242398",
+   "lat": 45.013874,
+   "lon": 78.387851,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/505242399",
+   "lat": 45.013631,
+   "lon": 78.387967,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/508917506",
+   "lat": 45.015783,
+   "lon": 78.428859,
+   "category": "health",
+   "name": "аурухана"
+  },
+  {
+   "id": "way/513485215",
+   "lat": 44.993204,
+   "lon": 78.39123,
+   "category": "health",
+   "name": "Кардиологиялық орталық"
+  },
+  {
+   "id": "way/513488749",
+   "lat": 44.998318,
+   "lon": 78.366248,
+   "category": "grocery",
+   "name": "Магнум"
+  },
+  {
+   "id": "way/513535463",
+   "lat": 45.004783,
+   "lon": 78.366871,
+   "category": "health",
+   "name": "Региональный психоневрологический диспансер"
+  },
+  {
+   "id": "way/514387953",
+   "lat": 45.047201,
+   "lon": 78.315897,
+   "category": "grocery",
+   "name": "Бакалея"
+  },
+  {
+   "id": "way/651090981",
+   "lat": 45.008056,
+   "lon": 78.403682,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "way/651092943",
+   "lat": 45.012962,
+   "lon": 78.400922,
+   "category": "food",
+   "name": "Мирас"
+  },
+  {
+   "id": "way/683121600",
+   "lat": 45.016157,
+   "lon": 78.400652,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/683129307",
+   "lat": 45.017251,
+   "lon": 78.396462,
+   "category": "grocery",
+   "name": "Small"
+  },
+  {
+   "id": "way/683649140",
+   "lat": 45.020768,
+   "lon": 78.398136,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/683881521",
+   "lat": 45.014374,
+   "lon": 78.39887,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/686922992",
+   "lat": 45.018644,
+   "lon": 78.386178,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/686923742",
+   "lat": 45.01922,
+   "lon": 78.388344,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/691414850",
+   "lat": 45.019242,
+   "lon": 78.425059,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/732008092",
+   "lat": 45.027752,
+   "lon": 78.340678,
+   "category": "grocery",
+   "name": "Екіаша"
+  },
+  {
+   "id": "way/867053124",
+   "lat": 44.995287,
+   "lon": 78.348652,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/1025337241",
+   "lat": 44.972936,
+   "lon": 78.317526,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025360931",
+   "lat": 45.006435,
+   "lon": 78.347933,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025360932",
+   "lat": 45.006148,
+   "lon": 78.348264,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025360934",
+   "lat": 45.00934,
+   "lon": 78.346176,
+   "category": "grocery",
+   "name": "Qazaq Oil"
+  },
+  {
+   "id": "way/1025360936",
+   "lat": 45.009469,
+   "lon": 78.344829,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025375630",
+   "lat": 45.013869,
+   "lon": 78.340898,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025377747",
+   "lat": 44.992771,
+   "lon": 78.401339,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/1025749390",
+   "lat": 44.984959,
+   "lon": 78.405238,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025749392",
+   "lat": 44.985318,
+   "lon": 78.404903,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "way/1025767188",
+   "lat": 44.997744,
+   "lon": 78.405094,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1025767189",
+   "lat": 44.998062,
+   "lon": 78.404876,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1034103551",
+   "lat": 45.011045,
+   "lon": 78.381771,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1034103555",
+   "lat": 45.011173,
+   "lon": 78.383521,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "way/1035964877",
+   "lat": 45.008768,
+   "lon": 78.379225,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1035964881",
+   "lat": 45.003545,
+   "lon": 78.377172,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1035964888",
+   "lat": 45.006754,
+   "lon": 78.375995,
+   "category": "food",
+   "name": "Green pub"
+  },
+  {
+   "id": "way/1035964889",
+   "lat": 45.005006,
+   "lon": 78.377255,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1035964906",
+   "lat": 45.011068,
+   "lon": 78.369802,
+   "category": "pharmacy",
+   "name": null
+  },
+  {
+   "id": "way/1035964907",
+   "lat": 45.010352,
+   "lon": 78.369933,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1036169806",
+   "lat": 45.005417,
+   "lon": 78.363265,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "way/1036169811",
+   "lat": 45.010869,
+   "lon": 78.363296,
+   "category": "grocery",
+   "name": null
+  },
+  {
+   "id": "way/1036239014",
+   "lat": 45.008883,
+   "lon": 78.356347,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1036831199",
+   "lat": 44.99979,
+   "lon": 78.354684,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037026500",
+   "lat": 44.99818,
+   "lon": 78.349479,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037040007",
+   "lat": 44.985302,
+   "lon": 78.358753,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037067090",
+   "lat": 44.995713,
+   "lon": 78.356212,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "way/1037067212",
+   "lat": 44.996728,
+   "lon": 78.364616,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037074795",
+   "lat": 44.999291,
+   "lon": 78.364419,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037074796",
+   "lat": 44.999268,
+   "lon": 78.364177,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037276703",
+   "lat": 45.01341,
+   "lon": 78.349697,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1037279699",
+   "lat": 45.013208,
+   "lon": 78.355589,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1038779817",
+   "lat": 45.012417,
+   "lon": 78.366808,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1038779828",
+   "lat": 45.016175,
+   "lon": 78.369317,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1041966935",
+   "lat": 45.016933,
+   "lon": 78.375097,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1041966939",
+   "lat": 45.016128,
+   "lon": 78.373549,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "way/1042120720",
+   "lat": 45.014313,
+   "lon": 78.380486,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1042120729",
+   "lat": 45.015509,
+   "lon": 78.378008,
+   "category": "finance",
+   "name": null
+  },
+  {
+   "id": "way/1042120749",
+   "lat": 45.017011,
+   "lon": 78.379854,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1042178282",
+   "lat": 45.015156,
+   "lon": 78.397586,
+   "category": "food",
+   "name": "Nomad"
+  },
+  {
+   "id": "way/1042592212",
+   "lat": 45.018787,
+   "lon": 78.386101,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1042592213",
+   "lat": 45.018403,
+   "lon": 78.386578,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1042592257",
+   "lat": 45.019195,
+   "lon": 78.379691,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1050712452",
+   "lat": 45.018451,
+   "lon": 78.377764,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1050712475",
+   "lat": 45.019634,
+   "lon": 78.377131,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1050712477",
+   "lat": 45.019573,
+   "lon": 78.375532,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1055342244",
+   "lat": 45.017461,
+   "lon": 78.37466,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1055342245",
+   "lat": 45.019581,
+   "lon": 78.374986,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1055388951",
+   "lat": 45.019501,
+   "lon": 78.370756,
+   "category": "personal",
+   "name": null
+  },
+  {
+   "id": "way/1064517470",
+   "lat": 45.015554,
+   "lon": 78.34871,
+   "category": "food",
+   "name": null
+  },
+  {
+   "id": "way/1181961822",
+   "lat": 44.998285,
+   "lon": 78.366992,
+   "category": "grocery",
+   "name": "Sulpak"
+  },
+  {
+   "id": "way/1181961838",
+   "lat": 45.003867,
+   "lon": 78.349241,
+   "category": "food",
+   "name": "Миндаль"
+  },
+  {
+   "id": "way/1181961839",
+   "lat": 45.004029,
+   "lon": 78.35079,
+   "category": "grocery",
+   "name": "Фудмарт"
+  },
+  {
+   "id": "way/1394946526",
+   "lat": 45.004965,
+   "lon": 78.406142,
+   "category": "health",
+   "name": "Многопрофильная больница"
+  },
+  {
+   "id": "relation/13734487",
+   "lat": 44.98648,
+   "lon": 78.411093,
+   "category": "health",
+   "name": "Туберкулезный диспансер"
+  },
+  {
+   "id": "relation/13734616",
+   "lat": 44.990776,
+   "lon": 78.405061,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "relation/13734617",
+   "lat": 44.992418,
+   "lon": 78.404822,
+   "category": "health",
+   "name": "Областная больница"
+  },
+  {
+   "id": "relation/13734692",
+   "lat": 45.004947,
+   "lon": 78.405827,
+   "category": "health",
+   "name": null
+  },
+  {
+   "id": "relation/13946224",
+   "lat": 45.01644,
+   "lon": 78.390019,
+   "category": "health",
+   "name": "Городская станция скорой медицинской помощи"
+  },
+  {
+   "id": "relation/17618457",
+   "lat": 45.016873,
+   "lon": 78.360001,
+   "category": "health",
+   "name": "Противчумная станция"
+  }
+ ]
+}
