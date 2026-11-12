@@ -8,6 +8,7 @@ const en: Dict = {
   },
   nav: {
     city: "City analysis",
+    research: "Research",
     home: "Home",
     map: "Map",
     ranking: "Ranking",

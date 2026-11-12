@@ -10,14 +10,17 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "osm:fetch": "node scripts/fetch-osm.mjs",
-    "city:build": "node scripts/build-city.mjs"
+    "city:build": "node scripts/build-city.mjs",
+    "research:check": "node scripts/research-placeholders.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
     "geotiff": "^2.1.3",
+    "katex": "^0.16.22",
     "maplibre-gl": "^4.7.1",
     "next": "15.5.29",
     "papaparse": "^5.7.0",
+    "qrcode": "^1.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "server-only": "^0.0.1"
@@ -27,6 +30,7 @@
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/papaparse": "^5.5.2",
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

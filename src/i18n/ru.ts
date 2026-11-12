@@ -8,6 +8,7 @@ const ru = {
   },
   nav: {
     city: "Анализ города",
+    research: "Исследование",
     home: "Главная",
     map: "Карта",
     ranking: "Рейтинг",

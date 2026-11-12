@@ -9,6 +9,7 @@ const kk: Dict = {
   },
   nav: {
     city: "Қала талдауы",
+    research: "Зерттеу",
     home: "Басты бет",
     map: "Карта",
     ranking: "Рейтинг",

@@ -49,6 +49,10 @@ Stack: Next.js 15 (App Router, TypeScript) · Tailwind CSS 4 · MapLibre GL + OS
 
 ---
 
+## Research page (/research)
+
+The school research project page. All its text, numbers, quotes and image paths live in `content/research.json`; see [docs/RESEARCH_PAGE.md](docs/RESEARCH_PAGE.md) for how to edit it, add photos and deploy, and run `npm run research:check` to list unfilled placeholders.
+
 ## City data pipeline
 
 ```bash
