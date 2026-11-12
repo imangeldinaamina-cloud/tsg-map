@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useMemo } from "react";
 import { useI18n } from "@/i18n/client";
 import { CityData } from "@/lib/city/client";
 import { GapResult } from "@/lib/city/gap";
-import { assess, candidateMetrics, CandidateMetrics, Finding } from "@/lib/city/location";
+import { assess, bestNearby, candidateMetrics, CandidateMetrics, Finding, verdict } from "@/lib/city/location";
 import { LocationReach, MAX_CANDIDATES, Period, PERIODS, SERVICE_CATS, ServiceCat } from "@/lib/city/types";
 import { formatTsg } from "@/lib/tsg";
 import { Bars, Section } from "./ui";
@@ -16,6 +16,8 @@ export interface Candidate {
   status: "loading" | "ok" | "off_network" | "error";
   snap?: number | null;
   competitorIdx?: number[];
+  /** street / intersection name when the point came from the search */
+  label?: string;
 }
 
 const KIND_STYLE: Record<Finding["kind"], { icon: string; cls: string }> = {
@@ -40,6 +42,8 @@ export function LocationPanel(props: {
   cityMedianCompetitors: number;
   fmt: (v: number) => string;
   onFocus: (lat: number, lon: number) => void;
+  /** add another point to compare (used by "check it") */
+  onAddPoint?: (lat: number, lon: number, label: string) => void;
 }) {
   const { t } = useI18n();
   const { candidates, fmt, R, period, cat, setCandidates } = props;
@@ -125,6 +129,7 @@ export function LocationPanel(props: {
               <button type="button" className="flex items-center gap-2 hover:underline" onClick={() => props.onFocus(c.lat, c.lon)}>
                 <span className="city-candidate-badge">{c.id}</span>
                 {t("city.loc.candidate", { n: c.id })}
+                {c.label && <span className="font-normal normal-case text-muted">· {c.label}</span>}
               </button>
             }
             aside={
@@ -139,6 +144,43 @@ export function LocationPanel(props: {
             {c.status === "loading" && <p role="status" className="text-sm">{t("city.loc.loading")}</p>}
             {c.status === "off_network" && <p role="alert" className="text-sm text-[#7c2d12]">{t("city.loc.offNetwork", { d: c.snap ?? "?" })}</p>}
             {c.status === "error" && <p role="alert" className="text-sm text-[#7c2d12]">{t("city.loc.failed")}</p>}
+            {m && (() => {
+              const v = verdict(f);
+              const tr = (x: Finding) =>
+                t(`city.loc.findings.${x.key}`, {
+                  ...x.params,
+                  ...(x.params.period ? { period: t(`city.periods.${x.params.period}`) } : {}),
+                  ...(typeof x.params.P === "number" ? { P: fmt(x.params.P) } : {}),
+                  ...(typeof x.params.v === "number" ? { v: fmt(x.params.v) } : {}),
+                });
+              const near = c.reach
+                ? bestNearby({ reach: c.reach, gap: props.gap.cells, presence: props.presenceBy[period], maxWalkM: 1200, minPresence: Math.max(1, m.presence[period] / 50), fromCell: m.cellIndex })
+                : null;
+              const cell = near ? props.data.grid.cells[near.cell] : null;
+              const tone = v.level === "promising" ? "border-[#93c5fd] bg-[#eff6ff] text-[#1e3a8a]" : v.level === "risky" ? "border-[#fdba74] bg-[#fff7ed] text-[#7c2d12]" : "border-border bg-surface text-fg";
+              return (
+                <div className={`rounded-md border p-3 ${tone}`}>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide opacity-80">{t("city.verdict.title")}</h3>
+                  <p className="mt-1 text-base font-semibold">{t(`city.verdict.${v.level}`, { cat: catName, period: t(`city.periods.${period}`).toLowerCase() })}</p>
+                  {v.reasons.length > 0 && <p className="mt-1 text-sm">{v.reasons.map(tr).join(" ")}</p>}
+                  {near && cell ? (
+                    <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+                      <span>
+                        {t("city.verdict.better", { id: `${cell.r}-${cell.c}`, d: fmt(near.walk_m), sgi: (near.sgi > 0 ? "+" : "") + near.sgi.toFixed(2), P: fmt(near.presence), period: t(`city.periods.${period}`).toLowerCase() })}
+                      </span>
+                      {props.onAddPoint && candidates.length < MAX_CANDIDATES && (
+                        <button type="button" className="btn btn-secondary min-h-[34px] px-2 text-xs" onClick={() => props.onAddPoint!(cell.lat, cell.lon, t("city.cell.title", { id: `${cell.r}-${cell.c}` }))}>
+                          {t("city.verdict.check")}
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="mt-2 text-sm opacity-80">{t("city.verdict.noBetter", { d: "1 200" })}</p>
+                  )}
+                  <p className="mt-2 text-[11px] opacity-70">{t("city.verdict.note")}</p>
+                </div>
+              );
+            })()}
             {m && (
               <>
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">{t("city.loc.assessment")}</h3>

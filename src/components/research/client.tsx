@@ -92,7 +92,7 @@ export function TsgDemo({ t, decimal }: { t: DemoText; decimal: string }) {
     ["a = 0.5b", 1, 2],
   ];
   return (
-    <div className="demo card sticker">
+    <div className="demo panel">
       <h3 className="h3">{t.title}</h3>
       <p className="muted">{t.hint}</p>
       <div className="demo-grid">

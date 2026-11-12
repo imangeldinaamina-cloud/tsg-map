@@ -4,7 +4,6 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const LINKS = [
   ["/city", "nav.city"],
-  ["/research", "nav.research"],
   ["/map", "nav.map"],
   ["/ranking", "nav.ranking"],
   ["/methodology", "nav.methodology"],
@@ -15,7 +14,7 @@ const LINKS = [
 export async function SiteHeader() {
   const { t } = await getI18n();
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-white/95 backdrop-blur">
+    <header className="site-header sticky top-0 z-30 border-b border-border bg-white/95 backdrop-blur">
       <a href="#main" className="sr-only-focusable absolute left-2 top-2 z-50 rounded bg-primary px-3 py-2 text-primary-fg">
         {t("nav.skip")}
       </a>

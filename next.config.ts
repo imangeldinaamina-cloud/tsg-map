@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Local dev storage and raw downloads must never ship with a deployment.
   outputFileTracingExcludes: { "/**": [".data/**", "data-raw/**"] },
+  // The research page is now the home page; keep old /research links working.
+  async redirects() {
+    return [{ source: "/research", destination: "/", permanent: true }];
+  },
 };
 
 export default nextConfig;

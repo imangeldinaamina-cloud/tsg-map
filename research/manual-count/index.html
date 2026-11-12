@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ручной подсчёт людей</title>
+<style>
+  :root { --ink:#141215; --mut:#6b6570; --line:#ddd8e0; --acc:#7e3fa6; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color:var(--ink); background:#fff; }
+  header { padding:14px 18px; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center; }
+  h1 { font-size:18px; margin:0; font-weight:600; }
+  .mut { color:var(--mut); font-size:13px; }
+  button, label.btn { font:inherit; border:1px solid var(--line); background:#fff; padding:8px 14px; border-radius:6px; cursor:pointer; }
+  button.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
+  main { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:0; height:calc(100vh - 62px); }
+  #stage { position:relative; overflow:auto; background:#f4f2f5; display:flex; align-items:flex-start; justify-content:center; }
+  #wrap { position:relative; display:inline-block; cursor:crosshair; }
+  #img { display:block; max-width:100%; height:auto; user-select:none; }
+  .dot { position:absolute; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:#e11d48; border:2px solid #fff; box-shadow:0 0 0 1px #e11d48; pointer-events:none; }
+  aside { border-left:1px solid var(--line); padding:14px; overflow:auto; }
+  .big { font-size:44px; font-weight:600; letter-spacing:-.03em; line-height:1; }
+  ol { padding-left:18px; font-size:13px; }
+  li.done { color:var(--mut); }
+  li.cur { font-weight:600; }
+  kbd { border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:0 5px; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Ручной подсчёт людей на кадрах</h1>
+  <label class="btn">Выбрать папку с кадрами<input id="dir" type="file" webkitdirectory multiple hidden></label>
+  <label class="btn">или файлы<input id="files" type="file" accept="image/*" multiple hidden></label>
+  <button id="save" class="primary" disabled>Сохранить CSV</button>
+  <span class="mut">Работает без интернета: кадры никуда не отправляются.</span>
+</header>
+<main>
+  <div id="stage"><p class="mut" style="padding:40px">Выберите папку <b>result</b> (или нужные кадры). Кликните по каждому человеку на кадре — ставится точка. Считайте всех, кого видите, даже если программа их пропустила.</p></div>
+  <aside>
+    <div class="mut" id="name">—</div>
+    <div class="big" id="count">0</div>
+    <div class="mut">людей на этом кадре</div>
+    <p class="mut">Клик — человек · <kbd>Z</kbd> отменить · <kbd>→</kbd>/<kbd>Enter</kbd> следующий · <kbd>←</kbd> назад</p>
+    <p><button id="prev">← Назад</button> <button id="next">Дальше →</button></p>
+    <p class="mut" id="progress"></p>
+    <label class="mut">Фильтр по роликам (через запятую):<br><input id="filter" value="C081,C087,C098" style="width:100%;padding:6px;margin-top:4px"></label>
+    <ol id="list"></ol>
+  </aside>
+</main>
+<script>
+const KEY = "manual-count-v1";
+let files = [], i = 0, marks = {};
+try { marks = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { marks = {}; }
+const $ = (id) => document.getElementById(id);
+const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(marks)); } catch {} };
+
+function load(list) {
+  const want = $("filter").value.split(",").map((s) => s.trim()).filter(Boolean);
+  files = [...list].filter((f) => /\.(jpe?g|png)$/i.test(f.name) && (!want.length || want.some((w) => f.name.includes("_" + w + "_"))))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  i = files.findIndex((f) => !marks[f.name]); if (i < 0) i = 0;
+  $("save").disabled = !files.length;
+  if (!files.length) { $("stage").innerHTML = '<p class="mut" style="padding:40px">Нет кадров, подходящих под фильтр.</p>'; return; }
+  $("stage").innerHTML = '<div id="wrap"><img id="img" alt="Кадр для подсчёта"></div>';
+  $("wrap").addEventListener("click", (e) => {
+    const r = $("img").getBoundingClientRect();
+    const f = files[i].name;
+    (marks[f] ??= []).push([(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]);
+    persist(); draw();
+  });
+  show();
+}
+function show() {
+  const f = files[i];
+  const url = URL.createObjectURL(f);
+  $("img").onload = () => { URL.revokeObjectURL(url); draw(); };
+  $("img").src = url;
+  $("name").textContent = f.name;
+  draw();
+}
+function draw() {
+  const f = files[i]; if (!f) return;
+  document.querySelectorAll(".dot").forEach((d) => d.remove());
+  for (const [x, y] of marks[f.name] || []) {
+    const d = document.createElement("div"); d.className = "dot";
+    d.style.left = x * 100 + "%"; d.style.top = y * 100 + "%"; $("wrap").appendChild(d);
+  }
+  $("count").textContent = (marks[f.name] || []).length;
+  const done = files.filter((x) => marks[x.name]).length;
+  $("progress").textContent = `Кадр ${i + 1} из ${files.length} · отмечено кадров: ${done}`;
+  $("list").innerHTML = files.map((x, k) => `<li class="${k === i ? "cur" : marks[x.name] ? "done" : ""}">${x.name.replace(/^A001_\d+_/, "")} — ${(marks[x.name] || []).length}</li>`).join("");
+}
+function go(d) {
+  if (!files.length) return;
+  const f = files[i].name; marks[f] ??= []; persist(); // visiting a frame with no people = 0
+  i = Math.max(0, Math.min(files.length - 1, i + d)); show();
+}
+$("dir").onchange = (e) => load(e.target.files);
+$("files").onchange = (e) => load(e.target.files);
+$("next").onclick = () => go(1);
+$("prev").onclick = () => go(-1);
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT") return;
+  if (e.key === "ArrowRight" || e.key === "Enter") go(1);
+  if (e.key === "ArrowLeft") go(-1);
+  if (e.key.toLowerCase() === "z" || e.key.toLowerCase() === "я") { const f = files[i]?.name; if (f && marks[f]?.length) { marks[f].pop(); persist(); draw(); } }
+});
+$("save").onclick = () => {
+  const rows = [["file", "manual_count"], ...files.filter((f) => marks[f.name]).map((f) => [f.name, marks[f.name].length])];
+  const blob = new Blob([rows.map((r) => r.join(",")).join("\n") + "\n"], { type: "text/csv" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "manual_counts.csv"; a.click();
+};
+</script>
+</body>
+</html>

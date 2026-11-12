@@ -1,8 +1,8 @@
 {
-  "_readme": "Editable content of the /research page. Text fields are either a plain string (Russian) or {\"ru\", \"en\", \"kk\"}; a missing language falls back to Russian. Anything in [SQUARE BRACKETS] is shown on the page as a highlighted placeholder — replace it with real content. Images: put files in public/research/ and set \"src\": \"/research/<file>\"; \"src\": null shows a placeholder box. Run `npm run research:check` to list every remaining placeholder.",
+  "_readme": "Editable content of the home page (https://tsg-map.vercel.app/). Text fields are either a plain string (Russian) or {\"ru\", \"en\", \"kk\"}; a missing language falls back to Russian. Anything in [SQUARE BRACKETS] is shown on the page as a highlighted placeholder — replace it with real content. Images: put files in public/research/ and set \"src\": \"/research/<file>\"; \"src\": null shows a placeholder box. Run `npm run research:check` to list every remaining placeholder.",
   "meta": {
     "siteUrl": "https://tsg-map.vercel.app",
-    "path": "/research",
+    "path": "/",
     "title": {
       "ru": "Агентное моделирование городской среды Талдыкоргана — TSG",
       "en": "Agent-based model of Taldykorgan — TSG",
@@ -168,6 +168,45 @@
       }
     }
   ],
+  "site": {
+    "brand": "TSG",
+    "links": [
+      {
+        "href": "#research",
+        "label": {
+          "ru": "Исследование",
+          "en": "Research",
+          "kk": "Зерттеу"
+        }
+      },
+      {
+        "href": "#guide",
+        "label": {
+          "ru": "Инструкция",
+          "en": "How to use",
+          "kk": "Нұсқаулық"
+        }
+      },
+      {
+        "href": "#contacts",
+        "label": {
+          "ru": "Контакты",
+          "en": "Contacts",
+          "kk": "Байланыс"
+        }
+      }
+    ],
+    "openMap": {
+      "ru": "Открыть карту",
+      "en": "Open the map",
+      "kk": "Картаны ашу"
+    },
+    "menu": {
+      "ru": "Меню",
+      "en": "Menu",
+      "kk": "Мәзір"
+    }
+  },
   "hero": {
     "eyebrow": {
       "ru": "Школьный исследовательский проект · Талдыкорган",
@@ -219,6 +258,30 @@
       "ru": "Как это работает ↓",
       "en": "How it works ↓",
       "kk": "Бұл қалай жұмыс істейді ↓"
+    },
+    "headline": {
+      "ru": "Город днём — *не там*, где прописка",
+      "en": "By day, the city is *not where* people are registered",
+      "kk": "Күндіз қала — тіркеу *көрсеткен жерде емес*"
+    },
+    "sub": {
+      "ru": "Агентная модель и индекс TSG для средних городов Казахстана. Первый город — Талдыкорган.",
+      "en": "An agent-based model and the TSG index for Kazakhstan's mid-sized cities. First city: Taldykorgan.",
+      "kk": "Қазақстанның орта қалаларына арналған агенттік модель және TSG индексі. Алғашқы қала — Талдықорған."
+    },
+    "photo": {
+      "src": "/research/city-hero.jpg",
+      "alt": {
+        "ru": "Вечерний вид города сверху: многоэтажки, частный сектор и горы на горизонте",
+        "en": "Evening aerial view of a city: apartment blocks, low-rise houses and mountains on the horizon",
+        "kk": "Қаланың кешкі көрінісі: көпқабатты үйлер, жеке үйлер және көкжиектегі таулар"
+      },
+      "credit": {
+        "ru": "Фото: Алматы (иллюстрация, не Талдыкорган) · Nursultan’s Photos / Pexels",
+        "en": "Photo: Almaty (illustration, not Taldykorgan) · Nursultan’s Photos / Pexels",
+        "kk": "Фото: Алматы (иллюстрация, Талдықорған емес) · Nursultan’s Photos / Pexels"
+      },
+      "creditHref": "https://www.pexels.com/photo/aerial-view-of-almaty-city-with-mountain-backdrop-31189131/"
     }
   },
   "problem": {
@@ -235,26 +298,15 @@
     "maps": [
       {
         "title": {
-          "ru": "Где люди живут (по прописке)",
-          "en": "Where people live (registry)",
-          "kk": "Адамдар қай жерде тұрады (тіркеу бойынша)"
+          "ru": "Слева — где люди живут по прописке, справа — где они днём (агентная модель)",
+          "en": "Left — where people are registered, right — where they are by day (agent-based model)",
+          "kk": "Сол жақта — тіркеу бойынша, оң жақта — күндіз (агенттік модель)"
         },
-        "src": null,
+        "src": "/research/map-presence.jpg",
         "alt": {
-          "ru": "Карта Талдыкоргана: число жителей по месту регистрации в гексагональных ячейках",
-          "en": "Map of Taldykorgan: registered residents per hexagonal cell"
-        }
-      },
-      {
-        "title": {
-          "ru": "Где люди находятся днём (модель)",
-          "en": "Where people are by day (model)",
-          "kk": "Адамдар күндіз қайда (модель)"
-        },
-        "src": null,
-        "alt": {
-          "ru": "Карта Талдыкоргана: число людей, находящихся в ячейке днём, по агентной модели",
-          "en": "Map of Taldykorgan: people present per cell by day, from the agent-based model"
+          "ru": "Две гексагональные карты Талдыкоргана: по прописке население распределено ровно, днём концентрируется в центре и у мест работы и учёбы",
+          "en": "Two hexagonal maps of Taldykorgan: registered population is spread evenly; by day it concentrates in the centre and near workplaces and schools",
+          "kk": "Талдықорғанның екі алтыбұрышты картасы: тіркеу бойынша халық біркелкі, күндіз орталықта шоғырланады"
         }
       }
     ],
@@ -658,38 +710,15 @@
     "maps": [
       {
         "title": {
-          "ru": "Где люди живут",
-          "en": "Where people live",
-          "kk": "Адамдар қайда тұрады"
+          "ru": "Продукты: слева оценка по прописке, справа днём с учётом часов работы. Синий — дефицит, красный — избыток",
+          "en": "Groceries: left — registry-based, right — daytime with opening hours. Blue — deficit, red — surplus",
+          "kk": "Азық-түлік: сол жақта тіркеу бойынша, оң жақта күндіз жұмыс уақытымен. Көк — тапшылық, қызыл — артықшылық"
         },
-        "src": null,
+        "src": "/research/map-tsg-food.jpg",
         "alt": {
-          "ru": "Карта: жители по прописке",
-          "en": "Map: registered residents"
-        }
-      },
-      {
-        "title": {
-          "ru": "Где люди днём",
-          "en": "Where people are by day",
-          "kk": "Адамдар күндіз қайда"
-        },
-        "src": null,
-        "alt": {
-          "ru": "Карта: присутствие людей днём по модели",
-          "en": "Map: modelled daytime presence"
-        }
-      },
-      {
-        "title": {
-          "ru": "TSG днём",
-          "en": "TSG by day",
-          "kk": "Күндізгі TSG"
-        },
-        "src": null,
-        "alt": {
-          "ru": "Карта: классы TSG днём",
-          "en": "Map: TSG classes by day"
+          "ru": "Две карты индекса TSG для продуктовых магазинов: днём часть ячеек меняет класс по сравнению со статикой",
+          "en": "Two TSG maps for grocery stores: by day part of the cells change class compared with the static view",
+          "kk": "Азық-түлік дүкендеріне арналған TSG екі картасы"
         }
       }
     ],
@@ -971,119 +1000,119 @@
       "kk": "Веб-қосымша"
     },
     "lead": {
-      "ru": "Приложение проверяет место для нового бизнеса с учётом времени суток.",
-      "en": "The app tests a location for a new business, taking the time of day into account.",
-      "kk": "Қосымша жаңа бизнес орнын тәулік уақытын ескере отырып тексереді."
+      "ru": "Приложение проверяет место для нового бизнеса: где днём людей больше, чем услуг рядом, и что будет с конкурентами в пешей доступности.",
+      "en": "The app checks a place for a new business: where people outnumber nearby services by day, and how many competitors are within walking distance.",
+      "kk": "Қосымша жаңа бизнес орнын тексереді: күндіз адамдар жақын маңдағы қызметтерден қай жерде көп және жаяу қашықтықта қанша бәсекелес бар."
     },
     "screenshots": [
       {
-        "src": null,
+        "src": "/research/app-gaps.jpg",
+        "ratio": "1440 / 900",
         "caption": {
-          "ru": "[СКРИНШОТ 1: карта и выбор категории]",
-          "en": "[SCREENSHOT 1: map and category]"
+          "ru": "Индекс дефицита: продуктовые магазины, день. Оранжевый — спроса больше, чем предложения; синий — наоборот",
+          "en": "Gap index: grocery stores, midday. Orange — demand exceeds supply; blue — the reverse"
         },
         "alt": {
-          "ru": "[ALT СКРИНШОТА 1]",
-          "en": "[SCREENSHOT 1 ALT]"
+          "ru": "Скриншот приложения: карта Талдыкоргана в квадратных ячейках 250 м, окрашенных по индексу дефицита продуктовых магазинов",
+          "en": "App screenshot: Taldykorgan map in 250 m cells coloured by the grocery gap index"
         }
       },
       {
-        "src": null,
+        "src": "/research/app-analysis.jpg",
+        "ratio": "400 / 960",
         "caption": {
-          "ru": "[СКРИНШОТ 2: новая точка и часы работы]",
-          "en": "[SCREENSHOT 2: new point and hours]"
+          "ru": "Анализ точки на перекрёстке Назарбаева × Шевченко: конкуренты, ближайший конкурент, люди на точку, индекс дефицита",
+          "en": "Analysis at Nazarbayev × Shevchenko: competitors, nearest competitor, people per outlet, gap index"
         },
         "alt": {
-          "ru": "[ALT СКРИНШОТА 2]",
-          "en": "[SCREENSHOT 2 ALT]"
-        }
-      },
-      {
-        "src": null,
-        "caption": {
-          "ru": "[СКРИНШОТ 3: результат]",
-          "en": "[SCREENSHOT 3: result]"
-        },
-        "alt": {
-          "ru": "[ALT СКРИНШОТА 3]",
-          "en": "[SCREENSHOT 3 ALT]"
+          "ru": "Скриншот панели анализа: 14 аптек в пределах 800 м, ближайшая в 130 м, 214 человек на точку, индекс −0,92",
+          "en": "Analysis panel screenshot: 14 pharmacies within 800 m, nearest 130 m away, 214 people per outlet, index −0.92"
         }
       }
     ],
     "howTitle": {
       "ru": "Как пользоваться: 3 шага",
       "en": "How to use it: 3 steps",
-      "kk": "Қалай пайдалану: 3 қадам"
+      "kk": "Қалай қолдану: 3 қадам"
     },
     "how": [
       {
         "title": {
-          "ru": "Выберите категорию и время",
-          "en": "Pick a category and time",
-          "kk": "Санат пен уақытты таңдаңыз"
+          "ru": "Найдите место",
+          "en": "Find a place",
+          "kk": "Орынды табыңыз"
         },
         "text": {
-          "ru": "Продукты, аптеки или общепит; утро, день или вечер.",
-          "en": "Groceries, pharmacies or food; morning, day or evening."
+          "ru": "Введите улицу или перекрёсток («Абая и Жансугурова») или нажмите на карту.",
+          "en": "Type a street or an intersection (“Abay and Zhansugurov”) or click the map.",
+          "kk": "Көшені не қиылысты енгізіңіз немесе картаны басыңыз."
         }
       },
       {
         "title": {
-          "ru": "Прочитайте гекс-карту",
-          "en": "Read the hex map",
-          "kk": "Гекс-картаны оқыңыз"
+          "ru": "Выберите услугу и время",
+          "en": "Pick a service and time",
+          "kk": "Қызмет пен уақытты таңдаңыз"
         },
         "text": {
-          "ru": "Цвет ячейки — класс TSG: дефицит, баланс или избыток.",
-          "en": "A cell's colour is its TSG class: deficit, balance or surplus."
+          "ru": "Аптеки, продуктовые, кафе, рестораны, образование, здравоохранение; утро, день, после обеда или вечер.",
+          "en": "Pharmacies, groceries, cafés, restaurants, education, healthcare; morning, midday, afternoon or evening.",
+          "kk": "Дәріханалар, азық-түлік, кафе, мейрамханалар, білім, денсаулық; таң, күн, түстен кейін немесе кеш."
         }
       },
       {
         "title": {
-          "ru": "Поставьте новую точку",
-          "en": "Place a new point",
-          "kk": "Жаңа нүкте қойыңыз"
+          "ru": "Получите анализ",
+          "en": "Get the analysis",
+          "kk": "Талдау алыңыз"
         },
         "text": {
-          "ru": "Задайте часы работы и получите класс TSG, ожидаемую долю рынка и рекомендуемые часы.",
-          "en": "Set opening hours and get the TSG class, expected market share and recommended hours."
+          "ru": "Конкуренты в пешей доступности, ближайший конкурент, люди на точку, индекс дефицита и другие услуги рядом. Можно сравнить до 4 мест и поделиться ссылкой.",
+          "en": "Competitors within walking distance, nearest competitor, people per outlet, gap index and other services nearby. Compare up to 4 places and share a link.",
+          "kk": "Жаяу қашықтықтағы бәсекелестер, ең жақын бәсекелес, бір нүктеге келетін адамдар, тапшылық индексі. 4 орынға дейін салыстыруға болады."
         }
       }
     ],
     "archTitle": {
-      "ru": "Архитектура в 3 слоя",
-      "en": "Architecture in 3 layers",
-      "kk": "3 қабатты архитектура"
+      "ru": "Как устроено",
+      "en": "How it is built",
+      "kk": "Қалай құрылған"
     },
     "arch": [
       {
         "title": {
-          "ru": "Python",
-          "en": "Python"
+          "ru": "Подготовка данных",
+          "en": "Data preparation",
+          "kk": "Деректерді дайындау"
         },
         "text": {
-          "ru": "Слой расчётов: агентная модель, ядра, TSG.",
-          "en": "Computation layer: agent model, kernels, TSG."
+          "ru": "Скрипты на Node.js собирают OpenStreetMap (улицы, объекты услуг) и WorldPop 2021, строят сетку 250 м, пешеходный граф и указатель улиц.",
+          "en": "Node.js scripts collect OpenStreetMap (streets, facilities) and WorldPop 2021 and build the 250 m grid, the walking graph and the street index.",
+          "kk": "Node.js скрипттері OpenStreetMap пен WorldPop 2021 деректерін жинап, 250 м тор мен жаяу граф құрады."
         }
       },
       {
         "title": {
-          "ru": "Файл данных ~150 КБ",
-          "en": "~150 KB data file"
+          "ru": "Расчёт в браузере",
+          "en": "In-browser computation",
+          "kk": "Браузерде есептеу"
         },
         "text": {
-          "ru": "Один файл на 355 ячеек.",
-          "en": "One file for 355 cells."
+          "ru": "Индекс дефицита пересчитывается мгновенно при смене услуги и времени. Поиск улиц работает на устройстве — введённый адрес никуда не отправляется.",
+          "en": "The gap index recomputes instantly when the service or time changes. Street search runs on the device — the typed address is not sent anywhere.",
+          "kk": "Индекс бірден қайта есептеледі. Көше іздеу құрылғыда жұмыс істейді — мекенжай ешқайда жіберілмейді."
         }
       },
       {
         "title": {
-          "ru": "JavaScript в браузере",
-          "en": "JavaScript in the browser"
+          "ru": "Пешие расстояния",
+          "en": "Walking distances",
+          "kk": "Жаяу қашықтықтар"
         },
         "text": {
-          "ru": "Мгновенно пересчитывает TSG. Без сервера — данные пользователя не покидают устройство.",
-          "en": "Recalculates TSG instantly. No server — no user data leaves the device."
+          "ru": "Для выбранной точки сервер считает расстояния по сети улиц, а не по прямой. Координаты не сохраняются.",
+          "en": "For a chosen point the server computes distances along the street network, not as the crow flies. Coordinates are not stored.",
+          "kk": "Таңдалған нүкте үшін сервер қашықтықты көше желісі бойынша есептейді. Координаттар сақталмайды."
         }
       }
     ],
@@ -1141,13 +1170,14 @@
   },
   "interviews": {
     "title": {
-      "ru": "Интервью и отзывы предпринимателей",
-      "en": "Interviews and reviews",
-      "kk": "Кәсіпкерлермен сұхбаттар"
+      "ru": "Тестирование с предпринимателями",
+      "en": "Testing with entrepreneurs",
+      "kk": "Кәсіпкерлермен тестілеу"
     },
     "intro": {
-      "ru": "Я протестировал(а) приложение с 10 предпринимателями Талдыкоргана: [ДАТЫ], [ФОРМАТ: лично / онлайн], [ДЛИТЕЛЬНОСТЬ СЕССИИ].",
-      "en": "I tested the app with 10 entrepreneurs of Taldykorgan: [DATES], [FORMAT: in person / online], [SESSION LENGTH]."
+      "ru": "Тестирование идёт сейчас. Здесь появятся только реальные, обезличенные результаты — пока их нет, ничего не публикуется.",
+      "en": "Testing is under way. Only real, anonymized results will appear here; nothing is published until then.",
+      "kk": "Тестілеу қазір жүріп жатыр. Мұнда тек нақты, иесіздендірілген нәтижелер шығады."
     },
     "method": {
       "title": {
@@ -1161,16 +1191,16 @@
       },
       "tasks": [
         {
-          "ru": "[ЗАДАНИЕ 1, напр. найти 3 места для новой аптеки днём]",
-          "en": "[TASK 1, e.g. find 3 places for a new pharmacy by day]"
+          "ru": "Найти три места для новой аптеки днём",
+          "en": "Find three places for a new pharmacy by day"
         },
         {
-          "ru": "[ЗАДАНИЕ 2, напр. сравнить два адреса]",
-          "en": "[TASK 2, e.g. compare two addresses]"
+          "ru": "Сравнить два адреса",
+          "en": "Compare two addresses"
         },
         {
-          "ru": "[ЗАДАНИЕ 3, напр. выбрать часы работы]",
-          "en": "[TASK 3, e.g. choose opening hours]"
+          "ru": "Выбрать часы работы",
+          "en": "Choose opening hours"
         }
       ],
       "measuresLabel": {
@@ -1196,8 +1226,9 @@
         "en": "Consent and anonymity"
       },
       "ethics": {
-        "ru": "Участие добровольное, письменное согласие, никаких персональных данных; ответы обезличены. Имена, лица и названия магазинов не публикуются без письменного разрешения.",
-        "en": "Voluntary participation, written consent, no personal data; answers are anonymized. No names, faces or shop names without written permission."
+        "ru": "Участие добровольное, персональные данные не собираются, ответы обезличиваются. Для ISEF тестирование с людьми проводится только после одобрения этической комиссии (IRB).",
+        "en": "Voluntary; no personal data collected; answers anonymized. For ISEF, human-participant testing runs only after IRB approval.",
+        "kk": "Қатысу ерікті, жеке деректер жиналмайды. ISEF үшін адамдармен тестілеу тек IRB мақұлдауынан кейін өтеді."
       }
     },
     "labels": {
@@ -1222,179 +1253,11 @@
         "en": "Participant"
       }
     },
-    "cards": [
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 1]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 2]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 3]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 4]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 5]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 6]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 7]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 8]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 9]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      },
-      {
-        "type": "[ТИП БИЗНЕСА]",
-        "years": "[..]",
-        "quote": "[ЦИТАТА 10]",
-        "rating": "[ОЦЕНКА]",
-        "liked": "[ЧТО ПОНРАВИЛОСЬ]",
-        "confused": "[ЧТО СМУТИЛО]"
-      }
-    ],
-    "summary": {
-      "title": {
-        "ru": "Итоги",
-        "en": "Summary",
-        "kk": "Қорытынды"
-      },
-      "sus": {
-        "label": {
-          "ru": "Средний SUS",
-          "en": "Average SUS"
-        },
-        "value": "[SUS]"
-      },
-      "success": {
-        "label": {
-          "ru": "Успешность заданий",
-          "en": "Task success"
-        },
-        "value": "[..]%"
-      },
-      "commentsLabel": {
-        "ru": "3 самых частых комментария",
-        "en": "3 most frequent comments"
-      },
-      "comments": [
-        "[КОММЕНТАРИЙ 1]",
-        "[КОММЕНТАРИЙ 2]",
-        "[КОММЕНТАРИЙ 3]"
-      ],
-      "changesLabel": {
-        "ru": "Что я изменил(а) после отзывов",
-        "en": "What I changed after the feedback"
-      },
-      "changes": [
-        "[ИЗМЕНЕНИЕ 1]",
-        "[ИЗМЕНЕНИЕ 2]",
-        "[ИЗМЕНЕНИЕ 3]"
-      ]
-    },
-    "match": {
-      "title": {
-        "ru": "Совпала ли модель с их опытом?",
-        "en": "Did the model match their experience?",
-        "kk": "Модель олардың тәжірибесіне сәйкес келді ме?"
-      },
-      "lead": {
-        "ru": "Вторая, независимая проверка модели: места, которые предприниматели знают как удачные или неудачные для бизнеса, против класса TSG.",
-        "en": "A second, independent check of the model: places entrepreneurs know to be good or bad for business versus the TSG class."
-      },
-      "cols": [
-        {
-          "ru": "Место (обезличено)",
-          "en": "Place (anonymized)"
-        },
-        {
-          "ru": "По опыту предпринимателя",
-          "en": "Entrepreneur's experience"
-        },
-        {
-          "ru": "Класс TSG",
-          "en": "TSG class"
-        },
-        {
-          "ru": "Совпало?",
-          "en": "Match?"
-        }
-      ],
-      "rows": [
-        [
-          "[МЕСТО 1]",
-          "[ХОРОШЕЕ / ПЛОХОЕ]",
-          "[КЛАСС]",
-          "[ДА / НЕТ]"
-        ],
-        [
-          "[МЕСТО 2]",
-          "[ХОРОШЕЕ / ПЛОХОЕ]",
-          "[КЛАСС]",
-          "[ДА / НЕТ]"
-        ],
-        [
-          "[МЕСТО 3]",
-          "[ХОРОШЕЕ / ПЛОХОЕ]",
-          "[КЛАСС]",
-          "[ДА / НЕТ]"
-        ]
-      ],
-      "total": {
-        "ru": "Совпадений: [..] из [..]",
-        "en": "Matches: [..] of [..]"
-      }
+    "cards": [],
+    "plan": {
+      "ru": "План: 6–10 предпринимателей и 10–15 жителей Талдыкоргана. Предприниматели также оценят знакомые места, где бизнес идёт хорошо или плохо, и сравнят с классом TSG — вторая независимая проверка модели наряду с видео.",
+      "en": "Plan: 6–10 entrepreneurs and 10–15 residents of Taldykorgan. Entrepreneurs will also rate familiar places where business goes well or badly and compare with the TSG class — a second independent check besides video.",
+      "kk": "Жоспар: Талдықорғанның 6–10 кәсіпкері және 10–15 тұрғыны."
     }
   },
   "gallery": {
@@ -1404,107 +1267,133 @@
       "kk": "Сахна артында"
     },
     "lead": {
-      "ru": "Только мои собственные фото. Лица случайных прохожих размыты.",
-      "en": "My own photos only. Faces of bystanders are blurred."
+      "ru": "Мои собственные кадры: 45 роликов на 10 точках города — 6 и 7 октября (будни) и 10 октября 2026 (суббота). Людей считает YOLOv8 (зелёные рамки, число вверху). Головы прохожих размыты.",
+      "en": "My own footage: 45 clips at 10 city points — 6 and 7 October (weekdays) and 10 October 2026 (Saturday). YOLOv8 counts people (green boxes, count at the top). Bystanders’ heads are blurred.",
+      "kk": "Өз түсірілімдерім: 10 нүктеде 45 ролик — 6 және 7 қазан (жұмыс күндері) және 2026 жылғы 10 қазан (сенбі). Өтіп бара жатқандардың бастары бұлдыратылған."
     },
     "tabs": [
       {
-        "id": "video",
+        "id": "yolo",
         "label": {
-          "ru": "Полевое видео",
-          "en": "Field video",
-          "kk": "Далалық бейне"
+          "ru": "Подсчёт людей YOLOv8",
+          "en": "YOLOv8 people count",
+          "kk": "YOLOv8 адам санау"
         },
         "items": [
           {
-            "src": null,
-            "caption": "[ПОДПИСЬ: съёмка в точке наблюдения]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
+            "src": "/research/gallery/C087.jpg",
+            "caption": {
+              "ru": "P05 · Базар, ролик C087",
+              "en": "P05 · Bazaar, clip C087"
+            },
+            "date": {
+              "ru": "10.10.2026, сб, 12:25 (день)",
+              "en": "10.10.2026, Sat, 12:25 (midday)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P05 · Базар: прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P05 · Bazaar: pedestrians in green detector boxes, heads blurred"
+            }
           },
           {
-            "src": null,
-            "caption": "[ПОДПИСЬ: кадр с детекциями YOLO]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
+            "src": "/research/gallery/C093.jpg",
+            "caption": {
+              "ru": "P08 · Перекрёсток Каратал (ТРЦ, остановки), ролик C093",
+              "en": "P08 · Karatal crossing (mall, stops), clip C093"
+            },
+            "date": {
+              "ru": "10.10.2026, сб, 17:20 (вечер)",
+              "en": "10.10.2026, Sat, 17:20 (evening)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P08 · Перекрёсток Каратал (ТРЦ, остановки): прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P08 · Karatal crossing (mall, stops): pedestrians in green detector boxes, heads blurred"
+            }
           },
           {
-            "src": null,
-            "caption": "[ПОДПИСЬ]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
+            "src": "/research/gallery/C083.jpg",
+            "caption": {
+              "ru": "P04 · Карагаш, главная остановка центра, ролик C083",
+              "en": "P04 · Karagash, central bus stop, clip C083"
+            },
+            "date": {
+              "ru": "10.10.2026, сб, 09:32 (утро)",
+              "en": "10.10.2026, Sat, 09:32 (morning)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P04 · Карагаш, главная остановка центра: прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P04 · Karagash, central bus stop: pedestrians in green detector boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/gallery/C067.jpg",
+            "caption": {
+              "ru": "P06 · ЖГУ, переход у ворот университета, ролик C067",
+              "en": "P06 · Zhetysu University gates, clip C067"
+            },
+            "date": {
+              "ru": "07.10.2026, 13:46 (день)",
+              "en": "07.10.2026, 13:46 (midday)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P06 · ЖГУ, переход у ворот университета: прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P06 · Zhetysu University gates: pedestrians in green detector boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/gallery/C050.jpg",
+            "caption": {
+              "ru": "P04 · Карагаш вечером, ролик C050",
+              "en": "P04 · Karagash in the evening, clip C050"
+            },
+            "date": {
+              "ru": "06.10.2026, 17:26 (вечер)",
+              "en": "06.10.2026, 17:26 (evening)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P04 · Карагаш вечером: прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P04 · Karagash in the evening: pedestrians in green detector boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/gallery/C063.jpg",
+            "caption": {
+              "ru": "P09 · ТРЦ Сити Плюс, ролик C063",
+              "en": "P09 · City Plus mall, clip C063"
+            },
+            "date": {
+              "ru": "07.10.2026, 12:31 (день)",
+              "en": "07.10.2026, 12:31 (midday)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P09 · ТРЦ Сити Плюс: прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P09 · City Plus mall: pedestrians in green detector boxes, heads blurred"
+            }
           }
         ]
       },
       {
-        "id": "code",
+        "id": "app",
         "label": {
-          "ru": "Код и модели",
-          "en": "Code and models",
-          "kk": "Код және модельдер"
+          "ru": "Прототип",
+          "en": "Prototype",
+          "kk": "Прототип"
         },
         "items": [
           {
-            "src": null,
-            "caption": "[ПОДПИСЬ: скриншот кода]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
-          },
-          {
-            "src": null,
-            "caption": "[ПОДПИСЬ: страница блокнота / эскиз]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
-          },
-          {
-            "src": null,
-            "caption": "[ПОДПИСЬ]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
-          }
-        ]
-      },
-      {
-        "id": "versions",
-        "label": {
-          "ru": "Версии приложения",
-          "en": "App versions",
-          "kk": "Қосымша нұсқалары"
-        },
-        "items": [
-          {
-            "src": null,
-            "caption": "[ПОДПИСЬ: ранняя версия]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
-          },
-          {
-            "src": null,
-            "caption": "[ПОДПИСЬ: текущая версия]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
-          }
-        ]
-      },
-      {
-        "id": "stand",
-        "label": {
-          "ru": "Стенд и защита",
-          "en": "Stand and presentation",
-          "kk": "Стенд және таныстырылым"
-        },
-        "items": [
-          {
-            "src": null,
-            "caption": "[ПОДПИСЬ: стенд на выставке]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
-          },
-          {
-            "src": null,
-            "caption": "[ПОДПИСЬ: я за работой]",
-            "date": "[ДАТА]",
-            "alt": "[ALT]"
+            "src": "/research/app-screen.jpg",
+            "caption": {
+              "ru": "Первый прототип TSG: шестиугольная карта, продукты днём и оценка новой точки",
+              "en": "First TSG prototype: hex map, groceries by day and a new-point check"
+            },
+            "date": {
+              "ru": "2026",
+              "en": "2026"
+            },
+            "alt": {
+              "ru": "Скриншот прототипа: карта Талдыкоргана из шестиугольников, синие и красные ячейки, панель с оценкой новой точки",
+              "en": "Prototype screenshot: hexagon map of Taldykorgan with blue and red cells and a new-point panel"
+            }
           }
         ]
       }
@@ -1516,45 +1405,63 @@
     },
     "timeline": [
       {
-        "date": "[ДАТА]",
+        "date": {
+          "ru": "Январь 2026",
+          "en": "January 2026"
+        },
         "label": {
-          "ru": "Сбор данных",
-          "en": "Data collection"
+          "ru": "Тема и обзор литературы",
+          "en": "Topic and literature review"
         }
       },
       {
-        "date": "[ДАТА]",
+        "date": {
+          "ru": "Май 2026",
+          "en": "May 2026"
+        },
         "label": {
-          "ru": "Гексагональная сетка",
-          "en": "Hex grid"
+          "ru": "Агентная модель и индекс TSG, доказаны 5 свойств",
+          "en": "Agent model and TSG index, 5 properties proven"
         }
       },
       {
-        "date": "[ДАТА]",
+        "date": {
+          "ru": "6, 7 и 10 октября 2026",
+          "en": "6, 7 and 10 October 2026"
+        },
         "label": {
-          "ru": "Агентная модель",
-          "en": "Agent model"
+          "ru": "Видеосъёмка: 45 роликов на 10 точках (два будних дня и суббота)",
+          "en": "Fieldwork: 45 clips at 10 points (two weekdays and a Saturday)"
         }
       },
       {
-        "date": "[ДАТА]",
+        "date": {
+          "ru": "Октябрь 2026",
+          "en": "October 2026"
+        },
         "label": {
-          "ru": "Индекс TSG",
-          "en": "TSG index"
+          "ru": "Подсчёт людей нейросетью YOLOv8",
+          "en": "People counted with YOLOv8"
         }
       },
       {
-        "date": "[ДАТА]",
+        "date": {
+          "ru": "Ноябрь 2026",
+          "en": "November 2026"
+        },
         "label": {
-          "ru": "Видеосъёмка",
-          "en": "Video fieldwork"
+          "ru": "Проверка модели по видео (H2) и тестирование приложения — в работе",
+          "en": "Model check against video (H2) and app testing — in progress"
         }
       },
       {
-        "date": "[ДАТА]",
+        "date": {
+          "ru": "Декабрь 2026",
+          "en": "December 2026"
+        },
         "label": {
-          "ru": "Приложение и интервью",
-          "en": "App and interviews"
+          "ru": "Итоговая версия работы — запланировано",
+          "en": "Final version — planned"
         }
       }
     ]
@@ -1684,56 +1591,223 @@
       "en": "Downloads",
       "kk": "Жүктеп алу"
     },
-    "downloads": [
+    "downloads": []
+  },
+  "explore": {
+    "title": {
+      "ru": "Исследуйте *карту*",
+      "en": "Explore the *map*",
+      "kk": "*Картаны* зерттеңіз"
+    },
+    "lead": {
+      "ru": "Модель показывает, где днём людей больше, чем открытых услуг рядом. Начните с Талдыкоргана — следующие средние города в работе.",
+      "en": "The model shows where, by day, there are more people than open services nearby. Start with Taldykorgan — more mid-sized cities are in progress.",
+      "kk": "Модель күндіз адамдар жақын маңдағы ашық қызметтерден көп жерді көрсетеді. Талдықорғаннан бастаңыз — келесі орта қалалар әзірленуде."
+    },
+    "items": [
       {
         "label": {
-          "ru": "PDF стенда",
-          "en": "Stand PDF",
-          "kk": "Стенд PDF"
+          "ru": "Талдыкорган",
+          "en": "Taldykorgan",
+          "kk": "Талдықорған"
         },
-        "href": null,
-        "note": "[ССЫЛКА НА PDF СТЕНДА]"
+        "sub": {
+          "ru": "Открыть карту",
+          "en": "Open the map",
+          "kk": "Картаны ашу"
+        },
+        "href": "/city"
       },
       {
         "label": {
-          "ru": "Полный текст исследования (PDF)",
-          "en": "Full research paper (PDF)",
-          "kk": "Зерттеудің толық мәтіні (PDF)"
+          "ru": "Данные модели",
+          "en": "Model data",
+          "kk": "Модель деректері"
+        },
+        "sub": {
+          "ru": "Источники и ограничения",
+          "en": "Sources and limits",
+          "kk": "Дереккөздер мен шектеулер"
+        },
+        "href": "/city/data"
+      },
+      {
+        "label": {
+          "ru": "Методология",
+          "en": "Methodology",
+          "kk": "Әдістеме"
+        },
+        "sub": {
+          "ru": "Как считается индекс",
+          "en": "How the index is computed",
+          "kk": "Индекс қалай есептеледі"
+        },
+        "href": "/methodology"
+      },
+      {
+        "label": {
+          "ru": "Другие средние города",
+          "en": "Other mid-sized cities",
+          "kk": "Басқа орта қалалар"
+        },
+        "sub": {
+          "ru": "Скоро",
+          "en": "Coming soon",
+          "kk": "Жақында"
         },
         "href": null,
-        "note": "[ССЫЛКА НА PDF РАБОТЫ]"
+        "soon": true
+      }
+    ],
+    "photo": {
+      "src": "/research/city-aerial.jpg",
+      "alt": {
+        "ru": "Жилые кварталы сверху: сетка улиц, частные дома и многоэтажки",
+        "en": "Residential blocks from above: street grid, houses and apartment blocks",
+        "kk": "Тұрғын кварталдар жоғарыдан: көшелер торы, жеке және көпқабатты үйлер"
+      },
+      "credit": {
+        "ru": "Фото: Алматы · Konevi / Pexels",
+        "en": "Photo: Almaty · Konevi / Pexels",
+        "kk": "Фото: Алматы · Konevi / Pexels"
+      },
+      "creditHref": "https://www.pexels.com/photo/aerial-view-of-almaty-city-suburban-landscape-37754575/"
+    }
+  },
+  "research": {
+    "title": {
+      "ru": "Исследование",
+      "en": "The research",
+      "kk": "Зерттеу"
+    },
+    "eyebrow": {
+      "ru": "Школьный исследовательский проект · 2026",
+      "en": "School research project · 2026",
+      "kk": "Мектептік зерттеу жобасы · 2026"
+    }
+  },
+  "guide": {
+    "title": {
+      "ru": "Как пользоваться *картой*",
+      "en": "How to use the *map*",
+      "kk": "*Картаны* қалай қолдануға болады"
+    },
+    "lead": {
+      "ru": "Пять шагов. Регистрация не нужна, работает в браузере на телефоне и компьютере.",
+      "en": "Five steps. No sign-up; works in the browser on a phone or a computer.",
+      "kk": "Бес қадам. Тіркелу қажет емес, телефон мен компьютер браузерінде жұмыс істейді."
+    },
+    "steps": [
+      {
+        "title": {
+          "ru": "Найдите своё место",
+          "en": "Find your place",
+          "kk": "Орныңызды табыңыз"
+        },
+        "text": {
+          "ru": "Откройте карту и введите улицу или перекрёсток в поле поиска, например «Абая и Жансугурова». Можно и просто нажать на карту.",
+          "en": "Open the map and type a street or an intersection in the search box, e.g. “Abay and Zhansugurov”. Or just click the map.",
+          "kk": "Картаны ашып, іздеу жолына көшені не қиылысты енгізіңіз, мысалы «Абай және Жансүгіров». Немесе картаны басыңыз."
+        }
+      },
+      {
+        "title": {
+          "ru": "Выберите вкладку",
+          "en": "Pick a tab",
+          "kk": "Қойынды таңдаңыз"
+        },
+        "text": {
+          "ru": "«Население» — сколько людей в ячейке. «Дефицит услуг» — где спроса больше, чем предложения. «Локация» — проверка конкретного места.",
+          "en": "“Population” — how many people are in a cell. “Service gap” — where demand exceeds supply. “Location” — check a specific place.",
+          "kk": "«Халық» — ұяшықта қанша адам. «Қызмет тапшылығы» — сұраныс ұсыныстан көп жерлер. «Локация» — нақты орынды тексеру."
+        }
+      },
+      {
+        "title": {
+          "ru": "Задайте время и категорию",
+          "en": "Set time and category",
+          "kk": "Уақыт пен санатты таңдаңыз"
+        },
+        "text": {
+          "ru": "«Время суток»: утро, день, после обеда, вечер. «Категория услуг»: аптеки, продуктовые, кафе, рестораны, образование, здравоохранение.",
+          "en": "“Time of day”: morning, midday, afternoon, evening. “Service category”: pharmacies, groceries, cafés, restaurants, education, healthcare.",
+          "kk": "«Тәулік уақыты»: таң, күн, түстен кейін, кеш. «Қызмет санаты»: дәріханалар, азық-түлік, кафе, мейрамханалар, білім, денсаулық."
+        }
+      },
+      {
+        "title": {
+          "ru": "Прочитайте анализ",
+          "en": "Read the analysis",
+          "kk": "Талдауды оқыңыз"
+        },
+        "text": {
+          "ru": "Для перекрёстка сразу появится полный анализ: конкуренты в пешей доступности, ближайший конкурент, люди на точку, индекс дефицита. Для улицы — ячейки вдоль неё, где дефицит больше всего.",
+          "en": "For an intersection you get the full analysis at once: competitors within walking distance, nearest competitor, people per outlet, gap index. For a street — the cells along it with the largest gap.",
+          "kk": "Қиылыс үшін толық талдау бірден шығады. Көше үшін — тапшылығы ең көп ұяшықтар."
+        }
+      },
+      {
+        "title": {
+          "ru": "Проверьте ограничения",
+          "en": "Check the limits",
+          "kk": "Шектеулерді тексеріңіз"
+        },
+        "text": {
+          "ru": "Ссылка «Источники данных и ограничения» объясняет, откуда цифры. Объекты берутся из OpenStreetMap — где он неполон, дефицит завышен.",
+          "en": "The “Data sources and limitations” link explains where the numbers come from. Facilities come from OpenStreetMap — where it is incomplete, the gap is overstated.",
+          "kk": "«Дереккөздер мен шектеулер» сілтемесі сандардың қайдан алынғанын түсіндіреді. Нысандар OpenStreetMap-тен алынады — ол толық болмаса, тапшылық асыра көрсетіледі."
+        }
+      }
+    ],
+    "note": {
+      "ru": "Присутствие людей по времени суток берётся из агентной модели TSG (≈17 тыс. агентов, 100 запусков). Во вкладке «Население» можно переключиться на свои допущения.",
+      "en": "Presence by time of day comes from the TSG agent-based model (≈17k agents, 100 runs). In the “Population” tab you can switch to your own assumptions.",
+      "kk": "Тәулік бойынша болу TSG агенттік моделінен алынады (≈17 мың агент, 100 іске қосу). «Халық» қойындысында өз болжамдарыңызға ауысуға болады."
+    }
+  },
+  "contacts": {
+    "title": {
+      "ru": "Контакты",
+      "en": "Contacts",
+      "kk": "Байланыс"
+    },
+    "lead": {
+      "ru": "Вопросы о модели, данные о вашем городе или желание протестировать приложение — напишите.",
+      "en": "Questions about the model, data on your city, or want to test the app — get in touch.",
+      "kk": "Модель туралы сұрақтар, қалаңыз туралы деректер немесе қосымшаны сынағыңыз келсе — жазыңыз."
+    },
+    "items": [
+      {
+        "label": {
+          "ru": "Почта",
+          "en": "Email",
+          "kk": "Пошта"
+        },
+        "value": "esctheordinaryy@gmail.com",
+        "kind": "email"
+      },
+      {
+        "label": {
+          "ru": "Соцсети",
+          "en": "Social media",
+          "kk": "Әлеуметтік желілер"
+        },
+        "value": "@whataboutamina",
+        "kind": "social",
+        "note": {
+          "ru": "Instagram, Telegram и другие соцсети — один ник",
+          "en": "Instagram, Telegram and other networks — same handle",
+          "kk": "Instagram, Telegram және басқа желілер — бір ник"
+        }
       }
     ]
   },
   "footer": {
-    "author": {
-      "label": {
-        "ru": "Автор",
-        "en": "Author"
-      },
-      "value": "[ИМЯ АВТОРА — по желанию]"
-    },
-    "school": {
-      "label": {
-        "ru": "Школа",
-        "en": "School"
-      },
-      "value": "[ШКОЛА — по желанию]"
-    },
-    "supervisor": {
-      "label": {
-        "ru": "Научный руководитель",
-        "en": "Supervisor"
-      },
-      "value": "[РУКОВОДИТЕЛЬ — по желанию]"
-    },
-    "contact": {
-      "label": {
-        "ru": "Контакт",
-        "en": "Contact"
-      },
-      "value": "[EMAIL]"
-    },
-    "copyright": "© 2026"
+    "copyright": "© 2026",
+    "credits": {
+      "ru": "Фото на странице — Pexels (бесплатная лицензия), города подписаны.",
+      "en": "Photos on this page — Pexels (free licence), cities are labelled.",
+      "kk": "Беттегі фотолар — Pexels (тегін лицензия), қалалар белгіленген."
+    }
   }
 }

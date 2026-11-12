@@ -1,0 +1,11 @@
+point,name,lat,lon,location_quality
+P01,Перекрёсток Назарбаева – Шевченко (остановка),45.01724,78.37552,"approximate (OSM landmark, confirmed by author ~200 m)"
+P02,Арбат,45.01803,78.37753,"approximate (OSM landmark, confirmed by author ~200 m)"
+P03,"Перекрёсток у Арбата (ТРЦ, школа)",45.01981,78.37748,"approximate (OSM landmark, confirmed by author ~200 m)"
+P04,"Карагаш (ТРЦ, главная остановка центра)",45.01947,78.37872,"approximate (OSM landmark, confirmed by author ~200 m)"
+P05,Базар,45.02174,78.37784,"approximate (OSM landmark, confirmed by author ~200 m)"
+P06,ЖГУ,45.0038,78.36296,"approximate (OSM landmark, confirmed by author ~200 m)"
+P07,7–9 микрорайоны,44.99914,78.35602,"approximate (OSM landmark, confirmed by author ~200 m)"
+P08,"Перекрёсток Каратал (ТРЦ, остановки, дом культуры)",45.02029,78.37996,"approximate (OSM landmark, confirmed by author ~200 m)"
+P09,Сити Плюс,45.01716,78.40206,"approximate (OSM landmark, confirmed by author ~200 m)"
+P10,Атамекен,,,unknown — excluded

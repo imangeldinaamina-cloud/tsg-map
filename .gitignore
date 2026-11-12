@@ -44,3 +44,9 @@ next-env.d.ts
 /.data
 !.env.example
 /data-raw
+
+# research inputs that must not be published: 2GIS data (licence), large raster (download per README)
+/research/agent_model/data/hours_2gis.csv
+/research/agent_model/data/kaz_pop_2024.tif
+/research/out/
+/research/entrepreneurs/responses.csv

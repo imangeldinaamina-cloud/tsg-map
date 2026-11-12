@@ -24,7 +24,7 @@ export default function OgImage() {
             <div style={{ fontSize: 32, lineHeight: 1.3, color: "#27152B", marginTop: 20 }}>Where services are missing at the hour people are there</div>
           </div>
           <div style={{ display: "flex", fontSize: 26, color: "#27152B", background: "#B7DB8C", border: "4px solid #27152B", borderRadius: 999, padding: "10px 28px", alignSelf: "flex-start" }}>
-            tsg-map.vercel.app/research
+            tsg-map.vercel.app
           </div>
         </div>
         <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center" }}>

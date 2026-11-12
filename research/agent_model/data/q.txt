@@ -1,0 +1,12 @@
+[out:json][timeout:180];
+(
+  nwr["shop"~"^(supermarket|convenience|grocery|greengrocer|butcher|bakery|general|kiosk|deli|dairy|beverages|alcohol|food|frozen_food)$"](44.957,78.283,45.057,78.449);
+  nwr["amenity"~"^(pharmacy|cafe|restaurant|fast_food|food_court|school|university|college|kindergarten|marketplace|bus_station|hospital|clinic|bank|post_office|townhall)$"](44.957,78.283,45.057,78.449);
+  nwr["healthcare"="pharmacy"](44.957,78.283,45.057,78.449);
+  nwr["shop"~"^(mall|department_store|clothes)$"](44.957,78.283,45.057,78.449);
+  nwr["office"](44.957,78.283,45.057,78.449);
+  nwr["highway"="bus_stop"](44.957,78.283,45.057,78.449);
+  nwr["building"~"^(commercial|office|retail|industrial|school|university|public|government)$"](44.957,78.283,45.057,78.449);
+  nwr["landuse"~"^(industrial|commercial|retail)$"](44.957,78.283,45.057,78.449);
+);
+out center tags;

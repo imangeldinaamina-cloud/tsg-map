@@ -1,6 +1,6 @@
-# Research page — `/research`
+# Home page (research project) — `/`
 
-Live: https://tsg-map.vercel.app/research (part of the TSG Map site, linked from the header as «Исследование»).
+Live: https://tsg-map.vercel.app/ — this is the site's home page. The old address `/research` redirects here.
 
 ## Files
 
@@ -8,12 +8,37 @@ Live: https://tsg-map.vercel.app/research (part of the TSG Map site, linked from
 |---|---|
 | **All text, numbers, quotes, image paths** | `content/research.json` ← the only file you normally edit |
 | Photos, maps, screenshots, PDFs | `public/research/` (create the folder) |
-| Page layout | `src/app/research/page.tsx` |
-| Styles (colours, fonts, cards) | `src/app/research/research.css` |
+| Page layout | `src/app/page.tsx` |
+| Styles (colours, fonts, cards) | `src/app/research.css` |
 | Interactive parts (TSG demo, gallery, language switch, scroll reveal) | `src/components/research/client.tsx` |
 | Logo, icons, placeholder rendering | `src/components/research/bits.tsx` |
-| Favicon / social preview image | `src/app/research/icon.svg`, `src/app/research/opengraph-image.tsx` |
+| Favicon / social preview image | `src/app/icon.svg`, `src/app/opengraph-image.tsx` |
 | Placeholder checker | `scripts/research-placeholders.mjs` |
+
+## Page structure
+
+1. **Hero** — full-screen city photo (`hero.photo`), headline (`hero.headline`; words between `*stars*` are set in the italic serif), «Открыть карту» → `app.url`.
+2. **Explore the map** (`explore`) — list of links with arrows: Taldykorgan → `/city`, model data → `/city/data`, methodology → `/methodology`, «Другие средние города» marked *soon* (`"href": null, "soon": true` — not clickable, not counted as a placeholder). Add a city by adding an item with a real `href`.
+3. **Research** (dark) — sections 01–09 from the content below, with a sticky index.
+4. **Guide** (`guide`) — 5 steps describing the real `/city` app (tabs «Население / Дефицит услуг / Локация», time of day, category, cell click, data link). Update if the app changes.
+5. **Contacts** (`contacts.items`) — email (`kind: "email"` → mailto link), Telegram (`kind: "telegram"`, e.g. `@name` → t.me link), author, school, supervisor. Delete an item to hide it.
+
+The site-wide header and footer are hidden on this page; it has its own top bar and footer.
+
+### Street search on /city
+
+The search box on `/city` finds a street or an intersection («Абая и Жансугурова», «Абая / Жансугурова») offline, from `public/data/taldykorgan/streets.json`. Rebuild it after a new OSM snapshot with `npm run city:streets`. An intersection opens the full Location analysis; a street lists the cells along it with the largest gap. A link like `/city?tab=location&at=45.01724,78.37552&label=...` opens the analysis of that point directly.
+
+### Agent model on /city
+
+`/city` shows time-of-day presence from the author's agent-based model by default (switch «Агентная модель TSG / Свои допущения» in the panel, URL `src=assume` for the latter). Source: `data/agent-model/taldykorgan.json` — the 355-hex model output exported from the prototype, with a georeference fitted on 162 facilities matched by name with OSM (median error ≈ 0.2 m). `npm run city:agent` lays it onto the 250 m grid (`public/data/taldykorgan/agent-presence.json`): each square cell takes the share of its hexagon in proportion to WorldPop residents, totals are matched to the WorldPop resident count, and the outskirts outside the model keep residents. Model slots → app periods: morning 07–11 → «Утро», day 11–16:30 → «День» and «После обеда», evening 16:30–22 → «Вечер». After re-running the model, replace the JSON and run `npm run city:agent`.
+
+### Photos used
+
+Both are from Pexels (free licence, attribution not required but given on the page) and show **Almaty, not Taldykorgan** — the credit says so. To use your own photo of Taldykorgan, replace `public/research/city-hero.jpg` (landscape, ≥ 2000 px wide) and update `hero.photo.alt` / `credit`.
+
+- `city-hero.jpg` — https://www.pexels.com/photo/aerial-view-of-almaty-city-with-mountain-backdrop-31189131/ (Nursultan’s Photos)
+- `city-aerial.jpg` — https://www.pexels.com/photo/aerial-view-of-almaty-city-suburban-landscape-37754575/ (Konevi)
 
 ## Editing content
 
@@ -55,7 +80,7 @@ Formulas are LaTeX in the `tex` field (rendered on the server with KaTeX, so the
 
 ### Downloads
 
-`sources.downloads[*].href` is `null` now. Put the PDFs into `public/research/` and set e.g. `"href": "/research/stand.pdf"`; then delete the `note` placeholder.
+`sources.downloads` is empty, so no download buttons are shown. To offer a PDF, put it into `public/research/` and add `{ "label": {"ru": "…"}, "href": "/research/file.pdf" }` (the page code for buttons was removed while the list is empty — re-add it in `src/app/page.tsx` if needed).
 
 ### App link and QR
 
@@ -68,7 +93,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000/research.
+Open http://localhost:3000/.
 
 ## Deploy (Vercel)
 
@@ -84,7 +109,7 @@ npx vercel deploy --prod
 
 ## Placeholder checklist
 
-Status on the first build: **153 slots** (run `npm run research:check` for the live list with exact JSON paths).
+Status now: **0 slots**. Interviews show the real method and «testing in progress» until there are real results; gallery shows the author's own YOLO frames with heads blurred (run `npm run research:check` for the live list with exact JSON paths).
 
 - [ ] **Problem** — 2 map images (`problem.maps[0..1].src`): registry map, daytime map
 - [ ] **Results** — 3 map images (`results.maps[0..2].src`): residents, daytime presence, TSG by day
@@ -97,11 +122,11 @@ Status on the first build: **153 slots** (run `npm run research:check` for the l
 - [ ] **Gallery** — 10 photos with caption, date, alt (4 tabs)
 - [ ] **Gallery** — 6 dates in the project timeline
 - [ ] **Sources** — stand PDF and research paper PDF links
-- [ ] **Footer** — author, school, supervisor (all optional — delete the field values you don't want shown), contact email
+- [ ] **Contacts** — email, Telegram, author, school, supervisor (`contacts.items`; delete any you don't want shown)
 
 ### Also check before publishing widely
 
 - [ ] **App section text vs. the live app.** `appSection.how` and `appSection.arch` describe the app as in your brief (hex map of 355 cells, opening hours, expected market share, recommended hours; Python → ~150 KB file → JavaScript, no server). The app currently deployed at `/city` is different: a 250 m square grid built from OSM + WorldPop, a server endpoint for walking distances, and no opening‑hours / market‑share inputs. Either update the app or reword these lines so the jury doesn't find a mismatch.
 - [ ] **References** — full titles in `sources.refs` were written from the standard citations; compare with your paper's bibliography.
 - [ ] **Kazakh text** — headings and key sentences in `kk` need a native‑speaker check.
-- [ ] **Site footer** says the site has no images or video (`common.footerNote` in `src/i18n/*.ts`). Once you add photos to the gallery, update that sentence.
+- [ ] **Site footer** on other pages says the site has no images or video (`common.footerNote` in `src/i18n/*.ts`). It is hidden on /research, but now that the site has photos, consider updating that sentence.

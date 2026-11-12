@@ -40,7 +40,7 @@ Stack: Next.js 15 (App Router, TypeScript) · Tailwind CSS 4 · MapLibre GL + OS
 | Facilities (6 categories) | ✅ Real, OSM | `facilities.json` | 585 objects; tag rules in `scripts/build-city.mjs` and `src/lib/city/types.ts`. OSM is incomplete (e.g. only 44 pharmacies) → gaps are overstated. |
 | Residents | ✅ Real, WorldPop | `grid.json` | WorldPop Global2 R2025A constrained 100 m, 2021 (CC BY 4.0): 176 584 people in the boundary, summed into 2 475 cells of 250 m. A model, not a count. |
 | Census 2021 total | ⏳ Not loaded | model settings | Optional proportional rescaling once you enter the verified figure. |
-| Presence by time of day | ⏳ **Assumption-driven, not set** | `src/lib/city/model.ts` | Until you enter s(t) and β, every period shows the residential baseline (labelled). No random or invented hourly values. |
+| Presence by time of day | ✅ Agent model (default) | `data/agent-model/`, `agent-presence.json` | The author's agent-based model (≈17 k agents, 100 runs) laid onto the 250 m grid (`npm run city:agent`). Users can switch to their own assumptions (`src/lib/city/model.ts`). Video check (H2) not confirmed yet — see `research/H2_REPORT.md`. |
 | Walking access | ✅ Computed | `access.json` | Dijkstra on the walk network, ≤1 200 m, from cell centres. |
 | Service Gap Index | ✅ Computed | `src/lib/city/gap.ts` | TSG formula on city-wide shares; tested. |
 | Location assessment | ✅ Rule-based | `src/lib/city/location.ts`, `/api/location` | Explainable comparisons with numbers; no revenue prediction. |
@@ -49,9 +49,37 @@ Stack: Next.js 15 (App Router, TypeScript) · Tailwind CSS 4 · MapLibre GL + OS
 
 ---
 
-## Research page (/research)
+## Engineering at a glance
 
-The school research project page. All its text, numbers, quotes and image paths live in `content/research.json`; see [docs/RESEARCH_PAGE.md](docs/RESEARCH_PAGE.md) for how to edit it, add photos and deploy, and run `npm run research:check` to list unfilled placeholders.
+- **Reproducible data:** `npm run data:all` rebuilds everything the app serves from raw open data
+  (OSM → grid, walk graph, facilities; WorldPop → residents; street index; agent model → grid).
+  The agent model itself: `research/agent_model/` (Python, see its README).
+- **Tests:** `npm test` (Vitest) — TSG formula properties, gap index, street search, agent-model totals,
+  weighted median; Python property test `research/agent_model/code/test_tsg_properties.py`.
+- **Research scripts (open, re-runnable):**
+  - `research/h2_calibrate.py` — model vs video (H2) with bootstrap CIs and the video→schedule calibration loop
+    with leave-one-point-out validation → `research/H2_REPORT.md`.
+  - `research/yolo_error.py` + `research/manual-count/index.html` — YOLOv8 accuracy against a manual count.
+  - `research/entrepreneur_check.py` — precision/recall of TSG classes against entrepreneurs' "good/bad" places.
+- **Privacy by design:**
+  - street / intersection search runs in the browser on a bundled index — typed addresses are never sent;
+  - the walking-distance API receives only coordinates and stores nothing;
+  - analytics events carry no identifiers;
+  - bystanders' heads are blurred in every published video frame; raw videos are not published;
+  - 2GIS data is used only locally for the model (licence) and is gitignored.
+
+### 60-second demo
+
+1. Open https://tsg-map.vercel.app → «Открыть карту».
+2. Type «Абая и Жансугурова» → Enter. The point appears with a one-line verdict
+   («Аптеки здесь (день): …») and «Лучше рядом: ячейка … в … м» → «Проверить её».
+3. Switch «Утро / День / Вечер»: presence comes from the agent model, numbers change.
+4. Tab «Население» → «Изменение»: by day the centre fills, residential districts empty.
+5. Share the analysis: the URL `/city?tab=location&at=…` reopens the same point.
+
+## Home page — research project (/)
+
+The home page is the school research project page (`src/app/page.tsx`; the old `/research` URL redirects to `/`). All its text, numbers, quotes and image paths live in `content/research.json`; see [docs/RESEARCH_PAGE.md](docs/RESEARCH_PAGE.md) for how to edit it, add photos and deploy, and run `npm run research:check` to list unfilled placeholders.
 
 ## City data pipeline
 

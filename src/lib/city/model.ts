@@ -94,3 +94,16 @@ export function median(values: number[]): number {
   const m = v.length >> 1;
   return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
 }
+
+/** Median of values weighted by w (e.g. competitors seen by the typical person, not the typical cell). */
+export function weightedMedian(values: number[], w: number[]): number {
+  const idx = values.map((_, i) => i).filter((i) => w[i] > 0).sort((a, b) => values[a] - values[b]);
+  const total = idx.reduce((s, i) => s + w[i], 0);
+  if (!total) return 0;
+  let acc = 0;
+  for (const i of idx) {
+    acc += w[i];
+    if (acc >= total / 2) return values[i];
+  }
+  return values[idx[idx.length - 1]];
+}

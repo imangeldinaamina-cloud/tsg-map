@@ -8,13 +8,15 @@ import { CellDetail } from "@/components/city/CellDetail";
 import { CityLegend } from "@/components/city/CityLegend";
 import { AssumptionsForm } from "@/components/city/AssumptionsForm";
 import { LocationPanel, Candidate } from "@/components/city/LocationPanel";
+import { StreetSearch } from "@/components/city/StreetSearch";
+import type { GeoHit } from "@/lib/city/geocode";
 import { distColor, divColor, quantileBreaks, seqColor, sgiColor } from "@/components/city/palette";
 import { Badge, Bars, Section, Segmented, Select, Stat } from "@/components/city/ui";
 import { useI18n } from "@/i18n/client";
 import { track } from "@/lib/client/analytics";
-import { cellIndexAt, loadAssumptions, loadUpload, PopulationUpload, saveAssumptions, useCityData } from "@/lib/city/client";
+import { cellIndexAt, loadAssumptions, loadUpload, PopulationUpload, saveAssumptions, useAgentPresence, useCityData } from "@/lib/city/client";
 import { computeGap } from "@/lib/city/gap";
-import { anySpecified, baseline, isSpecified, median, presence, sum, TemporalAssumptions, UNSPECIFIED } from "@/lib/city/model";
+import { anySpecified, baseline, isSpecified, presence, sum, TemporalAssumptions, UNSPECIFIED, weightedMedian } from "@/lib/city/model";
 import { CATCHMENTS_M, DEFAULT_CATCHMENT_M, MAX_CANDIDATES, Period, PERIOD_WINDOWS, PERIODS, SERVICE_CATS, ServiceCat } from "@/lib/city/types";
 
 const CityMap = dynamic(() => import("@/components/city/CityMap"), { ssr: false });
@@ -39,6 +41,8 @@ export function CityApp() {
   const R = (CATCHMENTS_M as readonly number[]).includes(Number(sp.get("r"))) ? Number(sp.get("r")) : DEFAULT_CATCHMENT_M;
   const view: View = (["residents", "presence", "diff"] as const).includes(sp.get("view") as View) ? (sp.get("view") as View) : "presence";
   const gapView: GapView = sp.get("gv") === "dist" ? "dist" : "sgi";
+  // where time-of-day presence comes from: the author's agent model (default) or the user's own assumptions
+  const srcParam = sp.get("src") === "assume" ? "assume" : "model";
   const setParam = useCallback(
     (key: string, value: string) => {
       const next = new URLSearchParams(sp.toString());
@@ -54,6 +58,8 @@ export function CityApp() {
   const [assumptions, setAssumptions] = useState<TemporalAssumptions>(UNSPECIFIED);
   const [upload, setUpload] = useState<PopulationUpload | null>(null);
   const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [street, setStreet] = useState<{ name: string; points: [number, number][]; crossings: GeoHit[] } | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   useEffect(() => {
     setAssumptions(loadAssumptions());
     setUpload(loadUpload());
@@ -67,17 +73,31 @@ export function CityApp() {
   const cells = data?.grid.cells;
   const override = useMemo(() => (upload && cells && upload.values.length === cells.length ? Float64Array.from(upload.values) : null), [upload, cells]);
   const base = useMemo(() => (cells ? baseline(cells, assumptions.censusTotal, override) : new Float64Array()), [cells, assumptions.censusTotal, override]);
+  const agent = useAgentPresence(cells?.length);
+  const useAgent = srcParam === "model" && agent !== null;
   const presenceBy = useMemo(() => {
     const out = {} as Record<Period, Float64Array>;
-    for (const p of PERIODS) out[p] = cells ? presence(cells, base, assumptions, p) : new Float64Array();
+    const total = sum(base);
+    for (const p of PERIODS) {
+      if (useAgent && agent) {
+        // keep the model's distribution, match the current resident total (census calibration / upload)
+        const v = agent.values[p];
+        const k = total / Math.max(1, sum(v));
+        out[p] = Float64Array.from(v, (x) => x * k);
+      } else out[p] = cells ? presence(cells, base, assumptions, p) : new Float64Array();
+    }
     return out;
-  }, [cells, base, assumptions]);
+  }, [cells, base, assumptions, useAgent, agent]);
   const P = presenceBy[period];
-  const modelled = isSpecified(assumptions, period);
+  const modelled = useAgent || isSpecified(assumptions, period);
+  const temporalOn = useAgent || anySpecified(assumptions);
   const gap = useMemo(() => (data ? computeGap(data.grid.cells, data.facilities, data.access, P, cat, R) : null), [data, P, cat, R]);
   const cityMedianCompetitors = useMemo(() => {
     if (!gap || !cells) return 0;
-    return median(gap.cells.filter((g, i) => cells[i].net && P[i] > 0).map((g) => g.S));
+    // what the typical person in the city has around them (weighted by presence), not the typical cell —
+    // most populated cells are sparse outskirts, so an unweighted median is 0 almost everywhere
+    const idx = cells.map((_, i) => i).filter((i) => cells[i].net && P[i] > 0);
+    return weightedMedian(idx.map((i) => gap.cells[i].S), idx.map((i) => P[i]));
   }, [gap, cells, P]);
   const lookup = useMemo(() => new Map((cells ?? []).map((c, i) => [`${c.r}:${c.c}`, i])), [cells]);
 
@@ -115,12 +135,14 @@ export function CityApp() {
 
   // ---- candidates ----
   const addCandidate = useCallback(
-    async (lat: number, lon: number) => {
-      const used = new Set(candidates.map((c) => c.id));
+    async (lat: number, lon: number, label?: string) => {
+      // A point from the search replaces the oldest one when the list is full; a map click is simply ignored.
+      const keep = candidates.length >= MAX_CANDIDATES && label ? candidates.slice(1) : candidates;
+      const used = new Set(keep.map((c) => c.id));
       if (used.size >= MAX_CANDIDATES) return;
       let id = 1;
       while (used.has(id)) id++;
-      setCandidates((cs) => [...cs, { id, lat, lon, reach: null, status: "loading" }]);
+      setCandidates([...keep, { id, lat, lon, reach: null, status: "loading", label }]);
       track("city_candidate", { cat });
       try {
         const res = await fetch(`/api/location?lat=${lat.toFixed(6)}&lon=${lon.toFixed(6)}`);
@@ -135,6 +157,18 @@ export function CityApp() {
     [candidates, cat],
   );
 
+  // Shareable analysis link: /city?tab=location&at=lat,lon&label=...
+  const atParam = sp.get("at");
+  const openedAt = useRef<string | null>(null);
+  useEffect(() => {
+    if (!data || !atParam || openedAt.current === atParam) return;
+    const [la, lo] = atParam.split(",").map(Number);
+    if (!Number.isFinite(la) || !Number.isFinite(lo)) return;
+    openedAt.current = atParam;
+    addCandidate(la, lo, sp.get("label") ?? undefined);
+    mapRef.current?.flyTo(la, lo, 15);
+  }, [data, atParam]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (error) return <p className="m-6 card p-4 text-sm" role="alert">{t("city.loadError")}</p>;
 
   const facilityCats = tab === "population" ? [...SERVICE_CATS] : [cat];
@@ -143,6 +177,35 @@ export function CityApp() {
     const c = cells?.[i];
     if (c) mapRef.current?.flyTo(c.lat, c.lon);
   };
+
+  const pickCrossing = (h: Extract<GeoHit, { kind: "crossing" }>) => {
+    setStreet(null);
+    if (tab !== "location") setParam("tab", "location");
+    addCandidate(h.lat, h.lon, h.label);
+    mapRef.current?.flyTo(h.lat, h.lon, 16);
+    setNotice(t("city.search.added", { label: h.label }));
+    track("city_search", { kind: "crossing" });
+  };
+  const pickStreet = (st: { name: string; points: [number, number][]; crossings: GeoHit[] }) => {
+    setStreet(st);
+    setNotice(null);
+    const mid = st.points[Math.floor(st.points.length / 2)];
+    if (mid) mapRef.current?.flyTo(mid[0], mid[1], 14);
+    track("city_search", { kind: "street" });
+  };
+  // Cells the street passes through, best gap first: where along this street demand most exceeds supply.
+  const along = (() => {
+    if (!street || !data || !gap || !cells) return [];
+    const seen = new Map<number, [number, number]>();
+    for (const [la, lo] of street.points) {
+      const i = cellIndexAt(data.grid, lookup, la, lo);
+      if (i !== null && !seen.has(i)) seen.set(i, [la, lo]);
+    }
+    return [...seen.entries()]
+      .filter(([i]) => P[i] > 0)
+      .map(([i, pt]) => ({ i, pt, sgi: gap.cells[i].sgi, P: P[i] }))
+      .sort((a, b) => (b.sgi ?? -2) - (a.sgi ?? -2) || b.P - a.P);
+  })();
 
   const periodControl = (
     <Segmented
@@ -172,6 +235,14 @@ export function CityApp() {
             </Link>
           </div>
           <p className="text-sm text-muted">{t("city.subtitle")}</p>
+          <div className="mt-3">
+            <StreetSearch onCrossing={pickCrossing} onStreet={pickStreet} />
+            {notice && (
+              <p role="status" className="mt-2 rounded-md border border-[#93c5fd] bg-[#eff6ff] p-2 text-xs text-[#1e3a8a]">
+                {notice}
+              </p>
+            )}
+          </div>
         </div>
         <div className="sticky top-0 z-10 border-y border-border bg-white/95 px-4 py-2 backdrop-blur">
           <div role="tablist" aria-label={t("city.title")} className="flex gap-1">
@@ -218,14 +289,80 @@ export function CityApp() {
                   options={(["residents", "presence", "diff"] as const).map((v) => ({ value: v, label: t(`city.pop.views.${v}`) }))}
                 />
               )}
+              {agent && (
+                <Segmented
+                  name="src"
+                  label={t("city.src.label")}
+                  value={srcParam}
+                  onChange={(v) => setParam("src", v)}
+                  options={[
+                    { value: "model", label: t("city.src.model") },
+                    { value: "assume", label: t("city.src.assume") },
+                  ]}
+                />
+              )}
               <div className="flex flex-wrap gap-1.5">
                 {upload ? <Badge kind="uploaded">{t("city.badges.uploaded")}</Badge> : <Badge kind="source">WorldPop 2021</Badge>}
-                {modelled ? <Badge kind="modelled">{t("city.badges.modelled")}</Badge> : <Badge kind="baseline">{t("city.badges.baseline")}</Badge>}
+                {useAgent ? <Badge kind="modelled">{t("city.src.model")}</Badge> : modelled ? <Badge kind="modelled">{t("city.badges.modelled")}</Badge> : <Badge kind="baseline">{t("city.badges.baseline")}</Badge>}
                 {tab !== "population" && <Badge kind="source">OSM</Badge>}
               </div>
-              {!modelled && <p className="rounded-md border border-border bg-surface p-2.5 text-xs leading-relaxed text-muted">{t("city.pop.notSpecified")}</p>}
-              {modelled && <p className="rounded-md border border-[#c4b5fd] bg-[#f5f3ff] p-2.5 text-xs leading-relaxed text-[#4c1d95]">{t("city.pop.specified")}</p>}
+              {useAgent && <p className="rounded-md border border-[#c4b5fd] bg-[#f5f3ff] p-2.5 text-xs leading-relaxed text-[#4c1d95]">{t("city.src.note")}</p>}
+              {!useAgent && !modelled && <p className="rounded-md border border-border bg-surface p-2.5 text-xs leading-relaxed text-muted">{t("city.pop.notSpecified")}</p>}
+              {!useAgent && modelled && <p className="rounded-md border border-[#c4b5fd] bg-[#f5f3ff] p-2.5 text-xs leading-relaxed text-[#4c1d95]">{t("city.pop.specified")}</p>}
             </Section>
+
+            {street && (
+              <Section
+                title={t("city.search.alongTitle", { street: street.name })}
+                aside={
+                  <button type="button" className="rounded-md px-2 py-1 text-xs text-muted hover:bg-surface hover:text-fg" onClick={() => setStreet(null)}>
+                    {t("city.search.close")}
+                  </button>
+                }
+              >
+                <p className="text-xs text-muted">{t("city.search.alongHint", { cat: t(`city.cats.${cat}`).toLowerCase(), period: pLabel(period) })}</p>
+                {along.length === 0 ? (
+                  <p className="text-sm">{t("city.search.noCells")}</p>
+                ) : (
+                  <ol className="space-y-1">
+                    {along.slice(0, 6).map(({ i, pt, sgi, P: p }) => (
+                      <li key={i} className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2 rounded-md px-1 py-1 text-sm">
+                        <button type="button" className="truncate text-left hover:underline" onClick={() => selectCell(i)}>
+                          {t("city.cell.title", { id: `${cells[i].r}-${cells[i].c}` })} · <span className="text-muted">{t("city.people", { n: fmt(p) })}</span>
+                        </button>
+                        <span className="rounded px-1.5 text-xs font-semibold tabular-nums" style={{ background: sgi === null ? "#e5e7eb" : sgiColor(sgi), color: sgi === null ? "#374151" : "#fff" }}>
+                          {sgi === null ? "—" : sgi.toFixed(2)}
+                        </span>
+                        <button
+                          type="button"
+                          className="btn btn-secondary min-h-[34px] px-2 text-xs"
+                          onClick={() => pickCrossing({ kind: "crossing", a: 0, b: 0, lat: pt[0], lon: pt[1], label: `${street.name}, ${t("city.cell.title", { id: `${cells[i].r}-${cells[i].c}` })}`, score: 1 })}
+                        >
+                          {t("city.search.check")}
+                        </button>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+                {street.crossings.length > 0 && (
+                  <details>
+                    <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-muted">
+                      {t("city.search.crossingsTitle")} ({street.crossings.length})
+                    </summary>
+                    <ul className="mt-1 max-h-48 space-y-0.5 overflow-y-auto">
+                      {street.crossings.map((h, k) => (
+                        <li key={k}>
+                          <button type="button" className="w-full rounded-md px-2 py-1 text-left text-sm hover:bg-surface" onClick={() => h.kind === "crossing" && pickCrossing(h)}>
+                            {h.label}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
+                <p className="text-[11px] text-muted">{t("city.search.source")}</p>
+              </Section>
+            )}
 
             {selected !== null && tab !== "location" && (
               <CellDetail
@@ -237,7 +374,7 @@ export function CityApp() {
                 period={period}
                 cat={cat}
                 R={R}
-                modelled={anySpecified(assumptions)}
+                modelled={temporalOn}
                 fmt={fmt}
                 onClose={() => setSelected(null)}
               />
@@ -251,7 +388,7 @@ export function CityApp() {
                     <Stat label={t("city.cell.presence", { period: t(`city.periods.${period}`) })} value={fmt(sum(P))} note={modelled ? t("city.badges.modelled") : t("city.badges.baseline")} />
                   </div>
                 </Section>
-                {anySpecified(assumptions) && (
+                {temporalOn && (
                   <Section title={t("city.pop.byPeriod")}>
                     <p className="text-xs text-muted">{t("city.pop.inflow")}</p>
                     <Bars
@@ -284,14 +421,14 @@ export function CityApp() {
                       ))}
                   </ol>
                 </Section>
-                <AssumptionsForm
+                {!useAgent && <AssumptionsForm
                   value={assumptions}
                   onApply={(a) => {
                     setAssumptions(a);
                     saveAssumptions(a);
                     track("city_assumptions", { specified: anySpecified(a) });
                   }}
-                />
+                />}
               </>
             )}
 
@@ -357,10 +494,14 @@ export function CityApp() {
                 R={R}
                 gap={gap}
                 cellIndex={(lat, lon) => cellIndexAt(data.grid, lookup, lat, lon)}
-                temporalSpecified={anySpecified(assumptions)}
+                temporalSpecified={temporalOn}
                 cityMedianCompetitors={cityMedianCompetitors}
                 fmt={fmt}
                 onFocus={(lat, lon) => mapRef.current?.flyTo(lat, lon, 15)}
+                onAddPoint={(lat, lon, label) => {
+                  addCandidate(lat, lon, label);
+                  mapRef.current?.flyTo(lat, lon, 15);
+                }}
               />
             )}
           </div>

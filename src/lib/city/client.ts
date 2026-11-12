@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { safeStorage } from "@/lib/client/analytics";
 import { TemporalAssumptions, UNSPECIFIED } from "./model";
-import { AccessData, CityMeta, Facility, GridData } from "./types";
+import { AccessData, CityMeta, Facility, GridData, Period } from "./types";
 
 const BASE = "/data/taldykorgan/";
 export type GeoJSON = { type: "FeatureCollection"; features: unknown[] };
@@ -40,6 +40,30 @@ export function useCityData() {
     loadCity().then(setData).catch(() => setError(true));
   }, []);
   return { data, error };
+}
+
+/** The author's agent-based model, already laid onto the 250 m grid (scripts/build-agent-presence.mjs). */
+export interface AgentPresence {
+  source: string;
+  runs: number;
+  slots: Record<string, [number, number]>;
+  period_slot: Record<Period, string>;
+  cells_outside_model: number;
+  values: Record<Period, number[]>;
+}
+let agentCache: Promise<AgentPresence | null> | null = null;
+export function useAgentPresence(cellCount: number | undefined) {
+  const [agent, setAgent] = useState<AgentPresence | null>(null);
+  useEffect(() => {
+    agentCache ??= fetch(BASE + "agent-presence.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+    agentCache.then((a) => {
+      // only use it if it was built for this grid
+      if (a && cellCount && Object.values(a.values).every((v) => (v as number[]).length === cellCount)) setAgent(a);
+    });
+  }, [cellCount]);
+  return agent;
 }
 
 /** Large optional layers, fetched only when switched on. */

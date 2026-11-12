@@ -31,7 +31,7 @@ export function findGaps(node: unknown = raw, path = ""): Gap[] {
     const obj = node as Record<string, unknown>;
     const out: Gap[] = [];
     if ("src" in obj && obj.src === null) out.push({ path: `${path}.src`, text: "image not supplied" });
-    if ("href" in obj && obj.href === null) out.push({ path: `${path}.href`, text: "link not supplied" });
+    if ("href" in obj && obj.href === null && !obj.soon) out.push({ path: `${path}.href`, text: "link not supplied" });
     for (const [k, v] of Object.entries(obj)) {
       if (SKIP_KEYS.has(k)) continue;
       // Count each localized field once (by its Russian text).

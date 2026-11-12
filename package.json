@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "osm:fetch": "node scripts/fetch-osm.mjs",
     "city:build": "node scripts/build-city.mjs",
-    "research:check": "node scripts/research-placeholders.mjs"
+    "research:check": "node scripts/research-placeholders.mjs",
+    "city:streets": "node scripts/build-streets.mjs",
+    "city:agent": "node scripts/build-agent-presence.mjs",
+    "data:all": "npm run city:build && npm run city:streets && npm run city:agent"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",

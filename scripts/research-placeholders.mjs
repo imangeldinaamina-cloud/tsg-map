@@ -14,7 +14,7 @@ function walk(node, path) {
   if (Array.isArray(node)) return node.forEach((v, i) => walk(v, `${path}[${i}]`));
   if (node && typeof node === "object") {
     if ("src" in node && node.src === null) out.push([`${path}.src`, "(image not supplied → put a file in public/research/ and set its path)"]);
-    if ("href" in node && node.href === null) out.push([`${path}.href`, "(link not supplied)"]);
+    if ("href" in node && node.href === null && !node.soon) out.push([`${path}.href`, "(link not supplied)"]);
     for (const [k, v] of Object.entries(node)) if (!SKIP.has(k)) walk(v, path ? `${path}.${k}` : k);
   }
 }

@@ -128,3 +128,34 @@ export function assess(
     return out;
   });
 }
+
+export type VerdictLevel = "promising" | "mixed" | "risky";
+/** One-line answer built from the same findings the panel lists (no hidden scoring). */
+export function verdict(findings: Finding[]): { level: VerdictLevel; reasons: Finding[] } {
+  const pros = findings.filter((f) => f.kind === "opportunity");
+  const cons = findings.filter((f) => f.kind === "limitation");
+  const level: VerdictLevel = cons.length >= 2 && cons.length > pros.length ? "risky" : pros.length > cons.length ? "promising" : "mixed";
+  const reasons = (level === "promising" ? pros : level === "risky" ? cons : [...cons, ...pros]).slice(0, 2);
+  return { level, reasons };
+}
+
+/** Best cell within walking distance: highest gap index with people present, reached on the street network. */
+export function bestNearby(args: {
+  reach: LocationReach;
+  gap: CellGap[];
+  presence: ArrayLike<number>;
+  maxWalkM: number;
+  minPresence: number;
+  fromCell: number | null;
+}): { cell: number; walk_m: number; sgi: number; presence: number } | null {
+  let best: { cell: number; walk_m: number; sgi: number; presence: number } | null = null;
+  for (let k = 0; k < args.reach.cells.length; k += 2) {
+    const ci = args.reach.cells[k], d = args.reach.cells[k + 1];
+    if (d > args.maxWalkM || ci === args.fromCell) continue;
+    const g = args.gap[ci];
+    const p = args.presence[ci];
+    if (!g || g.sgi === null || g.sgi <= 0 || p < args.minPresence) continue;
+    if (!best || g.sgi > best.sgi || (g.sgi === best.sgi && p > best.presence)) best = { cell: ci, walk_m: d, sgi: g.sgi, presence: p };
+  }
+  return best;
+}
