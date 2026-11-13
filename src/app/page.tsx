@@ -347,7 +347,7 @@ export default async function HomePage() {
               typeLabel={locale === "en" ? "Agent type" : locale === "kk" ? "Агент түрі" : "Тип агента"}
               shareLabel={p(c.method.schedule.shareLabel)}
               slots={c.method.schedule.slots.map((sl) => ({ id: sl.id, label: p(sl.label), time: sl.time }))}
-              rows={c.method.schedule.rows.map((r) => ({ type: p(r.type), share: r.share, cells: r.cells.map(p) }))}
+              rows={c.method.schedule.rows.map((r) => ({ type: p(r.type), share: r.share, shareText: locale === "en" ? String(r.share) : String(r.share).replace(".", ","), cells: r.cells.map(p) }))}
             />
             <p className="note">{p(c.method.schedule.note)}</p>
           </figure>
@@ -509,7 +509,7 @@ export default async function HomePage() {
               <span className="kpi-x">{p(r.hidden.text)}</span>
             </div>
             <div className="kpi">
-              <span className="kpi-v tabnum">{locale === "en" ? "0.87 / 0.95" : "0,87 / 0,95"}</span>
+              <span className="kpi-v tabnum">{locale === "en" ? "0.88 / 0.95" : "0,88 / 0,95"}</span>
               <span className="kpi-t">{p(r.correlation.title)}</span>
               <span className="kpi-x">{p(r.correlation.note)}</span>
             </div>
@@ -679,13 +679,22 @@ export default async function HomePage() {
           <div className="iv-videos reveal">
             {iv.videos.items.map((v, i) => (
               <figure key={i} className="iv-video">
-                <div className="soon-box">
-                  <span className="soon-play" aria-hidden>
-                    ▶
-                  </span>
-                  <span className="soon-l">{p(iv.videos.soonLabel)}</span>
-                </div>
-                <figcaption>{p(v.title)}</figcaption>
+                {typeof v.src === "string" ? (
+                  <div className="iv-frame">
+                    <video controls playsInline preload="none" poster={v.poster ?? undefined} src={v.src} />
+                  </div>
+                ) : (
+                  <div className="soon-box">
+                    <span className="soon-play" aria-hidden>
+                      ▶
+                    </span>
+                    <span className="soon-l">{p(iv.videos.soonLabel)}</span>
+                  </div>
+                )}
+                <figcaption>
+                  {p(v.title)}
+                  {v.note ? <span className="iv-note">{p(v.note)}</span> : null}
+                </figcaption>
               </figure>
             ))}
           </div>

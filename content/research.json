@@ -291,9 +291,9 @@
       "kk": "Адамдар *қозғалады*, ал тіркеу — жоқ"
     },
     "lead": {
-      "ru": "Магазины, аптеки и кафе открывают там, где много жителей «по прописке». Но около 35% жителей днём находятся в другом районе. Метод по прописке не видит дневного движения — и точки открываются там, где людей в нужный час нет.",
-      "en": "Shops, pharmacies and cafés open where many residents are registered. But about 35% of residents are in a different district by day. The registry method misses daytime movement — so outlets open where people are not at the hour that matters.",
-      "kk": "Дүкендер, дәріханалар мен кафелер тіркелген тұрғындар көп жерде ашылады. Бірақ тұрғындардың шамамен 35%-ы күндіз басқа ауданда болады."
+      "ru": "Магазины, аптеки и кафе открывают там, где много жителей «по прописке». Но около 34% жителей днём находятся в другом районе. Метод по прописке не видит дневного движения — и точки открываются там, где людей в нужный час нет.",
+      "en": "Shops, pharmacies and cafés open where many residents are registered. But about 34% of residents are in a different district by day. The registry method misses daytime movement — so outlets open where people are not at the hour that matters.",
+      "kk": "Дүкендер, дәріханалар мен кафелер тіркелген тұрғындар көп жерде ашылады. Бірақ тұрғындардың шамамен 34%-ы күндіз басқа ауданда болады."
     },
     "maps": [
       {
@@ -345,8 +345,8 @@
     "stats": [
       {
         "value": {
-          "ru": "6,3 тыс.",
-          "en": "6.3k"
+          "ru": "6,1 тыс.",
+          "en": "6.1k"
         },
         "label": {
           "ru": "людей в самой загруженной ячейке днём",
@@ -367,8 +367,8 @@
       },
       {
         "value": {
-          "ru": "35%",
-          "en": "35%"
+          "ru": "34%",
+          "en": "34%"
         },
         "label": {
           "ru": "жителей днём находятся не там, где живут",
@@ -388,17 +388,17 @@
       {
         "icon": "data",
         "title": {
-          "ru": "Собрал(а) открытые данные",
-          "en": "Collected open data",
-          "kk": "Ашық деректерді жинадым"
+          "ru": "Собрал(а) данные",
+          "en": "Collected the data",
+          "kk": "Деректерді жинадым"
         },
         "text": {
-          "ru": "OpenStreetMap — магазины, аптеки, общепит, места работы и учёбы, ТРЦ и рынки. Сетка населения WorldPop 2024 и данные БНС РК.",
-          "en": "OpenStreetMap — shops, pharmacies, food places, workplaces, schools, malls and markets. The WorldPop 2024 population grid and data from the national statistics bureau."
+          "ru": "Магазины, аптеки, общепит и их часы работы — OpenStreetMap и 2ГИС. Места работы и учёбы, ТРЦ и рынки — OpenStreetMap. Сетка населения WorldPop 2024 и данные БНС РК.",
+          "en": "Shops, pharmacies, food places and their opening hours — OpenStreetMap and 2GIS. Workplaces, schools, malls and markets — OpenStreetMap. The WorldPop 2024 population grid and data from the national statistics bureau."
         },
         "details": {
-          "ru": "OSM: 91 продуктовый магазин, 44 аптеки, 241 объект общепита; 328 мест работы, 51 школа, 33 вуза и колледжа, 43 ТРЦ (в том числе Атамекен и City Plus), 4 рынка. WorldPop 2024 даёт 137,5 тыс. человек — это на 20% меньше, чем 171 618 по данным БНС РК, поэтому сетка перемасштабирована на официальную численность.",
-          "en": "OSM: 91 grocery stores, 44 pharmacies, 241 food places; 328 workplaces, 51 schools, 33 universities/colleges, 43 malls incl. Atameken and City Plus, 4 markets. WorldPop 2024 gives 137.5k people — 20% less than 171,618 from the national statistics bureau, so the grid was rescaled to the official total."
+          "ru": "Объекты услуг из OSM и 2ГИС без повторов: 286 продуктовых магазинов, 80 аптек, 359 объектов общепита; часы работы известны у 508 из 725. Из OSM: 328 мест работы, 51 школа, 33 вуза и колледжа, 43 ТРЦ (в том числе Атамекен и City Plus), 4 рынка. WorldPop 2024 даёт 137,5 тыс. человек — это на 20% меньше, чем 171 618 по данным БНС РК, поэтому сетка перемасштабирована на официальную численность.",
+          "en": "Service places from OSM and 2GIS, without duplicates: 286 grocery stores, 80 pharmacies, 359 food places; opening hours known for 508 of 725. From OSM: 328 workplaces, 51 schools, 33 universities/colleges, 43 malls incl. Atameken and City Plus, 4 markets. WorldPop 2024 gives 137.5k people — 20% less than 171,618 from the national statistics bureau, so the grid was rescaled to the official total."
         }
       },
       {
@@ -527,8 +527,8 @@
           "kk": "Қызмет нысандары"
         },
         "text": {
-          "ru": "Продукты, аптеки, общепит из OSM + часы работы",
-          "en": "Groceries, pharmacies, food places from OSM + opening hours"
+          "ru": "Продукты, аптеки, общепит из OSM и 2ГИС + часы работы",
+          "en": "Groceries, pharmacies, food places from OSM and 2GIS + opening hours"
         }
       },
       {
@@ -837,7 +837,7 @@
             "en": "Worker",
             "kk": "Жұмыс істейтін"
           },
-          "share": 45,
+          "share": 42.5,
           "cells": [
             {
               "ru": "работа, 0,85",
@@ -903,7 +903,7 @@
             "en": "Other",
             "kk": "Басқа"
           },
-          "share": 31,
+          "share": 33.5,
           "cells": [
             {
               "ru": "дома; ТРЦ или рынок 0,15",
@@ -922,8 +922,8 @@
         }
       ],
       "note": {
-        "ru": "Доли и вероятности зафиксированы до расчёта. Вес крупных ТРЦ — 5, рынка — 3, остальных — 1. 1 агент = 10 жителей, β = 2.",
-        "en": "Shares and probabilities were fixed before computing. Large malls weigh 5, the market 3, others 1. 1 agent = 10 residents, β = 2."
+        "ru": "Доля работающих — 42,5% по данным БНС; остальные доли и вероятности зафиксированы до расчёта. Вес крупных ТРЦ — 5, рынка — 3, остальных — 1. 1 агент = 10 жителей, β = 2.",
+        "en": "Worker share is 42.5% from national statistics; other shares and probabilities were fixed before computing. Large malls weigh 5, the market 3, others 1. 1 agent = 10 residents, β = 2."
       },
       "shareLabel": {
         "ru": "доля жителей",
@@ -1267,9 +1267,9 @@
       "kk": "*Модель* не көрсетті"
     },
     "badge": {
-      "ru": "Числа ниже — по OSM, как в работе; пересчёт с 2ГИС — в таблице в конце раздела",
-      "en": "Numbers below use OSM, as in the paper; the 2GIS recalculation is in the table at the end of this section",
-      "kk": "Төмендегі сандар OSM бойынша; 2ГИС қайта есебі — бөлім соңындағы кестеде"
+      "ru": "Итоговый расчёт: OpenStreetMap + 2ГИС, ноябрь 2026",
+      "en": "Final calculation: OpenStreetMap + 2GIS, November 2026",
+      "kk": "Қорытынды есеп: OpenStreetMap + 2ГИС, 2026 ж. қараша"
     },
     "maps": [
       {
@@ -1303,7 +1303,7 @@
             "en": "Morning",
             "kk": "Таң"
           },
-          "value": 38
+          "value": 36
         },
         {
           "label": {
@@ -1311,7 +1311,7 @@
             "en": "Day",
             "kk": "Күндіз"
           },
-          "value": 35
+          "value": 34
         },
         {
           "label": {
@@ -1319,7 +1319,7 @@
             "en": "Evening",
             "kk": "Кеш"
           },
-          "value": 13
+          "value": 12
         }
       ]
     },
@@ -1331,8 +1331,8 @@
         "kk": "Күндізгі шың мен тіркеу шыңы"
       },
       "text": {
-        "ru": "В самой людной ячейке днём ≈6,3 тыс. человек, а в самой населённой ячейке по прописке — 0,9 тыс. Это примерно в 7 раз больше.",
-        "en": "The busiest cell by day holds ≈6.3 thousand people versus 0.9 thousand in the most populated cell by registry — about 7× more."
+        "ru": "В самой людной ячейке днём ≈6,1 тыс. человек, а в самой населённой ячейке по прописке — 0,9 тыс. Это примерно в 7 раз больше.",
+        "en": "The busiest cell by day holds ≈6.1 thousand people versus 0.9 thousand in the most populated cell by registry — about 7× more."
       }
     },
     "correlation": {
@@ -1348,8 +1348,8 @@
             "en": "Day",
             "kk": "Күндіз"
           },
-          "value": "0,87",
-          "valueEn": "0.87"
+          "value": "0,88",
+          "valueEn": "0.88"
         },
         {
           "label": {
@@ -1379,7 +1379,7 @@
             "en": "Groceries",
             "kk": "Азық-түлік"
           },
-          "value": 31
+          "value": 37
         },
         {
           "label": {
@@ -1387,7 +1387,7 @@
             "en": "Pharmacies",
             "kk": "Дәріханалар"
           },
-          "value": 30
+          "value": 27
         },
         {
           "label": {
@@ -1395,24 +1395,24 @@
             "en": "Food",
             "kk": "Тамақтану"
           },
-          "value": 28
+          "value": 35
         }
       ],
       "caption": {
-        "ru": "≈ треть ячеек в целом; вечером в 2–3 раза меньше. Устойчиво к настройкам (β 1–3, радиус 1 200 м, ячейка 0,1/0,5 км², τ 0,1/0,3): 26–38%.",
-        "en": "≈ one third of cells overall; in the evening 2–3× fewer. Robust to settings (β 1–3, radius 1,200 m, cell size 0.1/0.5 km², τ 0.1/0.3): 26–38%."
+        "ru": "≈ треть ячеек; вечером в 1,5–2,5 раза меньше. Устойчиво к допущениям (400 вариантов: доля работающих, β 1–3, радиус 500/1 200 м, τ 0,1–0,3): для продуктов 22–42%.",
+        "en": "≈ one third of cells; in the evening 1.5–2.5× fewer. Robust to assumptions (400 variants: worker share, β 1–3, radius 500/1,200 m, τ 0.1–0.3): 22–42% for groceries."
       }
     },
     "hidden": {
-      "big": "8–9%",
+      "big": "≈4%",
       "title": {
         "ru": "«Скрытый дефицит»",
         "en": "“Hidden deficit”",
         "kk": "«Жасырын тапшылық»"
       },
       "text": {
-        "ru": "ячеек выглядят обеспеченными по прописке, но днём находятся в дефиците.",
-        "en": "of cells look well supplied by registry but are in deficit by day."
+        "ru": "ячеек выглядят обеспеченными продуктами по прописке, но днём находятся в дефиците (1–6% при разных допущениях).",
+        "en": "of cells look well supplied with groceries by registry but are in deficit by day (1–6% under different assumptions)."
       }
     },
     "example": {
@@ -1429,8 +1429,8 @@
             "kk": "Тіркеу бойынша"
           },
           "value": {
-            "ru": "855 жителей",
-            "en": "855 residents"
+            "ru": "855 жителей · TSG −0,46",
+            "en": "855 residents · TSG −0.46"
           }
         },
         {
@@ -1440,8 +1440,8 @@
             "kk": "Таңертең"
           },
           "value": {
-            "ru": "≈3,8 тыс. человек · TSG 0,56",
-            "en": "≈3.8k people · TSG 0.56"
+            "ru": "≈3,7 тыс. человек · TSG 0,21",
+            "en": "≈3.7k people · TSG 0.21"
           }
         },
         {
@@ -1451,14 +1451,14 @@
             "kk": "Күндіз"
           },
           "value": {
-            "ru": "≈2,7 тыс. человек · TSG 0,45",
-            "en": "≈2.7k people · TSG 0.45"
+            "ru": "≈2,7 тыс. человек · TSG 0,07",
+            "en": "≈2.7k people · TSG 0.07"
           }
         }
       ],
       "verdict": {
-        "ru": "Дефицит утром и днём.",
-        "en": "Deficit in the morning and by day."
+        "ru": "По прописке — избыток, утром — дефицит, днём — баланс.",
+        "en": "Surplus by registry, deficit in the morning, balance by day."
       },
       "scenarios": {
         "title": {
@@ -1488,23 +1488,23 @@
           {
             "hours": "9:00–21:00",
             "cells": [
-              "22%",
-              "21%",
-              "10%"
+              "9%",
+              "10%",
+              "5%"
             ]
           },
           {
             "hours": "7:00–19:00",
             "cells": [
-              "29%",
-              "21%",
-              "7%"
+              "15%",
+              "10%",
+              "3%"
             ]
           }
         ],
         "note": {
-          "ru": "Статический метод (без времени суток) дал бы 12%.",
-          "en": "A static method (no time of day) would give 12%."
+          "ru": "Статический метод (без времени суток) дал бы 5%. В 500 м уже 11 продуктовых магазинов.",
+          "en": "A static method (no time of day) would give 5%. There are already 11 grocery stores within 500 m."
         }
       },
       "cards": [
@@ -1514,13 +1514,13 @@
             "en": "By registration",
             "kk": "Тіркеу бойынша"
           },
-          "tsg": "−0,09",
-          "tsgEn": "−0.09",
-          "cls": "balance",
+          "tsg": "−0,46",
+          "tsgEn": "−0.46",
+          "cls": "surplus",
           "sub": {
-            "ru": "баланс, 855 жителей",
-            "en": "balance, 855 residents",
-            "kk": "тепе-теңдік, 855 тұрғын"
+            "ru": "избыток, 855 жителей",
+            "en": "surplus, 855 residents",
+            "kk": "артықшылық, 855 тұрғын"
           }
         },
         {
@@ -1529,13 +1529,13 @@
             "en": "Morning, model",
             "kk": "Таңертең, модель"
           },
-          "tsg": "0,56",
-          "tsgEn": "0.56",
+          "tsg": "0,21",
+          "tsgEn": "0.21",
           "cls": "deficit",
           "sub": {
-            "ru": "дефицит, ≈3,8 тыс. человек",
-            "en": "deficit, ≈3.8k people",
-            "kk": "тапшылық, ≈3,8 мың адам"
+            "ru": "дефицит, ≈3,7 тыс. человек",
+            "en": "deficit, ≈3.7k people",
+            "kk": "тапшылық, ≈3,7 мың адам"
           }
         },
         {
@@ -1544,13 +1544,13 @@
             "en": "Day, model",
             "kk": "Күндіз, модель"
           },
-          "tsg": "0,45",
-          "tsgEn": "0.45",
-          "cls": "deficit",
+          "tsg": "0,07",
+          "tsgEn": "0.07",
+          "cls": "balance",
           "sub": {
-            "ru": "дефицит, ≈2,7 тыс. человек",
-            "en": "deficit, ≈2.7k people",
-            "kk": "тапшылық, ≈2,7 мың адам"
+            "ru": "баланс, ≈2,7 тыс. человек",
+            "en": "balance, ≈2.7k people",
+            "kk": "тепе-теңдік, ≈2,7 мың адам"
           }
         }
       ],
@@ -1568,21 +1568,21 @@
           {
             "hours": "9:00–21:00",
             "v": [
-              22,
-              21,
-              10
+              9,
+              10,
+              5
             ]
           },
           {
             "hours": "7:00–19:00",
             "v": [
-              29,
-              21,
-              7
+              15,
+              10,
+              3
             ]
           }
         ],
-        "static": 12,
+        "static": 5,
         "staticLabel": {
           "ru": "статический метод",
           "en": "static method",
@@ -1691,8 +1691,8 @@
         "en": "not evaluated (no facility within 500 m or < 50 people)"
       },
       "source": {
-        "ru": "Данные OSM, расчёт автора. Карта — средняя по 100 запускам модели.",
-        "en": "OSM data, author’s calculation. Map = mean of 100 model runs."
+        "ru": "Данные OpenStreetMap и 2ГИС (API, ноябрь 2026), расчёт автора. Карта — средняя по 100 запускам модели; показаны только итоги по ячейкам.",
+        "en": "OpenStreetMap and 2GIS data (API, November 2026), author’s calculation. Map = mean of 100 model runs; only per-cell totals are shown."
       },
       "cell206": {
         "ru": "ячейка 206 — пример ниже",
@@ -1741,16 +1741,16 @@
             "kk": "Азық-түлік"
           },
           "v": [
-            33,
-            31,
-            13
+            38,
+            37,
+            14
           ],
           "ci": [
-            "31–36",
-            "28–33",
-            "9–16"
+            "35–40",
+            "34–40",
+            "11–16"
           ],
-          "rho": "0,77 / 0,93"
+          "rho": "0,79 / 0,94"
         },
         {
           "cat": "pharmacy",
@@ -1760,16 +1760,16 @@
             "kk": "Дәріханалар"
           },
           "v": [
-            28,
-            30,
-            5
+            35,
+            27,
+            19
           ],
           "ci": [
-            "24–31",
-            "24–33",
-            "4–9"
+            "31–39",
+            "21–33",
+            "16–23"
           ],
-          "rho": "0,69 / 0,90"
+          "rho": "0,79 / 0,90"
         },
         {
           "cat": "catering",
@@ -1779,16 +1779,16 @@
             "kk": "Қоғамдық тамақтану"
           },
           "v": [
-            28,
-            28,
-            12
+            39,
+            35,
+            17
           ],
           "ci": [
-            "24–31",
-            "24–31",
-            "8–15"
+            "36–42",
+            "33–38",
+            "13–21"
           ],
-          "rho": "0,85 / 0,95"
+          "rho": "0,82 / 0,94"
         }
       ],
       "viewChart": {
@@ -1804,13 +1804,13 @@
     },
     "recalc": {
       "title": {
-        "ru": "Пересчёт с данными 2ГИС (ноябрь 2026)",
-        "en": "Recalculated with 2GIS data (November 2026)",
-        "kk": "2ГИС деректерімен қайта есептеу (2026 ж. қараша)"
+        "ru": "Как изменились цифры после 2ГИС",
+        "en": "How the numbers changed with 2GIS",
+        "kk": "2ГИС-тен кейін сандар қалай өзгерді"
       },
       "lead": {
-        "ru": "Тот же код, 100 запусков. В модель добавлены магазины, аптеки, кафе и их часы работы из 2ГИС, а также школы, вузы, ТРЦ и рынок, которых не было в OSM. Вывод не изменился: днём класс меняет около трети ячеек.",
-        "en": "Same code, 100 runs. Added from 2GIS: shops, pharmacies, cafés and their opening hours, plus schools, universities, malls and a market missing from OSM. The conclusion holds: at midday about a third of cells change class."
+        "ru": "Первый расчёт был только по OpenStreetMap. Итоговый — тот же код и 100 запусков, но объекты и часы работы добавлены из 2ГИС, а доля работающих взята по БНС (42,5%). Вывод не изменился: днём класс меняет около трети ячеек.",
+        "en": "The first run used OpenStreetMap only. The final one uses the same code and 100 runs, with places and opening hours added from 2GIS and the worker share from national statistics (42.5%). The conclusion holds: at midday about a third of cells change class."
       },
       "cols": [
         {
@@ -1819,14 +1819,14 @@
           "kk": "Көрсеткіш"
         },
         {
-          "ru": "OSM (в работе)",
-          "en": "OSM (paper)",
-          "kk": "OSM (жұмыста)"
+          "ru": "Первый расчёт (OSM)",
+          "en": "First run (OSM)",
+          "kk": "Алғашқы есеп (OSM)"
         },
         {
-          "ru": "2ГИС",
-          "en": "2GIS",
-          "kk": "2ГИС"
+          "ru": "Итог (OSM + 2ГИС)",
+          "en": "Final (OSM + 2GIS)",
+          "kk": "Қорытынды (OSM + 2ГИС)"
         },
         {
           "ru": "95%-интервал",
@@ -1841,7 +1841,7 @@
             "en": "Places: groceries"
           },
           "osm": "91",
-          "gis": "151",
+          "gis": "286",
           "ci": ""
         },
         {
@@ -1850,7 +1850,7 @@
             "en": "Places: pharmacies"
           },
           "osm": "44",
-          "gis": "66",
+          "gis": "80",
           "ci": ""
         },
         {
@@ -1859,7 +1859,16 @@
             "en": "Places: food places"
           },
           "osm": "241",
-          "gis": "340",
+          "gis": "359",
+          "ci": ""
+        },
+        {
+          "name": {
+            "ru": "Объектов с известными часами работы",
+            "en": "Places with known opening hours"
+          },
+          "osm": "28 / 376",
+          "gis": "508 / 725",
           "ci": ""
         },
         {
@@ -1868,7 +1877,7 @@
             "en": "Residents with a grocery within 500 m"
           },
           "osm": "38%",
-          "gis": "54%",
+          "gis": "58%",
           "ci": ""
         },
         {
@@ -1877,8 +1886,8 @@
             "en": "People away from home at midday"
           },
           "osm": "35%",
-          "gis": "35%",
-          "ci": "34–36"
+          "gis": "34%",
+          "ci": "34–35"
         },
         {
           "name": {
@@ -1886,8 +1895,8 @@
             "en": "Changed class at midday: groceries"
           },
           "osm": "31%",
-          "gis": "34%",
-          "ci": "32–37"
+          "gis": "37%",
+          "ci": "34–40"
         },
         {
           "name": {
@@ -1895,8 +1904,8 @@
             "en": "Changed class at midday: pharmacies"
           },
           "osm": "30%",
-          "gis": "23%",
-          "ci": "19–27"
+          "gis": "27%",
+          "ci": "21–33"
         },
         {
           "name": {
@@ -1904,8 +1913,8 @@
             "en": "Changed class at midday: food places"
           },
           "osm": "28%",
-          "gis": "34%",
-          "ci": "32–38"
+          "gis": "35%",
+          "ci": "33–38"
         },
         {
           "name": {
@@ -1913,13 +1922,22 @@
             "en": "Hidden deficit at midday: groceries"
           },
           "osm": "8%",
-          "gis": "6%",
-          "ci": "5–8"
+          "gis": "4%",
+          "ci": "3–5"
+        },
+        {
+          "name": {
+            "ru": "Ячейка 206, новый магазин 9–21, утро",
+            "en": "Cell 206, new shop 9–21, morning"
+          },
+          "osm": "22%",
+          "gis": "9%",
+          "ci": ""
         }
       ],
       "note": {
-        "ru": "Карта и числа выше пока по OSM, как в тексте работы. Доля работающих 45%; с долей 42,5% по БНС результаты меняются не больше чем на 2 п. п.",
-        "en": "The map and numbers above still use OSM, as in the paper. Worker share 45%; with 42.5% (national statistics) results change by at most 2 pp."
+        "ru": "Все карты и числа на сайте — по итоговому расчёту. Источник: «2ГИС, API, ноябрь 2026»; публикуются только итоги по ячейкам, сам список объектов 2ГИС не выкладывается.",
+        "en": "All maps and numbers on this site use the final calculation. Source: “2GIS, API, November 2026”; only per-cell totals are published, not the 2GIS list of places."
       }
     }
   },
@@ -2203,7 +2221,9 @@
             "ru": "Интервью 1 — предприниматель",
             "en": "Interview 1 — entrepreneur",
             "kk": "1-сұхбат — кәсіпкер"
-          }
+          },
+          "poster": null,
+          "note": null
         },
         {
           "soon": true,
@@ -2212,7 +2232,9 @@
             "ru": "Интервью 2 — предприниматель",
             "en": "Interview 2 — entrepreneur",
             "kk": "2-сұхбат — кәсіпкер"
-          }
+          },
+          "poster": null,
+          "note": null
         }
       ],
       "soonLabel": {
@@ -2606,8 +2628,8 @@
     },
     "items": [
       {
-        "ru": "OpenStreetMap неполон: часы работы известны только для 28 из 376 объектов услуг; лишь у 38% жителей есть продуктовый магазин в пределах 500 м — по карте.",
-        "en": "OpenStreetMap is incomplete: opening hours are known for only 28 of 376 service objects; only 38% of residents have a grocery store within 500 m on the map."
+        "ru": "OpenStreetMap неполон (часы работы были известны у 28 из 376 объектов), поэтому объекты и часы добавлены из 2ГИС. Часы всё ещё неизвестны у 217 из 725 объектов — для них взяты типовые.",
+        "en": "OpenStreetMap is incomplete (hours were known for 28 of 376 places), so places and hours were added from 2GIS. Hours are still unknown for 217 of 725 places — typical hours are used for them."
       },
       {
         "ru": "Распорядки агентов — допущения.",
@@ -2633,12 +2655,12 @@
     },
     "next": [
       {
-        "ru": "Реальные часы работы из 2ГИС.",
-        "en": "Real opening hours from 2GIS."
+        "ru": "Тест часов работы (H3): сравнить расчёт с часами 2ГИС и без них.",
+        "en": "Opening-hours test (H3): compare the run with 2GIS hours and without them."
       },
       {
-        "ru": "Завершить видеопроверку (H2) и тест часов работы (H3).",
-        "en": "Finish the video check (H2) and the opening-hours test (H3)."
+        "ru": "Завершить видеопроверку (H2).",
+        "en": "Finish the video check (H2)."
       },
       {
         "ru": "Адаптировать модель и приложение к другим городам Казахстана на тех же открытых данных.",
@@ -2670,14 +2692,14 @@
       "rows": [
         {
           "lim": {
-            "ru": "OSM неполон: часы работы известны у 28 из 376 объектов",
-            "en": "OSM is incomplete: hours known for 28 of 376 places"
+            "ru": "OSM неполон: часы работы были известны у 28 из 376 объектов",
+            "en": "OSM is incomplete: hours were known for 28 of 376 places"
           },
           "fix": {
-            "ru": "Часы работы из 2ГИС, пересчёт тем же кодом",
-            "en": "Opening hours from 2GIS, same code re-run"
+            "ru": "Объекты и часы работы из 2ГИС, пересчёт тем же кодом",
+            "en": "Places and opening hours from 2GIS, same code re-run"
           },
-          "status": "progress"
+          "status": "done"
         },
         {
           "lim": {
@@ -2771,15 +2793,15 @@
         "kk": "Қалада қанша нысан бар: 2ГИС және OpenStreetMap"
       },
       "lead": {
-        "ru": "Модель считала по OSM. 2ГИС находит заметно больше — поэтому результаты будут пересчитаны.",
-        "en": "The model used OSM. 2GIS finds noticeably more, so the results will be recomputed.",
-        "kk": "Модель OSM бойынша есептеді. 2ГИС көбірек табады."
+        "ru": "Первый расчёт был по OSM. 2ГИС находит заметно больше, поэтому в итоговом расчёте объекты OSM и 2ГИС объединены без повторов.",
+        "en": "The first run used OSM. 2GIS finds noticeably more, so the final run merges OSM and 2GIS places without duplicates.",
+        "kk": "Алғашқы есеп OSM бойынша болды. Қорытынды есепте OSM мен 2ГИС біріктірілді."
       },
       "gisLabel": "2ГИС",
       "osmLabel": {
-        "ru": "OSM (в модели)",
-        "en": "OSM (in the model)",
-        "kk": "OSM (модельде)"
+        "ru": "OSM (первый расчёт)",
+        "en": "OSM (first run)",
+        "kk": "OSM (алғашқы есеп)"
       },
       "groups": [
         {
@@ -3027,8 +3049,8 @@
         "kk": "* 2ГИС іздеуі бойынша сан; аралас рубрикаларды қамтуы мүмкін."
       },
       "source": {
-        "ru": "2ГИС, API, ноябрь 2026 (итоги по категориям; сами данные 2ГИС не публикуются). OSM — число объектов, использованных в модели.",
-        "en": "2GIS, API, November 2026 (category totals only; raw 2GIS data is not published). OSM — places used in the model.",
+        "ru": "2ГИС, API, ноябрь 2026 (итоги по категориям; сами данные 2ГИС не публикуются). OSM — число объектов в первом расчёте.",
+        "en": "2GIS, API, November 2026 (category totals only; raw 2GIS data is not published). OSM — places in the first run.",
         "kk": "2ГИС, API, 2026 ж. қараша (тек жиынтық сандар)."
       }
     }

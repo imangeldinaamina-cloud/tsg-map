@@ -368,7 +368,7 @@ export function Schedule({
   shareLabel,
 }: {
   slots: { id: string; label: string; time: string }[];
-  rows: { type: string; share: number; cells: string[] }[];
+  rows: { type: string; share: number; shareText?: string; cells: string[] }[];
   hint: string;
   typeLabel: string;
   shareLabel: string;
@@ -383,7 +383,7 @@ export function Schedule({
       <div className="sched-bar" aria-hidden>
         {rows.map((r, i) => (
           <span key={i} style={{ flexGrow: r.share }} className={home(r.cells[k]) ? "home" : "out"}>
-            {r.type} {r.share}%
+            {r.type} {r.shareText ?? r.share}%
           </span>
         ))}
       </div>
@@ -407,7 +407,7 @@ export function Schedule({
             {rows.map((r, ri) => (
               <tr key={ri}>
                 <th scope="row">{r.type}</th>
-                <td className="num tabnum">{r.share}%</td>
+                <td className="num tabnum">{r.shareText ?? r.share}%</td>
                 {r.cells.map((cval, i) => (
                   <td key={i} className={i === k ? "on" : ""}>
                     {cval}
