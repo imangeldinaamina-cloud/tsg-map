@@ -2123,9 +2123,9 @@
       "kk": "*Кәсіпкерлер* үні"
     },
     "intro": {
-      "ru": "Тестирование идёт сейчас. Здесь появятся только реальные, обезличенные результаты — пока их нет, ничего не публикуется.",
-      "en": "Testing is under way. Only real, anonymized results will appear here; nothing is published until then.",
-      "kk": "Тестілеу қазір жүріп жатыр. Мұнда тек нақты, иесіздендірілген нәтижелер шығады."
+      "ru": "Два интервью с предпринимателями Талдыкоргана: как они выбирали место, кто их клиенты и когда приходит больше всего людей. Вопросы показаны на карточках. Тестирование приложения идёт сейчас — итоги опроса появятся здесь, когда будут собраны.",
+      "en": "Two interviews with Taldykorgan business owners: how they chose the location, who their customers are and when most people come. Questions are shown on cards. App testing is under way — survey results will appear here once collected.",
+      "kk": "Талдықорған кәсіпкерлерімен екі сұхбат: орынды қалай таңдады, клиенттері кім және адамдар қашан көп келеді. Сұрақтар карточкаларда көрсетілген."
     },
     "method": {
       "title": {
@@ -2215,26 +2215,34 @@
       },
       "items": [
         {
-          "soon": true,
-          "src": null,
+          "soon": false,
+          "src": "/research/video/interview-1.mp4",
           "title": {
-            "ru": "Интервью 1 — предприниматель",
-            "en": "Interview 1 — entrepreneur",
-            "kk": "1-сұхбат — кәсіпкер"
+            "ru": "Интервью 1 — стройматериалы и сантехника",
+            "en": "Interview 1 — building materials",
+            "kk": "1-сұхбат — құрылыс материалдары"
           },
-          "poster": null,
-          "note": null
+          "poster": "/research/video/interview-1.jpg",
+          "note": {
+            "ru": "10 вопросов · ответы на казахском · 6:37",
+            "en": "10 questions · answers in Kazakh · 6:37",
+            "kk": "10 сұрақ · жауаптар қазақша · 6:37"
+          }
         },
         {
-          "soon": true,
-          "src": null,
+          "soon": false,
+          "src": "/research/video/interview-2.mp4",
           "title": {
-            "ru": "Интервью 2 — предприниматель",
-            "en": "Interview 2 — entrepreneur",
-            "kk": "2-сұхбат — кәсіпкер"
+            "ru": "Интервью 2 — продуктовый магазин у школы",
+            "en": "Interview 2 — grocery store next to a school",
+            "kk": "2-сұхбат — мектеп жанындағы азық-түлік дүкені"
           },
-          "poster": null,
-          "note": null
+          "poster": "/research/video/interview-2.jpg",
+          "note": {
+            "ru": "14 вопросов · на русском · 6:21",
+            "en": "14 questions · in Russian · 6:21",
+            "kk": "14 сұрақ · орысша · 6:21"
+          }
         }
       ],
       "soonLabel": {
