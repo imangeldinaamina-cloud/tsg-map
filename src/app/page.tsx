@@ -557,6 +557,37 @@ export default async function HomePage() {
             />
           </article>
 
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(r.recalc.title)}</h3>
+              <p className="muted small">{p(r.recalc.lead)}</p>
+            </figcaption>
+            <div className="table-wrap">
+              <table className="t t-recalc">
+                <thead>
+                  <tr>
+                    {r.recalc.cols.map((col, i) => (
+                      <th key={i} scope="col" className={i ? "num" : ""}>
+                        {p(col)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {r.recalc.rows.map((row, i) => (
+                    <tr key={i}>
+                      <th scope="row">{p(row.name)}</th>
+                      <td className="num tabnum muted">{row.osm}</td>
+                      <td className="num tabnum gis">{row.gis}</td>
+                      <td className="num tabnum muted">{row.ci || "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="note">{p(r.recalc.note)}</p>
+          </figure>
+
           <div className="table-wrap reveal">
             <table className="t t-hyp">
               <caption className="h3">{p(r.hypotheses.title)}</caption>

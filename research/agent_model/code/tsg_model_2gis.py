@@ -144,6 +144,63 @@ for _r in _g:
         GIS_STATS['added'] += 1
 print('2GIS merge:', GIS_STATS)
 
+# ---------------- 2GIS infrastructure (optional: GIS_INFRA=1) ----------------
+# data/infra_2gis.csv (research/agent_model/fetch_2gis_counts.py): extra schools, colleges/universities, malls, markets
+# (agent destinations) and extra shops / pharmacies / food places (supply, typical hours). Rows are kept only if their
+# 2GIS rubric fits the category; an object within R_DEDUP of an OSM object of the same kind is the same object.
+import os as _os
+if _os.environ.get('WORKER_SHARE'):
+    _w = float(_os.environ['WORKER_SHARE'])
+    CONFIG['shares'] = dict(worker=_w, pupil=0.21, student=0.03, other=round(1 - _w - 0.24, 4))
+INFRA_STATS = {}
+if _os.environ.get('GIS_INFRA') == '1':
+    _RUB = dict(
+        school=({'Школы', 'Гимназии', 'Лицеи', 'Специальные школы', 'Школы-интернаты'}, 'att', 'school', 150),
+        college=({'Колледжи'}, 'att', 'univ', 150),
+        university=({'Университеты', 'Институты', 'Академии', 'Колледжи'}, 'att', 'univ', 150),
+        mall=({'Торговые центры', 'Торгово-развлекательные центры'}, 'att', 'mall', 150),
+        market=({'Рынки'}, 'att', 'market', 200),
+        food=({'Продуктовые магазины', 'Супермаркеты', 'Магазины азиатских продуктов'}, 'cat', 'food', 50),
+        pharmacy=({'Аптеки'}, 'cat', 'pharmacy', 50),
+        catering=({'Кафе', 'Быстрое питание', 'Столовые', 'Рестораны', 'Кофейни', 'Бары'}, 'cat', 'catering', 50),
+    )
+    for _r in _csv.DictReader(open(f'{DATA}/infra_2gis.csv', encoding='utf-8')):
+        if _r['category'] not in _RUB:
+            continue
+        _ok, _field, _kind, _rd = _RUB[_r['category']]
+        _rubs = set(_r['rubrics'].split('; '))
+        _st = INFRA_STATS.setdefault(_kind, dict(rows=0, rubric_out=0, outside=0, same=0, added=0))
+        _st['rows'] += 1
+        if not (_rubs & _ok) or 'общежит' in _r['name'].lower() or 'проектный' in _r['name'].lower():
+            _st['rubric_out'] += 1; continue
+        _X, _Y = to_utm.transform(float(_r['lon']), float(_r['lat']))
+        if not ppoly.contains(Point(_X, _Y)):
+            _st['outside'] += 1; continue
+        if any(o[_field] == _kind and (o['x'] - _X) ** 2 + (o['y'] - _Y) ** 2 < _rd ** 2 for o in objs):
+            _st['same'] += 1; continue
+        _nm = _r['name'].split(',')[0]
+        objs.append(dict(x=_X, y=_Y, cat=_kind if _field == 'cat' else None, att=_kind if _field == 'att' else None, name=_nm, oh=None))
+        _st['added'] += 1
+    print('2GIS infra merge:', INFRA_STATS)
+# second, newer 2GIS hours export (fetch_2gis_contacts.py; hours only, no contacts kept): GIS_HOURS2=1
+if _os.environ.get('GIS_HOURS2') == '1':
+    H2_STATS = dict(rows=0, updated=0, added=0, outside=0)
+    for _r in _csv.DictReader(open(f'{DATA}/hours_2gis_contacts.csv', encoding='utf-8')):
+        H2_STATS['rows'] += 1
+        _X, _Y = to_utm.transform(float(_r['lon']), float(_r['lat']))
+        if not ppoly.contains(Point(_X, _Y)):
+            H2_STATS['outside'] += 1; continue
+        _oh = '00:00-24:00' if _r['is_24x7'] == 'True' else ','.join(x for x in (_r['wed'] or '').split(';') if x)
+        _cands = [o for o in objs if o['cat'] == _r['category'] and (o['x']-_X)**2 + (o['y']-_Y)**2 < 50**2]
+        if _cands:
+            if _oh:
+                min(_cands, key=lambda o: (o['x']-_X)**2 + (o['y']-_Y)**2)['oh'] = _oh
+                H2_STATS['updated'] += 1
+        else:
+            objs.append(dict(x=_X, y=_Y, cat=_r['category'], att=None, name=_r['name'].split(',')[0], oh=_oh or None))
+            H2_STATS['added'] += 1
+    print('2GIS hours (2nd export):', H2_STATS)
+
 # ---------------- opening hours ----------------
 DAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 def day_in(spec, day='We'):

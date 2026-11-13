@@ -27,3 +27,15 @@ python3 code/analyze_2gis.py data out_2gis      # или analyze.py для ст�
 
 ## Video check and calibration
 `python3 research/h2_calibrate.py` (from the repository root) — see `research/H2_REPORT.md`.
+
+## Recalculation with 2GIS (November 2026)
+`code/tsg_model_2gis.py` switches (environment variables):
+- `WORKER_SHARE=0.45` — share of workers (0.425 = national statistics); "other" absorbs the difference.
+- `GIS_INFRA=1` — add schools, colleges/universities, malls, a market and extra services from `data/infra_2gis.csv`
+  (`fetch_2gis_counts.py`), filtered by 2GIS rubric, de-duplicated against OSM (50–200 m).
+- `GIS_HOURS2=1` — opening hours from the second 2GIS export `data/hours_2gis_contacts.csv` (hours only, no contacts).
+```
+RUNS=100 python3 code/analyze.py data out_osm                                               # paper (OSM)
+GIS_INFRA=1 GIS_HOURS2=1 WORKER_SHARE=0.45 RUNS=100 python3 code/analyze_2gis.py data out_2gis  # all 2GIS
+```
+Results (category totals and metrics only): `research/recalc_2gis/` — `compare_OSM_vs_2GIS.csv` and `summary_*.json`.

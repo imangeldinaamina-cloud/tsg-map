@@ -3414,3 +3414,7 @@ html:has(.rs) {
 .rs .research-body .sec + .sec {
   border-top: 0;
 }
+.rs .t-recalc td.gis {
+  font-weight: 600;
+  color: var(--blue-2);
+}

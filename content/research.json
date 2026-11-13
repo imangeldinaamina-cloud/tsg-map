@@ -1267,9 +1267,9 @@
       "kk": "*Модель* не көрсетті"
     },
     "badge": {
-      "ru": "Предварительно: будут пересчитаны тем же кодом после получения данных 2ГИС",
-      "en": "Preliminary: will be recomputed with the same code after 2GIS data",
-      "kk": "Алдын ала: 2ГИС деректерінен кейін сол кодпен қайта есептеледі"
+      "ru": "Числа ниже — по OSM, как в работе; пересчёт с 2ГИС — в таблице в конце раздела",
+      "en": "Numbers below use OSM, as in the paper; the 2GIS recalculation is in the table at the end of this section",
+      "kk": "Төмендегі сандар OSM бойынша; 2ГИС қайта есебі — бөлім соңындағы кестеде"
     },
     "maps": [
       {
@@ -1800,6 +1800,126 @@
         "ru": "Таблица",
         "en": "Table",
         "kk": "Кесте"
+      }
+    },
+    "recalc": {
+      "title": {
+        "ru": "Пересчёт с данными 2ГИС (ноябрь 2026)",
+        "en": "Recalculated with 2GIS data (November 2026)",
+        "kk": "2ГИС деректерімен қайта есептеу (2026 ж. қараша)"
+      },
+      "lead": {
+        "ru": "Тот же код, 100 запусков. В модель добавлены магазины, аптеки, кафе и их часы работы из 2ГИС, а также школы, вузы, ТРЦ и рынок, которых не было в OSM. Вывод не изменился: днём класс меняет около трети ячеек.",
+        "en": "Same code, 100 runs. Added from 2GIS: shops, pharmacies, cafés and their opening hours, plus schools, universities, malls and a market missing from OSM. The conclusion holds: at midday about a third of cells change class."
+      },
+      "cols": [
+        {
+          "ru": "Показатель",
+          "en": "Metric",
+          "kk": "Көрсеткіш"
+        },
+        {
+          "ru": "OSM (в работе)",
+          "en": "OSM (paper)",
+          "kk": "OSM (жұмыста)"
+        },
+        {
+          "ru": "2ГИС",
+          "en": "2GIS",
+          "kk": "2ГИС"
+        },
+        {
+          "ru": "95%-интервал",
+          "en": "95% interval",
+          "kk": "95% аралық"
+        }
+      ],
+      "rows": [
+        {
+          "name": {
+            "ru": "Объектов: продукты",
+            "en": "Places: groceries"
+          },
+          "osm": "91",
+          "gis": "151",
+          "ci": ""
+        },
+        {
+          "name": {
+            "ru": "Объектов: аптеки",
+            "en": "Places: pharmacies"
+          },
+          "osm": "44",
+          "gis": "66",
+          "ci": ""
+        },
+        {
+          "name": {
+            "ru": "Объектов: общепит",
+            "en": "Places: food places"
+          },
+          "osm": "241",
+          "gis": "340",
+          "ci": ""
+        },
+        {
+          "name": {
+            "ru": "Жителей с продуктовым в 500 м",
+            "en": "Residents with a grocery within 500 m"
+          },
+          "osm": "38%",
+          "gis": "54%",
+          "ci": ""
+        },
+        {
+          "name": {
+            "ru": "Людей днём не в своём районе",
+            "en": "People away from home at midday"
+          },
+          "osm": "35%",
+          "gis": "35%",
+          "ci": "34–36"
+        },
+        {
+          "name": {
+            "ru": "Сменили класс днём: продукты",
+            "en": "Changed class at midday: groceries"
+          },
+          "osm": "31%",
+          "gis": "34%",
+          "ci": "32–37"
+        },
+        {
+          "name": {
+            "ru": "Сменили класс днём: аптеки",
+            "en": "Changed class at midday: pharmacies"
+          },
+          "osm": "30%",
+          "gis": "23%",
+          "ci": "19–27"
+        },
+        {
+          "name": {
+            "ru": "Сменили класс днём: общепит",
+            "en": "Changed class at midday: food places"
+          },
+          "osm": "28%",
+          "gis": "34%",
+          "ci": "32–38"
+        },
+        {
+          "name": {
+            "ru": "Скрытый дефицит днём: продукты",
+            "en": "Hidden deficit at midday: groceries"
+          },
+          "osm": "8%",
+          "gis": "6%",
+          "ci": "5–8"
+        }
+      ],
+      "note": {
+        "ru": "Карта и числа выше пока по OSM, как в тексте работы. Доля работающих 45%; с долей 42,5% по БНС результаты меняются не больше чем на 2 п. п.",
+        "en": "The map and numbers above still use OSM, as in the paper. Worker share 45%; with 42.5% (national statistics) results change by at most 2 pp."
       }
     }
   },
