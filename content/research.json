@@ -286,9 +286,9 @@
   },
   "problem": {
     "title": {
-      "ru": "Проблема: люди двигаются, а прописка — нет",
-      "en": "The problem: people move, the registry doesn't",
-      "kk": "Мәселе: адамдар қозғалады, ал тіркеу — жоқ"
+      "ru": "Люди *двигаются*, а прописка — нет",
+      "en": "People *move*, the registry doesn’t",
+      "kk": "Адамдар *қозғалады*, ал тіркеу — жоқ"
     },
     "lead": {
       "ru": "Магазины, аптеки и кафе открывают там, где много жителей «по прописке». Но около 35% жителей днём находятся в другом районе. Метод по прописке не видит дневного движения — и точки открываются там, где людей в нужный час нет.",
@@ -319,13 +319,70 @@
       "ru": "Насколько учёт времени суток меняет выявляемый дефицит и избыток услуг?",
       "en": "How much does accounting for time of day change the detected deficit and surplus of services?",
       "kk": "Тәулік уақытын ескеру қызметтердің анықталған тапшылығы мен артықтығын қаншалықты өзгертеді?"
-    }
+    },
+    "map": {
+      "title": {
+        "ru": "Где люди: по прописке и в течение дня",
+        "en": "Where people are: by registration and during the day",
+        "kk": "Адамдар қайда: тіркеу бойынша және күн ішінде"
+      },
+      "hint": {
+        "ru": "Переключайте время суток. Наведите на ячейку — увидите число людей.",
+        "en": "Switch the time of day. Hover a cell to see the number of people.",
+        "kk": "Тәулік уақытын ауыстырыңыз. Ұяшыққа апарыңыз — адам саны көрінеді."
+      },
+      "legend": {
+        "ru": "человек в ячейке 0,25 км²",
+        "en": "people per 0.25 km² cell",
+        "kk": "0,25 км² ұяшықтағы адам"
+      },
+      "source": {
+        "ru": "Агентная модель, среднее по 100 запускам; прописка — WorldPop, масштаб по БНС РК (171 618 чел.)",
+        "en": "Agent model, mean of 100 runs; registration — WorldPop scaled to the official 171,618",
+        "kk": "Агенттік модель, 100 іске қосудың орташасы; тіркеу — WorldPop, ҰСБ бойынша масштаб"
+      }
+    },
+    "stats": [
+      {
+        "value": {
+          "ru": "6,3 тыс.",
+          "en": "6.3k"
+        },
+        "label": {
+          "ru": "людей в самой загруженной ячейке днём",
+          "en": "people in the busiest cell during the day",
+          "kk": "күндіз ең толы ұяшықта"
+        }
+      },
+      {
+        "value": {
+          "ru": "0,9 тыс.",
+          "en": "0.9k"
+        },
+        "label": {
+          "ru": "в самой населённой ячейке по прописке",
+          "en": "in the most populated cell by registration",
+          "kk": "тіркеу бойынша ең көп ұяшықта"
+        }
+      },
+      {
+        "value": {
+          "ru": "35%",
+          "en": "35%"
+        },
+        "label": {
+          "ru": "жителей днём находятся не там, где живут",
+          "en": "of residents are elsewhere during the day",
+          "kk": "тұрғындар күндіз басқа жерде"
+        }
+      }
+    ]
   },
   "method": {
     "title": {
-      "ru": "Что я сделал(а): 6 шагов",
-      "en": "What I did: 6 steps",
-      "kk": "Не істедім: 6 қадам"
+      "ru": "Что я сделал(а): *от данных до индекса*",
+      "en": "What I did: *from data to an index*",
+      "kk": "Не істедім: *деректерден индекске дейін*"
     },
     "steps": [
       {
@@ -424,13 +481,462 @@
           "en": "45 clips were filmed at 10 points at different times of day. YOLOv8 counts people in the frame; daily profiles are compared rather than absolute numbers (see the video-check formula). The app was tested with 10 entrepreneurs of Taldykorgan."
         }
       }
-    ]
+    ],
+    "flowTitle": {
+      "ru": "Схема расчёта: нажмите на блок",
+      "en": "How it is computed: tap a block",
+      "kk": "Есептеу сызбасы: блокты басыңыз"
+    },
+    "flow": [
+      {
+        "id": "people",
+        "step": 0,
+        "kind": "people",
+        "title": {
+          "ru": "Данные о людях",
+          "en": "Data on people",
+          "kk": "Адамдар туралы деректер"
+        },
+        "text": {
+          "ru": "WorldPop + БНС РК, места работы и учёбы, ТРЦ, рынки (OSM)",
+          "en": "WorldPop + national statistics, workplaces, schools, malls, markets (OSM)"
+        }
+      },
+      {
+        "id": "agents",
+        "step": 2,
+        "kind": "people",
+        "title": {
+          "ru": "Агентная модель",
+          "en": "Agent model",
+          "kk": "Агенттік модель"
+        },
+        "text": {
+          "ru": "≈17 тыс. агентов, выбор места по Хаффу, 100 запусков → присутствие D(t)",
+          "en": "≈17k agents, Huff choice, 100 runs → presence D(t)"
+        },
+        "formula": "1–3"
+      },
+      {
+        "id": "services",
+        "step": 0,
+        "kind": "supply",
+        "title": {
+          "ru": "Объекты услуг",
+          "en": "Services",
+          "kk": "Қызмет нысандары"
+        },
+        "text": {
+          "ru": "Продукты, аптеки, общепит из OSM + часы работы",
+          "en": "Groceries, pharmacies, food places from OSM + opening hours"
+        }
+      },
+      {
+        "id": "supply",
+        "step": 3,
+        "kind": "supply",
+        "title": {
+          "ru": "Предложение",
+          "en": "Supply",
+          "kk": "Ұсыныс"
+        },
+        "text": {
+          "ru": "Квартическое ядро 500 м, только пока объект открыт → S(t)",
+          "en": "Quartic kernel, 500 m, only while open → S(t)"
+        },
+        "formula": "4"
+      },
+      {
+        "id": "tsg",
+        "step": 4,
+        "kind": "index",
+        "title": {
+          "ru": "Индекс TSG",
+          "en": "TSG index",
+          "kk": "TSG индексі"
+        },
+        "text": {
+          "ru": "355 ячеек по 0,25 км²: TSG = (a − b)/(a + b) → дефицит · баланс · избыток",
+          "en": "355 cells of 0.25 km²: TSG = (a − b)/(a + b) → deficit · balance · surplus"
+        },
+        "formula": "5–6"
+      },
+      {
+        "id": "video",
+        "step": 5,
+        "kind": "check",
+        "title": {
+          "ru": "Проверка видео",
+          "en": "Video check",
+          "kk": "Бейне тексеру"
+        },
+        "text": {
+          "ru": "10 точек, YOLOv8 считает людей, профили по времени суток (H2)",
+          "en": "10 points, YOLOv8 counts people, time-of-day profiles (H2)"
+        },
+        "formula": "7"
+      },
+      {
+        "id": "app",
+        "step": 5,
+        "kind": "use",
+        "title": {
+          "ru": "Приложение",
+          "en": "Web app",
+          "kk": "Қосымша"
+        },
+        "text": {
+          "ru": "Карта дефицита по времени суток, анализ новой точки",
+          "en": "Deficit map by time of day, analysis of a new location"
+        },
+        "formula": "8"
+      }
+    ],
+    "compare": {
+      "title": {
+        "ru": "Чем TSG отличается от других методов",
+        "en": "How TSG differs from other methods",
+        "kk": "TSG басқа әдістерден немен ерекшеленеді"
+      },
+      "cols": [
+        {
+          "ru": "Метод",
+          "en": "Method",
+          "kk": "Әдіс"
+        },
+        {
+          "ru": "Население",
+          "en": "Population",
+          "kk": "Халық"
+        },
+        {
+          "ru": "Время суток",
+          "en": "Time of day",
+          "kk": "Тәулік уақыты"
+        },
+        {
+          "ru": "Конкуренция",
+          "en": "Competition",
+          "kk": "Бәсеке"
+        },
+        {
+          "ru": "Данные",
+          "en": "Data",
+          "kk": "Деректер"
+        }
+      ],
+      "rows": [
+        {
+          "name": "E2SFCA",
+          "cells": [
+            {
+              "ru": "проживающее",
+              "en": "residents",
+              "kk": "тұратын"
+            },
+            {
+              "ru": "нет",
+              "en": "no",
+              "kk": "жоқ"
+            },
+            {
+              "ru": "косвенно",
+              "en": "indirectly",
+              "kk": "жанама"
+            },
+            {
+              "ru": "открытые",
+              "en": "open",
+              "kk": "ашық"
+            }
+          ]
+        },
+        {
+          "name": {
+            "ru": "Модель Хаффа",
+            "en": "Huff model"
+          },
+          "cells": [
+            {
+              "ru": "проживающее",
+              "en": "residents",
+              "kk": "тұратын"
+            },
+            {
+              "ru": "нет",
+              "en": "no",
+              "kk": "жоқ"
+            },
+            {
+              "ru": "да",
+              "en": "yes",
+              "kk": "иә"
+            },
+            {
+              "ru": "открытые",
+              "en": "open",
+              "kk": "ашық"
+            }
+          ]
+        },
+        {
+          "name": {
+            "ru": "Глобальные модели",
+            "en": "Global models"
+          },
+          "cells": [
+            {
+              "ru": "проживающее или среднее за сутки",
+              "en": "residents or daily mean"
+            },
+            {
+              "ru": "нет",
+              "en": "no",
+              "kk": "жоқ"
+            },
+            {
+              "ru": "нет",
+              "en": "no",
+              "kk": "жоқ"
+            },
+            {
+              "ru": "открытые",
+              "en": "open",
+              "kk": "ашық"
+            }
+          ]
+        },
+        {
+          "name": {
+            "ru": "Динамическая доступность",
+            "en": "Dynamic accessibility"
+          },
+          "cells": [
+            {
+              "ru": "присутствующее",
+              "en": "present",
+              "kk": "қатысатын"
+            },
+            {
+              "ru": "да",
+              "en": "yes",
+              "kk": "иә"
+            },
+            {
+              "ru": "нет",
+              "en": "no",
+              "kk": "жоқ"
+            },
+            {
+              "ru": "операторы связи",
+              "en": "mobile operators"
+            }
+          ]
+        },
+        {
+          "name": {
+            "ru": "Мультиагентные транспортные модели",
+            "en": "Multi-agent transport models"
+          },
+          "cells": [
+            {
+              "ru": "присутствующее (симуляция)",
+              "en": "present (simulated)"
+            },
+            {
+              "ru": "да",
+              "en": "yes",
+              "kk": "иә"
+            },
+            {
+              "ru": "нет",
+              "en": "no",
+              "kk": "жоқ"
+            },
+            {
+              "ru": "транспортные опросы",
+              "en": "travel surveys"
+            }
+          ]
+        },
+        {
+          "name": {
+            "ru": "TSG (эта работа)",
+            "en": "TSG (this work)",
+            "kk": "TSG (бұл жұмыс)"
+          },
+          "me": true,
+          "cells": [
+            {
+              "ru": "присутствующее, агентная модель",
+              "en": "present, agent model"
+            },
+            {
+              "ru": "да",
+              "en": "yes",
+              "kk": "иә"
+            },
+            {
+              "ru": "да",
+              "en": "yes",
+              "kk": "иә"
+            },
+            {
+              "ru": "открытые + видео",
+              "en": "open + video",
+              "kk": "ашық + бейне"
+            }
+          ]
+        }
+      ]
+    },
+    "schedule": {
+      "title": {
+        "ru": "Распорядок агентов: кто где находится",
+        "en": "Agent schedule: who is where",
+        "kk": "Агенттер кестесі: кім қайда"
+      },
+      "hint": {
+        "ru": "Выберите время суток",
+        "en": "Pick a time of day",
+        "kk": "Тәулік уақытын таңдаңыз"
+      },
+      "slots": [
+        {
+          "id": "morning",
+          "label": {
+            "ru": "Утро",
+            "en": "Morning",
+            "kk": "Таң"
+          },
+          "time": "07:00–11:00"
+        },
+        {
+          "id": "day",
+          "label": {
+            "ru": "День",
+            "en": "Day",
+            "kk": "Күндіз"
+          },
+          "time": "11:00–16:30"
+        },
+        {
+          "id": "evening",
+          "label": {
+            "ru": "Вечер",
+            "en": "Evening",
+            "kk": "Кеш"
+          },
+          "time": "16:30–22:00"
+        }
+      ],
+      "rows": [
+        {
+          "type": {
+            "ru": "Работающий",
+            "en": "Worker",
+            "kk": "Жұмыс істейтін"
+          },
+          "share": 45,
+          "cells": [
+            {
+              "ru": "работа, 0,85",
+              "en": "work, 0.85"
+            },
+            {
+              "ru": "работа, 0,85",
+              "en": "work, 0.85"
+            },
+            {
+              "ru": "дома; ТРЦ 0,20",
+              "en": "home; mall 0.20"
+            }
+          ]
+        },
+        {
+          "type": {
+            "ru": "Школьник",
+            "en": "Pupil",
+            "kk": "Оқушы"
+          },
+          "share": 21,
+          "cells": [
+            {
+              "ru": "школа, 1-я смена 0,65",
+              "en": "school, 1st shift 0.65"
+            },
+            {
+              "ru": "школа, 2-я смена 0,35",
+              "en": "school, 2nd shift 0.35"
+            },
+            {
+              "ru": "дома; ТРЦ 0,15",
+              "en": "home; mall 0.15"
+            }
+          ]
+        },
+        {
+          "type": {
+            "ru": "Студент",
+            "en": "Student",
+            "kk": "Студент"
+          },
+          "share": 3,
+          "cells": [
+            {
+              "ru": "вуз, 0,80",
+              "en": "university, 0.80"
+            },
+            {
+              "ru": "вуз, 0,60",
+              "en": "university, 0.60"
+            },
+            {
+              "ru": "дома; ТРЦ 0,20",
+              "en": "home; mall 0.20"
+            }
+          ]
+        },
+        {
+          "type": {
+            "ru": "Прочий",
+            "en": "Other",
+            "kk": "Басқа"
+          },
+          "share": 31,
+          "cells": [
+            {
+              "ru": "дома; ТРЦ или рынок 0,15",
+              "en": "home; mall or market 0.15"
+            },
+            {
+              "ru": "дома; ТРЦ или рынок 0,25",
+              "en": "home; mall or market 0.25"
+            },
+            {
+              "ru": "дома",
+              "en": "home",
+              "kk": "үйде"
+            }
+          ]
+        }
+      ],
+      "note": {
+        "ru": "Доли и вероятности зафиксированы до расчёта. Вес крупных ТРЦ — 5, рынка — 3, остальных — 1. 1 агент = 10 жителей, β = 2.",
+        "en": "Shares and probabilities were fixed before computing. Large malls weigh 5, the market 3, others 1. 1 agent = 10 residents, β = 2."
+      },
+      "shareLabel": {
+        "ru": "доля жителей",
+        "en": "share of residents",
+        "kk": "тұрғындар үлесі"
+      }
+    }
   },
   "formulas": {
     "title": {
-      "ru": "Формулы — и что они значат",
-      "en": "The formulas, explained",
-      "kk": "Формулалар және олардың мағынасы"
+      "ru": "Формулы — и что они *значат*",
+      "en": "The formulas, *explained*",
+      "kk": "Формулалар және олардың *мағынасы*"
     },
     "lead": {
       "ru": "Каждая формула — с объяснением в одно предложение. Математика короткая; главное в том, ЧТО именно сравнивается.",
@@ -694,13 +1200,71 @@
     "limitation": {
       "ru": "Честное ограничение: TSG измеряет несоответствие распределений, а не абсолютную нехватку. Поэтому приложение показывает ещё и число открытых объектов на 1 000 находящихся рядом людей.",
       "en": "Honest limitation: TSG measures a mismatch of distributions, not absolute shortage. That is why the app also shows open objects per 1,000 people present."
+    },
+    "classes": {
+      "title": {
+        "ru": "Классы ячеек и что они значат для бизнеса",
+        "en": "Cell classes and what they mean for business",
+        "kk": "Ұяшық кластары және бизнес үшін мәні"
+      },
+      "rows": [
+        {
+          "cls": "deficit",
+          "name": {
+            "ru": "Дефицит («голубой океан»)",
+            "en": "Deficit (“blue ocean”)",
+            "kk": "Тапшылық («көк мұхит»)"
+          },
+          "cond": "TSG ≥ 0,2",
+          "condEn": "TSG ≥ 0.2",
+          "meaning": {
+            "ru": "необслуженный спрос, место для новой точки",
+            "en": "unserved demand, room for a new outlet",
+            "kk": "қамтылмаған сұраныс, жаңа нүктеге орын"
+          }
+        },
+        {
+          "cls": "balance",
+          "name": {
+            "ru": "Баланс",
+            "en": "Balance",
+            "kk": "Тепе-теңдік"
+          },
+          "cond": "−0,2 < TSG < 0,2",
+          "condEn": "−0.2 < TSG < 0.2",
+          "meaning": {
+            "ru": "спрос и предложение соразмерны",
+            "en": "demand and supply match",
+            "kk": "сұраныс пен ұсыныс сәйкес"
+          }
+        },
+        {
+          "cls": "surplus",
+          "name": {
+            "ru": "Избыток («красный океан»)",
+            "en": "Surplus (“red ocean”)",
+            "kk": "Артықшылық («қызыл мұхит»)"
+          },
+          "cond": "TSG ≤ −0,2",
+          "condEn": "TSG ≤ −0.2",
+          "meaning": {
+            "ru": "сильная конкуренция, высокий риск",
+            "en": "strong competition, high risk",
+            "kk": "күшті бәсеке, жоғары тәуекел"
+          }
+        }
+      ],
+      "note": {
+        "ru": "Порог 0,2 — когда одна доля в 1,5 раза больше другой. Оценка — в ячейках, где в 500 м есть объект категории и не менее 50 человек.",
+        "en": "The 0.2 threshold means one share is 1.5× the other. Cells are evaluated only with a facility within 500 m and at least 50 people."
+      }
     }
   },
   "results": {
     "title": {
-      "ru": "Результаты",
-      "en": "Results",
-      "kk": "Нәтижелер"
+      "ru": "Что показала модель",
+      "en": "What the model shows",
+      "kk": "Модель не көрсетті"
     },
     "badge": {
       "ru": "Предварительно: будут пересчитаны тем же кодом после получения данных 2ГИС",
@@ -933,15 +1497,114 @@
             "hours": "7:00–19:00",
             "cells": [
               "29%",
-              "—",
+              "21%",
               "7%"
             ]
           }
         ],
         "note": {
-          "ru": "Статический метод (без времени суток) дал бы 12%. Для варианта 7:00–19:00 дневная доля в расчёте не приводилась.",
-          "en": "The static method (no time of day) would say 12%. The daytime share for 7:00–19:00 was not reported."
+          "ru": "Статический метод (без времени суток) дал бы 12%.",
+          "en": "A static method (no time of day) would give 12%."
         }
+      },
+      "cards": [
+        {
+          "label": {
+            "ru": "По прописке",
+            "en": "By registration",
+            "kk": "Тіркеу бойынша"
+          },
+          "tsg": "−0,09",
+          "tsgEn": "−0.09",
+          "cls": "balance",
+          "sub": {
+            "ru": "баланс, 855 жителей",
+            "en": "balance, 855 residents",
+            "kk": "тепе-теңдік, 855 тұрғын"
+          }
+        },
+        {
+          "label": {
+            "ru": "Утром по модели",
+            "en": "Morning, model",
+            "kk": "Таңертең, модель"
+          },
+          "tsg": "0,56",
+          "tsgEn": "0.56",
+          "cls": "deficit",
+          "sub": {
+            "ru": "дефицит, ≈3,8 тыс. человек",
+            "en": "deficit, ≈3.8k people",
+            "kk": "тапшылық, ≈3,8 мың адам"
+          }
+        },
+        {
+          "label": {
+            "ru": "Днём по модели",
+            "en": "Day, model",
+            "kk": "Күндіз, модель"
+          },
+          "tsg": "0,45",
+          "tsgEn": "0.45",
+          "cls": "deficit",
+          "sub": {
+            "ru": "дефицит, ≈2,7 тыс. человек",
+            "en": "deficit, ≈2.7k people",
+            "kk": "тапшылық, ≈2,7 мың адам"
+          }
+        }
+      ],
+      "share": {
+        "title": {
+          "ru": "Ожидаемая доля рынка нового магазина (Хафф, зона 1 км)",
+          "en": "Expected market share of a new shop (Huff, 1 km zone)"
+        },
+        "hoursLabel": {
+          "ru": "Часы работы",
+          "en": "Opening hours",
+          "kk": "Жұмыс уақыты"
+        },
+        "options": [
+          {
+            "hours": "9:00–21:00",
+            "v": [
+              22,
+              21,
+              10
+            ]
+          },
+          {
+            "hours": "7:00–19:00",
+            "v": [
+              29,
+              21,
+              7
+            ]
+          }
+        ],
+        "static": 12,
+        "staticLabel": {
+          "ru": "статический метод",
+          "en": "static method",
+          "kk": "статикалық әдіс"
+        },
+        "slots": [
+          {
+            "ru": "Утро",
+            "en": "Morning",
+            "kk": "Таң"
+          },
+          {
+            "ru": "День",
+            "en": "Day",
+            "kk": "Күндіз"
+          },
+          {
+            "ru": "Вечер",
+            "en": "Evening",
+            "kk": "Кеш"
+          }
+        ]
       }
     },
     "hypotheses": {
@@ -991,13 +1654,160 @@
           }
         }
       ]
+    },
+    "map": {
+      "title": {
+        "ru": "Карта индекса TSG",
+        "en": "TSG index map",
+        "kk": "TSG индексінің картасы"
+      },
+      "hint": {
+        "ru": "Выберите услугу и время. «По прописке» — как оценил бы обычный метод. Наведите на ячейку.",
+        "en": "Pick a service and a time. “By registration” is what the usual method would show. Hover a cell.",
+        "kk": "Қызмет пен уақытты таңдаңыз. Ұяшыққа апарыңыз."
+      },
+      "changed": {
+        "ru": "ячеек сменили класс по сравнению с пропиской",
+        "en": "of cells changed class vs. registration",
+        "kk": "ұяшық тіркеумен салыстырғанда класын ауыстырды"
+      },
+      "legendDef": {
+        "ru": "дефицит",
+        "en": "deficit",
+        "kk": "тапшылық"
+      },
+      "legendBal": {
+        "ru": "баланс",
+        "en": "balance",
+        "kk": "тепе-теңдік"
+      },
+      "legendSur": {
+        "ru": "избыток",
+        "en": "surplus",
+        "kk": "артықшылық"
+      },
+      "legendNone": {
+        "ru": "нет оценки (нет объекта в 500 м или < 50 чел.)",
+        "en": "not evaluated (no facility within 500 m or < 50 people)"
+      },
+      "source": {
+        "ru": "Данные OSM, расчёт автора. Карта — средняя по 100 запускам модели.",
+        "en": "OSM data, author’s calculation. Map = mean of 100 model runs."
+      },
+      "cell206": {
+        "ru": "ячейка 206 — пример ниже",
+        "en": "cell 206 — example below",
+        "kk": "206-ұяшық — төмендегі мысал"
+      }
+    },
+    "changeTable": {
+      "title": {
+        "ru": "Доля ячеек, сменивших класс (τ = 0,2): среднее и 95%-интервал",
+        "en": "Share of cells that changed class (τ = 0.2): mean and 95% interval",
+        "kk": "Класын ауыстырған ұяшықтар үлесі (τ = 0,2)"
+      },
+      "cols": [
+        {
+          "ru": "Категория",
+          "en": "Category",
+          "kk": "Санат"
+        },
+        {
+          "ru": "Утро",
+          "en": "Morning",
+          "kk": "Таң"
+        },
+        {
+          "ru": "День",
+          "en": "Day",
+          "kk": "Күндіз"
+        },
+        {
+          "ru": "Вечер",
+          "en": "Evening",
+          "kk": "Кеш"
+        },
+        {
+          "ru": "Корреляция статики и динамики (день / вечер)",
+          "en": "Static vs dynamic correlation (day / evening)"
+        }
+      ],
+      "rows": [
+        {
+          "cat": "food",
+          "name": {
+            "ru": "Продукты",
+            "en": "Groceries",
+            "kk": "Азық-түлік"
+          },
+          "v": [
+            33,
+            31,
+            13
+          ],
+          "ci": [
+            "31–36",
+            "28–33",
+            "9–16"
+          ],
+          "rho": "0,77 / 0,93"
+        },
+        {
+          "cat": "pharmacy",
+          "name": {
+            "ru": "Аптеки",
+            "en": "Pharmacies",
+            "kk": "Дәріханалар"
+          },
+          "v": [
+            28,
+            30,
+            5
+          ],
+          "ci": [
+            "24–31",
+            "24–33",
+            "4–9"
+          ],
+          "rho": "0,69 / 0,90"
+        },
+        {
+          "cat": "catering",
+          "name": {
+            "ru": "Общепит",
+            "en": "Food places",
+            "kk": "Қоғамдық тамақтану"
+          },
+          "v": [
+            28,
+            28,
+            12
+          ],
+          "ci": [
+            "24–31",
+            "24–31",
+            "8–15"
+          ],
+          "rho": "0,85 / 0,95"
+        }
+      ],
+      "viewChart": {
+        "ru": "График",
+        "en": "Chart",
+        "kk": "График"
+      },
+      "viewTable": {
+        "ru": "Таблица",
+        "en": "Table",
+        "kk": "Кесте"
+      }
     }
   },
   "appSection": {
     "title": {
-      "ru": "Веб-приложение",
-      "en": "The web app",
-      "kk": "Веб-қосымша"
+      "ru": "Веб-приложение: *проверить место*",
+      "en": "The web app: *check a location*",
+      "kk": "Веб-қосымша: *орынды тексеру*"
     },
     "lead": {
       "ru": "Приложение проверяет место для нового бизнеса: где днём людей больше, чем услуг рядом, и что будет с конкурентами в пешей доступности.",
@@ -1170,9 +1980,9 @@
   },
   "interviews": {
     "title": {
-      "ru": "Тестирование с предпринимателями",
-      "en": "Testing with entrepreneurs",
-      "kk": "Кәсіпкерлермен тестілеу"
+      "ru": "Голос *предпринимателей*",
+      "en": "The *entrepreneurs’* voice",
+      "kk": "*Кәсіпкерлер* үні"
     },
     "intro": {
       "ru": "Тестирование идёт сейчас. Здесь появятся только реальные, обезличенные результаты — пока их нет, ничего не публикуется.",
@@ -1258,18 +2068,100 @@
       "ru": "План: 6–10 предпринимателей и 10–15 жителей Талдыкоргана. Предприниматели также оценят знакомые места, где бизнес идёт хорошо или плохо, и сравнят с классом TSG — вторая независимая проверка модели наряду с видео.",
       "en": "Plan: 6–10 entrepreneurs and 10–15 residents of Taldykorgan. Entrepreneurs will also rate familiar places where business goes well or badly and compare with the TSG class — a second independent check besides video.",
       "kk": "Жоспар: Талдықорғанның 6–10 кәсіпкері және 10–15 тұрғыны."
+    },
+    "videos": {
+      "title": {
+        "ru": "Интервью",
+        "en": "Interviews",
+        "kk": "Сұхбаттар"
+      },
+      "items": [
+        {
+          "soon": true,
+          "src": null,
+          "title": {
+            "ru": "Интервью 1 — предприниматель",
+            "en": "Interview 1 — entrepreneur",
+            "kk": "1-сұхбат — кәсіпкер"
+          }
+        },
+        {
+          "soon": true,
+          "src": null,
+          "title": {
+            "ru": "Интервью 2 — предприниматель",
+            "en": "Interview 2 — entrepreneur",
+            "kk": "2-сұхбат — кәсіпкер"
+          }
+        }
+      ],
+      "soonLabel": {
+        "ru": "Видео появится после интервью",
+        "en": "Video coming after the interview",
+        "kk": "Бейне сұхбаттан кейін шығады"
+      }
+    },
+    "form": {
+      "soon": true,
+      "title": {
+        "ru": "Итоги опроса (Google Форма)",
+        "en": "Survey results (Google Form)",
+        "kk": "Сауалнама қорытындысы (Google Форма)"
+      },
+      "lead": {
+        "ru": "Здесь будут общие обезличенные результаты анкеты.",
+        "en": "Overall anonymised results of the questionnaire will appear here.",
+        "kk": "Мұнда сауалнаманың жалпы нәтижелері болады."
+      },
+      "kpis": [
+        {
+          "label": {
+            "ru": "ответов",
+            "en": "responses",
+            "kk": "жауап"
+          }
+        },
+        {
+          "label": {
+            "ru": "средний балл удобства SUS",
+            "en": "mean SUS usability score",
+            "kk": "SUS орташа балы"
+          }
+        },
+        {
+          "label": {
+            "ru": "выполнили задания",
+            "en": "completed the tasks",
+            "kk": "тапсырманы орындады"
+          }
+        }
+      ],
+      "charts": [
+        {
+          "ru": "Как вы сейчас выбираете место?",
+          "en": "How do you choose a location now?"
+        },
+        {
+          "ru": "Помог бы вам такой инструмент?",
+          "en": "Would such a tool help you?"
+        }
+      ],
+      "soonLabel": {
+        "ru": "скоро",
+        "en": "soon",
+        "kk": "жақында"
+      }
     }
   },
   "gallery": {
     "title": {
-      "ru": "За кадром",
-      "en": "Behind the scenes",
-      "kk": "Сахна артында"
+      "ru": "Город *на камеру*",
+      "en": "The city *on camera*",
+      "kk": "Қала *камерада*"
     },
     "lead": {
-      "ru": "Мои собственные кадры: 45 роликов на 10 точках города — 6 и 7 октября (будни) и 10 октября 2026 (суббота). Людей считает YOLOv8 (зелёные рамки, число вверху). Головы прохожих размыты.",
-      "en": "My own footage: 45 clips at 10 city points — 6 and 7 October (weekdays) and 10 October 2026 (Saturday). YOLOv8 counts people (green boxes, count at the top). Bystanders’ heads are blurred.",
-      "kk": "Өз түсірілімдерім: 10 нүктеде 45 ролик — 6 және 7 қазан (жұмыс күндері) және 2026 жылғы 10 қазан (сенбі). Өтіп бара жатқандардың бастары бұлдыратылған."
+      "ru": "Мои кадры: 45 роликов на 10 точках — 6 и 7 октября (будни) и 10 октября 2026 (суббота). Людей считает YOLOv8. Головы прохожих размыты.",
+      "en": "My own footage: 45 clips at 10 points — 6 and 7 October (weekdays) and 10 October 2026 (Saturday). YOLOv8 counts the people. Passers-by’s heads are blurred."
     },
     "tabs": [
       {
@@ -1368,6 +2260,126 @@
             "alt": {
               "ru": "Кадр с точки P09 · ТРЦ Сити Плюс: прохожие в зелёных рамках детектора, головы размыты",
               "en": "Frame at P09 · City Plus mall: pedestrians in green detector boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C092-yolo.jpg",
+            "caption": {
+              "ru": "P01 · Назарбаева – Шевченко, ролик C092",
+              "en": "P01 · Nazarbayev – Shevchenko, clip C092"
+            },
+            "date": {
+              "ru": "10.10.2026, 13:16 (день)",
+              "en": "10.10.2026, 13:16 (day)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P01 · Назарбаева – Шевченко: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P01: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C089-yolo.jpg",
+            "caption": {
+              "ru": "P02 · Арбат, ролик C089",
+              "en": "P02 · Arbat, clip C089"
+            },
+            "date": {
+              "ru": "10.10.2026, 12:52 (день)",
+              "en": "10.10.2026, 12:52 (day)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P02 · Арбат: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P02: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C054-yolo.jpg",
+            "caption": {
+              "ru": "P03 · У Арбата (ТРЦ, школа), ролик C054",
+              "en": "P03 · Near Arbat (mall, school), clip C054"
+            },
+            "date": {
+              "ru": "06.10.2026, 18:12 (вечер)",
+              "en": "06.10.2026, 18:12 (evening)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P03 · У Арбата (ТРЦ, школа): прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P03: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C088-yolo.jpg",
+            "caption": {
+              "ru": "P04 · Карагаш, ролик C088",
+              "en": "P04 · Karagash, clip C088"
+            },
+            "date": {
+              "ru": "10.10.2026, 12:39 (день)",
+              "en": "10.10.2026, 12:39 (day)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P04 · Карагаш: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P04: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C059-yolo.jpg",
+            "caption": {
+              "ru": "P06 · ЖГУ, ролик C059",
+              "en": "P06 · Zhetysu University, clip C059"
+            },
+            "date": {
+              "ru": "07.10.2026, 09:18 (утро)",
+              "en": "07.10.2026, 09:18 (morning)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P06 · ЖГУ: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P06: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C068-yolo.jpg",
+            "caption": {
+              "ru": "P07 · 7–9 микрорайоны, ролик C068",
+              "en": "P07 · Microdistricts 7–9, clip C068"
+            },
+            "date": {
+              "ru": "07.10.2026, 14:08 (день)",
+              "en": "07.10.2026, 14:08 (day)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P07 · 7–9 микрорайоны: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P07: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C072-yolo.jpg",
+            "caption": {
+              "ru": "P09 · Сити Плюс, ролик C072",
+              "en": "P09 · City Plus, clip C072"
+            },
+            "date": {
+              "ru": "07.10.2026, 17:02 (вечер)",
+              "en": "07.10.2026, 17:02 (evening)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P09 · Сити Плюс: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P09: passers-by in YOLOv8 boxes, heads blurred"
+            }
+          },
+          {
+            "src": "/research/video/C066-yolo.jpg",
+            "caption": {
+              "ru": "P10 · Атамекен, ролик C066",
+              "en": "P10 · Atameken, clip C066"
+            },
+            "date": {
+              "ru": "07.10.2026, 12:46 (день)",
+              "en": "07.10.2026, 12:46 (day)"
+            },
+            "alt": {
+              "ru": "Кадр с точки P10 · Атамекен: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "en": "Frame at P10: passers-by in YOLOv8 boxes, heads blurred"
             }
           }
         ]
@@ -1468,9 +2480,9 @@
   },
   "limits": {
     "title": {
-      "ru": "Ограничения и честность",
-      "en": "Limitations and honesty",
-      "kk": "Шектеулер мен адалдық"
+      "ru": "Ограничения — и что с ними делаю",
+      "en": "Limitations — and what I do about them",
+      "kk": "Шектеулер — және не істеймін"
     },
     "items": [
       {
@@ -1516,13 +2528,128 @@
         "ru": "Сравнить с LandScan Mosaic и обезличенными данными операторов связи.",
         "en": "Compare with LandScan Mosaic and anonymized mobile operator data."
       }
-    ]
+    ],
+    "table": {
+      "cols": [
+        {
+          "ru": "Ограничение",
+          "en": "Limitation",
+          "kk": "Шектеу"
+        },
+        {
+          "ru": "Что с этим делаю",
+          "en": "What I do about it",
+          "kk": "Не істеймін"
+        },
+        {
+          "ru": "Статус",
+          "en": "Status",
+          "kk": "Күйі"
+        }
+      ],
+      "rows": [
+        {
+          "lim": {
+            "ru": "OSM неполон: часы работы известны у 28 из 376 объектов",
+            "en": "OSM is incomplete: hours known for 28 of 376 places"
+          },
+          "fix": {
+            "ru": "Часы работы из 2ГИС, пересчёт тем же кодом",
+            "en": "Opening hours from 2GIS, same code re-run"
+          },
+          "status": "progress"
+        },
+        {
+          "lim": {
+            "ru": "Распорядки агентов — допущения",
+            "en": "Agent schedules are assumptions"
+          },
+          "fix": {
+            "ru": "Калибровка по видео: цикл готов, нужно больше точек",
+            "en": "Calibration from video: the loop works, needs more points"
+          },
+          "status": "progress"
+        },
+        {
+          "lim": {
+            "ru": "В модели расстояния — по прямой",
+            "en": "The model uses straight-line distances"
+          },
+          "fix": {
+            "ru": "В приложении — уже пешком по улицам; в модели — следующий шаг",
+            "en": "The app already uses walking routes; the model is next"
+          },
+          "status": "progress"
+        },
+        {
+          "lim": {
+            "ru": "Камера не видит людей внутри зданий и считает поток, а не присутствие",
+            "en": "The camera misses people indoors and counts flow, not presence"
+          },
+          "fix": {
+            "ru": "Съёмка в середине окон (10:00, 13:00, 20:00), +10 точек",
+            "en": "Film mid-window (10:00, 13:00, 20:00), +10 points"
+          },
+          "status": "planned"
+        },
+        {
+          "lim": {
+            "ru": "Точность YOLO не проверена вручную",
+            "en": "YOLO accuracy not checked by hand"
+          },
+          "fix": {
+            "ru": "Ручной подсчёт 3 роликов — инструмент готов",
+            "en": "Manual count of 3 clips — tool ready"
+          },
+          "status": "progress"
+        },
+        {
+          "lim": {
+            "ru": "Все числа предварительные",
+            "en": "All numbers are preliminary"
+          },
+          "fix": {
+            "ru": "Проверки H2, H3 и тест с предпринимателями",
+            "en": "H2, H3 checks and the entrepreneur test"
+          },
+          "status": "progress"
+        },
+        {
+          "lim": {
+            "ru": "Один город",
+            "en": "One city"
+          },
+          "fix": {
+            "ru": "Те же открытые данные есть для других городов Казахстана",
+            "en": "The same open data exists for other Kazakh cities"
+          },
+          "status": "planned"
+        }
+      ],
+      "statusLabels": {
+        "done": {
+          "ru": "сделано",
+          "en": "done",
+          "kk": "дайын"
+        },
+        "progress": {
+          "ru": "в работе",
+          "en": "in progress",
+          "kk": "жұмыста"
+        },
+        "planned": {
+          "ru": "в плане",
+          "en": "planned",
+          "kk": "жоспарда"
+        }
+      }
+    }
   },
   "sources": {
     "title": {
-      "ru": "Источники и материалы",
-      "en": "Sources and downloads",
-      "kk": "Дереккөздер мен материалдар"
+      "ru": "Источники и *данные*",
+      "en": "Sources and *data*",
+      "kk": "Дереккөздер мен *деректер*"
     },
     "refsTitle": {
       "ru": "Литература",
@@ -1591,7 +2718,118 @@
       "en": "Downloads",
       "kk": "Жүктеп алу"
     },
-    "downloads": []
+    "downloads": [],
+    "dataTable": {
+      "cols": [
+        {
+          "ru": "Источник",
+          "en": "Source",
+          "kk": "Дереккөз"
+        },
+        {
+          "ru": "Что взято",
+          "en": "What is used",
+          "kk": "Не алынды"
+        },
+        {
+          "ru": "Лицензия",
+          "en": "Licence",
+          "kk": "Лицензия"
+        }
+      ],
+      "rows": [
+        {
+          "src": "OpenStreetMap",
+          "what": {
+            "ru": "магазины, аптеки, общепит, работа, учёба, ТРЦ, улицы",
+            "en": "shops, pharmacies, food places, work, schools, malls, streets"
+          },
+          "lic": "ODbL"
+        },
+        {
+          "src": "WorldPop",
+          "what": {
+            "ru": "сетка населения по месту жительства",
+            "en": "residential population grid"
+          },
+          "lic": "CC BY 4.0"
+        },
+        {
+          "src": {
+            "ru": "БНС РК",
+            "en": "Bureau of National Statistics"
+          },
+          "what": {
+            "ru": "численность города: 171 618",
+            "en": "city population: 171,618"
+          },
+          "lic": {
+            "ru": "открытые данные",
+            "en": "open data"
+          }
+        },
+        {
+          "src": {
+            "ru": "Собственное видео",
+            "en": "Own video"
+          },
+          "what": {
+            "ru": "45 роликов, 10 точек, YOLOv8",
+            "en": "45 clips, 10 points, YOLOv8"
+          },
+          "lic": {
+            "ru": "автор; лица размыты",
+            "en": "author; faces blurred"
+          }
+        }
+      ]
+    },
+    "refUse": {
+      "Christaller 1933": {
+        "ru": "теория центральных мест",
+        "en": "central place theory"
+      },
+      "Huff 1963": {
+        "ru": "выбор места агентом, доля рынка",
+        "en": "agent choice, market share"
+      },
+      "Luo & Qi 2009": {
+        "ru": "сравнение методов доступности",
+        "en": "accessibility methods"
+      },
+      "Järv 2018": {
+        "ru": "доступность по времени суток",
+        "en": "time-of-day accessibility"
+      },
+      "Moreno 2021": {
+        "ru": "город 15 минут",
+        "en": "15-minute city"
+      },
+      "Stevens 2015": {
+        "ru": "население WorldPop",
+        "en": "WorldPop population"
+      },
+      "Silverman 1986": {
+        "ru": "ядерная оценка предложения",
+        "en": "kernel supply estimate"
+      },
+      "Jocher 2023": {
+        "ru": "подсчёт людей на видео",
+        "en": "counting people on video"
+      }
+    },
+    "refCols": [
+      {
+        "ru": "Работа",
+        "en": "Work",
+        "kk": "Жұмыс"
+      },
+      {
+        "ru": "Где используется",
+        "en": "Used for",
+        "kk": "Қайда қолданылады"
+      }
+    ]
   },
   "explore": {
     "title": {
@@ -1808,6 +3046,329 @@
       "ru": "Фото на странице — Pexels (бесплатная лицензия), города подписаны.",
       "en": "Photos on this page — Pexels (free licence), cities are labelled.",
       "kk": "Беттегі фотолар — Pexels (тегін лицензия), қалалар белгіленген."
+    }
+  },
+  "field": {
+    "title": {
+      "ru": "Точки съёмки",
+      "en": "Filming points",
+      "kk": "Түсірілім нүктелері"
+    },
+    "hint": {
+      "ru": "Нажмите на точку на карте или в списке: ролик, подсчёт YOLO и среднее число людей в кадре.",
+      "en": "Tap a point on the map or in the list: the clip, the YOLO count and the mean number of people in frame.",
+      "kk": "Картадағы нүктені басыңыз."
+    },
+    "raw": {
+      "ru": "Как снято",
+      "en": "As filmed",
+      "kk": "Түсірілгендей"
+    },
+    "yolo": {
+      "ru": "Подсчёт YOLO",
+      "en": "YOLO count",
+      "kk": "YOLO санағы"
+    },
+    "slow": {
+      "ru": "замедлено ×2, без звука, головы размыты",
+      "en": "slowed ×2, muted, heads blurred",
+      "kk": "×2 баяулатылған, дыбыссыз, бастар бұлдырланған"
+    },
+    "meanTitle": {
+      "ru": "Людей в кадре в среднем (YOLOv8)",
+      "en": "Mean people per frame (YOLOv8)",
+      "kk": "Кадрдағы адамдар (YOLOv8)"
+    },
+    "roleCalib": {
+      "ru": "калибровка",
+      "en": "calibration",
+      "kk": "калибрлеу"
+    },
+    "roleControl": {
+      "ru": "контрольная",
+      "en": "control",
+      "kk": "бақылау"
+    },
+    "cols": [
+      {
+        "ru": "№",
+        "en": "No.",
+        "kk": "№"
+      },
+      {
+        "ru": "Точка",
+        "en": "Point",
+        "kk": "Нүкте"
+      },
+      {
+        "ru": "Тип узла",
+        "en": "Node type",
+        "kk": "Түйін түрі"
+      },
+      {
+        "ru": "Роль",
+        "en": "Role",
+        "kk": "Рөлі"
+      },
+      {
+        "ru": "Роликов",
+        "en": "Clips",
+        "kk": "Бейне"
+      }
+    ],
+    "slots": [
+      {
+        "ru": "Утро",
+        "en": "Morning",
+        "kk": "Таң"
+      },
+      {
+        "ru": "День",
+        "en": "Day",
+        "kk": "Күндіз"
+      },
+      {
+        "ru": "Вечер",
+        "en": "Evening",
+        "kk": "Кеш"
+      }
+    ],
+    "points": [
+      {
+        "id": "P01",
+        "name": {
+          "ru": "Назарбаева – Шевченко",
+          "en": "Nazarbayev – Shevchenko"
+        },
+        "type": {
+          "ru": "транспортный",
+          "en": "transport"
+        },
+        "role": "control",
+        "clips": 5,
+        "mean": [
+          1.6,
+          4.4,
+          2.2
+        ],
+        "video": "C092",
+        "videoDate": "10.10.2026, 13:16",
+        "videoSlot": "day",
+        "place": "перекрёсток, остановка, зелёные автобусы",
+        "raw": false
+      },
+      {
+        "id": "P02",
+        "name": {
+          "ru": "Арбат",
+          "en": "Arbat"
+        },
+        "type": {
+          "ru": "пешеходная улица",
+          "en": "pedestrian street"
+        },
+        "role": "calib",
+        "clips": 5,
+        "mean": [
+          3.6,
+          5.7,
+          4.8
+        ],
+        "video": "C089",
+        "videoDate": "10.10.2026, 12:52",
+        "videoSlot": "day",
+        "place": "пешеходная улица со скамьями",
+        "raw": true
+      },
+      {
+        "id": "P03",
+        "name": {
+          "ru": "У Арбата (ТРЦ, школа)",
+          "en": "Near Arbat (mall, school)"
+        },
+        "type": {
+          "ru": "смешанный",
+          "en": "mixed"
+        },
+        "role": "calib",
+        "clips": 5,
+        "mean": [
+          4.4,
+          6.9,
+          6.3
+        ],
+        "video": "C054",
+        "videoDate": "06.10.2026, 18:12",
+        "videoSlot": "evening",
+        "place": "перекрёсток у магазина Florins",
+        "raw": false
+      },
+      {
+        "id": "P04",
+        "name": {
+          "ru": "Карагаш",
+          "en": "Karagash"
+        },
+        "type": {
+          "ru": "центр",
+          "en": "centre"
+        },
+        "role": "calib",
+        "clips": 5,
+        "mean": [
+          10.8,
+          14.7,
+          14.3
+        ],
+        "video": "C088",
+        "videoDate": "10.10.2026, 12:39",
+        "videoSlot": "day",
+        "place": "остановка у гипермаркета с полосатым фасадом",
+        "raw": false
+      },
+      {
+        "id": "P05",
+        "name": {
+          "ru": "Кок базар",
+          "en": "Kok Bazaar"
+        },
+        "type": {
+          "ru": "торговый",
+          "en": "market"
+        },
+        "role": "calib",
+        "clips": 5,
+        "mean": [
+          13.1,
+          19.0,
+          6.8
+        ],
+        "video": "C087",
+        "videoDate": "10.10.2026, 12:25",
+        "videoSlot": "day",
+        "place": "улица у рынка, торговые навесы",
+        "raw": false
+      },
+      {
+        "id": "P06",
+        "name": {
+          "ru": "ЖГУ",
+          "en": "Zhetysu University"
+        },
+        "type": {
+          "ru": "образовательный",
+          "en": "university"
+        },
+        "role": "control",
+        "clips": 2,
+        "mean": [
+          2.5,
+          2.5,
+          null
+        ],
+        "video": "C059",
+        "videoDate": "07.10.2026, 09:18",
+        "videoSlot": "morning",
+        "place": "переход и остановки у ворот Жетысуского университета",
+        "raw": true
+      },
+      {
+        "id": "P07",
+        "name": {
+          "ru": "7–9 микрорайоны",
+          "en": "Microdistricts 7–9"
+        },
+        "type": {
+          "ru": "новые жилые районы",
+          "en": "new housing"
+        },
+        "role": "control",
+        "clips": 8,
+        "mean": [
+          1.5,
+          2.4,
+          1.5
+        ],
+        "video": "C068",
+        "videoDate": "07.10.2026, 14:08",
+        "videoSlot": "day",
+        "place": "перекрёсток у ЖК Astoria",
+        "raw": true
+      },
+      {
+        "id": "P08",
+        "name": {
+          "ru": "Каратал",
+          "en": "Karatal"
+        },
+        "type": {
+          "ru": "смешанный",
+          "en": "mixed"
+        },
+        "role": "calib",
+        "clips": 5,
+        "mean": [
+          7.0,
+          10.7,
+          11.0
+        ],
+        "video": "C093",
+        "videoDate": "10.10.2026, 17:20",
+        "videoSlot": "evening",
+        "place": "перекрёсток у ТРЦ, LC Waikiki, KFC",
+        "raw": false
+      },
+      {
+        "id": "P09",
+        "name": {
+          "ru": "Сити Плюс",
+          "en": "City Plus"
+        },
+        "type": {
+          "ru": "крупный ТРЦ",
+          "en": "large mall"
+        },
+        "role": "calib",
+        "clips": 2,
+        "mean": [
+          null,
+          0.5,
+          4.1
+        ],
+        "video": "C072",
+        "videoDate": "07.10.2026, 17:02",
+        "videoSlot": "evening",
+        "place": "ТРЦ Сити Плюс (Sulpak)",
+        "raw": true
+      },
+      {
+        "id": "P10",
+        "name": {
+          "ru": "Атамекен",
+          "en": "Atameken"
+        },
+        "type": {
+          "ru": "крупный ТРЦ",
+          "en": "large mall"
+        },
+        "role": "calib",
+        "clips": 3,
+        "mean": [
+          0.5,
+          1.3,
+          1.0
+        ],
+        "video": "C066",
+        "videoDate": "07.10.2026, 12:46",
+        "videoSlot": "day",
+        "place": "перекрёсток у четырёхэтажных домов, остановка",
+        "raw": true
+      }
+    ],
+    "rawHidden": {
+      "ru": "«Как снято» скрыто: в ролике близко прохожие",
+      "en": "“As filmed” hidden: passers-by close to the camera",
+      "kk": "«Түсірілгендей» жасырылған: камераға жақын адамдар"
     }
   }
 }

@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Playfair_Display } from "next/font/google";
+import { IBM_Plex_Mono, Inter_Tight, Playfair_Display, Unbounded } from "next/font/google";
 import katex from "katex";
 import QRCode from "qrcode";
 import "katex/dist/katex.min.css";
 import "./research.css";
 import { ImgSlot, StepIcon, Txt } from "@/components/research/bits";
 import { Gallery, LangToggle, Reveal, TsgDemo } from "@/components/research/client";
+import { ClassChange, FieldExplorer, Flow, MarketShare, PeopleMap, Schedule, TsgMap } from "@/components/research/viz";
+import hexmap from "../../public/research/hexmap.json";
 import type { Locale } from "@/i18n";
 import { getI18n } from "@/i18n/server";
 import { content as c, findGaps, L, pick } from "@/lib/research/content";
 
 const sans = Inter_Tight({ subsets: ["latin", "cyrillic", "cyrillic-ext"], weight: ["400", "500", "600"], display: "swap", variable: "--font-rs-sans" });
-const serif = Playfair_Display({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], style: ["italic"], display: "swap", variable: "--font-rs-serif" });
+const serif = Playfair_Display({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], style: ["italic", "normal"], display: "swap", variable: "--font-rs-serif" });
+const mono = IBM_Plex_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], display: "swap", variable: "--font-rs-mono" });
+const wide = Unbounded({ subsets: ["latin", "cyrillic"], weight: ["400", "600"], display: "swap", variable: "--font-rs-wide" });
+
+const tsgSummary = Object.fromEntries(Object.entries(hexmap.summary).map(([k, v]) => [k, v.changed]));
+const HEX_TEXT: Record<Locale, { slots: Record<string, string>; cats: Record<string, string>; timeLabel: string; catLabel: string; people: string; noValue: string; cell: string }> = {
+  ru: { slots: { static: "По прописке", morning: "Утро", day: "День", evening: "Вечер" }, cats: { food: "Продукты", pharmacy: "Аптеки", catering: "Общепит" }, timeLabel: "Время суток", catLabel: "Услуга", people: "чел.", noValue: "нет оценки", cell: "Ячейка" },
+  en: { slots: { static: "By registration", morning: "Morning", day: "Day", evening: "Evening" }, cats: { food: "Groceries", pharmacy: "Pharmacies", catering: "Food places" }, timeLabel: "Time of day", catLabel: "Service", people: "people", noValue: "not evaluated", cell: "Cell" },
+  kk: { slots: { static: "Тіркеу бойынша", morning: "Таң", day: "Күндіз", evening: "Кеш" }, cats: { food: "Азық-түлік", pharmacy: "Дәріханалар", catering: "Тамақтану" }, timeLabel: "Тәулік уақыты", catLabel: "Қызмет", people: "адам", noValue: "бағаланбаған", cell: "Ұяшық" },
+};
 
 const OG_LOCALE: Record<Locale, string> = { ru: "ru_RU", en: "en_US", kk: "kk_KZ" };
 
@@ -49,16 +60,18 @@ function Em({ s }: { s: string }) {
   );
 }
 
-function Section({ id, n, title, children }: { id: string; n: string; title: string; children: React.ReactNode }) {
+/** Each chapter has its own tone (background), type voice and header layout, on one shared palette. */
+function Section({ id, n, title, kicker, tone, children }: { id: string; n: string; title: string; kicker: string; tone: string; children: React.ReactNode }) {
   return (
-    <section id={id} aria-labelledby={`${id}-h`} className="sec">
+    <section id={id} aria-labelledby={`${id}-h`} className={`sec tone-${tone}`}>
       <div className="wrap">
         <header className="sec-head reveal">
           <span className="sec-num" aria-hidden>
             {n}
           </span>
+          <span className="sec-kicker">{kicker}</span>
           <h2 id={`${id}-h`} className="h2">
-            {title}
+            <Em s={title} />
           </h2>
         </header>
         {children}
@@ -130,9 +143,10 @@ export default async function HomePage() {
   const iv = c.interviews;
   const f = c.formulas;
   const openMap = p(c.site.openMap);
+  const hexText = HEX_TEXT[locale];
 
   return (
-    <div className={`rs ${sans.variable} ${serif.variable}`} lang={locale}>
+    <div className={`rs ${sans.variable} ${serif.variable} ${mono.variable} ${wide.variable}`} lang={locale}>
       <Reveal />
 
       {gaps > 0 && (
@@ -284,57 +298,111 @@ export default async function HomePage() {
           </div>
         </nav>
 
-        {/* Problem */}
-        <Section id="problem" n="01" title={p(c.problem.title)}>
+        {/* 01 · Problem — serif, white, coral accent */}
+        <Section id="problem" n="01" kicker={p(c.nav[0].label)} tone="problem" title={p(c.problem.title)}>
           <p className="lead reveal">{p(c.problem.lead)}</p>
-          {c.problem.maps.map((m, i) => (
-            <figure key={i} className="panel map-card map-wide reveal">
-              <ImgSlot src={m.src} alt={p(m.alt)} label={p(c.ui.imagePlaceholder)} ratio="1595 / 1035" />
-              <figcaption className="map-title">{p(m.title)}</figcaption>
-            </figure>
-          ))}
+          <ul className="stat-row reveal">
+            {c.problem.stats.map((st, i) => (
+              <li key={i}>
+                <span className="stat-v tabnum">{p(st.value)}</span>
+                <span className="stat-l">{p(st.label)}</span>
+              </li>
+            ))}
+          </ul>
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(c.problem.map.title)}</h3>
+              <p className="muted small">{p(c.problem.map.hint)}</p>
+            </figcaption>
+            <PeopleMap t={hexText} decimal={dec} legend={p(c.problem.map.legend)} source={p(c.problem.map.source)} />
+          </figure>
           <blockquote className="question reveal">
             <span className="q-label">{p(c.problem.questionLabel)}</span>
             <p className="q-text">{p(c.problem.question)}</p>
           </blockquote>
         </Section>
 
-        {/* Method */}
-        <Section id="method" n="02" title={p(c.method.title)}>
-          <ol className="steps">
-            {c.method.steps.map((s, i) => (
-              <li key={i} className="step reveal">
-                <span className="step-n tabnum">{String(i + 1).padStart(2, "0")}</span>
-                <span className="step-icon">
-                  <StepIcon name={s.icon} />
-                </span>
-                <div>
-                  <h3 className="h3">{p(s.title)}</h3>
-                  <p>{p(s.text)}</p>
-                  <details>
-                    <summary>{p(c.ui.details)}</summary>
-                    <p>{p(s.details)}</p>
-                  </details>
-                </div>
-              </li>
-            ))}
-          </ol>
+        {/* 02 · Method — warm paper, mono labels, flow diagram */}
+        <Section id="method" n="02" kicker={p(c.nav[1].label)} tone="method" title={p(c.method.title)}>
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(c.method.flowTitle)}</h3>
+            </figcaption>
+            <Flow
+              formulaLabel={locale === "en" ? "formula" : locale === "kk" ? "формула" : "формулы"}
+              nodes={c.method.flow.map((n) => {
+                const st = c.method.steps[n.step];
+                return { id: n.id, kind: n.kind, title: p(n.title), text: p(n.text), formula: "formula" in n ? n.formula : undefined, detailTitle: p(st.title), detail: p(st.details) };
+              })}
+            />
+          </figure>
+
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(c.method.schedule.title)}</h3>
+            </figcaption>
+            <Schedule
+              hint={p(c.method.schedule.hint)}
+              typeLabel={locale === "en" ? "Agent type" : locale === "kk" ? "Агент түрі" : "Тип агента"}
+              shareLabel={p(c.method.schedule.shareLabel)}
+              slots={c.method.schedule.slots.map((sl) => ({ id: sl.id, label: p(sl.label), time: sl.time }))}
+              rows={c.method.schedule.rows.map((r) => ({ type: p(r.type), share: r.share, cells: r.cells.map(p) }))}
+            />
+            <p className="note">{p(c.method.schedule.note)}</p>
+          </figure>
+
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(c.method.compare.title)}</h3>
+            </figcaption>
+            <div className="table-wrap">
+              <table className="t t-compare">
+                <thead>
+                  <tr>
+                    {c.method.compare.cols.map((col, i) => (
+                      <th key={i} scope="col">
+                        {p(col)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {c.method.compare.rows.map((r, i) => (
+                    <tr key={i} className={"me" in r && r.me ? "me" : ""}>
+                      <th scope="row">{p(r.name)}</th>
+                      {r.cells.map((v, j) => {
+                        const txt = p(v);
+                        const yn = /^(да|yes|иә)$/i.test(txt) ? "yes" : /^(нет|no|жоқ)$/i.test(txt) ? "no" : "";
+                        return (
+                          <td key={j} className={yn ? `yn ${yn}` : ""}>
+                            {txt}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </figure>
         </Section>
 
-        {/* Formulas */}
-        <Section id="formulas" n="03" title={p(f.title)}>
+        {/* 03 · Formulas — grid paper, mono, purple */}
+        <Section id="formulas" n="03" kicker={p(c.nav[2].label)} tone="formulas" title={p(f.title)}>
           <p className="lead reveal">{p(f.lead)}</p>
           <div className="f-grid">
-            {f.items.map((it) => (
+            {f.items.map((it, i) => (
               <article key={it.id} className={`panel f-card reveal${it.id === "tsg" ? " f-key" : ""}${it.id === "huff" ? " f-wide" : ""}`}>
+                <span className="f-no tabnum">({i + 1})</span>
                 <h3 className="h3">{p(it.name)}</h3>
                 <Formula tex={it.tex} texEn={"texEn" in it ? it.texEn : undefined} locale={locale} />
                 <p className="f-plain">
                   <span className="tag">{p(c.ui.plain)}</span> {p(it.plain)}
                 </p>
-                <p className="f-why">
-                  <strong>{p(c.ui.why)}:</strong> {p(it.why)}
-                </p>
+                <details className="f-why">
+                  <summary>{p(c.ui.why)}</summary>
+                  <p>{p(it.why)}</p>
+                </details>
               </article>
             ))}
           </div>
@@ -356,6 +424,39 @@ export default async function HomePage() {
             />
           </div>
 
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(f.classes.title)}</h3>
+            </figcaption>
+            <div className="scale" aria-hidden>
+              <span className="sc-sur" />
+              <span className="sc-bal" />
+              <span className="sc-def" />
+            </div>
+            <div className="scale-ticks tabnum" aria-hidden>
+              <span>−1</span>
+              <span>{locale === "en" ? "−0.2" : "−0,2"}</span>
+              <span>{locale === "en" ? "0.2" : "0,2"}</span>
+              <span>+1</span>
+            </div>
+            <div className="table-wrap">
+              <table className="t">
+                <tbody>
+                  {f.classes.rows.map((r) => (
+                    <tr key={r.cls}>
+                      <th scope="row">
+                        <span className={`dot dot-${r.cls}`} aria-hidden /> {p(r.name)}
+                      </th>
+                      <td className="tabnum nowrap">{locale === "en" ? r.condEn : r.cond}</td>
+                      <td>{p(r.meaning)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="note">{p(f.classes.note)}</p>
+          </figure>
+
           <h3 className="h2-sub reveal">{p(f.propsTitle)}</h3>
           <ol className="props">
             {f.props.map((pr, i) => (
@@ -376,121 +477,108 @@ export default async function HomePage() {
           <p className="note reveal">{p(f.limitation)}</p>
         </Section>
 
-        {/* Results */}
-        <Section id="results" n="04" title={p(r.title)}>
+        {/* 04 · Results — pale blue, wide display numerals */}
+        <Section id="results" n="04" kicker={p(c.nav[3].label)} tone="results" title={p(r.title)}>
           <p className="badge-pre reveal">{p(r.badge)}</p>
-          {r.maps.map((m, i) => (
-            <figure key={i} className="panel map-card map-wide reveal">
-              <ImgSlot src={m.src} alt={p(m.alt)} label={p(c.ui.imagePlaceholder)} ratio="1898 / 1031" />
-              <figcaption className="map-title">{p(m.title)}</figcaption>
-            </figure>
-          ))}
 
-          <div className="res-grid">
-            <article className="panel res res-big reveal">
-              <span className="big tabnum">{r.peak.big}</span>
-              <h3 className="h3">{p(r.peak.title)}</h3>
-              <p>{p(r.peak.text)}</p>
-              <div className="cmp" aria-hidden>
-                <span className="cmp-bar cmp-a" style={{ width: "100%" }}>
-                  {locale === "en" ? "6.3k" : "6,3 тыс."}
-                </span>
-                <span className="cmp-bar cmp-b" style={{ width: `${(0.9 / 6.3) * 100}%` }}>
-                  {locale === "en" ? "0.9k" : "0,9 тыс."}
-                </span>
-              </div>
-            </article>
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(r.map.title)}</h3>
+              <p className="muted small">{p(r.map.hint)}</p>
+            </figcaption>
+            <TsgMap
+              t={{ ...hexText, changed: p(r.map.changed) }}
+              decimal={dec}
+              legend={{ def: p(r.map.legendDef), bal: p(r.map.legendBal), sur: p(r.map.legendSur), none: p(r.map.legendNone) }}
+              source={p(r.map.source)}
+              summary={tsgSummary}
+              highlight={{ cell: 206, label: p(r.map.cell206) }}
+            />
+          </figure>
 
-            <article className="panel res reveal">
-              <h3 className="h3">{p(r.moved.title)}</h3>
-              <Bars bars={r.moved.bars} locale={locale} />
-              <p className="muted small">{p(r.moved.caption)}</p>
-            </article>
-
-            <article className="panel res reveal">
-              <h3 className="h3">{p(r.correlation.title)}</h3>
-              <div className="corr">
-                {r.correlation.items.map((it) => (
-                  <div key={it.value}>
-                    <span className="big-sm tabnum">{locale === "en" ? it.valueEn : it.value}</span>
-                    <span className="muted">{p(it.label)}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="muted small">{p(r.correlation.note)}</p>
-            </article>
-
-            <article className="panel res reveal">
-              <h3 className="h3">{p(r.classChange.title)}</h3>
-              <Bars bars={r.classChange.bars} locale={locale} />
-              <p className="muted small">{p(r.classChange.caption)}</p>
-            </article>
-
-            <article className="panel res reveal">
-              <span className="big tabnum">{r.hidden.big}</span>
-              <h3 className="h3">{p(r.hidden.title)}</h3>
-              <p>{p(r.hidden.text)}</p>
-            </article>
-
-            <article className="panel res hyp reveal">
-              <h3 className="h3">{p(r.hypotheses.title)}</h3>
-              <ul>
-                {r.hypotheses.items.map((h) => (
-                  <li key={h.code}>
-                    <span className="hyp-code">{h.code}</span>
-                    <span className="hyp-text">{p(h.text)}</span>
-                    <span className={`pill pill-${h.status}`}>{p(h.statusLabel)}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+          <div className="kpis reveal">
+            <div className="kpi">
+              <span className="kpi-v tabnum">{r.peak.big}</span>
+              <span className="kpi-t">{p(r.peak.title)}</span>
+              <span className="kpi-x">{p(r.peak.text)}</span>
+            </div>
+            <div className="kpi">
+              <span className="kpi-v tabnum">{r.hidden.big}</span>
+              <span className="kpi-t">{p(r.hidden.title)}</span>
+              <span className="kpi-x">{p(r.hidden.text)}</span>
+            </div>
+            <div className="kpi">
+              <span className="kpi-v tabnum">{locale === "en" ? "0.87 / 0.95" : "0,87 / 0,95"}</span>
+              <span className="kpi-t">{p(r.correlation.title)}</span>
+              <span className="kpi-x">{p(r.correlation.note)}</span>
+            </div>
           </div>
 
-          <article className="panel example reveal">
+          <div className="two-figs">
+            <figure className="fig reveal">
+              <figcaption className="fig-h">
+                <h3 className="h3">{p(r.changeTable.title)}</h3>
+              </figcaption>
+              <ClassChange
+                cols={r.changeTable.cols.map(p)}
+                slots={r.example.share.slots.map(p)}
+                views={[p(r.changeTable.viewChart), p(r.changeTable.viewTable)]}
+                rows={r.changeTable.rows.map((x) => ({ name: p(x.name), v: x.v, ci: x.ci, rho: locale === "en" ? x.rho.replace(/,/g, ".") : x.rho }))}
+              />
+              <p className="note">{p(r.classChange.caption)}</p>
+            </figure>
+            <figure className="fig reveal">
+              <figcaption className="fig-h">
+                <h3 className="h3">{p(r.moved.title)}</h3>
+              </figcaption>
+              <Bars bars={r.moved.bars} locale={locale} />
+              <p className="note">{p(r.moved.caption)}</p>
+            </figure>
+          </div>
+
+          <article className="case reveal">
             <h3 className="h3">{p(r.example.title)}</h3>
-            <dl className="facts">
-              {r.example.facts.map((fa, i) => (
-                <div key={i}>
-                  <dt>{p(fa.label)}</dt>
-                  <dd className="tabnum">{p(fa.value)}</dd>
+            <div className="case-cards">
+              {r.example.cards.map((cd, i) => (
+                <div key={i} className={`case-card cls-${cd.cls}`}>
+                  <span className="cc-l">{p(cd.label)}</span>
+                  <span className="cc-v tabnum">{locale === "en" ? cd.tsgEn : cd.tsg}</span>
+                  <span className="cc-s">{p(cd.sub)}</span>
                 </div>
               ))}
-            </dl>
-            <p className="verdict">{p(r.example.verdict)}</p>
-            <h4 className="h4">{p(r.example.scenarios.title)}</h4>
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    {r.example.scenarios.cols.map((col, i) => (
-                      <th key={i} scope="col">
-                        {p(col)}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {r.example.scenarios.rows.map((row) => (
-                    <tr key={row.hours}>
-                      <th scope="row" className="tabnum">
-                        {row.hours}
-                      </th>
-                      {row.cells.map((v, i) => (
-                        <td key={i} className="tabnum">
-                          {v}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
-            <p className="muted small">{p(r.example.scenarios.note)}</p>
+            <h4 className="h4">{p(r.example.share.title)}</h4>
+            <MarketShare
+              options={r.example.share.options}
+              slots={r.example.share.slots.map(p)}
+              stat={r.example.share.static}
+              statLabel={p(r.example.share.staticLabel)}
+              hoursLabel={p(r.example.share.hoursLabel)}
+            />
           </article>
+
+          <div className="table-wrap reveal">
+            <table className="t t-hyp">
+              <caption className="h3">{p(r.hypotheses.title)}</caption>
+              <tbody>
+                {r.hypotheses.items.map((h) => (
+                  <tr key={h.code}>
+                    <th scope="row" className="hyp-code">
+                      {h.code}
+                    </th>
+                    <td>{p(h.text)}</td>
+                    <td className="num">
+                      <span className={`pill pill-${h.status}`}>{p(h.statusLabel)}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </Section>
 
-        {/* App */}
-        <Section id="app" n="05" title={p(c.appSection.title)}>
+        {/* 05 · App — white, product screenshots, stepper */}
+        <Section id="app" n="05" kicker={p(c.nav[4].label)} tone="app" title={p(c.appSection.title)}>
           <p className="lead reveal">{p(c.appSection.lead)}</p>
           <div className="shots reveal">
             {c.appSection.screenshots.map((s, i) => (
@@ -503,40 +591,46 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="cols3">
-            <div className="reveal">
-              <h3 className="h2-sub">{p(c.appSection.howTitle)}</h3>
-              <ol className="rows">
-                {c.appSection.how.map((h, i) => (
-                  <li key={i}>
-                    <h4 className="h4">{p(h.title)}</h4>
-                    <p>{p(h.text)}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="reveal">
-              <h3 className="h2-sub">{p(c.appSection.archTitle)}</h3>
-              <ol className="rows">
+          <h3 className="h2-sub reveal">{p(c.appSection.howTitle)}</h3>
+          <ol className="stepper reveal">
+            {c.appSection.how.map((h, i) => (
+              <li key={i}>
+                <span className="st-n tabnum">{i + 1}</span>
+                <h4 className="h4">{p(h.title)}</h4>
+                <p>{p(h.text)}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="two-figs">
+            <figure className="fig reveal">
+              <figcaption className="fig-h">
+                <h3 className="h3">{p(c.appSection.archTitle)}</h3>
+              </figcaption>
+              <ol className="pipe">
                 {c.appSection.arch.map((a, i) => (
                   <li key={i}>
-                    <h4 className="h4">{p(a.title)}</h4>
-                    <p>{p(a.text)}</p>
+                    <span className="pipe-t">{p(a.title)}</span>
+                    <span className="pipe-x">{p(a.text)}</span>
                   </li>
                 ))}
               </ol>
-            </div>
-            <div className="reveal">
-              <h3 className="h2-sub">{p(c.appSection.forTitle)}</h3>
-              <ul className="rows">
-                {c.appSection.for.map((a, i) => (
-                  <li key={i}>
-                    <h4 className="h4">{p(a.title)}</h4>
-                    <p>{p(a.text)}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </figure>
+            <figure className="fig reveal">
+              <figcaption className="fig-h">
+                <h3 className="h3">{p(c.appSection.forTitle)}</h3>
+              </figcaption>
+              <table className="t">
+                <tbody>
+                  {c.appSection.for.map((a, i) => (
+                    <tr key={i}>
+                      <th scope="row">{p(a.title)}</th>
+                      <td>{p(a.text)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </figure>
           </div>
 
           <div className="cta-panel reveal">
@@ -544,50 +638,146 @@ export default async function HomePage() {
           </div>
         </Section>
 
-        {/* Interviews */}
-        <Section id="interviews" n="06" title={p(iv.title)}>
+        {/* 06 · Interviews — warm, serif voice; reserved slots */}
+        <Section id="interviews" n="06" kicker={p(c.nav[5].label)} tone="interviews" title={p(iv.title)}>
           <p className="lead reveal">
             <Txt s={p(iv.intro)} />
           </p>
-          <div className="panel method-card reveal">
-            <h3 className="h3">{p(iv.method.title)}</h3>
-            <div className="method-cols">
-              <div>
-                <h4 className="h4">{p(iv.method.tasksLabel)}</h4>
-                <ul>
-                  {iv.method.tasks.map((t, i) => (
-                    <li key={i}>
-                      <Txt s={p(t)} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h4 className="h4">{p(iv.method.measuresLabel)}</h4>
-                <ul>
-                  {iv.method.measures.map((t, i) => (
-                    <li key={i}>{p(t)}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h4 className="h4">{p(iv.method.ethicsLabel)}</h4>
-                <p>{p(iv.method.ethics)}</p>
-              </div>
-            </div>
+
+          <div className="iv-videos reveal">
+            {iv.videos.items.map((v, i) => (
+              <figure key={i} className="iv-video">
+                <div className="soon-box">
+                  <span className="soon-play" aria-hidden>
+                    ▶
+                  </span>
+                  <span className="soon-l">{p(iv.videos.soonLabel)}</span>
+                </div>
+                <figcaption>{p(v.title)}</figcaption>
+              </figure>
+            ))}
           </div>
 
-          <p className="note reveal">{p(iv.plan)}</p>
-          <div className="cta-panel reveal">
-            <a href={c.app.url} className="btn btn-dark">
-              {openMap} <span aria-hidden>→</span>
-            </a>
+          <figure className="fig form-res reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(iv.form.title)}</h3>
+              <p className="muted small">{p(iv.form.lead)}</p>
+            </figcaption>
+            <div className="form-kpis">
+              {iv.form.kpis.map((k, i) => (
+                <div key={i} className="form-kpi">
+                  <span className="soon-num" aria-hidden>
+                    —
+                  </span>
+                  <span>{p(k.label)}</span>
+                </div>
+              ))}
+            </div>
+            <div className="form-charts">
+              {iv.form.charts.map((q, i) => (
+                <div key={i} className="form-chart">
+                  <span className="fc-q">{p(q)}</span>
+                  <div className="fc-bars" aria-hidden>
+                    <span style={{ width: "70%" }} />
+                    <span style={{ width: "45%" }} />
+                    <span style={{ width: "25%" }} />
+                  </div>
+                  <span className="soon-tag">{p(iv.form.soonLabel)}</span>
+                </div>
+              ))}
+            </div>
+          </figure>
+
+          <div className="table-wrap reveal">
+            <table className="t t-method">
+              <thead>
+                <tr>
+                  <th scope="col">{p(iv.method.tasksLabel)}</th>
+                  <th scope="col">{p(iv.method.measuresLabel)}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {iv.method.tasks.map((t, i) => (
+                  <tr key={i}>
+                    <td>
+                      <Txt s={p(t)} />
+                    </td>
+                    <td>{p(iv.method.measures[i])}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          <p className="note reveal">
+            <strong>{p(iv.method.ethicsLabel)}.</strong> {p(iv.method.ethics)}
+          </p>
+          <p className="note reveal">{p(iv.plan)}</p>
         </Section>
 
-        {/* Gallery */}
-        <Section id="gallery" n="07" title={p(c.gallery.title)}>
+        {/* 07 · Field — map of filming points, video, YOLO stills */}
+        <Section id="gallery" n="07" kicker={p(c.nav[6].label)} tone="field" title={p(c.gallery.title)}>
           <p className="lead reveal">{p(c.gallery.lead)}</p>
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(c.field.title)}</h3>
+              <p className="muted small">{p(c.field.hint)}</p>
+            </figcaption>
+            <FieldExplorer
+              decimal={dec}
+              points={c.field.points.map((pt) => ({ ...pt, name: p(pt.name), type: p(pt.type) }))}
+              t={{
+                hint: p(c.field.hint),
+                rawHidden: p(c.field.rawHidden),
+                raw: p(c.field.raw),
+                yolo: p(c.field.yolo),
+                slow: p(c.field.slow),
+                meanTitle: p(c.field.meanTitle),
+                slots: c.field.slots.map(p),
+                roleCalib: p(c.field.roleCalib),
+                roleControl: p(c.field.roleControl),
+                cols: c.field.cols.map(p),
+                slotNames: { morning: p(c.field.slots[0]), day: p(c.field.slots[1]), evening: p(c.field.slots[2]) },
+              }}
+            />
+          </figure>
+
+          <div className="table-wrap reveal">
+            <table className="t t-points">
+              <thead>
+                <tr>
+                  {c.field.cols.map((col, i) => (
+                    <th key={i} scope="col" className={i === 4 ? "num" : ""}>
+                      {p(col)}
+                    </th>
+                  ))}
+                  {c.field.slots.map((sl, i) => (
+                    <th key={`s${i}`} scope="col" className="num">
+                      {p(sl)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {c.field.points.map((pt) => (
+                  <tr key={pt.id}>
+                    <th scope="row" className="tabnum">
+                      {pt.id}
+                    </th>
+                    <td>{p(pt.name)}</td>
+                    <td>{p(pt.type)}</td>
+                    <td>{pt.role === "calib" ? p(c.field.roleCalib) : p(c.field.roleControl)}</td>
+                    <td className="num tabnum">{pt.clips}</td>
+                    {pt.mean.map((m, i) => (
+                      <td key={i} className="num tabnum heat" style={{ ["--h" as string]: m == null ? 0 : Math.min(1, m / 15) }}>
+                        {m == null ? "—" : locale === "en" ? m.toFixed(1) : m.toFixed(1).replace(".", ",")}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
           <div className="reveal">
             <Gallery
               tabs={c.gallery.tabs.map((t) => ({ id: t.id, label: p(t.label), items: t.items.map((it) => ({ src: it.src, caption: p(it.caption), date: p(it.date), alt: p(it.alt) })) }))}
@@ -605,44 +795,82 @@ export default async function HomePage() {
           </ol>
         </Section>
 
-        {/* Limits */}
-        <Section id="limits" n="08" title={p(c.limits.title)}>
-          <div className="two">
-            <ul className="list-x reveal">
-              {c.limits.items.map((t, i) => (
-                <li key={i}>{p(t)}</li>
-              ))}
-            </ul>
-            <div className="reveal">
-              <h3 className="h3">{p(c.limits.nextTitle)}</h3>
-              <ul className="list-arrow">
-                {c.limits.next.map((t, i) => (
-                  <li key={i}>{p(t)}</li>
+        {/* 08 · Limits — grey, mono, status table */}
+        <Section id="limits" n="08" kicker={p(c.nav[7].label)} tone="limits" title={p(c.limits.title)}>
+          <div className="table-wrap reveal">
+            <table className="t t-limits">
+              <thead>
+                <tr>
+                  {c.limits.table.cols.map((col, i) => (
+                    <th key={i} scope="col">
+                      {p(col)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {c.limits.table.rows.map((row, i) => (
+                  <tr key={i}>
+                    <td>{p(row.lim)}</td>
+                    <td>{p(row.fix)}</td>
+                    <td>
+                      <span className={`st st-${row.status}`}>{p(c.limits.table.statusLabels[row.status as "done" | "progress" | "planned"])}</span>
+                    </td>
+                  </tr>
                 ))}
-              </ul>
-            </div>
+              </tbody>
+            </table>
           </div>
         </Section>
 
-        {/* Sources */}
-        <Section id="sources" n="09" title={p(c.sources.title)}>
-          <div className="two">
-            <div className="reveal">
-              <h3 className="h3">{p(c.sources.refsTitle)}</h3>
-              <ol className="refs">
-                {c.sources.refs.map((rf) => (
-                  <li key={rf.short}>{rf.text}</li>
+        {/* 09 · Sources — bibliography */}
+        <Section id="sources" n="09" kicker={p(c.nav[8].label)} tone="sources" title={p(c.sources.title)}>
+          <div className="table-wrap reveal">
+            <table className="t t-refs">
+              <caption className="h3">{p(c.sources.refsTitle)}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  {c.sources.refCols.map((col, i) => (
+                    <th key={i} scope="col">
+                      {p(col)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {c.sources.refs.map((rf, i) => (
+                  <tr key={rf.short}>
+                    <td className="tabnum muted">{i + 1}</td>
+                    <td className="ref-t">{rf.text}</td>
+                    <td>{p((c.sources.refUse as Record<string, L>)[rf.short])}</td>
+                  </tr>
                 ))}
-              </ol>
-            </div>
-            <div className="reveal">
-              <h3 className="h3">{p(c.sources.dataTitle)}</h3>
-              <ul className="list-dot">
-                {c.sources.data.map((d, i) => (
-                  <li key={i}>{p(d)}</li>
+              </tbody>
+            </table>
+          </div>
+          <div className="table-wrap reveal">
+            <table className="t">
+              <caption className="h3">{p(c.sources.dataTitle)}</caption>
+              <thead>
+                <tr>
+                  {c.sources.dataTable.cols.map((col, i) => (
+                    <th key={i} scope="col">
+                      {p(col)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {c.sources.dataTable.rows.map((row, i) => (
+                  <tr key={i}>
+                    <th scope="row">{p(row.src)}</th>
+                    <td>{p(row.what)}</td>
+                    <td className="muted">{p(row.lic)}</td>
+                  </tr>
                 ))}
-              </ul>
-            </div>
+              </tbody>
+            </table>
           </div>
         </Section>
       </div>

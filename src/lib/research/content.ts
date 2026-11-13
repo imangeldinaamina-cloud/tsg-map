@@ -29,6 +29,8 @@ export function findGaps(node: unknown = raw, path = ""): Gap[] {
   if (Array.isArray(node)) return node.flatMap((v, i) => findGaps(v, `${path}[${i}]`));
   if (node && typeof node === "object") {
     const obj = node as Record<string, unknown>;
+    // A slot marked "soon" is reserved on purpose (e.g. interview videos still to be recorded).
+    if (obj.soon === true) return [];
     const out: Gap[] = [];
     if ("src" in obj && obj.src === null) out.push({ path: `${path}.src`, text: "image not supplied" });
     if ("href" in obj && obj.href === null && !obj.soon) out.push({ path: `${path}.href`, text: "link not supplied" });
