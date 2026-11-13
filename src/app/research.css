@@ -3087,3 +3087,330 @@ html:has(.rs) {
     grid-row: 2;
   }
 }
+
+/* ═════════════ Moods v2: livelier, light only (no dark fills anywhere) ═════════════ */
+.rs .btn-dark {
+  background: var(--purple);
+  color: #fff;
+}
+.rs .btn-dark:hover {
+  background: #9150bb;
+}
+.rs .cls-balance,
+.rs .cls-none {
+  background: #e7e5ec;
+  color: var(--ink);
+}
+.rs .case-card.cls-balance {
+  background: #f1f0f4;
+}
+.rs .sec {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.rs .sec > .wrap {
+  position: relative;
+  z-index: 1;
+}
+/* decorative layer per chapter */
+.rs .sec::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 01 · Problem — peach sunrise, giant hexes drifting out of the corner */
+.rs .tone-problem {
+  --tone: linear-gradient(180deg, #fff3ef 0%, #fffaf8 55%, #fff 100%);
+  background: var(--tone);
+}
+.rs .tone-problem::before {
+  top: -60px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%23d9475b' stroke-width='2'%3E%3Cpolygon points='130,10 230,68 230,184 130,242 30,184 30,68' opacity='.18'/%3E%3Cpolygon points='130,50 196,88 196,164 130,202 64,164 64,88' opacity='.28'/%3E%3Cpolygon points='130,90 162,108 162,146 130,164 98,146 98,108' fill='%23d9475b' opacity='.12'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+}
+.rs .tone-problem .stat-row {
+  border-top: 2px solid #f6c7cd;
+}
+
+/* 02 · Method — blueprint: pale sky with a fine grid, sticky-note flow */
+.rs .tone-method {
+  --acc: #2f6fdb;
+  background-color: #f3f8ff;
+  background-image: radial-gradient(#bcd2f5 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.rs .tone-method .fig {
+  border-color: #d6e3f8;
+}
+.rs .tone-method .flow-grid .fn {
+  box-shadow: 0 6px 14px -8px rgba(47, 111, 219, 0.35);
+}
+.rs .tone-method .fn-people {
+  background: #e6f0ff;
+  transform: rotate(-0.6deg);
+}
+.rs .tone-method .fn-supply {
+  background: #ffe9ee;
+  transform: rotate(0.5deg);
+}
+.rs .tone-method .fn-check {
+  background: #e3f6ea;
+  transform: rotate(-0.4deg);
+}
+.rs .tone-method .fn-use {
+  background: #fff3cf;
+  transform: rotate(0.6deg);
+}
+.rs .tone-method .fn:hover {
+  transform: rotate(0) translateY(-2px);
+}
+.rs .fn-index,
+.rs .tone-method .fn-index {
+  background: linear-gradient(120deg, #efe6fb, #e3edff);
+  color: var(--ink);
+  border: 1.5px solid #c9b4ea;
+}
+.rs .fn-index[aria-pressed="true"] {
+  border-color: var(--purple);
+}
+.rs .flow-detail {
+  background: #fff;
+  border-left-color: #2f6fdb;
+}
+.rs .sched-bar .out {
+  background: #ffcf99;
+  color: #6a3d0c;
+}
+.rs .sched-bar .home {
+  background: #e9eef8;
+  color: var(--ink-2);
+}
+.rs .t-sched td.on,
+.rs .t-sched th.on {
+  background: #fff4e3;
+}
+
+/* 03 · Formulas — school notebook: lavender squares and a red margin line */
+.rs .tone-formulas {
+  background-color: #fbf9ff;
+  background-image: linear-gradient(90deg, transparent calc(clamp(16px, 4vw, 48px) - 14px), #f3a3ae calc(clamp(16px, 4vw, 48px) - 14px), #f3a3ae calc(clamp(16px, 4vw, 48px) - 12px), transparent calc(clamp(16px, 4vw, 48px) - 12px)),
+    linear-gradient(rgba(126, 63, 166, 0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(126, 63, 166, 0.09) 1px, transparent 1px);
+  background-size: 100% 100%, 26px 26px, 26px 26px;
+}
+.rs .tone-formulas .f-card {
+  background: #fff;
+  border-color: #e4d8f3;
+}
+.rs .tone-formulas .f-key {
+  background: linear-gradient(160deg, #f6efff, #fff 60%);
+  border-color: #c9b4ea;
+}
+.rs .tone-formulas .sec-num {
+  background: linear-gradient(135deg, #7e3fa6, #c48be6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 04 · Results — airy blue with soft hex "bubbles" */
+.rs .tone-results {
+  background: linear-gradient(180deg, #eef4ff 0%, #f6f9ff 60%, #fff 100%);
+}
+.rs .tone-results::before {
+  inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 90,27 90,73 50,96 10,73 10,27' fill='%232f6fdb' opacity='.07'/%3E%3C/svg%3E") no-repeat 92% 6% / 240px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 90,27 90,73 50,96 10,73 10,27' fill='%237e3fa6' opacity='.06'/%3E%3C/svg%3E") no-repeat 4% 46% / 180px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 90,27 90,73 50,96 10,73 10,27' fill='%23d9475b' opacity='.06'/%3E%3C/svg%3E") no-repeat 96% 78% / 140px;
+}
+.rs .tone-results .sec-num {
+  background: linear-gradient(135deg, #2f6fdb, #8fb4f5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.rs .tone-results .kpi {
+  border: 0;
+  box-shadow: 0 10px 30px -18px rgba(47, 111, 219, 0.5);
+  border-top: 4px solid #2f6fdb;
+}
+.rs .tone-results .kpi:nth-child(2) {
+  border-top-color: #7e3fa6;
+}
+.rs .tone-results .kpi:nth-child(2) .kpi-v {
+  color: #7e3fa6;
+}
+.rs .tone-results .kpi:nth-child(3) {
+  border-top-color: #2fb39a;
+}
+.rs .tone-results .kpi:nth-child(3) .kpi-v {
+  color: #1f9a83;
+}
+.rs .tone-results .fig,
+.rs .tone-results .case {
+  border-color: #dbe6fa;
+}
+
+/* 05 · App — fresh mint product page */
+.rs .tone-app {
+  --acc: #1f9a83;
+  background: linear-gradient(160deg, #e9faf4 0%, #f6fdfa 50%, #fff 100%);
+}
+.rs .tone-app .sec-num {
+  display: inline-grid;
+  place-items: center;
+  font-size: clamp(2.4rem, 1.6rem + 3vw, 4.2rem);
+  padding: 0.18em 0.42em;
+  border-radius: 999px;
+  background: #c9f0e2;
+  color: #12705f;
+  letter-spacing: -0.04em;
+}
+.rs .tone-app .shot {
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 18px 40px -24px rgba(18, 112, 95, 0.45);
+}
+.rs .st-n {
+  background: #c9f0e2;
+  color: #12705f;
+}
+.rs .tone-app .pipe li::before {
+  border-color: #1f9a83;
+}
+.rs .tone-app .fig {
+  border-color: #cdeee2;
+}
+
+/* 06 · Interviews — warm sand, big quote mark */
+.rs .tone-interviews {
+  background: linear-gradient(180deg, #fff4e6 0%, #fffaf3 70%, #fff 100%);
+}
+.rs .tone-interviews::before {
+  content: "“";
+  top: -0.12em;
+  right: 4%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(16rem, 30vw, 30rem);
+  line-height: 1;
+  color: #f2d3ad;
+  opacity: 0.6;
+}
+.rs .tone-interviews .soon-box {
+  background: #fff;
+  border: 0;
+  box-shadow: 0 14px 30px -20px rgba(154, 91, 60, 0.6);
+  position: relative;
+}
+.rs .tone-interviews .iv-video:nth-child(1) .soon-box {
+  transform: rotate(-1.2deg);
+}
+.rs .tone-interviews .iv-video:nth-child(2) .soon-box {
+  transform: rotate(1deg);
+}
+.rs .tone-interviews .soon-box::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 90px;
+  height: 22px;
+  margin-left: -45px;
+  background: rgba(242, 211, 173, 0.75);
+  transform: rotate(-3deg);
+}
+
+/* 07 · Field — on location: light lime, viewfinder corners, REC dot */
+.rs .tone-field {
+  background: linear-gradient(180deg, #f1f8e8 0%, #f8fbf3 70%, #fff 100%);
+}
+.rs .tone-field .sec-kicker::before {
+  content: "● REC  ";
+  color: #e5484d;
+  letter-spacing: 0.08em;
+}
+.rs .field-video {
+  background: #e7ede2;
+}
+.rs .field-video::before,
+.rs .field-video::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+.rs .field-video::before {
+  top: 10px;
+  left: 10px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.rs .field-video::after {
+  top: 10px;
+  right: 10px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.rs .tone-field .fig {
+  border-color: #d7e8c8;
+}
+
+/* 08 · Limits — sunny caution note */
+.rs .tone-limits {
+  background: #fffbea;
+}
+.rs .tone-limits::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(-45deg, #ffe27a 0 14px, #fff5c7 14px 28px);
+}
+.rs .tone-limits .sec-num {
+  color: #c99a06;
+}
+.rs .tone-limits .sec-kicker {
+  color: #a37c00;
+}
+.rs .tone-limits .table-wrap,
+.rs .tone-limits .fig {
+  border-color: #f3e6a8;
+}
+.rs .ib-gis,
+.rs .ik-gis::before {
+  background: #2f6fdb;
+}
+.rs .ib-osm,
+.rs .ik-osm::before {
+  background: #c4d3ef;
+}
+
+/* 09 · Sources — library card catalogue */
+.rs .tone-sources {
+  background: #fbf8f2;
+}
+.rs .tone-sources .sec-num {
+  color: #b08a5a;
+}
+.rs .tone-sources .table-wrap {
+  border-color: #eadfcd;
+  box-shadow: 4px 4px 0 #efe5d4;
+}
+.rs .tone-sources .t tbody tr:nth-child(odd) > * {
+  background: #fdfbf7;
+}
+
+/* chapters fade into each other instead of hard edges */
+.rs .research-body .sec + .sec {
+  border-top: 0;
+}
