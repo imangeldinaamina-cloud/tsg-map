@@ -3002,3 +3002,88 @@ html:has(.rs) {
     font-size: 0.74rem;
   }
 }
+
+/* 08: 2GIS vs OSM counts */
+.rs .infra-key {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  margin: 0 0 10px;
+}
+.rs .ik::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.rs .ik-gis::before {
+  background: var(--ink);
+}
+.rs .ik-osm::before {
+  background: #b9b6bf;
+}
+.rs .infra {
+  display: grid;
+  gap: 18px 28px;
+}
+@media (min-width: 760px) {
+  .rs .infra {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.rs .infra-h {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+.rs .infra-g ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rs .infra-g li {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 6rem;
+  gap: 10px;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+}
+.rs .infra-bars {
+  display: grid;
+  gap: 2px;
+}
+.rs .ib {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  min-width: 2px;
+}
+.rs .ib-gis {
+  background: var(--ink);
+}
+.rs .ib-osm {
+  background: #b9b6bf;
+}
+.rs .infra-v {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+@media (max-width: 520px) {
+  .rs .infra-g li {
+    grid-template-columns: minmax(0, 1fr) 6rem;
+  }
+  .rs .infra-bars {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}

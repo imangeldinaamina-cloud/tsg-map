@@ -12,8 +12,11 @@
 Ключ никуда не сохраняется. Если API вернёт ошибку — пришли текст ошибки.
 
 Как считается: для каждой категории — несколько поисковых запросов «<запрос> Талдыкорган», только филиалы
-(type=branch) внутри границы города; объекты с одинаковым id 2ГИС считаются один раз. «api_total» — сколько
-нашёл сам 2ГИС по запросу (может включать похожие рубрики), «unique_in_city» — что реально скачано и попало в город.
+(type=branch); объекты с одинаковым id 2ГИС считаются один раз.
+Демо-ключ отдаёт максимум 5 страниц по 10 (50 объектов на запрос), поэтому:
+  unique_in_city     — реально скачанные объекты внутри города (нижняя граница, если упёрлись в 50);
+  api_total_max      — сколько всего нашёл 2ГИС по лучшему из запросов (поле total);
+  count              — итог = большее из двух; capped=yes, если какой-то запрос упёрся в лимит 50.
 """
 import csv
 import json
@@ -69,10 +72,10 @@ def get(params):
 
 rows, counts = [], []
 for cat, (label, queries) in CATS.items():
-    seen, api_total = set(), 0
+    seen, api_total, capped = set(), 0, False
     for q in queries:
         page = 1
-        while page <= 20:
+        while page <= 5:  # demo key: page must be 1..5
             d = get(dict(q=f"{q} {CITY}", type="branch", page=page, page_size=10, fields="items.point,items.rubrics", key=KEY))
             if d.get("meta", {}).get("code") not in (200, None):
                 err = d.get("meta", {}).get("error", {})
@@ -83,7 +86,9 @@ for cat, (label, queries) in CATS.items():
                 break
             res = d.get("result", {})
             if page == 1:
-                api_total = max(api_total, int(res.get("total", 0)))
+                tot = int(res.get("total", 0))
+                api_total = max(api_total, tot)
+                capped = capped or tot > 50
             items = res.get("items", [])
             if not items:
                 break
@@ -97,8 +102,9 @@ for cat, (label, queries) in CATS.items():
                 rows.append([cat, it.get("name", ""), lat, lon, rub])
             page += 1
             time.sleep(0.3)
-    counts.append([cat, label, len(seen), api_total])
-    print(f"{label:35s} {len(seen):5d}   (2ГИС нашёл по запросам до {api_total})", flush=True)
+    count = max(len(seen), api_total)
+    counts.append([cat, label, count, len(seen), api_total, "yes" if capped else "no"])
+    print(f"{label:35s} {count:5d}   (скачано {len(seen)}, total 2ГИС до {api_total}{', лимит 50' if capped else ''})", flush=True)
 
 with open(os.path.join(OUT, "infra_2gis.csv"), "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
@@ -106,7 +112,7 @@ with open(os.path.join(OUT, "infra_2gis.csv"), "w", newline="", encoding="utf-8"
     w.writerows(rows)
 with open(os.path.join(OUT, "infra_2gis_counts.csv"), "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
-    w.writerow(["category", "label", "unique_in_city", "api_total_max_query", "source"])
+    w.writerow(["category", "label", "count", "unique_in_city", "api_total_max", "capped", "source"])
     for r in counts:
         w.writerow([*r, f"2ГИС, API, {time.strftime('%m.%Y')}"])
 print("\nГотово:", os.path.join(OUT, "infra_2gis_counts.csv"))

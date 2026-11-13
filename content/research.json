@@ -2643,6 +2643,274 @@
           "kk": "жоспарда"
         }
       }
+    },
+    "infra": {
+      "title": {
+        "ru": "Сколько всего объектов в городе: 2ГИС и OpenStreetMap",
+        "en": "How many places the city has: 2GIS vs OpenStreetMap",
+        "kk": "Қалада қанша нысан бар: 2ГИС және OpenStreetMap"
+      },
+      "lead": {
+        "ru": "Модель считала по OSM. 2ГИС находит заметно больше — поэтому результаты будут пересчитаны.",
+        "en": "The model used OSM. 2GIS finds noticeably more, so the results will be recomputed.",
+        "kk": "Модель OSM бойынша есептеді. 2ГИС көбірек табады."
+      },
+      "gisLabel": "2ГИС",
+      "osmLabel": {
+        "ru": "OSM (в модели)",
+        "en": "OSM (in the model)",
+        "kk": "OSM (модельде)"
+      },
+      "groups": [
+        {
+          "id": "trade",
+          "name": {
+            "ru": "Торговля и еда",
+            "en": "Shops and food",
+            "kk": "Сауда және тамақ"
+          },
+          "rows": [
+            {
+              "cat": "food",
+              "name": {
+                "ru": "Продуктовые магазины",
+                "en": "Grocery shops",
+                "kk": "Азық-түлік дүкендері"
+              },
+              "gis": 465,
+              "osm": 91,
+              "capped": true
+            },
+            {
+              "cat": "catering",
+              "name": {
+                "ru": "Общепит",
+                "en": "Food places",
+                "kk": "Қоғамдық тамақтану"
+              },
+              "gis": 218,
+              "osm": 241,
+              "capped": true
+            },
+            {
+              "cat": "mall",
+              "name": {
+                "ru": "ТРЦ",
+                "en": "Malls",
+                "kk": "СОО"
+              },
+              "gis": 30,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "market",
+              "name": {
+                "ru": "Рынки",
+                "en": "Markets",
+                "kk": "Базарлар"
+              },
+              "gis": 3,
+              "osm": null,
+              "capped": false
+            }
+          ]
+        },
+        {
+          "id": "health",
+          "name": {
+            "ru": "Здоровье",
+            "en": "Health",
+            "kk": "Денсаулық"
+          },
+          "rows": [
+            {
+              "cat": "pharmacy",
+              "name": {
+                "ru": "Аптеки",
+                "en": "Pharmacies",
+                "kk": "Дәріханалар"
+              },
+              "gis": 87,
+              "osm": 44,
+              "capped": true
+            },
+            {
+              "cat": "clinic",
+              "name": {
+                "ru": "Поликлиники и медцентры",
+                "en": "Clinics & medical centres",
+                "kk": "Емханалар"
+              },
+              "gis": 43,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "hospital",
+              "name": {
+                "ru": "Больницы",
+                "en": "Hospitals",
+                "kk": "Ауруханалар"
+              },
+              "gis": 5,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "dentist",
+              "name": {
+                "ru": "Стоматологии",
+                "en": "Dentists",
+                "kk": "Стоматология"
+              },
+              "gis": 54,
+              "osm": null,
+              "capped": true
+            }
+          ]
+        },
+        {
+          "id": "edu",
+          "name": {
+            "ru": "Образование",
+            "en": "Education",
+            "kk": "Білім"
+          },
+          "rows": [
+            {
+              "cat": "kindergarten",
+              "name": {
+                "ru": "Детские сады",
+                "en": "Kindergartens",
+                "kk": "Балабақшалар"
+              },
+              "gis": 65,
+              "osm": null,
+              "capped": true
+            },
+            {
+              "cat": "school",
+              "name": {
+                "ru": "Школы",
+                "en": "Schools",
+                "kk": "Мектептер"
+              },
+              "gis": 38,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "college",
+              "name": {
+                "ru": "Колледжи",
+                "en": "Colleges",
+                "kk": "Колледждер"
+              },
+              "gis": 22,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "university",
+              "name": {
+                "ru": "Вузы",
+                "en": "Universities",
+                "kk": "ЖОО"
+              },
+              "gis": 9,
+              "osm": null,
+              "capped": false
+            }
+          ]
+        },
+        {
+          "id": "svc",
+          "name": {
+            "ru": "Финансы и услуги",
+            "en": "Finance and services",
+            "kk": "Қаржы және қызметтер"
+          },
+          "rows": [
+            {
+              "cat": "bank",
+              "name": {
+                "ru": "Банки (отделения)",
+                "en": "Bank branches",
+                "kk": "Банктер"
+              },
+              "gis": 46,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "atm",
+              "name": {
+                "ru": "Банкоматы",
+                "en": "ATMs",
+                "kk": "Банкоматтар"
+              },
+              "gis": 154,
+              "osm": null,
+              "capped": true
+            },
+            {
+              "cat": "post",
+              "name": {
+                "ru": "Почта",
+                "en": "Post offices",
+                "kk": "Пошта"
+              },
+              "gis": 9,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "beauty",
+              "name": {
+                "ru": "Салоны красоты и парикмахерские",
+                "en": "Beauty salons & barbers",
+                "kk": "Сұлулық салондары"
+              },
+              "gis": 183,
+              "osm": null,
+              "capped": true
+            },
+            {
+              "cat": "sport",
+              "name": {
+                "ru": "Спорт и фитнес",
+                "en": "Sport & fitness",
+                "kk": "Спорт"
+              },
+              "gis": 45,
+              "osm": null,
+              "capped": false
+            },
+            {
+              "cat": "fuel",
+              "name": {
+                "ru": "АЗС",
+                "en": "Petrol stations",
+                "kk": "ЖҚС"
+              },
+              "gis": 41,
+              "osm": null,
+              "capped": false
+            }
+          ]
+        }
+      ],
+      "capNote": {
+        "ru": "* число по поиску 2ГИС; может включать смежные рубрики (киоски, отделы в торговых центрах). Демо-ключ позволяет скачать только 50 объектов на запрос.",
+        "en": "* count from 2GIS search; may include related categories (kiosks, counters inside malls). The demo key downloads at most 50 places per query.",
+        "kk": "* 2ГИС іздеуі бойынша сан; аралас рубрикаларды қамтуы мүмкін."
+      },
+      "source": {
+        "ru": "2ГИС, API, ноябрь 2026 (итоги по категориям; сами данные 2ГИС не публикуются). OSM — число объектов, использованных в модели.",
+        "en": "2GIS, API, November 2026 (category totals only; raw 2GIS data is not published). OSM — places used in the model.",
+        "kk": "2ГИС, API, 2026 ж. қараша (тек жиынтық сандар)."
+      }
     }
   },
   "sources": {

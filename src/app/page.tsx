@@ -797,6 +797,44 @@ export default async function HomePage() {
 
         {/* 08 · Limits — grey, mono, status table */}
         <Section id="limits" n="08" kicker={p(c.nav[7].label)} tone="limits" title={p(c.limits.title)}>
+          <figure className="fig reveal">
+            <figcaption className="fig-h">
+              <h3 className="h3">{p(c.limits.infra.title)}</h3>
+              <p className="muted small">{p(c.limits.infra.lead)}</p>
+            </figcaption>
+            <p className="infra-key" aria-hidden>
+              <span className="ik ik-gis">{c.limits.infra.gisLabel}</span>
+              <span className="ik ik-osm">{p(c.limits.infra.osmLabel)}</span>
+            </p>
+            <div className="infra">
+              {c.limits.infra.groups.map((g) => {
+                const max = Math.max(...g.rows.map((x) => Math.max(x.gis, x.osm ?? 0)));
+                return (
+                  <div key={g.id} className="infra-g">
+                    <h4 className="infra-h">{p(g.name)}</h4>
+                    <ul>
+                      {g.rows.map((x) => (
+                        <li key={x.cat}>
+                          <span className="infra-n">{p(x.name)}</span>
+                          <span className="infra-bars">
+                            <span className="ib ib-gis" style={{ width: `${(x.gis / max) * 100}%` }} />
+                            {x.osm != null && <span className="ib ib-osm" style={{ width: `${(x.osm / max) * 100}%` }} />}
+                          </span>
+                          <span className="infra-v tabnum">
+                            {x.gis}
+                            {x.capped ? "*" : ""}
+                            {x.osm != null && <span className="muted"> / {x.osm}</span>}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="viz-src">{p(c.limits.infra.capNote)}</p>
+            <p className="viz-src">{p(c.limits.infra.source)}</p>
+          </figure>
           <div className="table-wrap reveal">
             <table className="t t-limits">
               <thead>
