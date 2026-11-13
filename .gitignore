@@ -51,3 +51,6 @@ next-env.d.ts
 /research/agent_model/data/kaz_pop_2024.tif
 /research/out/
 /research/entrepreneurs/responses.csv
+
+__pycache__/
+*.pyc
