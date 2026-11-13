@@ -3425,6 +3425,16 @@
           "en": "Instagram, Telegram and other networks — same handle",
           "kk": "Instagram, Telegram және басқа желілер — бір ник"
         }
+      },
+      {
+        "label": {
+          "ru": "Открытый код",
+          "en": "Open source code",
+          "kk": "Ашық код"
+        },
+        "value": "github.com/imangeldinaamina-cloud/tsg-map",
+        "kind": "link",
+        "href": "https://github.com/imangeldinaamina-cloud/tsg-map"
       }
     ]
   },
@@ -3434,6 +3444,14 @@
       "ru": "Фото на странице — Pexels (бесплатная лицензия), города подписаны.",
       "en": "Photos on this page — Pexels (free licence), cities are labelled.",
       "kk": "Беттегі фотолар — Pexels (тегін лицензия), қалалар белгіленген."
+    },
+    "code": {
+      "label": {
+        "ru": "Код на GitHub",
+        "en": "Code on GitHub",
+        "kk": "GitHub-тағы код"
+      },
+      "href": "https://github.com/imangeldinaamina-cloud/tsg-map"
     }
   },
   "field": {

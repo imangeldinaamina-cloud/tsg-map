@@ -114,8 +114,9 @@ function AppCta({ qr, locale, label }: { qr: string; locale: Locale; label: stri
   );
 }
 
-function Contact({ kind, value }: { kind?: string; value: string }) {
+function Contact({ kind, value, href }: { kind?: string; value: string; href?: string }) {
   if (/\[[^\]]*\]/.test(value)) return <Txt s={value} />;
+  if (kind === "link" && href) return <a href={href}>{value}</a>;
   if (kind === "email") return <a href={`mailto:${value}`}>{value}</a>;
   if (kind === "telegram") return <a href={`https://t.me/${value.replace(/^@/, "")}`}>{value}</a>;
   if (kind === "social") {
@@ -989,7 +990,7 @@ export default async function HomePage() {
               <div key={pick(it.label, "ru")}>
                 <dt>{p(it.label)}</dt>
                 <dd>
-                  <Contact kind={"kind" in it ? it.kind : undefined} value={it.value} />
+                  <Contact kind={"kind" in it ? it.kind : undefined} value={it.value} href={"href" in it ? it.href : undefined} />
                 </dd>
               </div>
             ))}
@@ -1006,7 +1007,7 @@ export default async function HomePage() {
             </span>
           </span>
           <span className="muted small">
-            {c.footer.copyright} · {p(c.footer.credits)}
+            {c.footer.copyright} · {p(c.footer.credits)} · <a href={c.footer.code.href}>{p(c.footer.code.label)}</a>
           </span>
           <a href="#top" className="small">
             {p(c.ui.toTop)} ↑
