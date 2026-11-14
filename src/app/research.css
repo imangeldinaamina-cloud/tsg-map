@@ -3447,3 +3447,49 @@ html:has(.rs) {
   color: var(--ink-2);
   margin-top: 4px;
 }
+
+/* full video log (07) */
+.rs .vlog {
+  margin: 1.5rem 0 2rem;
+}
+.rs .vlog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0.6rem 0 0.4rem;
+}
+.rs .btn-link {
+  display: inline-block;
+  padding: 7px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+}
+.rs .btn-link:hover {
+  background: rgba(46, 125, 79, 0.1);
+}
+.rs .vlog-scroll {
+  max-height: 560px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.rs .t-vlog {
+  font-size: 0.85rem;
+}
+.rs .t-vlog th,
+.rs .t-vlog td {
+  padding: 7px 10px;
+}
+.rs .t-vlog thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg, #fff);
+  z-index: 1;
+}
+.rs .t-vlog td.heat {
+  background: rgba(46, 125, 79, calc(var(--h) * 0.35));
+}

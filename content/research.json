@@ -3805,6 +3805,635 @@
       "ru": "«Как снято» скрыто: в ролике близко прохожие",
       "en": "“As filmed” hidden: passers-by close to the camera",
       "kk": "«Түсірілгендей» жасырылған: камераға жақын адамдар"
+    },
+    "log": {
+      "title": {
+        "ru": "Журнал видеозаписей — все 45 роликов",
+        "en": "Video log — all 45 clips",
+        "kk": "Бейнежазбалар журналы — барлық 45 ролик"
+      },
+      "lead": {
+        "ru": "Каждая строка — один ролик: где и когда снят, сколько кадров разобрала программа и сколько людей в среднем было в кадре. Будни — вторник 06.10 и среда 07.10, выходной — суббота 10.10.2026.",
+        "en": "Each row is one clip: where and when it was filmed, how many frames the program analysed and the mean number of people in frame. Weekdays are Tuesday 06.10 and Wednesday 07.10; the weekend day is Saturday 10.10.2026.",
+        "kk": "Әр жол — бір ролик: қайда және қашан түсірілді, бағдарлама неше кадрды талдады және кадрда орта есеппен неше адам болды."
+      },
+      "xlsx": {
+        "ru": "Скачать таблицу (Excel)",
+        "en": "Download the table (Excel)",
+        "kk": "Кестені жүктеу (Excel)"
+      },
+      "csv": {
+        "ru": "CSV",
+        "en": "CSV",
+        "kk": "CSV"
+      },
+      "cols": [
+        {
+          "ru": "№",
+          "en": "No."
+        },
+        {
+          "ru": "ID записи",
+          "en": "Record ID"
+        },
+        {
+          "ru": "Ролик",
+          "en": "Clip"
+        },
+        {
+          "ru": "Точка",
+          "en": "Point"
+        },
+        {
+          "ru": "Место съёмки",
+          "en": "Filming spot"
+        },
+        {
+          "ru": "Дата",
+          "en": "Date"
+        },
+        {
+          "ru": "День",
+          "en": "Day"
+        },
+        {
+          "ru": "Время",
+          "en": "Time"
+        },
+        {
+          "ru": "Слот",
+          "en": "Slot"
+        },
+        {
+          "ru": "Кадров",
+          "en": "Frames"
+        },
+        {
+          "ru": "Людей в кадре",
+          "en": "People per frame"
+        }
+      ],
+      "weekend": {
+        "ru": "выходной",
+        "en": "weekend",
+        "kk": "демалыс"
+      },
+      "days": {
+        "Tue": {
+          "ru": "вт",
+          "en": "Tue"
+        },
+        "Wed": {
+          "ru": "ср",
+          "en": "Wed"
+        },
+        "Sat": {
+          "ru": "сб",
+          "en": "Sat"
+        }
+      },
+      "rows": [
+        {
+          "id": "P01-U-1",
+          "clip": "C038",
+          "point": "P01",
+          "place": "перекрёсток, остановка, зелёные автобусы",
+          "slot": "morning",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "08:02",
+          "frames": 20,
+          "mean": 0.95
+        },
+        {
+          "id": "P03-U-1",
+          "clip": "C039",
+          "point": "P03",
+          "place": "перекрёсток у магазина Florins",
+          "slot": "morning",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "08:19",
+          "frames": 20,
+          "mean": 5.3
+        },
+        {
+          "id": "P02-U-1",
+          "clip": "C041",
+          "point": "P02",
+          "place": "пешеходная улица со скамьями",
+          "slot": "morning",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "08:34",
+          "frames": 20,
+          "mean": 4.8
+        },
+        {
+          "id": "P04-U-1",
+          "clip": "C043",
+          "point": "P04",
+          "place": "остановка у гипермаркета с полосатым фасадом",
+          "slot": "morning",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "08:48",
+          "frames": 20,
+          "mean": 10.1
+        },
+        {
+          "id": "P05-U-1",
+          "clip": "C047",
+          "point": "P05",
+          "place": "улица у рынка, торговые навесы",
+          "slot": "morning",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "09:06",
+          "frames": 20,
+          "mean": 13.35
+        },
+        {
+          "id": "P08-U-1",
+          "clip": "C048",
+          "point": "P08",
+          "place": "перекрёсток у ТРЦ, LC Waikiki, KFC",
+          "slot": "morning",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "09:26",
+          "frames": 20,
+          "mean": 7.6
+        },
+        {
+          "id": "P08-V-1",
+          "clip": "C049",
+          "point": "P08",
+          "place": "перекрёсток у ТРЦ, LC Waikiki, KFC",
+          "slot": "evening",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "17:12",
+          "frames": 30,
+          "mean": 10.57
+        },
+        {
+          "id": "P04-V-1",
+          "clip": "C050",
+          "point": "P04",
+          "place": "остановка у гипермаркета с полосатым фасадом",
+          "slot": "evening",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "17:26",
+          "frames": 30,
+          "mean": 14.07
+        },
+        {
+          "id": "P05-V-1",
+          "clip": "C051",
+          "point": "P05",
+          "place": "улица у рынка, торговые навесы",
+          "slot": "evening",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "17:40",
+          "frames": 30,
+          "mean": 7.6
+        },
+        {
+          "id": "P02-V-1",
+          "clip": "C052",
+          "point": "P02",
+          "place": "пешеходная улица со скамьями",
+          "slot": "evening",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "18:00",
+          "frames": 30,
+          "mean": 5.1
+        },
+        {
+          "id": "P03-V-1",
+          "clip": "C054",
+          "point": "P03",
+          "place": "перекрёсток у магазина Florins",
+          "slot": "evening",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "18:12",
+          "frames": 30,
+          "mean": 7.53
+        },
+        {
+          "id": "P01-V-1",
+          "clip": "C055",
+          "point": "P01",
+          "place": "перекрёсток, остановка, зелёные автобусы",
+          "slot": "evening",
+          "date": "06.10.2026",
+          "wd": "Tue",
+          "time": "18:25",
+          "frames": 30,
+          "mean": 1.9
+        },
+        {
+          "id": "P07-U-1",
+          "clip": "C057",
+          "point": "P07",
+          "place": "перекрёсток у ЖК Astoria",
+          "slot": "morning",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "08:47",
+          "frames": 31,
+          "mean": 2.48
+        },
+        {
+          "id": "P07-U-2",
+          "clip": "C058",
+          "point": "P07",
+          "place": "перекрёсток у дома с муралом, магазин TOR",
+          "slot": "morning",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "09:02",
+          "frames": 30,
+          "mean": 0.6
+        },
+        {
+          "id": "P06-U-1",
+          "clip": "C059",
+          "point": "P06",
+          "place": "переход и остановки у ворот Жетысуского университета",
+          "slot": "morning",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "09:18",
+          "frames": 30,
+          "mean": 2.53
+        },
+        {
+          "id": "P07-U-3",
+          "clip": "C060",
+          "point": "P07",
+          "place": "торговый центр «Дәулет»",
+          "slot": "morning",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "09:33",
+          "frames": 30,
+          "mean": 1.37
+        },
+        {
+          "id": "P10-U-1",
+          "clip": "C061",
+          "point": "P10",
+          "place": "перекрёсток у четырёхэтажных домов, остановка",
+          "slot": "morning",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "09:59",
+          "frames": 30,
+          "mean": 0.5
+        },
+        {
+          "id": "P09-D-1",
+          "clip": "C063",
+          "point": "P09",
+          "place": "ТРЦ Сити Плюс (Sulpak)",
+          "slot": "day",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "12:31",
+          "frames": 30,
+          "mean": 0.47
+        },
+        {
+          "id": "P10-D-1",
+          "clip": "C066",
+          "point": "P10",
+          "place": "перекрёсток у четырёхэтажных домов, остановка",
+          "slot": "day",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "12:46",
+          "frames": 29,
+          "mean": 1.31
+        },
+        {
+          "id": "P06-D-1",
+          "clip": "C067",
+          "point": "P06",
+          "place": "переход и остановки у ворот Жетысуского университета",
+          "slot": "day",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "13:46",
+          "frames": 30,
+          "mean": 2.5
+        },
+        {
+          "id": "P07-D-1",
+          "clip": "C068",
+          "point": "P07",
+          "place": "перекрёсток у ЖК Astoria",
+          "slot": "day",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "14:08",
+          "frames": 30,
+          "mean": 2.73
+        },
+        {
+          "id": "P07-D-2",
+          "clip": "C071",
+          "point": "P07",
+          "place": "перекрёсток у дома с муралом, магазин TOR",
+          "slot": "day",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "14:28",
+          "frames": 30,
+          "mean": 2.07
+        },
+        {
+          "id": "P09-V-1",
+          "clip": "C072",
+          "point": "P09",
+          "place": "ТРЦ Сити Плюс (Sulpak)",
+          "slot": "evening",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "17:02",
+          "frames": 30,
+          "mean": 4.13
+        },
+        {
+          "id": "P10-V-1",
+          "clip": "C074",
+          "point": "P10",
+          "place": "перекрёсток у четырёхэтажных домов, остановка",
+          "slot": "evening",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "17:19",
+          "frames": 30,
+          "mean": 1.03
+        },
+        {
+          "id": "P07-V-1",
+          "clip": "C075",
+          "point": "P07",
+          "place": "торговый центр «Дәулет»",
+          "slot": "evening",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "18:06",
+          "frames": 30,
+          "mean": 0.73
+        },
+        {
+          "id": "P07-V-2",
+          "clip": "C077",
+          "point": "P07",
+          "place": "перекрёсток у дома с муралом, магазин TOR",
+          "slot": "evening",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "18:22",
+          "frames": 30,
+          "mean": 1.53
+        },
+        {
+          "id": "P07-V-3",
+          "clip": "C078",
+          "point": "P07",
+          "place": "перекрёсток у ЖК Astoria",
+          "slot": "evening",
+          "date": "07.10.2026",
+          "wd": "Wed",
+          "time": "18:35",
+          "frames": 30,
+          "mean": 2.17
+        },
+        {
+          "id": "P01-U-2",
+          "clip": "C080",
+          "point": "P01",
+          "place": "перекрёсток, остановка, зелёные автобусы",
+          "slot": "morning",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "08:53",
+          "frames": 32,
+          "mean": 2.25
+        },
+        {
+          "id": "P03-U-2",
+          "clip": "C081",
+          "point": "P03",
+          "place": "перекрёсток у магазина Florins",
+          "slot": "morning",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "09:07",
+          "frames": 30,
+          "mean": 3.5
+        },
+        {
+          "id": "P02-U-2",
+          "clip": "C082",
+          "point": "P02",
+          "place": "пешеходная улица со скамьями",
+          "slot": "morning",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "09:19",
+          "frames": 30,
+          "mean": 2.33
+        },
+        {
+          "id": "P04-U-2",
+          "clip": "C083",
+          "point": "P04",
+          "place": "остановка у гипермаркета с полосатым фасадом",
+          "slot": "morning",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "09:32",
+          "frames": 30,
+          "mean": 11.47
+        },
+        {
+          "id": "P05-U-2",
+          "clip": "C084",
+          "point": "P05",
+          "place": "улица у рынка, торговые навесы",
+          "slot": "morning",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "09:45",
+          "frames": 30,
+          "mean": 12.77
+        },
+        {
+          "id": "P08-U-2",
+          "clip": "C085",
+          "point": "P08",
+          "place": "перекрёсток у ТРЦ, LC Waikiki, KFC",
+          "slot": "morning",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "10:01",
+          "frames": 30,
+          "mean": 6.37
+        },
+        {
+          "id": "P08-D-1",
+          "clip": "C086",
+          "point": "P08",
+          "place": "перекрёсток у ТРЦ, LC Waikiki, KFC",
+          "slot": "day",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "12:07",
+          "frames": 30,
+          "mean": 10.7
+        },
+        {
+          "id": "P05-D-1",
+          "clip": "C087",
+          "point": "P05",
+          "place": "улица у рынка, торговые навесы",
+          "slot": "day",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "12:25",
+          "frames": 30,
+          "mean": 18.97
+        },
+        {
+          "id": "P04-D-1",
+          "clip": "C088",
+          "point": "P04",
+          "place": "остановка у гипермаркета с полосатым фасадом",
+          "slot": "day",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "12:39",
+          "frames": 30,
+          "mean": 14.73
+        },
+        {
+          "id": "P02-D-1",
+          "clip": "C089",
+          "point": "P02",
+          "place": "пешеходная улица со скамьями",
+          "slot": "day",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "12:52",
+          "frames": 33,
+          "mean": 5.67
+        },
+        {
+          "id": "P03-D-1",
+          "clip": "C091",
+          "point": "P03",
+          "place": "перекрёсток у магазина Florins",
+          "slot": "day",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "13:04",
+          "frames": 30,
+          "mean": 6.87
+        },
+        {
+          "id": "P01-D-1",
+          "clip": "C092",
+          "point": "P01",
+          "place": "перекрёсток, остановка, зелёные автобусы",
+          "slot": "day",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "13:16",
+          "frames": 30,
+          "mean": 4.4
+        },
+        {
+          "id": "P08-V-2",
+          "clip": "C093",
+          "point": "P08",
+          "place": "перекрёсток у ТРЦ, LC Waikiki, KFC",
+          "slot": "evening",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "17:20",
+          "frames": 30,
+          "mean": 11.43
+        },
+        {
+          "id": "P05-V-2",
+          "clip": "C094",
+          "point": "P05",
+          "place": "улица у рынка, торговые навесы",
+          "slot": "evening",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "17:35",
+          "frames": 30,
+          "mean": 6.03
+        },
+        {
+          "id": "P04-V-2",
+          "clip": "C095",
+          "point": "P04",
+          "place": "остановка у гипермаркета с полосатым фасадом",
+          "slot": "evening",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "17:52",
+          "frames": 30,
+          "mean": 14.5
+        },
+        {
+          "id": "P02-V-2",
+          "clip": "C096",
+          "point": "P02",
+          "place": "пешеходная улица со скамьями",
+          "slot": "evening",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "18:06",
+          "frames": 30,
+          "mean": 4.43
+        },
+        {
+          "id": "P03-V-2",
+          "clip": "C097",
+          "point": "P03",
+          "place": "перекрёсток у магазина Florins",
+          "slot": "evening",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "18:17",
+          "frames": 30,
+          "mean": 5.0
+        },
+        {
+          "id": "P01-V-2",
+          "clip": "C098",
+          "point": "P01",
+          "place": "перекрёсток, остановка, зелёные автобусы",
+          "slot": "evening",
+          "date": "10.10.2026",
+          "wd": "Sat",
+          "time": "18:30",
+          "frames": 30,
+          "mean": 2.43
+        }
+      ]
     }
   }
 }

@@ -819,6 +819,58 @@ export default async function HomePage() {
             </table>
           </div>
 
+          <div id="video-log" className="vlog reveal">
+            <div className="vlog-h">
+              <h3 className="h3">{p(c.field.log.title)}</h3>
+              <p className="muted small">{p(c.field.log.lead)}</p>
+              <p className="vlog-links">
+                <a className="btn-link" href="/research/video-log.xlsx" download>
+                  {p(c.field.log.xlsx)} ↓
+                </a>
+                <a className="btn-link" href="/research/video-log.csv" download>
+                  {p(c.field.log.csv)} ↓
+                </a>
+              </p>
+            </div>
+            <div className="table-wrap vlog-scroll">
+              <table className="t t-vlog">
+                <thead>
+                  <tr>
+                    {c.field.log.cols.map((col, i) => (
+                      <th key={i} scope="col" className={i === 0 || i >= 9 ? "num" : ""}>
+                        {p(col)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {c.field.log.rows.map((r, i) => (
+                    <tr key={r.clip}>
+                      <td className="num tabnum">{i + 1}</td>
+                      <th scope="row" className="tabnum nowrap">
+                        {r.id}
+                      </th>
+                      <td className="tabnum">{r.clip}</td>
+                      <td className="tabnum">{r.point}</td>
+                      <td>{r.place}</td>
+                      <td className="tabnum nowrap">{r.date}</td>
+                      <td>
+                        {p(c.field.log.days[r.wd as keyof typeof c.field.log.days])}
+                        {r.wd === "Sat" ? <span className="muted"> · {p(c.field.log.weekend)}</span> : null}
+                      </td>
+                      <td className="tabnum">{r.time}</td>
+                      <td>{p(c.field.slots[["morning", "day", "evening"].indexOf(r.slot)])}</td>
+                      <td className="num tabnum">{r.frames}</td>
+                      <td className="num tabnum heat" style={{ ["--h" as string]: Math.min(1, r.mean / 15) }}>
+                        {locale === "en" ? r.mean.toFixed(2) : r.mean.toFixed(2).replace(".", ",")}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <div className="reveal">
             <Gallery
               tabs={c.gallery.tabs.map((t) => ({ id: t.id, label: p(t.label), items: t.items.map((it) => ({ src: it.src, caption: p(it.caption), date: p(it.date), alt: p(it.alt) })) }))}
