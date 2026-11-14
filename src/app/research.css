@@ -3493,3 +3493,194 @@ html:has(.rs) {
 .rs .t-vlog td.heat {
   background: rgba(46, 125, 79, calc(var(--h) * 0.35));
 }
+
+/* ───────── research upgrade: cell explainer, transitions, validation, status ───────── */
+.rs .c-noserv {
+  border-color: #b7791f !important;
+  background: repeating-linear-gradient(45deg, #fff7e6 0 6px, #fdebc8 6px 8px) !important;
+}
+.rs .c-few {
+  border-color: #e3e3e8 !important;
+}
+.rs .viz-counts {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.rs .viz-none .sw-hatch {
+  background: repeating-linear-gradient(45deg, #fff7e6 0 3px, #b7791f 3px 4px);
+}
+.rs .viz-none .sw {
+  background: #f3f3f5;
+  border: 1px solid #d9d8de;
+}
+.rs .pill-notconfirmed {
+  color: #9a3412;
+}
+.rs .dot-none {
+  background: repeating-linear-gradient(45deg, #fff7e6 0 3px, #b7791f 3px 4px);
+}
+.rs .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.rs .trans {
+  margin: 0 0 12px;
+}
+.rs .trans-h {
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.rs .trans-m {
+  width: auto;
+  font-size: 0.8rem;
+}
+.rs .trans-m th,
+.rs .trans-m td {
+  padding: 4px 8px;
+  text-align: center;
+}
+.rs .trans-m td.same {
+  background: #ececf0;
+}
+.rs .trans-m td.to-deficit {
+  color: #2f6fdb;
+  font-weight: 600;
+}
+.rs .trans-m td.to-balance {
+  color: #a66f00;
+  font-weight: 600;
+}
+.rs .trans-m td.to-surplus {
+  color: #c2364a;
+  font-weight: 600;
+}
+.rs .trans-key {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  display: grid;
+  gap: 2px;
+}
+.rs .trans-key .sw,
+.rs .vstat .sw {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+.rs .cellx {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfbfc;
+}
+.rs .cellx-goto {
+  font-size: 0.85rem;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.rs .cellx-goto input {
+  width: 5.5em;
+  padding: 4px 8px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  font: inherit;
+}
+.rs .cellx-h {
+  margin: 4px 0 10px;
+  font-size: 1rem;
+}
+.rs .cellx-dl {
+  display: grid;
+  grid-template-columns: minmax(150px, max-content) 1fr;
+  gap: 4px 16px;
+  margin: 0;
+  font-size: 0.88rem;
+}
+.rs .cellx-dl dt {
+  color: var(--ink-2);
+}
+.rs .cellx-dl dd {
+  margin: 0;
+}
+@media (max-width: 560px) {
+  .rs .cellx-dl {
+    grid-template-columns: 1fr;
+  }
+  .rs .cellx-dl dd {
+    margin-bottom: 6px;
+  }
+}
+.rs .cellx-how {
+  margin-top: 10px;
+}
+.rs .cellx-how summary,
+.rs .xplain summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.rs .xplain {
+  margin: 0.5rem 0 1.5rem;
+  padding: 12px 16px;
+  border-left: 3px solid var(--line-2);
+  background: rgba(0, 0, 0, 0.02);
+}
+.rs .vstat {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  margin: 1rem 0;
+}
+.rs .vstat > div {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.rs .vstat b {
+  display: block;
+  font-family: var(--wide);
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+.rs .vstat small {
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
+.rs .verdict-box {
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #fff4ed;
+  border: 1px solid #fed7aa;
+  color: #7c2d12;
+  margin: 1rem 0;
+}
+.rs .dl-grid {
+  display: grid;
+  grid-template-columns: minmax(170px, max-content) 1fr;
+  gap: 4px 18px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.rs .dl-grid dt {
+  color: var(--ink-2);
+}
+.rs .dl-grid dd {
+  margin: 0;
+}
+@media (max-width: 560px) {
+  .rs .dl-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.rs .unk {
+  color: #9a3412;
+  font-style: italic;
+}

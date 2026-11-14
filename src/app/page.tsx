@@ -7,7 +7,8 @@ import "./research.css";
 import { ImgSlot, StepIcon, Txt } from "@/components/research/bits";
 import { Gallery, LangToggle, Reveal, TsgDemo } from "@/components/research/client";
 import { ClassChange, FieldExplorer, Flow, MarketShare, PeopleMap, Schedule, TsgMap } from "@/components/research/viz";
-import hexmap from "../../public/research/hexmap.json";
+import { CURRENT, DATASETS } from "@/lib/research/datasets";
+import validation from "../../content/validation.json";
 import type { Locale } from "@/i18n";
 import { getI18n } from "@/i18n/server";
 import { content as c, findGaps, L, pick } from "@/lib/research/content";
@@ -17,11 +18,10 @@ const serif = Playfair_Display({ subsets: ["latin", "cyrillic"], weight: ["400",
 const mono = IBM_Plex_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], display: "swap", variable: "--font-rs-mono" });
 const wide = Unbounded({ subsets: ["latin", "cyrillic"], weight: ["400", "600"], display: "swap", variable: "--font-rs-wide" });
 
-const tsgSummary = Object.fromEntries(Object.entries(hexmap.summary).map(([k, v]) => [k, v.changed]));
 const HEX_TEXT: Record<Locale, { slots: Record<string, string>; cats: Record<string, string>; timeLabel: string; catLabel: string; people: string; noValue: string; cell: string }> = {
-  ru: { slots: { static: "По прописке", morning: "Утро", day: "День", evening: "Вечер" }, cats: { food: "Продукты", pharmacy: "Аптеки", catering: "Общепит" }, timeLabel: "Время суток", catLabel: "Услуга", people: "чел.", noValue: "нет оценки", cell: "Ячейка" },
-  en: { slots: { static: "By registration", morning: "Morning", day: "Day", evening: "Evening" }, cats: { food: "Groceries", pharmacy: "Pharmacies", catering: "Food places" }, timeLabel: "Time of day", catLabel: "Service", people: "people", noValue: "not evaluated", cell: "Cell" },
-  kk: { slots: { static: "Тіркеу бойынша", morning: "Таң", day: "Күндіз", evening: "Кеш" }, cats: { food: "Азық-түлік", pharmacy: "Дәріханалар", catering: "Тамақтану" }, timeLabel: "Тәулік уақыты", catLabel: "Қызмет", people: "адам", noValue: "бағаланбаған", cell: "Ұяшық" },
+  ru: { slots: { static: "По месту проживания", morning: "Утро", day: "День", evening: "Вечер" }, cats: { food: "Продукты", pharmacy: "Аптеки", catering: "Общепит" }, timeLabel: "Время суток", catLabel: "Услуга", people: "чел.", noValue: "нет оценки", cell: "Ячейка" },
+  en: { slots: { static: "Residents", morning: "Morning", day: "Day", evening: "Evening" }, cats: { food: "Groceries", pharmacy: "Pharmacies", catering: "Food places" }, timeLabel: "Time of day", catLabel: "Service", people: "people", noValue: "not evaluated", cell: "Cell" },
+  kk: { slots: { static: "Тұрғылықты жер бойынша", morning: "Таң", day: "Күндіз", evening: "Кеш" }, cats: { food: "Азық-түлік", pharmacy: "Дәріханалар", catering: "Тамақтану" }, timeLabel: "Тәулік уақыты", catLabel: "Қызмет", people: "адам", noValue: "бағаланбаған", cell: "Ұяшық" },
 };
 
 const OG_LOCALE: Record<Locale, string> = { ru: "ru_RU", en: "en_US", kk: "kk_KZ" };
@@ -39,6 +39,16 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: { card: "summary_large_image", title, description },
   };
 }
+
+type Pick = (v: L | null | undefined) => string;
+/** Resolve every localized leaf of a nested content object. */
+function deepPick<T>(o: T, p: Pick): DeepStr<T> {
+  if (o && typeof o === "object" && !Array.isArray(o) && ("ru" in (o as object) || "en" in (o as object))) return p(o as unknown as L) as DeepStr<T>;
+  if (o && typeof o === "object") return Object.fromEntries(Object.entries(o as object).map(([k, v]) => [k, deepPick(v, p)])) as DeepStr<T>;
+  return o as DeepStr<T>;
+}
+type DeepStr<T> = T extends { ru: string } ? string : T extends object ? { [K in keyof T]: DeepStr<T[K]> } : T;
+const explainText = (x: typeof c.results.map.x, p: Pick) => deepPick(x, p);
 
 function math(tex: string, display = true) {
   return katex.renderToString(tex, { displayMode: display, throwOnError: false, strict: "ignore" });
@@ -138,6 +148,7 @@ export default async function HomePage() {
   const { locale } = await getI18n();
   const p = (v: L | null | undefined) => pick(v, locale);
   const dec = locale === "en" ? "." : ",";
+  const fx = (v: number, d = 2) => (v < 0 ? "−" : "") + Math.abs(v).toFixed(d).replace(".", dec);
   const qr = await QRCode.toString(c.app.url, { type: "svg", margin: 1, errorCorrectionLevel: "M", color: { dark: "#141215FF", light: "#FFFFFFFF" } });
   const gaps = findGaps().length;
   const r = c.results;
@@ -310,6 +321,11 @@ export default async function HomePage() {
               </li>
             ))}
           </ul>
+          <details className="xplain reveal">
+            <summary>{p(c.problem.mExplain.title)}</summary>
+            <Formula tex={c.problem.mExplain.tex} locale={locale} />
+            <p className="small">{p(c.problem.mExplain.text)}</p>
+          </details>
           <figure className="fig reveal">
             <figcaption className="fig-h">
               <h3 className="h3">{p(c.problem.map.title)}</h3>
@@ -385,6 +401,7 @@ export default async function HomePage() {
                 </tbody>
               </table>
             </div>
+            <p className="note">{p(c.method.compare.note)}</p>
           </figure>
         </Section>
 
@@ -492,7 +509,8 @@ export default async function HomePage() {
               decimal={dec}
               legend={{ def: p(r.map.legendDef), bal: p(r.map.legendBal), sur: p(r.map.legendSur), none: p(r.map.legendNone) }}
               source={p(r.map.source)}
-              summary={tsgSummary}
+              version={CURRENT}
+              x={explainText(r.map.x, p)}
               highlight={{ cell: 206, label: p(r.map.cell206) }}
             />
           </figure>
@@ -752,6 +770,23 @@ export default async function HomePage() {
           <p className="note reveal">
             <strong>{p(iv.method.ethicsLabel)}.</strong> {p(iv.method.ethics)}
           </p>
+          <div className="table-wrap reveal">
+            <table className="t">
+              <caption className="h3">{p(iv.status.title)}</caption>
+              <tbody>
+                {iv.status.rows.map((row, i) => (
+                  <tr key={i}>
+                    <th scope="row">{p(row.k)}</th>
+                    <td className="tabnum">{typeof row.v === "string" ? row.v : p(row.v)}</td>
+                    <td>
+                      <span className={`st st-${row.s}`}>{p(c.limits.table.statusLabels[row.s as "done" | "progress" | "planned"])}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="note">{p(iv.status.note)}</p>
+          </div>
           <p className="note reveal">{p(iv.plan)}</p>
         </Section>
 
@@ -871,6 +906,88 @@ export default async function HomePage() {
             </div>
           </div>
 
+          <div id="validation" className="reveal">
+            <h3 className="h3">{p(c.validation.title)}</h3>
+            <p className="muted small">{p(c.validation.lead)}</p>
+            <div className="vstat">
+              <div>
+                <b className="tabnum">{fx(validation.weekdays.mae_model)}</b>
+                <small>
+                  {p(c.validation.kpi.model)} · [{fx(validation.weekdays.mae_model_ci[0])}; {fx(validation.weekdays.mae_model_ci[1])}]
+                </small>
+              </div>
+              <div>
+                <b className="tabnum">{fx(validation.weekdays.mae_registry)}</b>
+                <small>
+                  {p(c.validation.kpi.registry)} · [{fx(validation.weekdays.mae_registry_ci[0])}; {fx(validation.weekdays.mae_registry_ci[1])}]
+                </small>
+              </div>
+              <div>
+                <b className="tabnum">
+                  [{fx(validation.weekdays.improvement_model_vs_registry[0])}; {fx(validation.weekdays.improvement_model_vs_registry[1])}]
+                </b>
+                <small>{p(c.validation.kpi.diff)}</small>
+              </div>
+              <div>
+                <b className="tabnum">
+                  {Math.round(validation.weekdays.sign_agreement_model * validation.weekdays.n_ratios)} / {validation.weekdays.n_ratios}
+                </b>
+                <small>{p(c.validation.kpi.sign)}</small>
+              </div>
+              <div>
+                <b className="tabnum">{fx(validation.weekdays.loo_mae.mae_calibrated)}</b>
+                <small>
+                  {p(c.validation.kpi.loo)} ({p(c.validation.kpi.registry)}: {fx(validation.weekdays.loo_mae.mae_registry)})
+                </small>
+              </div>
+            </div>
+            <p className="verdict-box">{p(c.validation.verdict)}</p>
+            <p className="small">{p(c.validation.why)}</p>
+            <div className="table-wrap">
+              <table className="t">
+                <thead>
+                  <tr>
+                    {c.validation.cols.map((col, i) => (
+                      <th key={i} scope="col" className={i >= 4 && i <= 6 ? "num" : ""}>
+                        {p(col)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {validation.points.map((pt) => {
+                    const a = pt.avail;
+                    const w = [pt.shared_cell && p(c.validation.warn.shared), p(c.validation.warn.loc), pt.weekday_fit?.n === 1 && p(c.validation.warn.one), a.weekday.day === 0 && p(c.validation.warn.noday)].filter(Boolean);
+                    return (
+                      <tr key={pt.id}>
+                        <th scope="row" className="tabnum">
+                          {pt.id}
+                        </th>
+                        <td>{pt.role === "calib" ? p(c.field.roleCalib) : p(c.field.roleControl)}</td>
+                        <td className="tabnum">{pt.hex_cell}</td>
+                        <td className="tabnum nowrap">
+                          {a.weekday.morning}/{a.weekday.day}/{a.weekday.evening} · {a.saturday.morning}/{a.saturday.day}/{a.saturday.evening}
+                        </td>
+                        <td className="num tabnum">{pt.weekday_fit?.n ?? 0}</td>
+                        <td className="num tabnum">{pt.weekday_fit ? fx(pt.weekday_fit.mae_model) : "—"}</td>
+                        <td className="num tabnum">{pt.weekday_fit ? fx(pt.weekday_fit.mae_registry) : "—"}</td>
+                        <td className="small">{w.join("; ")}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="note">
+              {p(c.validation.allDays)
+                .replace("{n}", String(validation.all_days.n_ratios))
+                .replace("{m}", fx(validation.all_days.mae_model))
+                .replace("{r}", fx(validation.all_days.mae_registry))
+                .replace("{s}", `${Math.round(validation.all_days.sign_agreement_model * 100)}%`)}
+            </p>
+            <p className="viz-src">{p(c.validation.note)}</p>
+          </div>
+
           <div className="reveal">
             <Gallery
               tabs={c.gallery.tabs.map((t) => ({ id: t.id, label: p(t.label), items: t.items.map((it) => ({ src: it.src, caption: p(it.caption), date: p(it.date), alt: p(it.alt) })) }))}
@@ -956,6 +1073,60 @@ export default async function HomePage() {
 
         {/* 09 · Sources — bibliography */}
         <Section id="sources" n="09" kicker={p(c.nav[8].label)} tone="sources" title={p(c.sources.title)}>
+          <div id="transparency" className="reveal">
+            <h3 className="h3">{p(c.transparency.title)}</h3>
+            <p className="muted small">{p(c.transparency.lead)}</p>
+            <div className="table-wrap">
+              <table className="t t-ver">
+                <thead>
+                  <tr>
+                    <th scope="col" />
+                    {DATASETS.map((ds) => (
+                      <th key={ds.id} scope="col" className="tabnum">
+                        {ds.id}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(
+                    [
+                      ["usedIn", (ds) => ds.usedIn.join("; ")],
+                      ["status", (ds) => p(c.transparency.statusV[ds.status])],
+                      ["services", (ds) => ds.services.source],
+                      ["extracted", (ds) => ds.services.extracted],
+                      ["counts", (ds) => (ds.services.counts ? Object.entries(ds.services.counts).map(([k, v]) => `${k} ${v}`).join(", ") : null)],
+                      ["hours", (ds) => (ds.services.hoursKnown ? `${ds.services.hoursKnown[0]} / ${ds.services.hoursKnown[1]} · ${ds.hours}` : ds.hours)],
+                      ["population", (ds) => (ds.population.residentsInGrid ? `${ds.population.dataset}: ${ds.population.residentsInGrid.toLocaleString("ru-RU")}` : ds.population.dataset)],
+                      ["official", (ds) => (ds.population.officialTotal ? `${ds.population.officialTotal.toLocaleString("ru-RU")} (${ds.population.officialSource}${ds.population.officialDate ? `, ${ds.population.officialDate}` : ""})` : null)],
+                      ["grid", (ds) => `${ds.grid.type === "hexagon" ? "⬡" : "■"} ${ds.grid.cellArea}, ${ds.grid.cells}`],
+                      ["agents", (ds) => (ds.agents.count ? `${ds.agents.count}, 1 : ${ds.agents.scale}, ${ds.agents.runs}` : null)],
+                      ["worker", (ds) => (ds.agents.workerShare != null ? `${(ds.agents.workerShare * 100).toFixed(1).replace(".", dec)}%` : ds.agents.count ? null : "—")],
+                      ["distance", (ds) => ds.distance],
+                      ["tau", (ds) => (ds.tau != null ? String(ds.tau).replace(".", dec) : "—")],
+                      ["elig", (ds) => ds.eligibility],
+                      ["code", (ds) => ds.code],
+                      ["commit", (ds) => ds.commit],
+                      ["validated", () => p(c.transparency.notValidated)],
+                      ["evidence", (ds) => ds.evidence.join("; ")],
+                    ] as [keyof typeof c.transparency.rows, (ds: (typeof DATASETS)[number]) => string | null][]
+                  ).map(([k, fn]) => (
+                    <tr key={k}>
+                      <th scope="row">{p(c.transparency.rows[k])}</th>
+                      {DATASETS.map((ds) => {
+                        const v = fn(ds);
+                        return <td key={ds.id}>{v ?? <span className="unk">{p(c.transparency.unknown)}</span>}</td>;
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="note">{p(c.transparency.grids)}</p>
+            <p className="note">{p(c.transparency.sensitivity)}</p>
+            <p className="viz-src">{p(c.transparency.changelog)}</p>
+          </div>
+
           <div className="table-wrap reveal">
             <table className="t t-refs">
               <caption className="h3">{p(c.sources.refsTitle)}</caption>

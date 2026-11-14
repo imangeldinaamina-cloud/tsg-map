@@ -2,6 +2,8 @@
 // Interactive figures of the research page: hex map (people / TSG / filming points), the computation flow,
 // the agent schedule, class-change chart, market share and the field explorer (video + YOLO).
 import { useEffect, useMemo, useRef, useState } from "react";
+import { cellInputs, type HexCell } from "@/lib/research/hex";
+import { CATS, PARAMS, SLOTS, transitions, tsgAll, type Cat, type CellResult, type NoValueReason, type TsgClass, type View } from "@/lib/research/math";
 
 /* ───────────── shared ───────────── */
 
@@ -9,13 +11,13 @@ export interface HexData {
   side: number;
   slots: string[];
   cats: string[];
-  cells: { x: number; y: number; R: number; D: Record<string, number>; T: Record<string, Record<string, number | null>> }[];
+  cells: HexCell[];
   outline: [number, number][];
   points: { id: string; x: number; y: number }[];
 }
 
 let hexCache: Promise<HexData> | null = null;
-function useHex(): HexData | null {
+export function useHex(): HexData | null {
   const [d, setD] = useState<HexData | null>(null);
   useEffect(() => {
     hexCache ??= fetch("/research/hexmap.json").then((r) => r.json());
@@ -54,7 +56,7 @@ function lerpHex(stops: string[], t: number) {
   const ch = (s: number) => Math.round(((a >> s) & 255) * (1 - f) + ((b >> s) & 255) * f);
   return `rgb(${ch(16)},${ch(8)},${ch(0)})`;
 }
-const peopleColor = (v: number) => (v < 5 ? "#ececf0" : lerpHex(PURPLE, Math.log10(v) / Math.log10(6500)));
+export const peopleColor = (v: number) => (v < 5 ? "#ececf0" : lerpHex(PURPLE, Math.log10(v) / Math.log10(6500)));
 export function tsgColor(t: number | null | undefined) {
   if (t == null) return "#ebebee";
   const a = Math.abs(t);
@@ -77,10 +79,11 @@ export interface HexText {
   cell?: string;
 }
 
-function HexSvg({
+export function HexSvg({
   data,
   fill,
   onHover,
+  onSelect,
   hovered,
   highlight,
   points,
@@ -92,6 +95,7 @@ function HexSvg({
   data: HexData;
   fill: (i: number) => string;
   onHover: (i: number | null) => void;
+  onSelect?: (i: number) => void;
   hovered: number | null;
   highlight?: { cell: number; label: string };
   points?: { id: string; label: string }[];
@@ -127,6 +131,12 @@ function HexSvg({
   const hl = highlight ? data.cells[highlight.cell] : null;
   return (
     <svg viewBox={vb.join(" ")} className="hexsvg" role="img" aria-label={label} onMouseLeave={() => onHover(null)}>
+      <defs>
+        <pattern id="hatch-noserv" width={s * 0.5} height={s * 0.5} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width={s * 0.5} height={s * 0.5} fill="#fff7e6" />
+          <line x1="0" y1="0" x2="0" y2={s * 0.5} stroke="#b7791f" strokeWidth={s * 0.12} />
+        </pattern>
+      </defs>
       <polygon points={data.outline.map(([x, y]) => `${x},${Y(y)}`).join(" ")} className="hex-outline" />
       {data.cells.map((c, i) => (
         <polygon
@@ -135,7 +145,7 @@ function HexSvg({
           fill={fill(i)}
           className={hovered === i ? "hex on" : "hex"}
           onMouseEnter={() => onHover(i)}
-          onClick={() => onHover(i)}
+          onClick={() => (onSelect ? onSelect(i) : onHover(i))}
         />
       ))}
       {hl && highlight && (
@@ -169,14 +179,14 @@ function HexSvg({
 /** People per cell: registration vs. agent-model presence by slot. */
 export function PeopleMap({ t, decimal, legend, source }: { t: HexText; decimal: string; legend: string; source: string }) {
   const data = useHex();
-  const [slot, setSlot] = useState("day");
+  const [slot, setSlot] = useState<View>("day");
   const [hov, setHov] = useState<number | null>(null);
   const val = (i: number) => (slot === "static" ? data!.cells[i].R : data!.cells[i].D[slot]);
   const max = data ? Math.max(...data.cells.map((_, i) => val(i))) : 0;
   return (
     <div className="viz viz-people">
       <div className="viz-bar">
-        <Seg value={slot} onChange={setSlot} label={t.timeLabel} options={["static", "morning", "day", "evening"].map((id) => ({ id, label: t.slots[id] }))} />
+        <Seg value={slot} onChange={(v) => setSlot(v as View)} label={t.timeLabel} options={(["static", ...SLOTS] as View[]).map((id) => ({ id, label: t.slots[id] }))} />
         <span className="viz-max">
           max <b className="tabnum">{data ? fmtN(max, decimal) : "…"}</b> {t.people}
         </span>
@@ -206,61 +216,136 @@ export function PeopleMap({ t, decimal, legend, source }: { t: HexText; decimal:
   );
 }
 
-/** TSG per cell for a category and slot (or the static registry-based estimate). */
+/** Text of the cell explainer and comparison mode (content/research.json → results.map.x). */
+export interface ExplainText {
+  modeLabel: string;
+  modeTsg: string;
+  modeCmp: string;
+  pick: string;
+  goto: string;
+  cell: string;
+  area: string;
+  residents: string;
+  presence: string;
+  supply: string;
+  supplyUnit: string;
+  shareA: string;
+  shareB: string;
+  cls: string;
+  clsStatic: string;
+  changed: string;
+  yes: string;
+  no: string;
+  nearby: string;
+  hoursKnown: string;
+  distance: string;
+  distanceV: string;
+  version: string;
+  uncertainty: string;
+  uncertaintyV: string;
+  how: string;
+  howNorm: string;
+  delta: string;
+  deltaNote: string;
+  classes: Record<"deficit" | "balance" | "surplus", string>;
+  reasons: Record<NoValueReason, string>;
+  legendNoService: string;
+  legendFew: string;
+  trans: { title: string; n: string; toDef: string; toBal: string; toSur: string; same: string; from: string; to: string };
+}
+
+const CLASS_ORDER: TsgClass[] = ["deficit", "balance", "surplus"];
+const TRANS_COLOR = { same: "#d9d8de", deficit: "#2f6fdb", balance: "#e0a526", surplus: "#d9475b" } as const;
+
+function cellFill(r: CellResult, R: number, D: number) {
+  if (r.tsg !== null) return tsgColor(r.tsg);
+  if (r.reason === "no_service" && Math.max(R, D) >= PARAMS.dMin) return "url(#hatch-noserv)";
+  return "#f3f3f5";
+}
+
+/** TSG per cell for a category and view, recomputed from the published inputs (D, S) with the calculation core. */
 export function TsgMap({
   t,
+  x,
   decimal,
   legend,
   source,
-  summary,
   highlight,
+  version,
 }: {
   t: HexText;
+  x: ExplainText;
   decimal: string;
   legend: { def: string; bal: string; sur: string; none: string };
   source: string;
-  summary: Record<string, number>;
   highlight: { cell: number; label: string };
+  version: string;
 }) {
   const data = useHex();
-  const [cat, setCat] = useState("food");
-  const [slot, setSlot] = useState("day");
+  const [cat, setCat] = useState<Cat>("food");
+  const [slot, setSlot] = useState<View>("day");
+  const [mode, setMode] = useState<"tsg" | "cmp">("tsg");
   const [hov, setHov] = useState<number | null>(null);
-  const v = (i: number) => data!.cells[i].T[cat][slot];
+  const [sel, setSel] = useState<number | null>(highlight.cell);
+  const res = useMemo(() => (data ? tsgAll(cellInputs(data, cat, slot)) : null), [data, cat, slot]);
+  const stat = useMemo(() => (data ? tsgAll(cellInputs(data, cat, "static")) : null), [data, cat]);
+  const tr = useMemo(() => (res && stat && slot !== "static" ? transitions(stat, res) : null), [res, stat, slot]);
   const counts = useMemo(() => {
-    if (!data) return null;
-    const k = { d: 0, b: 0, s: 0 };
-    data.cells.forEach((c) => {
-      const x = c.T[cat][slot];
-      if (x == null) return;
-      if (x >= 0.2) k.d++;
-      else if (x <= -0.2) k.s++;
-      else k.b++;
+    if (!res || !data) return null;
+    const k = { d: 0, b: 0, s: 0, noServ: 0, few: 0 };
+    res.forEach((r, i) => {
+      if (r.cls === "deficit") k.d++;
+      else if (r.cls === "balance") k.b++;
+      else if (r.cls === "surplus") k.s++;
+      else if (r.reason === "no_service" && Math.max(data.cells[i].R, slot === "static" ? 0 : data.cells[i].D[slot]) >= PARAMS.dMin) k.noServ++;
+      else k.few++;
     });
     return k;
+  }, [res, data, slot]);
+  const cmpMode = mode === "cmp" && slot !== "static";
+  const D = (i: number) => (slot === "static" ? data!.cells[i].R : data!.cells[i].D[slot]);
+  const fill = (i: number) => {
+    const r = res![i];
+    if (!cmpMode) return cellFill(r, data!.cells[i].R, D(i));
+    const s = stat![i];
+    if (!r.cls || !s.cls) return cellFill(r.cls ? r : s.cls ? s : r, data!.cells[i].R, D(i));
+    return r.cls === s.cls ? TRANS_COLOR.same : TRANS_COLOR[r.cls];
+  };
+  const num = (v: number, d = 0) => v.toLocaleString(decimal === "," ? "ru-RU" : "en-US", { maximumFractionDigits: d, minimumFractionDigits: d });
+  const sig = (v: number) => (v === 0 ? "0" : v.toPrecision(3).replace(".", decimal));
+  const sums = useMemo(() => {
+    if (!data) return null;
+    const inp = cellInputs(data, cat, slot);
+    return { D: inp.reduce((s, c) => s + c.D, 0), S: inp.reduce((s, c) => s + c.S, 0) };
   }, [data, cat, slot]);
-  const ch = summary[`${cat}|${slot}`];
+  const viewName = t.slots[slot];
+
   return (
     <div className="viz viz-tsg">
       <div className="viz-bar">
-        <Seg value={cat} onChange={setCat} label={t.catLabel ?? ""} options={["food", "pharmacy", "catering"].map((id) => ({ id, label: t.cats![id] }))} />
-        <Seg value={slot} onChange={setSlot} label={t.timeLabel} options={["static", "morning", "day", "evening"].map((id) => ({ id, label: t.slots[id] }))} />
+        <Seg value={cat} onChange={(v) => setCat(v as Cat)} label={t.catLabel ?? ""} options={CATS.map((id) => ({ id, label: t.cats![id] }))} />
+        <Seg value={slot} onChange={(v) => setSlot(v as View)} label={t.timeLabel} options={(["static", ...SLOTS] as View[]).map((id) => ({ id, label: t.slots[id] }))} />
+        <Seg value={mode} onChange={(v) => setMode(v as "tsg" | "cmp")} label={x.modeLabel} small options={[{ id: "tsg", label: x.modeTsg }, { id: "cmp", label: x.modeCmp }]} />
       </div>
       <div className="viz-split">
         <div className="viz-stage">
-          {data ? <HexSvg data={data} fill={(i) => tsgColor(v(i))} onHover={setHov} hovered={hov} highlight={highlight} label={`${t.cats![cat]} · ${t.slots[slot]}`} /> : <div className="viz-loading" />}
-          {data && hov != null && (
+          {data && res ? (
+            <HexSvg data={data} fill={fill} onHover={setHov} onSelect={setSel} hovered={sel ?? hov} highlight={highlight} label={`${t.cats![cat]} · ${viewName}`} />
+          ) : (
+            <div className="viz-loading" />
+          )}
+          {data && res && hov != null && (
             <div className="viz-tip" aria-live="polite">
-              {t.cell} {hov}: {v(hov) == null ? <span className="muted">{t.noValue}</span> : <b className="tabnum">TSG {fmtT(v(hov)!, decimal)}</b>}
+              {x.cell} {hov}: {res[hov].tsg == null ? <span className="muted">{x.reasons[res[hov].reason ?? "undefined"]}</span> : <b className="tabnum">TSG {fmtT(res[hov].tsg!, decimal)}</b>}
               <span className="muted">
                 {" "}
-                · {fmtN(slot === "static" ? data.cells[hov].R : data.cells[hov].D[slot], decimal)} {t.people}
+                · {fmtN(D(hov), decimal)} {t.people}
               </span>
             </div>
           )}
         </div>
         <aside className="viz-side">
-          {counts && (
+          {counts && !cmpMode && (
             <dl className="viz-counts">
               <div className="c-def">
                 <dt>{legend.def}</dt>
@@ -274,18 +359,175 @@ export function TsgMap({
                 <dt>{legend.sur}</dt>
                 <dd className="tabnum">{counts.s}</dd>
               </div>
+              <div className="c-noserv">
+                <dt>{x.legendNoService}</dt>
+                <dd className="tabnum">{counts.noServ}</dd>
+              </div>
+              <div className="c-few">
+                <dt>{x.legendFew}</dt>
+                <dd className="tabnum">{counts.few}</dd>
+              </div>
             </dl>
           )}
-          {slot !== "static" && ch != null && (
+          {cmpMode && tr && (
+            <div className="trans">
+              <p className="trans-h">{x.trans.title}</p>
+              <table className="trans-m">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <span className="sr-only">{x.trans.from}</span>
+                    </th>
+                    {CLASS_ORDER.map((c) => (
+                      <th key={c} scope="col">
+                        {x.classes[c]}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {CLASS_ORDER.map((a) => (
+                    <tr key={a}>
+                      <th scope="row">{x.classes[a]}</th>
+                      {CLASS_ORDER.map((b) => (
+                        <td key={b} className={`tabnum${a === b ? " same" : ` to-${b}`}`}>
+                          {tr.matrix[a][b]}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="muted small">
+                {x.trans.from} → {x.trans.to}. n = {tr.n} {x.trans.n}
+              </p>
+              <ul className="trans-key">
+                <li>
+                  <span className="sw" style={{ background: TRANS_COLOR.deficit }} aria-hidden /> {x.trans.toDef}
+                </li>
+                <li>
+                  <span className="sw" style={{ background: TRANS_COLOR.balance }} aria-hidden /> {x.trans.toBal}
+                </li>
+                <li>
+                  <span className="sw" style={{ background: TRANS_COLOR.surplus }} aria-hidden /> {x.trans.toSur}
+                </li>
+                <li>
+                  <span className="sw" style={{ background: TRANS_COLOR.same }} aria-hidden /> {x.trans.same}
+                </li>
+              </ul>
+            </div>
+          )}
+          {tr && (
             <p className="viz-big">
-              <b className="tabnum">{Math.round(ch * 100)}%</b>
-              <span>{t.changed}</span>
+              <b className="tabnum">{((tr.changed / tr.n) * 100).toFixed(1).replace(".", decimal)}%</b>
+              <span>
+                {t.changed} (n = {tr.n})
+              </span>
             </p>
           )}
+          <p className="viz-none">
+            <span className="sw sw-hatch" aria-hidden /> {x.legendNoService}
+          </p>
           <p className="viz-none">
             <span className="sw" aria-hidden /> {legend.none}
           </p>
         </aside>
+      </div>
+
+      <div className="cellx" aria-live="polite">
+        <label className="cellx-goto">
+          {x.goto}{" "}
+          <input
+            type="number"
+            min={0}
+            max={354}
+            value={sel ?? ""}
+            onChange={(e) => {
+              const v = Number(e.target.value);
+              setSel(Number.isInteger(v) && v >= 0 && v <= 354 ? v : null);
+            }}
+          />
+        </label>
+        {sel == null || !data || !res || !stat || !sums ? (
+          <p className="muted small">{x.pick}</p>
+        ) : (
+          (() => {
+            const c = data.cells[sel];
+            const r = res[sel];
+            const s = stat[sel];
+            const S = c.S[cat][slot];
+            const changed = slot !== "static" && r.cls && s.cls ? r.cls !== s.cls : null;
+            const delta = slot !== "static" && r.tsg !== null && s.tsg !== null ? r.tsg - s.tsg : null;
+            return (
+              <div className="cellx-body">
+                <h4 className="cellx-h">
+                  {x.cell} {sel} · {t.cats![cat]} · {viewName}
+                </h4>
+                <dl className="cellx-dl">
+                  <dt>{x.area}</dt>
+                  <dd>0{decimal}25 км²</dd>
+                  <dt>{x.residents}</dt>
+                  <dd className="tabnum">{num(c.R)}</dd>
+                  {slot !== "static" && (
+                    <>
+                      <dt>{x.presence}</dt>
+                      <dd className="tabnum">{num(c.D[slot])}</dd>
+                    </>
+                  )}
+                  <dt>{x.supply}</dt>
+                  <dd className="tabnum">
+                    {sig(S)} {x.supplyUnit}
+                  </dd>
+                  <dt>{x.shareA}</dt>
+                  <dd className="tabnum">{sig(r.a)}</dd>
+                  <dt>{x.shareB}</dt>
+                  <dd className="tabnum">{sig(r.b)}</dd>
+                  <dt>TSG</dt>
+                  <dd className="tabnum">{r.tsg === null ? <span className="muted">{x.reasons[r.reason ?? "undefined"]}</span> : fmtT(r.tsg, decimal)}</dd>
+                  <dt>{x.cls}</dt>
+                  <dd>{r.cls ? x.classes[r.cls] : "—"}</dd>
+                  {slot !== "static" && (
+                    <>
+                      <dt>{x.clsStatic}</dt>
+                      <dd>{s.cls ? `${x.classes[s.cls]} (TSG ${fmtT(s.tsg!, decimal)})` : x.reasons[s.reason ?? "undefined"]}</dd>
+                      <dt>{x.changed}</dt>
+                      <dd>{changed === null ? "—" : changed ? x.yes : x.no}</dd>
+                      <dt>{x.delta}</dt>
+                      <dd className="tabnum">{delta === null ? "—" : fmtT(delta, decimal)}</dd>
+                    </>
+                  )}
+                  <dt>{x.nearby}</dt>
+                  <dd className="tabnum">
+                    {c.N[cat]} ({x.hoursKnown}: {c.Nh[cat]})
+                  </dd>
+                  <dt>{x.distance}</dt>
+                  <dd>{x.distanceV}</dd>
+                  <dt>{x.version}</dt>
+                  <dd>{version}</dd>
+                  <dt>{x.uncertainty}</dt>
+                  <dd>{x.uncertaintyV}</dd>
+                </dl>
+                <details className="cellx-how">
+                  <summary>{x.how}</summary>
+                  <p className="tabnum">
+                    a = D / ΣD = {num(slot === "static" ? c.R : c.D[slot])} / {num(sums.D)} = {sig(r.a)}
+                    <br />b = S / ΣS = {sig(S)} / {sig(sums.S)} = {sig(r.b)}
+                    <br />
+                    {r.tsg === null ? (
+                      x.reasons[r.reason ?? "undefined"]
+                    ) : (
+                      <>
+                        TSG = (a − b) / (a + b) = {fmtT(r.tsg, decimal)} → {x.classes[r.cls!]} (τ = 0{decimal}2)
+                      </>
+                    )}
+                  </p>
+                  <p className="muted small">{x.howNorm}</p>
+                  {delta !== null && <p className="muted small">{x.deltaNote}</p>}
+                </details>
+              </div>
+            );
+          })()
+        )}
       </div>
       <p className="viz-src">{source}</p>
     </div>

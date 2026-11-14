@@ -197,17 +197,17 @@ const city: CityDict = {
     label: "People present",
     model: "TSG agent model",
     assume: "My assumptions",
-    note: "Presence by time of day comes from the TSG agent-based model (≈17k agents, 100 runs): 0.25 km² hexagons are spread onto 250 m cells in proportion to residents, and the total is matched to the WorldPop resident count. Model slots: morning 07–11, day 11–16:30 (also used for “afternoon”), evening 16:30–22. Outskirts outside the model show residents. This is a model estimate; the video check (H2) is still running.",
+    note: "Presence by time of day comes from the TSG agent-based model (≈17k agents, 100 runs): 0.25 km² hexagons are spread onto 250 m cells in proportion to residents, and the total is matched to the WorldPop resident count. Model slots: morning 07–11, day 11–16:30 (also used for “afternoon”), evening 16:30–22. Outskirts outside the model show residents. This is a model estimate; the video check (H2) has not confirmed it on current data. The /city map is a separate model: 250 m squares, walking routes on OSM, WorldPop 2021, no opening hours; its numbers differ from section 04 of the research page.",
   },
   verdict: {
     title: "Verdict",
-    promising: "{cat} here ({period}): promising",
-    mixed: "{cat} here ({period}): pros and cons",
-    risky: "{cat} here ({period}): risky",
+    promising: "{cat} here ({period}): preliminary — more favourable conditions",
+    mixed: "{cat} here ({period}): preliminary — mixed conditions",
+    risky: "{cat} here ({period}): preliminary — less favourable conditions",
     better: "Better nearby: cell {id}, {d} m walk — gap index {sgi}, {P} people ({period}).",
     noBetter: "No cell within walking distance (up to {d} m) has a larger gap and a noticeable number of people.",
     check: "Check it",
-    note: "The verdict is built from the findings below and is not a revenue forecast.",
+    note: "A preliminary location assessment from the findings below: not a revenue or profit forecast and not proof of viability. Consider competition, absolute demand and costs.",
   },
 };
 

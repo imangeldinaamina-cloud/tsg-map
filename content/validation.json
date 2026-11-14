@@ -1,0 +1,339 @@
+{
+ "source": "research/out/h2_report.json ← research/h2_calibrate.py (re-run 15.11.2026: identical output)",
+ "metric": "MAE of log-ratios of people between two slots at the same point; registry predicts 0. 95% CI: bootstrap over points.",
+ "eps": 0.5,
+ "weekdays": {
+  "n_points": 10,
+  "n_ratios": 14,
+  "mae_registry": 0.3983868404207311,
+  "mae_registry_ci": [
+   0.24247476208396437,
+   0.6389717094676653
+  ],
+  "mae_model": 0.5838402987880279,
+  "mae_model_ci": [
+   0.3697468921637196,
+   0.858667282323823
+  ],
+  "improvement_model_vs_registry": [
+   -0.44517089282845745,
+   0.06311221407237295
+  ],
+  "sign_agreement_model": 0.5714285714285714,
+  "cross_section": {
+   "morning": {
+    "n": 9,
+    "rho_model": -0.1836180719054506,
+    "rho_registry": 0.2885426844228509
+   },
+   "evening": {
+    "n": 9,
+    "rho_model": 0.45467332090873486,
+    "rho_registry": 0.47216075632830157
+   }
+  },
+  "loo_mae": {
+   "mae_calibrated": 0.6019061508899565,
+   "mae_model": 0.6463564921443395,
+   "mae_registry": 0.4275248221985385
+  }
+ },
+ "all_days": {
+  "n_points": 10,
+  "n_ratios": 26,
+  "mae_registry": 0.3956969905064033,
+  "mae_registry_ci": [
+   0.27346426388164397,
+   0.5547902394381556
+  ],
+  "mae_model": 0.5008785121791817,
+  "mae_model_ci": [
+   0.3240153424237353,
+   0.6764154965668249
+  ],
+  "improvement_model_vs_registry": [
+   -0.2713426791694716,
+   0.06523575212721136
+  ],
+  "sign_agreement_model": 0.6923076923076923,
+  "cross_section": {
+   "morning": {
+    "n": 9,
+    "rho_model": -0.15738691877610053,
+    "rho_registry": 0.31477383755220106
+   },
+   "day": {
+    "n": 10,
+    "rho_model": 0.42658598213890986,
+    "rho_registry": 0.42658598213890986
+   },
+   "evening": {
+    "n": 9,
+    "rho_model": 0.45467332090873486,
+    "rho_registry": 0.47216075632830157
+   }
+  }
+ },
+ "points": [
+  {
+   "id": "P01",
+   "name": "Перекрёсток Назарбаева – Шевченко (остановка)",
+   "hex_cell": 159,
+   "shared_cell": true,
+   "role": "control",
+   "clips": 5,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 0,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 1.1488052409801424,
+    "mae_registry": 0.5039051809214169,
+    "sign_ok": 0
+   }
+  },
+  {
+   "id": "P02",
+   "name": "Арбат",
+   "hex_cell": 173,
+   "shared_cell": false,
+   "role": "calib",
+   "clips": 5,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 0,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 1.0464909413799686,
+    "mae_registry": 0.05505977718302739,
+    "sign_ok": 0
+   }
+  },
+  {
+   "id": "P03",
+   "name": "Перекрёсток у Арбата (ТРЦ, школа)",
+   "hex_cell": 159,
+   "shared_cell": true,
+   "role": "calib",
+   "clips": 5,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 0,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 0.9702266704650222,
+    "mae_registry": 0.3253266104062968,
+    "sign_ok": 0
+   }
+  },
+  {
+   "id": "P04",
+   "name": "Карагаш (ТРЦ, главная остановка центра)",
+   "hex_cell": 174,
+   "shared_cell": true,
+   "role": "calib",
+   "clips": 5,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 0,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 0.16906645739318205,
+    "mae_registry": 0.318110619089092,
+    "sign_ok": 1
+   }
+  },
+  {
+   "id": "P05",
+   "name": "Базар",
+   "hex_cell": 174,
+   "shared_cell": true,
+   "role": "calib",
+   "clips": 5,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 0,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 1.0235982474372285,
+    "mae_registry": 0.5364211709549545,
+    "sign_ok": 0
+   }
+  },
+  {
+   "id": "P06",
+   "name": "ЖГУ",
+   "hex_cell": 127,
+   "shared_cell": false,
+   "role": "control",
+   "clips": 2,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 0
+    },
+    "saturday": {
+     "morning": 0,
+     "day": 0,
+     "evening": 0
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 0.03228265037928764,
+    "mae_registry": 0.00995033085316798,
+    "sign_ok": 1
+   }
+  },
+  {
+   "id": "P07",
+   "name": "7–9 микрорайоны",
+   "hex_cell": 110,
+   "shared_cell": false,
+   "role": "control",
+   "clips": 8,
+   "avail": {
+    "weekday": {
+     "morning": 3,
+     "day": 2,
+     "evening": 3
+    },
+    "saturday": {
+     "morning": 0,
+     "day": 0,
+     "evening": 0
+    }
+   },
+   "weekday_fit": {
+    "n": 3,
+    "mae_model": 0.607910770074605,
+    "mae_registry": 0.25553254176726936,
+    "sign_ok": 2
+   }
+  },
+  {
+   "id": "P08",
+   "name": "Перекрёсток Каратал (ТРЦ, остановки, дом культуры)",
+   "hex_cell": 174,
+   "shared_cell": true,
+   "role": "calib",
+   "clips": 5,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 0,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 0.1748023914401216,
+    "mae_registry": 0.31237468504215243,
+    "sign_ok": 1
+   }
+  },
+  {
+   "id": "P09",
+   "name": "Сити Плюс",
+   "hex_cell": 226,
+   "shared_cell": false,
+   "role": "calib",
+   "clips": 2,
+   "avail": {
+    "weekday": {
+     "morning": 0,
+     "day": 1,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 0,
+     "day": 0,
+     "evening": 0
+    }
+   },
+   "weekday_fit": {
+    "n": 1,
+    "mae_model": 1.043192691173945,
+    "mae_registry": 1.5630160755828513,
+    "sign_ok": 1
+   }
+  },
+  {
+   "id": "P10",
+   "name": "Атамекен (ТРЦ, перекрёсток у четырёхэтажных домов)",
+   "hex_cell": 174,
+   "shared_cell": true,
+   "role": "calib",
+   "clips": 3,
+   "avail": {
+    "weekday": {
+     "morning": 1,
+     "day": 1,
+     "evening": 1
+    },
+    "saturday": {
+     "morning": 0,
+     "day": 0,
+     "evening": 0
+    }
+   },
+   "weekday_fit": {
+    "n": 3,
+    "mae_model": 0.24718886071989235,
+    "mae_registry": 0.39555123018515626,
+    "sign_ok": 2
+   }
+  }
+ ]
+}

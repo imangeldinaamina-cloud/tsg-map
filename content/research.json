@@ -216,9 +216,9 @@
     "titleRu": "«Агентное моделирование городской среды Талдыкоргана для снижения рисков бизнеса и оптимизации инфраструктуры»",
     "titleEn": "Agent-based model of Taldykorgan: where services are missing at the hour people are there",
     "pitch": {
-      "ru": "Бизнес выбирает место по прописке, а люди днём в другом районе. Я построил(а) агентную модель присутствия и индекс TSG, который час за часом сравнивает долю людей с долей ОТКРЫТЫХ услуг.",
-      "en": "Businesses pick a location by registered residents, but people spend the day elsewhere. I built an agent-based model of presence and the TSG index, which compares the share of people with the share of OPEN services, hour by hour.",
-      "kk": "Бизнес орынды тіркеу бойынша таңдайды, ал адамдар күндіз басқа ауданда болады. Мен адамдардың болуының агенттік моделін және адамдар үлесін АШЫҚ қызметтер үлесімен сағат сайын салыстыратын TSG индексін құрдым."
+      "ru": "Место для магазина часто оценивают по числу жителей, но днём модельное распределение людей по городу другое. Я построил(а) агентную модель присутствия и индекс TSG, который в трёх периодах суток сравнивает долю людей с долей открытых услуг.",
+      "en": "Locations for shops are often judged by the number of residents, but by day the modelled distribution of people across the city is different. I built an agent-based presence model and the TSG index, which compares the share of people with the share of open services in three periods of the day.",
+      "kk": "Дүкен орнын көбіне тұрғындар саны бойынша бағалайды, бірақ күндіз адамдардың қала бойынша модельдік таралуы басқаша. Мен адамдардың болуының агенттік моделін және тәуліктің үш кезеңінде адамдар үлесін ашық қызметтер үлесімен салыстыратын TSG индексін құрдым."
     },
     "chips": [
       {
@@ -246,11 +246,11 @@
         }
       },
       {
-        "value": "10",
+        "value": "2",
         "label": {
-          "ru": "предпринимателей протестировали",
-          "en": "entrepreneurs tested the app",
-          "kk": "кәсіпкер сынап көрді"
+          "ru": "интервью с предпринимателями записаны",
+          "en": "entrepreneur interviews recorded",
+          "kk": "кәсіпкермен сұхбат жазылды"
         }
       }
     ],
@@ -291,9 +291,9 @@
       "kk": "Адамдар *қозғалады*, ал тіркеу — жоқ"
     },
     "lead": {
-      "ru": "Магазины, аптеки и кафе открывают там, где много жителей «по прописке». Но около 34% жителей днём находятся в другом районе. Метод по прописке не видит дневного движения — и точки открываются там, где людей в нужный час нет.",
-      "en": "Shops, pharmacies and cafés open where many residents are registered. But about 34% of residents are in a different district by day. The registry method misses daytime movement — so outlets open where people are not at the hour that matters.",
-      "kk": "Дүкендер, дәріханалар мен кафелер тіркелген тұрғындар көп жерде ашылады. Бірақ тұрғындардың шамамен 34%-ы күндіз басқа ауданда болады."
+      "ru": "Магазины, аптеки и кафе часто открывают там, где много жителей по месту проживания. Но по модели днём люди распределены по городу иначе: чтобы совместить расчётную карту проживания с картой дневного присутствия, нужно перераспределить около 34% населения между ячейками сетки. Оценка «по прописке» этого не учитывает.",
+      "en": "Shops, pharmacies and cafés often open where many residents live. But in the model people are distributed differently by day: to turn the estimated residential map into the daytime presence map, about 34% of the population has to be redistributed between grid cells. A residents-only assessment ignores this.",
+      "kk": "Дүкендер, дәріханалар мен кафелер көбіне тұрғындар көп жерде ашылады. Бірақ модель бойынша күндіз адамдар қала бойынша басқаша таралады: тұру картасын күндізгі болу картасымен сәйкестендіру үшін халықтың шамамен 34%-ын торап ұяшықтары арасында қайта бөлу керек."
     },
     "maps": [
       {
@@ -349,20 +349,20 @@
           "en": "6.1k"
         },
         "label": {
-          "ru": "людей в самой загруженной ячейке днём",
-          "en": "people in the busiest cell during the day",
-          "kk": "күндіз ең толы ұяшықта"
+          "ru": "человек днём по модели в ячейке 173 (центр)",
+          "en": "people by day (model) in cell 173 (centre)",
+          "kk": "173-ұяшықта күндіз (модель)"
         }
       },
       {
         "value": {
-          "ru": "0,9 тыс.",
-          "en": "0.9k"
+          "ru": "0,85 тыс.",
+          "en": "0.85k"
         },
         "label": {
-          "ru": "в самой населённой ячейке по прописке",
-          "en": "in the most populated cell by registration",
-          "kk": "тіркеу бойынша ең көп ұяшықта"
+          "ru": "жителей в той же ячейке 173 по месту проживания",
+          "en": "residents of the same cell 173",
+          "kk": "сол 173-ұяшықтың тұрғындары"
         }
       },
       {
@@ -371,12 +371,25 @@
           "en": "34%"
         },
         "label": {
-          "ru": "жителей днём находятся не там, где живут",
-          "en": "of residents are elsewhere during the day",
-          "kk": "тұрғындар күндіз басқа жерде"
+          "ru": "населения нужно перераспределить между ячейками, чтобы карта проживания совпала с дневной",
+          "en": "of the population must be redistributed between cells to match the daytime map",
+          "kk": "халықты ұяшықтар арасында қайта бөлу қажет"
         }
       }
-    ]
+    ],
+    "mExplain": {
+      "title": {
+        "ru": "Что значит «34%»",
+        "en": "What “34%” means",
+        "kk": "«34%» нені білдіреді"
+      },
+      "tex": "M(t) = \\tfrac{1}{2}\\sum_i \\left| a_i(t) - r_i \\right|",
+      "text": {
+        "ru": "r_i — доля жителей города в ячейке i по месту проживания, a_i(t) — доля модельного присутствия в той же ячейке в период t. M(t) — расстояние полной вариации: минимальная доля «массы» населения, которую нужно перенести между ячейками, чтобы одно распределение превратилось в другое. Днём M ≈ 0,34 (по средней карте 100 запусков; 29–39% при 400 вариантах допущений). Это не утверждение, что ровно 34% конкретных людей переехали в другой административный район: перемещения внутри одной ячейки не учитываются, а одна и та же «масса» может складываться из разных маршрутов.",
+        "en": "r_i is the share of the city's residents living in cell i, a_i(t) the share of modelled presence in the same cell in period t. M(t) is the total variation distance: the minimum share of population mass that has to be moved between cells to turn one distribution into the other. By day M ≈ 0.34 (mean map of 100 runs; 29–39% across 400 assumption variants). It does not say that exactly 34% of individual people moved to another administrative district: moves within a cell are not counted, and the same mass can come from different trips.",
+        "kk": "r_i — i ұяшығындағы тұрғындар үлесі, a_i(t) — t кезеңіндегі модельдік болу үлесі. M(t) — толық вариация қашықтығы: бір таралуды екіншісіне айналдыру үшін ұяшықтар арасында ауыстыру керек ең аз үлес. Күндіз M ≈ 0,34. Бұл нақты 34% адам басқа әкімшілік ауданға көшті дегенді білдірмейді."
+      }
+    }
   },
   "method": {
     "title": {
@@ -461,8 +474,9 @@
           "en": "TSG compares the share of people with the share of open services. Five properties were proven and automatically tested on 10,000 random “cities” — no violations."
         },
         "details": {
-          "ru": "Свойства (ограниченность, симметрия, порядок как у отношения, монотонность, независимость от единиц) доказаны аналитически, а затем проверены программой на 10 000 случайно сгенерированных городов. Ни одного нарушения.",
-          "en": "The properties (bounded, symmetric, same ordering as the ratio, monotone, unit-free) were proven analytically and then tested by a program on 10,000 randomly generated cities. Zero violations."
+          "ru": "Свойства (ограниченность, антисимметрия, порядок как у отношения a/b, локальная монотонность, независимость от масштаба) доказаны аналитически и проверяются автотестами. Важно: монотонность локальная — при пересчёте долей по всему городу новый объект может повысить TSG соседних ячеек вне своего радиуса (контрпример в разделе «Формулы»).",
+          "en": "The properties (boundedness, antisymmetry, same ordering as a/b, local monotonicity, scale invariance) are proven analytically and checked by automated tests. Note: monotonicity is local — with citywide renormalization a new outlet can raise TSG of cells outside its radius (counterexample in “Formulas”).",
+          "kk": "Қасиеттер аналитикалық түрде дәлелденді және автотестермен тексеріледі. Монотондылық жергілікті: қала бойынша қайта нормалау кезінде жаңа нысан радиусынан тыс ұяшықтардың TSG-ін өсіруі мүмкін."
         }
       },
       {
@@ -473,12 +487,14 @@
           "kk": "Бейнемен тексеріп, қосымша жасадым"
         },
         "text": {
-          "ru": "Подсчёт людей нейросетью YOLOv8 на 45 роликах в 10 ключевых точках города. Затем — веб-приложение, которое протестировали предприниматели.",
-          "en": "YOLOv8 people counting on 45 clips at 10 key city points. Then a web app, tested with entrepreneurs."
+          "ru": "Подсчёт людей в кадре нейросетью YOLOv8 на 45 роликах в 10 точках города и веб-приложение для анализа карты.",
+          "en": "YOLOv8 counts people in frame on 45 clips at 10 city points; plus a web app for exploring the map.",
+          "kk": "YOLOv8 нейрожелісі 10 нүктедегі 45 роликте кадрдағы адамдарды санайды; картаны талдауға арналған веб-қосымша."
         },
         "details": {
-          "ru": "45 видеороликов снято в 10 точках в разное время суток. YOLOv8 считает людей в кадре; сравниваются не абсолютные числа, а суточные профили (см. формулу видеопроверки). Приложение протестировали 10 предпринимателей Талдыкоргана.",
-          "en": "45 clips were filmed at 10 points at different times of day. YOLOv8 counts people in the frame; daily profiles are compared rather than absolute numbers (see the video-check formula). The app was tested with 10 entrepreneurs of Taldykorgan."
+          "ru": "45 роликов снято в 10 точках (вт 06.10, ср 07.10, сб 10.10.2026). YOLOv8 считает людей в кадре; сравниваются не абсолютные числа, а отношения внутри одной точки (утро/день/вечер). Проверка H2 по этим данным модель пока не подтвердила (см. раздел «Проверка»). С предпринимателями записаны 2 интервью; тестирование приложения с участниками ещё не завершено, результатов пока нет.",
+          "en": "45 clips were filmed at 10 points (Tue 06.10, Wed 07.10, Sat 10.10.2026). YOLOv8 counts people in frame; ratios within one point (morning/day/evening) are compared rather than absolute numbers. The H2 check has not confirmed the model on these data so far (see “Validation”). Two interviews with entrepreneurs are recorded; app testing with participants is not finished and has no results yet.",
+          "kk": "45 ролик 10 нүктеде түсірілді (06.10, 07.10, 10.10.2026). YOLOv8 кадрдағы адамдарды санайды. H2 тексеруі модельді әзірге растаған жоқ. Кәсіпкерлермен 2 сұхбат жазылды; қосымшаны тестілеу аяқталған жоқ."
         }
       }
     ],
@@ -556,8 +572,9 @@
           "kk": "TSG индексі"
         },
         "text": {
-          "ru": "355 ячеек по 0,25 км²: TSG = (a − b)/(a + b) → дефицит · баланс · избыток",
-          "en": "355 cells of 0.25 km²: TSG = (a − b)/(a + b) → deficit · balance · surplus"
+          "ru": "355 ячеек по 0,25 км²: TSG = (a − b)/(a + b) → относительный дефицит · баланс · относительный избыток",
+          "en": "355 cells of 0.25 km²: TSG = (a − b)/(a + b) → relative deficit · balance · relative surplus",
+          "kk": "0,25 км² 355 ұяшық: TSG = (a − b)/(a + b) → салыстырмалы тапшылық · тепе-теңдік · салыстырмалы артықтық"
         },
         "formula": "5–6"
       },
@@ -586,17 +603,18 @@
           "kk": "Қосымша"
         },
         "text": {
-          "ru": "Карта дефицита по времени суток, анализ новой точки",
-          "en": "Deficit map by time of day, analysis of a new location"
+          "ru": "Карта относительного разрыва по периодам суток и предварительная оценка новой точки",
+          "en": "Map of relative mismatch by period and a preliminary assessment of a new outlet",
+          "kk": "Кезеңдер бойынша салыстырмалы алшақтық картасы және жаңа нүктені алдын ала бағалау"
         },
         "formula": "8"
       }
     ],
     "compare": {
       "title": {
-        "ru": "Чем TSG отличается от других методов",
-        "en": "How TSG differs from other methods",
-        "kk": "TSG басқа әдістерден немен ерекшеленеді"
+        "ru": "TSG среди других методов",
+        "en": "TSG among other methods",
+        "kk": "TSG басқа әдістер арасында"
       },
       "cols": [
         {
@@ -605,9 +623,9 @@
           "kk": "Әдіс"
         },
         {
-          "ru": "Население",
-          "en": "Population",
-          "kk": "Халық"
+          "ru": "Какое население",
+          "en": "Which population",
+          "kk": "Қай халық"
         },
         {
           "ru": "Время суток",
@@ -615,24 +633,28 @@
           "kk": "Тәулік уақыты"
         },
         {
-          "ru": "Конкуренция",
-          "en": "Competition",
-          "kk": "Бәсеке"
+          "ru": "Конкуренция объектов",
+          "en": "Competition between outlets",
+          "kk": "Нысандар бәсекесі"
         },
         {
-          "ru": "Данные",
-          "en": "Data",
-          "kk": "Деректер"
+          "ru": "Типичные данные",
+          "en": "Typical data",
+          "kk": "Әдеттегі деректер"
         }
       ],
       "rows": [
         {
-          "name": "E2SFCA",
+          "name": {
+            "ru": "Теория центральных мест (Christaller 1933)",
+            "en": "Central place theory (Christaller 1933)",
+            "kk": "Орталық орындар теориясы (Christaller 1933)"
+          },
           "cells": [
             {
-              "ru": "проживающее",
-              "en": "residents",
-              "kk": "тұратын"
+              "ru": "теоретическое, равномерное",
+              "en": "theoretical, uniform",
+              "kk": "теориялық"
             },
             {
               "ru": "нет",
@@ -640,32 +662,33 @@
               "kk": "жоқ"
             },
             {
-              "ru": "косвенно",
-              "en": "indirectly",
-              "kk": "жанама"
+              "ru": "через порог и радиус сбыта",
+              "en": "via threshold and range",
+              "kk": "шек пен радиус арқылы"
             },
             {
-              "ru": "открытые",
-              "en": "open",
-              "kk": "ашық"
+              "ru": "теоретическая модель",
+              "en": "theoretical model",
+              "kk": "теориялық модель"
             }
           ]
         },
         {
           "name": {
-            "ru": "Модель Хаффа",
-            "en": "Huff model"
+            "ru": "Модель Хаффа (Huff 1963)",
+            "en": "Huff model (Huff 1963)",
+            "kk": "Хафф моделі (Huff 1963)"
           },
           "cells": [
             {
-              "ru": "проживающее",
-              "en": "residents",
-              "kk": "тұратын"
+              "ru": "по месту проживания (зоны-источники)",
+              "en": "residential (origin zones)",
+              "kk": "тұрғылықты (бастапқы аймақтар)"
             },
             {
-              "ru": "нет",
-              "en": "no",
-              "kk": "жоқ"
+              "ru": "в базовой версии нет; в расширениях возможно",
+              "en": "not in the basic form; possible in extensions",
+              "kk": "негізгі нұсқада жоқ; кеңейтулерде мүмкін"
             },
             {
               "ru": "да",
@@ -673,49 +696,52 @@
               "kk": "иә"
             },
             {
-              "ru": "открытые",
-              "en": "open",
-              "kk": "ашық"
+              "ru": "объекты, расстояния, привлекательность",
+              "en": "outlets, distances, attractiveness",
+              "kk": "нысандар, қашықтық, тартымдылық"
             }
           ]
         },
         {
           "name": {
-            "ru": "Глобальные модели",
-            "en": "Global models"
+            "ru": "2SFCA / E2SFCA (Radke & Mu 2000; Luo & Qi 2009)",
+            "en": "2SFCA / E2SFCA (Radke & Mu 2000; Luo & Qi 2009)",
+            "kk": "2SFCA / E2SFCA"
           },
           "cells": [
             {
-              "ru": "проживающее или среднее за сутки",
-              "en": "residents or daily mean"
+              "ru": "обычно по месту проживания",
+              "en": "usually residential",
+              "kk": "әдетте тұрғылықты"
             },
             {
-              "ru": "нет",
-              "en": "no",
-              "kk": "жоқ"
+              "ru": "в базовой версии нет; есть динамические расширения",
+              "en": "not in the basic form; dynamic extensions exist",
+              "kk": "негізгі нұсқада жоқ; динамикалық кеңейтулер бар"
             },
             {
-              "ru": "нет",
-              "en": "no",
-              "kk": "жоқ"
+              "ru": "через отношение предложения к спросу в зоне",
+              "en": "via the supply-to-demand ratio in a catchment",
+              "kk": "аймақтағы ұсыныс пен сұраныс қатынасы арқылы"
             },
             {
-              "ru": "открытые",
-              "en": "open",
-              "kk": "ашық"
+              "ru": "население, объекты, сеть дорог",
+              "en": "population, facilities, road network",
+              "kk": "халық, нысандар, жол желісі"
             }
           ]
         },
         {
           "name": {
-            "ru": "Динамическая доступность",
-            "en": "Dynamic accessibility"
+            "ru": "Динамическая доступность (Järv et al. 2018)",
+            "en": "Dynamic accessibility (Järv et al. 2018)",
+            "kk": "Динамикалық қолжетімділік (Järv et al. 2018)"
           },
           "cells": [
             {
-              "ru": "присутствующее",
-              "en": "present",
-              "kk": "қатысатын"
+              "ru": "присутствующее по часам",
+              "en": "present, by hour",
+              "kk": "сағат бойынша қатысатын"
             },
             {
               "ru": "да",
@@ -723,25 +749,28 @@
               "kk": "иә"
             },
             {
-              "ru": "нет",
-              "en": "no",
-              "kk": "жоқ"
+              "ru": "зависит от постановки",
+              "en": "depends on the setup",
+              "kk": "қойылымға байланысты"
             },
             {
-              "ru": "операторы связи",
-              "en": "mobile operators"
+              "ru": "данные мобильных операторов, расписания",
+              "en": "mobile phone data, timetables",
+              "kk": "ұялы байланыс деректері, кестелер"
             }
           ]
         },
         {
           "name": {
-            "ru": "Мультиагентные транспортные модели",
-            "en": "Multi-agent transport models"
+            "ru": "Агентные транспортные модели (MATSim)",
+            "en": "Agent-based transport models (MATSim)",
+            "kk": "Агенттік көлік модельдері (MATSim)"
           },
           "cells": [
             {
-              "ru": "присутствующее (симуляция)",
-              "en": "present (simulated)"
+              "ru": "синтетическое население, расписания активностей",
+              "en": "synthetic population, activity schedules",
+              "kk": "синтетикалық халық, белсенділік кестелері"
             },
             {
               "ru": "да",
@@ -749,13 +778,43 @@
               "kk": "иә"
             },
             {
+              "ru": "через модели выбора мест",
+              "en": "via destination-choice models",
+              "kk": "орын таңдау модельдері арқылы"
+            },
+            {
+              "ru": "транспортные опросы, сеть",
+              "en": "travel surveys, network",
+              "kk": "көлік сауалнамалары, желі"
+            }
+          ]
+        },
+        {
+          "name": {
+            "ru": "Синтетическое население (Beckman et al. 1996)",
+            "en": "Synthetic population (Beckman et al. 1996)",
+            "kk": "Синтетикалық халық (Beckman et al. 1996)"
+          },
+          "cells": [
+            {
+              "ru": "синтетические домохозяйства по переписи",
+              "en": "synthetic households from census",
+              "kk": "санақ бойынша синтетикалық үй шаруашылықтары"
+            },
+            {
+              "ru": "само по себе нет",
+              "en": "not by itself",
+              "kk": "өздігінен жоқ"
+            },
+            {
               "ru": "нет",
               "en": "no",
               "kk": "жоқ"
             },
             {
-              "ru": "транспортные опросы",
-              "en": "travel surveys"
+              "ru": "перепись, микроданные",
+              "en": "census, microdata",
+              "kk": "санақ, микродеректер"
             }
           ]
         },
@@ -768,27 +827,33 @@
           "me": true,
           "cells": [
             {
-              "ru": "присутствующее, агентная модель",
-              "en": "present, agent model"
+              "ru": "модельное присутствие: простая агентная модель, 3 периода",
+              "en": "modelled presence: a simple agent model, 3 periods",
+              "kk": "модельдік болу: қарапайым агенттік модель, 3 кезең"
             },
             {
-              "ru": "да",
-              "en": "yes",
-              "kk": "иә"
+              "ru": "да, 3 периода и часы работы",
+              "en": "yes, 3 periods and opening hours",
+              "kk": "иә, 3 кезең және жұмыс уақыты"
             },
             {
-              "ru": "да",
-              "en": "yes",
-              "kk": "иә"
+              "ru": "через долю предложения (ядро 500 м); Хафф — в выборе мест и сценарии",
+              "en": "via supply share (500 m kernel); Huff in destination choice and the scenario",
+              "kk": "ұсыныс үлесі арқылы; Хафф — орын таңдауда және сценарийде"
             },
             {
-              "ru": "открытые + видео",
-              "en": "open + video",
-              "kk": "ашық + бейне"
+              "ru": "WorldPop, БНС, OSM, 2ГИС; видео — для проверки",
+              "en": "WorldPop, BNS, OSM, 2GIS; video for checking",
+              "kk": "WorldPop, БНС, OSM, 2ГИС; бейне — тексеру үшін"
             }
           ]
         }
-      ]
+      ],
+      "note": {
+        "ru": "Таблица сравнивает базовые версии методов; у многих есть расширения с динамическим населением (см. Järv et al. 2018). TSG — стандартная нормированная разность двух долей, а не новая математическая формула. Вклад работы — собранная и адаптированная к среднему городу с ограниченными данными вычислительная методика: агентная оценка присутствия по периодам, часы работы объектов, индекс относительного разрыва и проверка по видео. Мы не утверждаем, что это первая модель, объединяющая динамический спрос и предложение.",
+        "en": "The table compares basic versions of the methods; many have extensions with dynamic population (see Järv et al. 2018). TSG is a standard normalized difference of two shares, not a new mathematical formula. The contribution is an integrated computational method adapted to a medium-sized city with limited data: agent-based presence by period, opening hours, a relative-mismatch index and a video check. We do not claim it is the first model combining dynamic demand and supply.",
+        "kk": "Кесте әдістердің негізгі нұсқаларын салыстырады; көбінің динамикалық халықпен кеңейтулері бар. TSG — екі үлестің стандартты нормаланған айырмасы, жаңа математикалық формула емес. Жұмыстың үлесі — деректері шектеулі орта қалаға бейімделген біріктірілген есептеу әдістемесі."
+      }
     },
     "schedule": {
       "title": {
@@ -1004,8 +1069,9 @@
         },
         "tex": "\\mathrm{TSG}_i(t) = \\frac{a_i(t) - b_i(t)}{a_i(t) + b_i(t)} \\in [-1,\\, 1]",
         "plain": {
-          "ru": "Плюс — людей больше, чем услуг (дефицит), минус — услуг больше, чем людей (избыток), ноль — баланс.",
-          "en": "Positive means more people than services (deficit), negative means more services than people (surplus), zero is balance."
+          "ru": "Плюс — доля людей в ячейке больше её доли услуг (относительный дефицит предложения), минус — наоборот (относительный избыток), ноль — доли равны. Это сравнение двух распределений по городу, а не абсолютная нехватка магазинов.",
+          "en": "Positive: the cell's share of people exceeds its share of services (relative supply deficit); negative: the reverse (relative surplus); zero: equal shares. It compares two citywide distributions; it is not an absolute shortage.",
+          "kk": "Плюс — ұяшықтағы адамдар үлесі қызметтер үлесінен көп (салыстырмалы тапшылық), минус — керісінше, нөл — үлестер тең. Бұл абсолютті тапшылық емес."
         },
         "why": {
           "ru": "Форма нормированной разности известна (как индекс растительности NDVI). Мой вклад — в том, ЧТО сравнивается: доля людей, реально находящихся в ячейке, с долей услуг, открытых именно в этот час.",
@@ -1021,8 +1087,9 @@
         },
         "tex": "\\tau = 0.2 \\;\\Longleftrightarrow\\; a = 1.5\\, b",
         "plain": {
-          "ru": "Порог 0,2 означает, что одна доля в 1,5 раза больше другой: TSG ≥ 0,2 — дефицит («голубой океан»), TSG ≤ −0,2 — избыток («красный океан»), между ними — баланс.",
-          "en": "The 0.2 threshold means one share is 1.5× the other: TSG ≥ 0.2 is deficit (“blue ocean”), TSG ≤ −0.2 is surplus (“red ocean”), in between is balance."
+          "ru": "Порог 0,2 означает, что одна доля в 1,5 раза больше другой: TSG ≥ 0,2 — относительный дефицит предложения, TSG ≤ −0,2 — относительный избыток, между ними — относительный баланс.",
+          "en": "The 0.2 threshold means one share is 1.5× the other: TSG ≥ 0.2 is a relative supply deficit, TSG ≤ −0.2 a relative surplus, in between relative balance.",
+          "kk": "0,2 шегі бір үлес екіншісінен 1,5 есе көп дегенді білдіреді: TSG ≥ 0,2 — салыстырмалы тапшылық, TSG ≤ −0,2 — салыстырмалы артықтық, арасы — тепе-теңдік."
         },
         "why": {
           "ru": "Порог в 1,5 раза отсекает мелкие колебания; устойчивость проверена при τ = 0,1 и 0,3.",
@@ -1049,14 +1116,15 @@
       {
         "id": "huff",
         "name": {
-          "ru": "Доля рынка в приложении (Хафф, по времени)",
-          "en": "Market share in the app (time-dependent Huff)",
-          "kk": "Қосымшадағы нарық үлесі (Хафф)"
+          "ru": "Модельная доля выбора (Хафф, по времени)",
+          "en": "Modelled choice share (time-dependent Huff)",
+          "kk": "Модельдік таңдау үлесі (Хафф)"
         },
         "tex": "\\begin{gathered} Q_n(t) = \\frac{\\sum_{i\\in\\Omega_n} D_i(t)\\, P_{in}(t)}{\\sum_{i\\in\\Omega_n} D_i(t)} \\\\[8pt] P_{in}(t) = \\frac{o_n(t)\\, d_{in}^{-\\beta}}{o_n(t)\\, d_{in}^{-\\beta} + \\sum_j o_j(t)\\, d_{ij}^{-\\beta}} \\\\[6pt] \\beta = 2 \\end{gathered}",
         "plain": {
-          "ru": "Новая точка n получает долю людей своей зоны (≈15 минут пешком, ~1 км): чем она ближе остальных открытых конкурентов, тем больше доля; закрытая точка получает ноль.",
-          "en": "A new outlet n gets a share of people in its zone (≈15-minute walk, ~1 km): the closer it is compared with other open competitors, the bigger the share; a closed outlet gets zero."
+          "ru": "Доля людей зоны (~1 км), которая по модели Хаффа выбрала бы новую точку n среди рассмотренных альтернатив: чем ближе она остальных открытых конкурентов, тем больше доля; закрытая в этот период точка получает ноль. Это не прогноз фактической доли продаж или выручки.",
+          "en": "The share of people in the zone (~1 km) who, under the Huff model, would choose a new outlet n among the alternatives considered: the closer it is relative to other open competitors, the larger the share; an outlet closed in the period gets zero. This is not a forecast of actual sales share or revenue.",
+          "kk": "Хафф моделі бойынша аймақтағы (~1 км) адамдардың жаңа n нүктесін қарастырылған балама нұсқалар арасынан таңдау үлесі. Бұл нақты сату не табыс болжамы емес."
         },
         "why": {
           "ru": "Модель Хаффа — классика выбора магазина; множитель o(t) добавляет часы работы, β = 2 — стандартное значение.",
@@ -1090,19 +1158,19 @@
         "kk": "Мысалдар"
       },
       "deficit": {
-        "ru": "Дефицит · голубой океан",
-        "en": "Deficit · blue ocean",
-        "kk": "Тапшылық · көк мұхит"
+        "ru": "Относительный дефицит предложения",
+        "en": "Relative supply deficit",
+        "kk": "Салыстырмалы тапшылық"
       },
       "balance": {
-        "ru": "Баланс",
-        "en": "Balance",
-        "kk": "Тепе-теңдік"
+        "ru": "Относительный баланс",
+        "en": "Relative balance",
+        "kk": "Салыстырмалы тепе-теңдік"
       },
       "surplus": {
-        "ru": "Избыток · красный океан",
-        "en": "Surplus · red ocean",
-        "kk": "Артықтық · қызыл мұхит"
+        "ru": "Относительный избыток предложения",
+        "en": "Relative supply surplus",
+        "kk": "Салыстырмалы артықтық"
       },
       "undefined": {
         "ru": "Нет ни людей, ни услуг — индекс не определён",
@@ -1165,18 +1233,20 @@
       },
       {
         "name": {
-          "ru": "Монотонность",
-          "en": "Monotone",
-          "kk": "Монотонды"
+          "ru": "Монотонность (локальная)",
+          "en": "Monotonicity (local)",
+          "kk": "Монотондылық (жергілікті)"
         },
         "tex": "\\frac{\\partial\\,\\mathrm{TSG}}{\\partial a} \\ge 0, \\quad \\frac{\\partial\\,\\mathrm{TSG}}{\\partial b} \\le 0",
         "plain": {
-          "ru": "Больше людей никогда не уменьшает разрыв, новый магазин никогда его не увеличивает.",
-          "en": "More people never reduce the gap; a new shop never increases it."
+          "ru": "Если менять только долю a (или только b) одной ячейки, TSG растёт с a и убывает с b. Но новый магазин меняет и сумму предложения по городу, поэтому доли b других ячеек уменьшаются — их TSG может вырасти.",
+          "en": "Changing only a (or only b) of one cell, TSG increases with a and decreases with b. But a new shop also changes the citywide supply total, so the b shares of other cells fall and their TSG can rise.",
+          "kk": "Бір ұяшықтың тек a (не тек b) үлесін өзгертсек, TSG a-мен өседі, b-мен кемиді. Бірақ жаңа дүкен қала бойынша жалпы ұсынысты да өзгертеді, сондықтан басқа ұяшықтардың TSG-і өсуі мүмкін."
         },
         "proof": {
-          "ru": "∂TSG/∂a = 2b/(a + b)² ≥ 0 и ∂TSG/∂b = −2a/(a + b)² ≤ 0. Доля a растёт с числом людей в ячейке, доля b — с предложением в ней.",
-          "en": "∂TSG/∂a = 2b/(a + b)² ≥ 0 and ∂TSG/∂b = −2a/(a + b)² ≤ 0. The share a grows with the people in the cell, the share b with its supply."
+          "ru": "∂TSG/∂a = 2b/(a + b)² ≥ 0 и ∂TSG/∂b = −2a/(a + b)² ≤ 0 — при фиксированной второй доле. Доли нормированы: b_i = S_i / Σ_k S_k. Новый объект добавляет предложение ΔS_k в ячейки своего радиуса, и знаменатель Σ S растёт. Для ячейки вне радиуса S_i не меняется, а b_i падает, значит её TSG растёт. Контрпример (проверяется автотестом): две одинаковые ячейки, a = b = ½, TSG = 0; магазин в первой ячейке делает b₂ = ⅓, и TSG₂ = (½ − ⅓)/(½ + ⅓) = 0,2. Для самой ячейки с новым объектом TSG не растёт, если её доля в добавленном предложении не меньше её прежней доли b.",
+          "en": "∂TSG/∂a = 2b/(a + b)² ≥ 0 and ∂TSG/∂b = −2a/(a + b)² ≤ 0 — with the other share held fixed. Shares are normalized: b_i = S_i / Σ_k S_k. A new outlet adds supply ΔS_k to cells within its radius, so Σ S grows. For a cell outside the radius S_i is unchanged and b_i falls, so its TSG rises. Counterexample (checked by an automated test): two identical cells, a = b = ½, TSG = 0; a shop in the first cell makes b₂ = ⅓ and TSG₂ = (½ − ⅓)/(½ + ⅓) = 0.2. For the outlet's own cell TSG does not rise if the cell's share of the added supply is at least its previous share b.",
+          "kk": "∂TSG/∂a = 2b/(a + b)² ≥ 0, ∂TSG/∂b = −2a/(a + b)² ≤ 0 — екінші үлес тұрақты болғанда. b_i = S_i / Σ_k S_k болғандықтан, жаңа нысан Σ S-ті өсіреді және радиустан тыс ұяшықтардың TSG-і өседі. Қарсы мысал: a = b = ½ екі ұяшық; бірінші ұяшықтағы дүкен b₂ = ⅓, TSG₂ = 0,2 етеді."
         }
       },
       {
@@ -1203,54 +1273,69 @@
     },
     "classes": {
       "title": {
-        "ru": "Классы ячеек и что они значат для бизнеса",
-        "en": "Cell classes and what they mean for business",
-        "kk": "Ұяшық кластары және бизнес үшін мәні"
+        "ru": "Классы ячеек и как их читать",
+        "en": "Cell classes and how to read them",
+        "kk": "Ұяшық кластары және оларды қалай оқу керек"
       },
       "rows": [
         {
           "cls": "deficit",
           "name": {
-            "ru": "Дефицит («голубой океан»)",
-            "en": "Deficit (“blue ocean”)",
-            "kk": "Тапшылық («көк мұхит»)"
+            "ru": "Относительный дефицит предложения",
+            "en": "Relative supply deficit",
+            "kk": "Салыстырмалы тапшылық"
           },
           "cond": "TSG ≥ 0,2",
           "condEn": "TSG ≥ 0.2",
           "meaning": {
-            "ru": "необслуженный спрос, место для новой точки",
-            "en": "unserved demand, room for a new outlet",
-            "kk": "қамтылмаған сұраныс, жаңа нүктеге орын"
+            "ru": "доля людей заметно больше доли услуг; стоит изучить подробнее — это ещё не доказательство, что новая точка окупится",
+            "en": "the share of people clearly exceeds the share of services; worth a closer look — not proof that a new outlet would pay off",
+            "kk": "адамдар үлесі қызметтер үлесінен едәуір көп; толығырақ зерттеуге тұрарлық — бірақ жаңа нүкте өзін ақтайды дегенге дәлел емес"
           }
         },
         {
           "cls": "balance",
           "name": {
-            "ru": "Баланс",
-            "en": "Balance",
-            "kk": "Тепе-теңдік"
+            "ru": "Относительный баланс",
+            "en": "Relative balance",
+            "kk": "Салыстырмалы тепе-теңдік"
           },
           "cond": "−0,2 < TSG < 0,2",
           "condEn": "−0.2 < TSG < 0.2",
           "meaning": {
-            "ru": "спрос и предложение соразмерны",
-            "en": "demand and supply match",
-            "kk": "сұраныс пен ұсыныс сәйкес"
+            "ru": "доли людей и услуг близки",
+            "en": "shares of people and services are similar",
+            "kk": "адамдар мен қызметтер үлестері жақын"
           }
         },
         {
           "cls": "surplus",
           "name": {
-            "ru": "Избыток («красный океан»)",
-            "en": "Surplus (“red ocean”)",
-            "kk": "Артықшылық («қызыл мұхит»)"
+            "ru": "Относительный избыток предложения",
+            "en": "Relative supply surplus",
+            "kk": "Салыстырмалы артықтық"
           },
           "cond": "TSG ≤ −0,2",
           "condEn": "TSG ≤ −0.2",
           "meaning": {
-            "ru": "сильная конкуренция, высокий риск",
-            "en": "strong competition, high risk",
-            "kk": "күшті бәсеке, жоғары тәуекел"
+            "ru": "доля услуг заметно больше доли людей; вероятно, выше конкуренция — абсолютный спрос при этом может быть большим",
+            "en": "the share of services clearly exceeds the share of people; competition is likely higher — absolute demand can still be large",
+            "kk": "қызметтер үлесі адамдар үлесінен едәуір көп; бәсеке жоғары болуы мүмкін"
+          }
+        },
+        {
+          "cls": "none",
+          "name": {
+            "ru": "Оценка недоступна",
+            "en": "No estimate",
+            "kk": "Бағалау жоқ"
+          },
+          "cond": "—",
+          "condEn": "—",
+          "meaning": {
+            "ru": "нет объектов категории в радиусе 500 м или меньше 50 человек; такие ячейки показаны отдельно и не считаются балансом",
+            "en": "no category object within 500 m or fewer than 50 people; shown separately and never counted as balance",
+            "kk": "500 м радиуста нысан жоқ немесе 50-ден аз адам; бөлек көрсетіледі"
           }
         }
       ],
@@ -1274,9 +1359,9 @@
     "maps": [
       {
         "title": {
-          "ru": "Продукты: слева оценка по прописке, справа днём с учётом часов работы. Синий — дефицит, красный — избыток",
-          "en": "Groceries: left — registry-based, right — daytime with opening hours. Blue — deficit, red — surplus",
-          "kk": "Азық-түлік: сол жақта тіркеу бойынша, оң жақта күндіз жұмыс уақытымен. Көк — тапшылық, қызыл — артықшылық"
+          "ru": "Продукты: слева оценка по месту проживания, справа днём с учётом часов работы. Синий — относительный дефицит предложения, красный — относительный избыток",
+          "en": "Groceries: left — residents-based, right — daytime with opening hours. Blue — relative supply deficit, red — relative surplus",
+          "kk": "Азық-түлік: сол жақта тұрғылықты жер бойынша, оң жақта күндіз жұмыс уақытымен. Көк — салыстырмалы тапшылық, қызыл — салыстырмалы артықтық"
         },
         "src": "/research/map-tsg-food.jpg",
         "alt": {
@@ -1326,13 +1411,14 @@
     "peak": {
       "big": "≈7×",
       "title": {
-        "ru": "Пик дня против пика прописки",
-        "en": "Daytime peak vs registry peak",
-        "kk": "Күндізгі шың мен тіркеу шыңы"
+        "ru": "Одна и та же ячейка: проживание и день",
+        "en": "One cell: residents vs daytime",
+        "kk": "Бір ұяшық: тұрғындар және күндіз"
       },
       "text": {
-        "ru": "В самой людной ячейке днём ≈6,1 тыс. человек, а в самой населённой ячейке по прописке — 0,9 тыс. Это примерно в 7 раз больше.",
-        "en": "The busiest cell by day holds ≈6.1 thousand people versus 0.9 thousand in the most populated cell by registry — about 7× more."
+        "ru": "В ячейке 173 (центр) живёт около 0,85 тыс. человек, а днём по модели там в среднем ≈6,1 тыс. — примерно в 7 раз больше. Это самая загруженная ячейка дня; самая населённая ячейка по месту проживания — другая (209, ≈0,89 тыс. жителей, днём ≈0,4 тыс.). Значения — модельная оценка, среднее по 100 запускам.",
+        "en": "Cell 173 (centre) has about 0.85k residents, while by day the model puts ≈6.1k people there on average — about 7× more. It is the busiest cell of the day; the most populated residential cell is a different one (209, ≈0.89k residents, ≈0.4k by day). Values are model estimates, mean of 100 runs.",
+        "kk": "173-ұяшықта (орталық) шамамен 0,85 мың адам тұрады, ал күндіз модель бойынша ≈6,1 мың — шамамен 7 есе көп. Бұл модельдік баға, 100 іске қосудың орташасы."
       }
     },
     "correlation": {
@@ -1399,20 +1485,22 @@
         }
       ],
       "caption": {
-        "ru": "≈ треть ячеек; вечером в 1,5–2,5 раза меньше. Устойчиво к допущениям (400 вариантов: доля работающих, β 1–3, радиус 500/1 200 м, τ 0,1–0,3): для продуктов 22–42%.",
-        "en": "≈ one third of cells; in the evening 1.5–2.5× fewer. Robust to assumptions (400 variants: worker share, β 1–3, radius 500/1,200 m, τ 0.1–0.3): 22–42% for groceries."
+        "ru": "Среднее по 100 запускам модели; знаменатель — ячейки, оцениваемые и по месту проживания, и днём (продукты 141, аптеки 61, общепит 116). Вечером доля в 1,5–2,5 раза меньше. При 400 вариантах допущений (доля работающих, β 1–3, радиус 500/1 200 м, τ 0,1–0,3) для продуктов 22–42%.",
+        "en": "Mean over 100 model runs; the denominator is cells evaluated both by residents and by day (groceries 141, pharmacies 61, food 116). In the evening the share is 1.5–2.5× lower. Across 400 assumption variants (worker share, β 1–3, radius 500/1,200 m, τ 0.1–0.3): 22–42% for groceries.",
+        "kk": "100 іске қосудың орташасы; бөлгіш — тұрғындар бойынша да, күндіз де бағаланатын ұяшықтар (азық-түлік 141, дәріхана 61, тамақтану 116)."
       }
     },
     "hidden": {
       "big": "≈4%",
       "title": {
-        "ru": "«Скрытый дефицит»",
-        "en": "“Hidden deficit”",
-        "kk": "«Жасырын тапшылық»"
+        "ru": "«Скрытый относительный дефицит»",
+        "en": "“Hidden relative deficit”",
+        "kk": "«Жасырын салыстырмалы тапшылық»"
       },
       "text": {
-        "ru": "ячеек выглядят обеспеченными продуктами по прописке, но днём находятся в дефиците (1–6% при разных допущениях).",
-        "en": "of cells look well supplied with groceries by registry but are in deficit by day (1–6% under different assumptions)."
+        "ru": "ячеек не в дефиците по месту проживания, но в относительном дефиците днём (1–6% при разных допущениях; доля от ячеек, оцениваемых в обоих режимах).",
+        "en": "of cells are not in deficit by residents but in relative deficit by day (1–6% under different assumptions; share of cells evaluated in both views).",
+        "kk": "ұяшық тұрғындар бойынша тапшылықта емес, бірақ күндіз салыстырмалы тапшылықта."
       }
     },
     "example": {
@@ -1462,9 +1550,9 @@
       },
       "scenarios": {
         "title": {
-          "ru": "Новый магазин: ожидаемая доля рынка",
-          "en": "A new shop: expected market share",
-          "kk": "Жаңа дүкен: күтілетін нарық үлесі"
+          "ru": "Новый магазин: модельная доля выбора",
+          "en": "A new shop: modelled choice share",
+          "kk": "Жаңа дүкен: модельдік таңдау үлесі"
         },
         "cols": [
           {
@@ -1503,8 +1591,9 @@
           }
         ],
         "note": {
-          "ru": "Статический метод (без времени суток) дал бы 5%. В 500 м уже 11 продуктовых магазинов.",
-          "en": "A static method (no time of day) would give 5%. There are already 11 grocery stores within 500 m."
+          "ru": "Статический вариант (без времени суток) дал бы 5%. В 500 м уже 11 продуктовых магазинов. Это доля выбора среди рассмотренных альтернатив по модели Хаффа (β = 2), а не прогноз продаж; при других β значения будут другими.",
+          "en": "A static variant (no time of day) would give 5%. There are already 11 grocery stores within 500 m. This is the Huff choice share among the alternatives considered (β = 2), not a sales forecast; other β give other values.",
+          "kk": "Статикалық нұсқа 5% берер еді. 500 м ішінде 11 азық-түлік дүкені бар. Бұл Хафф моделі бойынша таңдау үлесі, сату болжамы емес."
         }
       },
       "cards": [
@@ -1556,8 +1645,9 @@
       ],
       "share": {
         "title": {
-          "ru": "Ожидаемая доля рынка нового магазина (Хафф, зона 1 км)",
-          "en": "Expected market share of a new shop (Huff, 1 km zone)"
+          "ru": "Модельная доля выбора нового магазина среди рассмотренных альтернатив (Хафф, зона 1 км)",
+          "en": "Modelled choice share of a new shop among the alternatives considered (Huff, 1 km zone)",
+          "kk": "Жаңа дүкеннің модельдік таңдау үлесі (Хафф, 1 км)"
         },
         "hoursLabel": {
           "ru": "Часы работы",
@@ -1584,9 +1674,9 @@
         ],
         "static": 5,
         "staticLabel": {
-          "ru": "статический метод",
-          "en": "static method",
-          "kk": "статикалық әдіс"
+          "ru": "без учёта времени суток",
+          "en": "without time of day",
+          "kk": "тәулік уақытынсыз"
         },
         "slots": [
           {
@@ -1633,24 +1723,25 @@
             "ru": "Модель согласуется с видеопроверкой",
             "en": "The model agrees with the video check"
           },
-          "status": "progress",
+          "status": "notconfirmed",
           "statusLabel": {
-            "ru": "В работе",
-            "en": "In progress",
-            "kk": "Жұмыс үстінде"
+            "ru": "По текущим данным не подтверждена",
+            "en": "Not confirmed on current data",
+            "kk": "Қазіргі деректер бойынша расталмады"
           }
         },
         {
           "code": "H3",
           "text": {
-            "ru": "Часы работы влияют на долю рынка",
-            "en": "Opening hours affect market share"
+            "ru": "Часы работы меняют модельную долю выбора",
+            "en": "Opening hours change the modelled choice share",
+            "kk": "Жұмыс уақыты модельдік таңдау үлесін өзгертеді"
           },
           "status": "progress",
           "statusLabel": {
-            "ru": "В работе",
-            "en": "In progress",
-            "kk": "Жұмыс үстінде"
+            "ru": "Показано в модели, не проверено на продажах",
+            "en": "Shown in the model, not checked against sales",
+            "kk": "Модельде көрсетілді, сатылыммен тексерілмеді"
           }
         }
       ]
@@ -1667,37 +1758,277 @@
         "kk": "Қызмет пен уақытты таңдаңыз. Ұяшыққа апарыңыз."
       },
       "changed": {
-        "ru": "ячеек сменили класс по сравнению с пропиской",
-        "en": "of cells changed class vs. registration",
-        "kk": "ұяшық тіркеумен салыстырғанда класын ауыстырды"
+        "ru": "ячеек сменили класс относительно оценки по месту проживания",
+        "en": "of cells changed class vs the residents-based view",
+        "kk": "ұяшық тұрғындар бойынша бағамен салыстырғанда класын өзгертті"
       },
       "legendDef": {
-        "ru": "дефицит",
-        "en": "deficit",
-        "kk": "тапшылық"
+        "ru": "Относительный дефицит",
+        "en": "Relative deficit",
+        "kk": "Салыстырмалы тапшылық"
       },
       "legendBal": {
-        "ru": "баланс",
-        "en": "balance",
-        "kk": "тепе-теңдік"
+        "ru": "Относительный баланс",
+        "en": "Relative balance",
+        "kk": "Салыстырмалы тепе-теңдік"
       },
       "legendSur": {
-        "ru": "избыток",
-        "en": "surplus",
-        "kk": "артықшылық"
+        "ru": "Относительный избыток",
+        "en": "Relative surplus",
+        "kk": "Салыстырмалы артықтық"
       },
       "legendNone": {
-        "ru": "нет оценки (нет объекта в 500 м или < 50 чел.)",
-        "en": "not evaluated (no facility within 500 m or < 50 people)"
+        "ru": "Меньше 50 человек — оценка не проводится",
+        "en": "Fewer than 50 people — not evaluated",
+        "kk": "50-ден аз адам — бағаланбайды"
       },
       "source": {
-        "ru": "Данные OpenStreetMap и 2ГИС (API, ноябрь 2026), расчёт автора. Карта — средняя по 100 запускам модели; показаны только итоги по ячейкам.",
-        "en": "OpenStreetMap and 2GIS data (API, November 2026), author’s calculation. Map = mean of 100 model runs; only per-cell totals are shown."
+        "ru": "Источник: агентная модель автора (100 запусков, версия v2-osm-2gis). Значения пересчитываются на странице из опубликованных D и S по формулам из раздела 03; доли считаются по всем 355 ячейкам. Эта доля может отличаться на 1–2 п. п. от столбцов выше: там — среднее показателя по 100 запускам, здесь — показатель средней карты.",
+        "en": "Source: the author's agent model (100 runs, version v2-osm-2gis). Values are recomputed on the page from the published D and S with the formulas of section 03; shares use all 355 cells. This share can differ by 1–2 pp from the bars above: those are the mean of the indicator over 100 runs, this is the indicator of the mean map.",
+        "kk": "Дереккөз: автордың агенттік моделі (100 іске қосу, v2-osm-2gis нұсқасы). Мәндер жарияланған D және S бойынша 03 бөлімінің формулаларымен беттің өзінде қайта есептеледі."
       },
       "cell206": {
         "ru": "ячейка 206 — пример ниже",
         "en": "cell 206 — example below",
         "kk": "206-ұяшық — төмендегі мысал"
+      },
+      "x": {
+        "modeLabel": {
+          "ru": "Режим",
+          "en": "Mode",
+          "kk": "Режим"
+        },
+        "modeTsg": {
+          "ru": "TSG",
+          "en": "TSG",
+          "kk": "TSG"
+        },
+        "modeCmp": {
+          "ru": "Сравнение с проживанием",
+          "en": "Compare with residents",
+          "kk": "Тұрғындармен салыстыру"
+        },
+        "pick": {
+          "ru": "Нажмите на ячейку карты или введите её номер, чтобы увидеть расчёт.",
+          "en": "Click a cell or enter its number to see the calculation.",
+          "kk": "Есептеуді көру үшін ұяшықты басыңыз немесе нөмірін енгізіңіз."
+        },
+        "goto": {
+          "ru": "Ячейка №",
+          "en": "Cell no.",
+          "kk": "Ұяшық №"
+        },
+        "cell": {
+          "ru": "Ячейка",
+          "en": "Cell",
+          "kk": "Ұяшық"
+        },
+        "area": {
+          "ru": "Площадь",
+          "en": "Area",
+          "kk": "Ауданы"
+        },
+        "residents": {
+          "ru": "Жители (WorldPop → БНС)",
+          "en": "Residents (WorldPop → BNS)",
+          "kk": "Тұрғындар (WorldPop → БНС)"
+        },
+        "presence": {
+          "ru": "Присутствие по модели (среднее 100 запусков)",
+          "en": "Modelled presence (mean of 100 runs)",
+          "kk": "Модельдік болу (100 іске қосудың орташасы)"
+        },
+        "supply": {
+          "ru": "Предложение S (ядро 500 м, с часами работы)",
+          "en": "Supply S (500 m kernel, with opening hours)",
+          "kk": "Ұсыныс S (500 м ядро, жұмыс уақытымен)"
+        },
+        "supplyUnit": {
+          "ru": "объектов/км²",
+          "en": "objects/km²",
+          "kk": "нысан/км²"
+        },
+        "shareA": {
+          "ru": "Доля людей a",
+          "en": "Share of people a",
+          "kk": "Адамдар үлесі a"
+        },
+        "shareB": {
+          "ru": "Доля предложения b",
+          "en": "Share of supply b",
+          "kk": "Ұсыныс үлесі b"
+        },
+        "cls": {
+          "ru": "Класс",
+          "en": "Class",
+          "kk": "Класс"
+        },
+        "clsStatic": {
+          "ru": "Класс по месту проживания",
+          "en": "Class by residents",
+          "kk": "Тұрғындар бойынша класс"
+        },
+        "changed": {
+          "ru": "Класс изменился",
+          "en": "Class changed",
+          "kk": "Класс өзгерді"
+        },
+        "yes": {
+          "ru": "да",
+          "en": "yes",
+          "kk": "иә"
+        },
+        "no": {
+          "ru": "нет",
+          "en": "no",
+          "kk": "жоқ"
+        },
+        "nearby": {
+          "ru": "Объектов категории в 500 м",
+          "en": "Category objects within 500 m",
+          "kk": "500 м ішіндегі нысандар"
+        },
+        "hoursKnown": {
+          "ru": "с известными часами",
+          "en": "with known hours",
+          "kk": "жұмыс уақыты белгілі"
+        },
+        "distance": {
+          "ru": "Расстояние",
+          "en": "Distance",
+          "kk": "Қашықтық"
+        },
+        "distanceV": {
+          "ru": "по прямой (евклидово); маршруты по улицам не учитываются",
+          "en": "straight line (Euclidean); street routes not used",
+          "kk": "түзу сызық бойынша; көше маршруттары ескерілмейді"
+        },
+        "version": {
+          "ru": "Версия данных",
+          "en": "Data version",
+          "kk": "Деректер нұсқасы"
+        },
+        "uncertainty": {
+          "ru": "Неопределённость",
+          "en": "Uncertainty",
+          "kk": "Анықсыздық"
+        },
+        "uncertaintyV": {
+          "ru": "Карта — среднее 100 запусков; интервалы по отдельным ячейкам не сохранены. Чувствительность к допущениям — только для общих показателей (400 вариантов).",
+          "en": "The map is the mean of 100 runs; per-cell intervals were not stored. Sensitivity to assumptions exists only for city-level indicators (400 variants).",
+          "kk": "Карта — 100 іске қосудың орташасы; жеке ұяшықтар үшін интервалдар сақталмаған."
+        },
+        "how": {
+          "ru": "Как получен этот результат?",
+          "en": "How was this result obtained?",
+          "kk": "Бұл нәтиже қалай алынды?"
+        },
+        "howNorm": {
+          "ru": "Суммы ΣD и ΣS берутся по всем 355 ячейкам города. Поэтому TSG зависит не только от самой ячейки, но и от остального города: это относительный показатель, а не абсолютная нехватка.",
+          "en": "ΣD and ΣS are summed over all 355 cells of the city, so TSG depends on the rest of the city too: it is a relative indicator, not an absolute shortage.",
+          "kk": "ΣD және ΣS қаланың барлық 355 ұяшығы бойынша алынады, сондықтан TSG — салыстырмалы көрсеткіш."
+        },
+        "delta": {
+          "ru": "ΔTSG (период − проживание)",
+          "en": "ΔTSG (period − residents)",
+          "kk": "ΔTSG (кезең − тұрғындар)"
+        },
+        "deltaNote": {
+          "ru": "ΔTSG — разница двух относительных показателей, а не изменение абсолютного спроса.",
+          "en": "ΔTSG is a difference between two relative indicators, not a change in absolute demand.",
+          "kk": "ΔTSG — екі салыстырмалы көрсеткіштің айырмасы, абсолютті сұраныстың өзгерісі емес."
+        },
+        "classes": {
+          "deficit": {
+            "ru": "дефицит",
+            "en": "deficit",
+            "kk": "тапшылық"
+          },
+          "balance": {
+            "ru": "баланс",
+            "en": "balance",
+            "kk": "тепе-теңдік"
+          },
+          "surplus": {
+            "ru": "избыток",
+            "en": "surplus",
+            "kk": "артықтық"
+          }
+        },
+        "reasons": {
+          "no_service": {
+            "ru": "Нет объектов в радиусе 500 м",
+            "en": "No objects within 500 m",
+            "kk": "500 м ішінде нысан жоқ"
+          },
+          "few_people": {
+            "ru": "Недостаточно населения для оценки (< 50)",
+            "en": "Too few people to evaluate (< 50)",
+            "kk": "Бағалау үшін халық жеткіліксіз (< 50)"
+          },
+          "no_service_few_people": {
+            "ru": "Нет объектов в 500 м и меньше 50 человек",
+            "en": "No objects within 500 m and fewer than 50 people",
+            "kk": "500 м ішінде нысан жоқ және 50-ден аз адам"
+          },
+          "undefined": {
+            "ru": "Не определено",
+            "en": "Undefined",
+            "kk": "Анықталмаған"
+          }
+        },
+        "legendNoService": {
+          "ru": "Есть люди (≥ 50), но нет объектов в 500 м",
+          "en": "People (≥ 50) but no objects within 500 m",
+          "kk": "Адамдар бар (≥ 50), бірақ 500 м ішінде нысан жоқ"
+        },
+        "legendFew": {
+          "ru": "Меньше 50 человек",
+          "en": "Fewer than 50 people",
+          "kk": "50-ден аз адам"
+        },
+        "trans": {
+          "title": {
+            "ru": "Переходы классов",
+            "en": "Class transitions",
+            "kk": "Класс ауысулары"
+          },
+          "n": {
+            "ru": "ячеек оценены в обоих режимах",
+            "en": "cells evaluated in both views",
+            "kk": "ұяшық екі режимде де бағаланды"
+          },
+          "toDef": {
+            "ru": "стала дефицитом",
+            "en": "became deficit",
+            "kk": "тапшылыққа айналды"
+          },
+          "toBal": {
+            "ru": "стала балансом",
+            "en": "became balance",
+            "kk": "тепе-теңдікке айналды"
+          },
+          "toSur": {
+            "ru": "стала избытком",
+            "en": "became surplus",
+            "kk": "артықтыққа айналды"
+          },
+          "same": {
+            "ru": "класс не изменился",
+            "en": "class unchanged",
+            "kk": "класс өзгермеді"
+          },
+          "from": {
+            "ru": "строки — по месту проживания",
+            "en": "rows — by residents",
+            "kk": "жолдар — тұрғындар бойынша"
+          },
+          "to": {
+            "ru": "столбцы — в выбранный период",
+            "en": "columns — in the selected period",
+            "kk": "бағандар — таңдалған кезеңде"
+          }
+        }
       }
     },
     "changeTable": {
@@ -2099,8 +2430,9 @@
           "kk": "Банктер"
         },
         "text": {
-          "ru": "Оценка риска локации до выдачи кредита.",
-          "en": "Location risk before a loan."
+          "ru": "Дополнительный пространственный показатель при изучении локации (не оценка кредитного риска).",
+          "en": "An additional spatial indicator when studying a location (not a credit-risk score).",
+          "kk": "Орынды зерттегенде қосымша кеңістіктік көрсеткіш (несие тәуекелін бағалау емес)."
         }
       },
       {
@@ -2110,8 +2442,9 @@
           "kk": "Әкімдік"
         },
         "text": {
-          "ru": "Карта дефицита для планирования магазинов, аптек, остановок.",
-          "en": "A deficit map for planning shops, pharmacies, stops."
+          "ru": "Карта относительного разрыва для планирования магазинов, аптек, остановок.",
+          "en": "A relative-mismatch map for planning shops, pharmacies, stops.",
+          "kk": "Дүкендер, дәріханалар, аялдамаларды жоспарлауға арналған салыстырмалы алшақтық картасы."
         }
       }
     ]
@@ -2300,6 +2633,64 @@
         "ru": "скоро",
         "en": "soon",
         "kk": "жақында"
+      }
+    },
+    "status": {
+      "title": {
+        "ru": "Статус работы с участниками",
+        "en": "Status of work with participants",
+        "kk": "Қатысушылармен жұмыс мәртебесі"
+      },
+      "rows": [
+        {
+          "k": {
+            "ru": "Интервью с предпринимателями записаны",
+            "en": "Entrepreneur interviews recorded",
+            "kk": "Кәсіпкерлермен сұхбат жазылды"
+          },
+          "v": "2",
+          "s": "done"
+        },
+        {
+          "k": {
+            "ru": "Тестирование приложения (задания + SUS) с результатами",
+            "en": "App usability tests (tasks + SUS) with results",
+            "kk": "Қосымшаны тестілеу нәтижелерімен"
+          },
+          "v": "0",
+          "s": "progress"
+        },
+        {
+          "k": {
+            "ru": "Запланировано",
+            "en": "Planned",
+            "kk": "Жоспарланған"
+          },
+          "v": {
+            "ru": "6–10 предпринимателей, 10–15 жителей",
+            "en": "6–10 entrepreneurs, 10–15 residents",
+            "kk": "6–10 кәсіпкер, 10–15 тұрғын"
+          },
+          "s": "planned"
+        },
+        {
+          "k": {
+            "ru": "Результаты, ожидающие анализа",
+            "en": "Results awaiting analysis",
+            "kk": "Талдауды күтетін нәтижелер"
+          },
+          "v": {
+            "ru": "нет",
+            "en": "none",
+            "kk": "жоқ"
+          },
+          "s": "planned"
+        }
+      ],
+      "note": {
+        "ru": "Оценки удобства (SUS) и доли выполненных заданий появятся только после реальных тестов. Ранее на сайте было написано «10 предпринимателей протестировали» — документов, подтверждающих это, в проекте нет, поэтому формулировка снята.",
+        "en": "Usability scores (SUS) and task success will appear only after real tests. The site previously said “10 entrepreneurs tested the app”; the project has no records supporting this, so the claim was removed.",
+        "kk": "SUS бағалары тек нақты тесттерден кейін пайда болады. Бұрын сайтта «10 кәсіпкер сынады» деп жазылған еді — оны растайтын құжат жоқ, сондықтан алынып тасталды."
       }
     }
   },
@@ -3077,35 +3468,51 @@
     "refs": [
       {
         "short": "Christaller 1933",
-        "text": "Christaller, W. (1933). Die zentralen Orte in Süddeutschland."
+        "text": "Christaller, W. (1933). Die zentralen Orte in Süddeutschland. Jena: Gustav Fischer."
       },
       {
         "short": "Huff 1963",
-        "text": "Huff, D. L. (1963). A probabilistic analysis of shopping center trade areas."
+        "text": "Huff, D. L. (1963). A probabilistic analysis of shopping center trade areas. Land Economics, 39(1), 81–90."
+      },
+      {
+        "short": "Radke & Mu 2000",
+        "text": "Radke, J., & Mu, L. (2000). Spatial decompositions, modeling and mapping service regions to predict access to social programs. Geographic Information Sciences, 6(2), 105–112."
+      },
+      {
+        "short": "Luo & Wang 2003",
+        "text": "Luo, W., & Wang, F. (2003). Measures of spatial accessibility to health care in a GIS environment: synthesis and a case study in the Chicago region. Environment and Planning B, 30(6), 865–884."
       },
       {
         "short": "Luo & Qi 2009",
-        "text": "Luo, W., & Qi, Y. (2009). An enhanced two-step floating catchment area (E2SFCA) method."
+        "text": "Luo, W., & Qi, Y. (2009). An enhanced two-step floating catchment area (E2SFCA) method for measuring spatial accessibility to primary care physicians. Health & Place, 15(4), 1100–1107."
       },
       {
         "short": "Järv 2018",
-        "text": "Järv, O., et al. (2018). Dynamic cities: location-based accessibility modelling as a function of time."
+        "text": "Järv, O., Tenkanen, H., Salonen, M., Ahas, R., & Toivonen, T. (2018). Dynamic cities: Location-based accessibility modelling as a function of time. Applied Geography, 95, 101–110."
+      },
+      {
+        "short": "Horni 2016",
+        "text": "Horni, A., Nagel, K., & Axhausen, K. W. (Eds.) (2016). The Multi-Agent Transport Simulation MATSim. London: Ubiquity Press."
+      },
+      {
+        "short": "Beckman 1996",
+        "text": "Beckman, R. J., Baggerly, K. A., & McKay, M. D. (1996). Creating synthetic baseline populations. Transportation Research Part A, 30(6), 415–429."
       },
       {
         "short": "Moreno 2021",
-        "text": "Moreno, C., et al. (2021). Introducing the “15-minute city”."
+        "text": "Moreno, C., Allam, Z., Chabaud, D., Gall, C., & Pratlong, F. (2021). Introducing the “15-minute city”: Sustainability, resilience and place identity in future post-pandemic cities. Smart Cities, 4(1), 93–111."
       },
       {
         "short": "Stevens 2015",
-        "text": "Stevens, F. R., et al. (2015). Disaggregating census data for population mapping using random forests (WorldPop)."
+        "text": "Stevens, F. R., Gaughan, A. E., Linard, C., & Tatem, A. J. (2015). Disaggregating census data for population mapping using random forests with remotely-sensed and ancillary data. PLoS ONE, 10(2), e0107042."
       },
       {
         "short": "Silverman 1986",
-        "text": "Silverman, B. W. (1986). Density Estimation for Statistics and Data Analysis."
+        "text": "Silverman, B. W. (1986). Density Estimation for Statistics and Data Analysis. London: Chapman & Hall."
       },
       {
         "short": "Jocher 2023",
-        "text": "Jocher, G., et al. (2023). Ultralytics YOLOv8."
+        "text": "Jocher, G., Chaurasia, A., & Qiu, J. (2023). Ultralytics YOLOv8 (software)."
       }
     ],
     "dataTitle": {
@@ -3208,8 +3615,8 @@
         "en": "central place theory"
       },
       "Huff 1963": {
-        "ru": "выбор места агентом, доля рынка",
-        "en": "agent choice, market share"
+        "ru": "выбор места агентом; модельная доля выбора",
+        "en": "agent destination choice; modelled choice share"
       },
       "Luo & Qi 2009": {
         "ru": "сравнение методов доступности",
@@ -3234,6 +3641,22 @@
       "Jocher 2023": {
         "ru": "подсчёт людей на видео",
         "en": "counting people on video"
+      },
+      "Radke & Mu 2000": {
+        "ru": "2SFCA — исходная версия",
+        "en": "2SFCA — original version"
+      },
+      "Luo & Wang 2003": {
+        "ru": "2SFCA в ГИС",
+        "en": "2SFCA in GIS"
+      },
+      "Horni 2016": {
+        "ru": "агентные транспортные модели",
+        "en": "agent-based transport models"
+      },
+      "Beckman 1996": {
+        "ru": "синтетическое население",
+        "en": "synthetic population"
       }
     },
     "refCols": [
@@ -3373,9 +3796,9 @@
           "kk": "Қойынды таңдаңыз"
         },
         "text": {
-          "ru": "«Население» — сколько людей в ячейке. «Дефицит услуг» — где спроса больше, чем предложения. «Локация» — проверка конкретного места.",
-          "en": "“Population” — how many people are in a cell. “Service gap” — where demand exceeds supply. “Location” — check a specific place.",
-          "kk": "«Халық» — ұяшықта қанша адам. «Қызмет тапшылығы» — сұраныс ұсыныстан көп жерлер. «Локация» — нақты орынды тексеру."
+          "ru": "«Население» — сколько людей в ячейке. «Дефицит услуг» — где доля людей больше доли объектов рядом (относительный показатель, не прогноз прибыли). «Локация» — проверка конкретного места.",
+          "en": "“Population” — how many people are in a cell. “Service gap” — where the share of people exceeds the share of nearby facilities (a relative indicator, not a profit forecast). “Location” — check a specific place.",
+          "kk": "«Халық» — ұяшықта қанша адам. «Қызмет тапшылығы» — адамдар үлесі жақын нысандар үлесінен көп жерлер (салыстырмалы көрсеткіш, пайда болжамы емес). «Локация» — нақты орынды тексеру."
         }
       },
       {
@@ -4435,5 +4858,463 @@
         }
       ]
     }
+  },
+  "validation": {
+    "title": {
+      "ru": "Проверка модели по видео (H2): статус",
+      "en": "Model check against video (H2): status",
+      "kk": "Модельді бейнемен тексеру (H2): мәртебесі"
+    },
+    "lead": {
+      "ru": "Камера видит только кусок улицы, и у каждой точки свой ракурс, поэтому абсолютные числа людей между точками не сравниваются. Сравнивается, во сколько раз людей больше в одном периоде, чем в другом, в одной и той же точке (логарифм отношения). Модель «по месту проживания» предсказывает отношение 1: люди никуда не перемещаются.",
+      "en": "A camera sees only a slice of a street and every point has its own angle, so absolute counts are not compared across points. What is compared is how many times more people there are in one period than in another at the same point (log-ratio). The residents-only model predicts a ratio of 1: nobody moves.",
+      "kk": "Камера көшенің бір бөлігін ғана көреді, әр нүктенің өз бұрышы бар. Сондықтан бір нүктедегі екі кезең арасындағы адамдар санының қатынасы салыстырылады (логарифм)."
+    },
+    "verdict": {
+      "ru": "Вывод на текущих данных: H2 не подтверждена. По будним дням модель ошибается в отношениях сильнее, чем модель «по месту проживания», хотя интервал разницы доходит до нуля. Независимая количественная проверка продолжается.",
+      "en": "Conclusion on current data: H2 is not confirmed. On weekdays the model's ratio error is larger than that of the residents-only model, although the interval of the difference reaches zero. Independent quantitative validation is ongoing.",
+      "kk": "Қазіргі деректер бойынша қорытынды: H2 расталмады. Тәуелсіз сандық тексеру жалғасуда."
+    },
+    "why": {
+      "ru": "Вероятная причина: камера на улице считает поток прохожих, а модель — присутствие (кто где находится). Вечерние ролики сняты в 17:00–18:35, в час пик, когда люди идут через центр с работы. Среднее число людей в кадре — это не пешеходный поток и не население ячейки, и на всю ячейку оно не пересчитывается.",
+      "en": "Likely reason: a street camera counts passers-by (flow), while the model estimates presence (who is where). Evening clips were filmed 17:00–18:35, at rush hour when people walk through the centre from work. The mean number of people in frame is neither a pedestrian flow count nor the population of a cell, and is not extrapolated to the cell.",
+      "kk": "Ықтимал себеп: көшедегі камера өтіп бара жатқандар ағынын санайды, ал модель — болуды. Кадрдағы адамдардың орташа саны ұяшық халқына қайта есептелмейді."
+    },
+    "kpi": {
+      "model": {
+        "ru": "ошибка модели (MAE), будни",
+        "en": "model error (MAE), weekdays",
+        "kk": "модель қатесі (MAE), жұмыс күндері"
+      },
+      "registry": {
+        "ru": "ошибка «по месту проживания», будни",
+        "en": "residents-only error, weekdays",
+        "kk": "тұрғылықты жер бойынша қате"
+      },
+      "diff": {
+        "ru": "разница «проживание − модель», 95% интервал",
+        "en": "difference residents − model, 95% interval",
+        "kk": "айырма, 95% интервал"
+      },
+      "sign": {
+        "ru": "направление изменения угадано",
+        "en": "direction of change correct",
+        "kk": "өзгеріс бағыты дұрыс"
+      },
+      "loo": {
+        "ru": "после калибровки, проверка «без одной точки»",
+        "en": "after calibration, leave-one-point-out",
+        "kk": "калибрлеуден кейін, бір нүктесіз тексеру"
+      }
+    },
+    "ratios": {
+      "ru": "отношений",
+      "en": "ratios",
+      "kk": "қатынас"
+    },
+    "points": {
+      "ru": "точек",
+      "en": "points",
+      "kk": "нүкте"
+    },
+    "cols": [
+      {
+        "ru": "Точка",
+        "en": "Point",
+        "kk": "Нүкте"
+      },
+      {
+        "ru": "Роль",
+        "en": "Role",
+        "kk": "Рөлі"
+      },
+      {
+        "ru": "Ячейка модели",
+        "en": "Model cell",
+        "kk": "Модель ұяшығы"
+      },
+      {
+        "ru": "Роликов (будни: у/д/в · сб: у/д/в)",
+        "en": "Clips (weekdays: m/d/e · Sat: m/d/e)",
+        "kk": "Роликтер"
+      },
+      {
+        "ru": "Отношений (будни)",
+        "en": "Ratios (weekdays)",
+        "kk": "Қатынастар"
+      },
+      {
+        "ru": "MAE модели",
+        "en": "Model MAE",
+        "kk": "Модель MAE"
+      },
+      {
+        "ru": "MAE «проживание»",
+        "en": "Residents MAE",
+        "kk": "Тұрғындар MAE"
+      },
+      {
+        "ru": "Предупреждения",
+        "en": "Warnings",
+        "kk": "Ескертулер"
+      }
+    ],
+    "warn": {
+      "shared": {
+        "ru": "в той же ячейке, что и другие точки",
+        "en": "same cell as other points",
+        "kk": "басқа нүктелермен бір ұяшықта"
+      },
+      "loc": {
+        "ru": "место ±200 м",
+        "en": "location ±200 m",
+        "kk": "орны ±200 м"
+      },
+      "one": {
+        "ru": "одно отношение — оценка неустойчива",
+        "en": "one ratio — unstable estimate",
+        "kk": "бір қатынас — тұрақсыз баға"
+      },
+      "noday": {
+        "ru": "нет будничного дня",
+        "en": "no weekday daytime clip",
+        "kk": "жұмыс күні күндізгі ролик жоқ"
+      }
+    },
+    "allDays": {
+      "ru": "Со всеми днями (включая субботу, {n} отношений): MAE модели {m}, «по месту проживания» {r}; направление угадано в {s}.",
+      "en": "With all days (incl. Saturday, {n} ratios): model MAE {m}, residents-only {r}; direction correct in {s}.",
+      "kk": "Барлық күндермен ({n} қатынас): модель MAE {m}, тұрғындар {r}."
+    },
+    "note": {
+      "ru": "Числа скопированы из research/out/h2_report.json, который строит research/h2_calibrate.py; 15.11.2026 скрипт перезапущен, результат совпал. Ручная проверка точности YOLOv8 ещё не сделана. Роль «калибровка / контрольная» — план съёмки; в расчёте H2 используется проверка «без одной точки».",
+      "en": "Numbers are copied from research/out/h2_report.json produced by research/h2_calibrate.py; the script was re-run on 15.11.2026 with identical output. A manual accuracy check of YOLOv8 has not been done yet. The calibration/control role is the filming plan; H2 uses leave-one-point-out.",
+      "kk": "Сандар research/h2_calibrate.py жасайтын research/out/h2_report.json файлынан алынды; 15.11.2026 қайта іске қосылды, нәтиже сәйкес келді."
+    }
+  },
+  "transparency": {
+    "title": {
+      "ru": "Версии данных и прозрачность",
+      "en": "Data versions and transparency",
+      "kk": "Деректер нұсқалары және ашықтық"
+    },
+    "lead": {
+      "ru": "На сайте показаны три расчёта, и их нельзя смешивать: две версии гексагональной модели исследования и отдельная квадратная сетка карты /city. Поля без подтверждающего файла помечены «требует подтверждения».",
+      "en": "The site shows three calculations that must not be mixed: two versions of the hexagonal research model and the separate square grid of the /city map. Fields without a supporting file are marked “needs confirmation”.",
+      "kk": "Сайтта үш есептеу көрсетілген, оларды араластыруға болмайды: зерттеу моделінің екі нұсқасы және /city картасының бөлек шаршы торы."
+    },
+    "unknown": {
+      "ru": "требует подтверждения",
+      "en": "needs confirmation",
+      "kk": "растауды қажет етеді"
+    },
+    "rows": {
+      "usedIn": {
+        "ru": "Где показано",
+        "en": "Where shown",
+        "kk": "Қайда көрсетілген"
+      },
+      "status": {
+        "ru": "Статус",
+        "en": "Status",
+        "kk": "Мәртебесі"
+      },
+      "services": {
+        "ru": "Объекты услуг",
+        "en": "Service places",
+        "kk": "Қызмет нысандары"
+      },
+      "extracted": {
+        "ru": "Дата выгрузки",
+        "en": "Extraction date",
+        "kk": "Жүктеу күні"
+      },
+      "counts": {
+        "ru": "Число объектов",
+        "en": "Object counts",
+        "kk": "Нысандар саны"
+      },
+      "hours": {
+        "ru": "Часы работы",
+        "en": "Opening hours",
+        "kk": "Жұмыс уақыты"
+      },
+      "population": {
+        "ru": "Население (сетка)",
+        "en": "Population (grid)",
+        "kk": "Халық (тор)"
+      },
+      "official": {
+        "ru": "Официальная численность",
+        "en": "Official total",
+        "kk": "Ресми сан"
+      },
+      "grid": {
+        "ru": "Сетка",
+        "en": "Grid",
+        "kk": "Тор"
+      },
+      "agents": {
+        "ru": "Агенты / запуски",
+        "en": "Agents / runs",
+        "kk": "Агенттер / іске қосулар"
+      },
+      "worker": {
+        "ru": "Доля работающих",
+        "en": "Worker share",
+        "kk": "Жұмыс істейтіндер үлесі"
+      },
+      "distance": {
+        "ru": "Расстояние",
+        "en": "Distance",
+        "kk": "Қашықтық"
+      },
+      "tau": {
+        "ru": "Порог τ",
+        "en": "Threshold τ",
+        "kk": "τ шегі"
+      },
+      "elig": {
+        "ru": "Какие ячейки оцениваются",
+        "en": "Evaluated cells",
+        "kk": "Бағаланатын ұяшықтар"
+      },
+      "code": {
+        "ru": "Код",
+        "en": "Code",
+        "kk": "Код"
+      },
+      "commit": {
+        "ru": "Коммит модели",
+        "en": "Model commit",
+        "kk": "Модель коммиті"
+      },
+      "validated": {
+        "ru": "Независимая проверка",
+        "en": "Independent validation",
+        "kk": "Тәуелсіз тексеру"
+      },
+      "evidence": {
+        "ru": "Источник цифр",
+        "en": "Evidence",
+        "kk": "Дереккөз"
+      }
+    },
+    "statusV": {
+      "historical": {
+        "ru": "первый расчёт (работа, плакат)",
+        "en": "first run (paper, poster)",
+        "kk": "алғашқы есептеу"
+      },
+      "current": {
+        "ru": "текущая версия сайта",
+        "en": "current site version",
+        "kk": "сайттың ағымдағы нұсқасы"
+      },
+      "operational-tool": {
+        "ru": "рабочий инструмент, отдельная модель",
+        "en": "operational tool, separate model",
+        "kk": "жұмыс құралы, бөлек модель"
+      }
+    },
+    "notValidated": {
+      "ru": "нет (H2 не подтверждена)",
+      "en": "no (H2 not confirmed)",
+      "kk": "жоқ (H2 расталмады)"
+    },
+    "sensitivity": {
+      "ru": "Как читать изменения OSM → OSM + 2ГИС: когда объектов стало больше (продукты 91 → 286), «скрытый дефицит» уменьшился с ≈8% до ≈4%. Это чувствительность результата к полноте данных об объектах, а не доказательство того, что реальная нехватка исчезла: город не изменился, изменилась полнота карты.",
+      "en": "How to read the OSM → OSM + 2GIS changes: with more places (groceries 91 → 286) the “hidden deficit” fell from ≈8% to ≈4%. This is sensitivity to the completeness of the place data, not proof that a real shortage disappeared: the city did not change, the completeness of the map did.",
+      "kk": "OSM → OSM + 2ГИС өзгерістері: нысандар көбейгенде «жасырын тапшылық» ≈8%-дан ≈4%-ға азайды. Бұл деректер толықтығына сезімталдық, нақты тапшылық жойылды дегенге дәлел емес."
+    },
+    "grids": {
+      "ru": "Гексагональная модель (0,25 км², 355 ячеек, евклидово расстояние, 3 периода) и карта /city (квадраты 250 м, 2 475 ячеек, пешие маршруты по сети OSM, WorldPop 2021, без часов работы) — разные пространственные модели. Слой присутствия на /city перенесён из агентной модели первой версии на квадраты пропорционально жителям; результаты /city и раздела 04 нельзя складывать или сравнивать как один расчёт.",
+      "en": "The hexagonal model (0.25 km², 355 cells, Euclidean distance, 3 periods) and the /city map (250 m squares, 2,475 cells, walking routes on the OSM network, WorldPop 2021, no opening hours) are different spatial models. The presence layer on /city is transferred from the first-version agent model onto squares in proportion to residents; /city results and section 04 must not be added up or compared as one calculation.",
+      "kk": "Алтыбұрышты модель және /city картасы — әртүрлі кеңістіктік модельдер; олардың нәтижелерін бір есептеу ретінде салыстыруға болмайды."
+    },
+    "changelog": {
+      "ru": "Журнал изменений методики: 13.11.2026 — объекты и часы 2ГИС, доля работающих 42,5% (БНС); 15.11.2026 — значения карты пересчитываются на странице по опубликованным D и S; исправлена классификация по округлённым значениям (продукты днём: 35,5% → 36,2% по средней карте); формулировки приведены к относительному смыслу TSG; статус H2 изменён на «не подтверждена» по отчёту research/H2_REPORT.md.",
+      "en": "Method changelog: 13.11.2026 — 2GIS places and hours, worker share 42.5% (BNS); 15.11.2026 — map values are recomputed on the page from the published D and S; fixed classification of rounded values (groceries by day: 35.5% → 36.2% on the mean map); wording aligned with the relative meaning of TSG; H2 status changed to “not confirmed” per research/H2_REPORT.md.",
+      "kk": "Әдістеме өзгерістері: 13.11.2026 — 2ГИС нысандары; 15.11.2026 — карта мәндері бетте қайта есептеледі, H2 мәртебесі «расталмады» болып өзгертілді."
+    }
+  },
+  "demo": {
+    "title": {
+      "ru": "TSG · режим презентации",
+      "en": "TSG · presentation mode",
+      "kk": "TSG · презентация режимі"
+    },
+    "exit": {
+      "ru": "К полной странице",
+      "en": "Back to the full page",
+      "kk": "Толық бетке"
+    },
+    "prev": {
+      "ru": "Назад",
+      "en": "Back",
+      "kk": "Артқа"
+    },
+    "next": {
+      "ru": "Далее",
+      "en": "Next",
+      "kk": "Келесі"
+    },
+    "keys": {
+      "ru": "← → или пробел — переключение",
+      "en": "← → or space to switch",
+      "kk": "← → немесе бос орын"
+    },
+    "version": {
+      "ru": "Данные: версия v2-osm-2gis, модельная оценка, независимая проверка не пройдена",
+      "en": "Data: version v2-osm-2gis, model estimate, not independently validated",
+      "kk": "Деректер: v2-osm-2gis нұсқасы, модельдік баға"
+    },
+    "loading": {
+      "ru": "Загрузка данных карты…",
+      "en": "Loading map data…",
+      "kk": "Карта деректері жүктелуде…"
+    },
+    "error": {
+      "ru": "Не удалось загрузить данные карты. Обновите страницу; расчёт не показан, чтобы не выдавать устаревшие числа.",
+      "en": "Map data failed to load. Reload the page; no numbers are shown rather than stale ones.",
+      "kk": "Карта деректері жүктелмеді. Бетті жаңартыңыз."
+    },
+    "steps": [
+      {
+        "title": {
+          "ru": "1 · Где люди живут",
+          "en": "1 · Where people live",
+          "kk": "1 · Адамдар қайда тұрады"
+        },
+        "text": {
+          "ru": "Жители по месту проживания: сетка WorldPop, приведённая к численности БНС (171 618 человек). 355 шестиугольников по 0,25 км².",
+          "en": "Residents: the WorldPop grid scaled to the official total (171,618). 355 hexagons of 0.25 km².",
+          "kk": "Тұрғындар: БНС санына келтірілген WorldPop торы (171 618 адам)."
+        },
+        "k1": {
+          "ru": "жителей в ячейке 173",
+          "en": "residents in cell 173",
+          "kk": "173-ұяшықтағы тұрғындар"
+        },
+        "k2": {
+          "ru": "ячеек",
+          "en": "cells",
+          "kk": "ұяшық"
+        }
+      },
+      {
+        "title": {
+          "ru": "2 · Где люди днём (модель)",
+          "en": "2 · Where people are by day (model)",
+          "kk": "2 · Адамдар күндіз қайда (модель)"
+        },
+        "text": {
+          "ru": "Агентная модель (≈17 тыс. агентов, 100 запусков) оценивает присутствие днём 11:00–16:30. Это модельная оценка, а не измеренная мобильность.",
+          "en": "The agent model (≈17k agents, 100 runs) estimates presence by day, 11:00–16:30. It is a model estimate, not measured mobility.",
+          "kk": "Агенттік модель күндізгі болуды бағалайды. Бұл өлшенген ұтқырлық емес."
+        },
+        "k1": {
+          "ru": "днём в той же ячейке 173",
+          "en": "by day in the same cell 173",
+          "kk": "күндіз сол 173-ұяшықта"
+        },
+        "k2": {
+          "ru": "населения нужно перераспределить между ячейками",
+          "en": "of the population to redistribute between cells",
+          "kk": "халықты ұяшықтар арасында қайта бөлу"
+        }
+      },
+      {
+        "title": {
+          "ru": "3 · TSG: продукты днём",
+          "en": "3 · TSG: groceries by day",
+          "kk": "3 · TSG: азық-түлік күндіз"
+        },
+        "text": {
+          "ru": "TSG = (a − b)/(a + b): доля людей против доли открытых магазинов (ядро 500 м). Синий — относительный дефицит предложения, красный — относительный избыток, штриховка — люди есть, магазинов в 500 м нет. Это не прогноз прибыли.",
+          "en": "TSG = (a − b)/(a + b): share of people vs share of open shops (500 m kernel). Blue — relative supply deficit, red — relative surplus, hatched — people but no shop within 500 m. Not a profit forecast.",
+          "kk": "TSG = (a − b)/(a + b). Көк — салыстырмалы тапшылық, қызыл — артықтық. Бұл пайда болжамы емес."
+        },
+        "k1": {
+          "ru": "ячеек сменили класс относительно оценки по месту проживания",
+          "en": "of cells changed class vs the residents-based view",
+          "kk": "ұяшық класын өзгертті"
+        },
+        "k2": {
+          "ru": "ячеек: люди есть, магазинов в 500 м нет",
+          "en": "cells: people but no shop within 500 m",
+          "kk": "ұяшық: адамдар бар, 500 м ішінде дүкен жоқ"
+        }
+      },
+      {
+        "title": {
+          "ru": "4 · Ячейка 206",
+          "en": "4 · Cell 206",
+          "kk": "4 · 206-ұяшық"
+        },
+        "text": {
+          "ru": "По месту проживания здесь относительный избыток магазинов, утром — относительный дефицит, днём — баланс: людей утром в 4,4 раза больше, чем жителей.",
+          "en": "By residents this cell has a relative surplus of shops, in the morning a relative deficit, by day balance: in the morning there are 4.4× more people than residents.",
+          "kk": "Тұрғындар бойынша мұнда салыстырмалы артықтық, таңертең — тапшылық, күндіз — тепе-теңдік."
+        },
+        "residents": {
+          "ru": "жителей",
+          "en": "residents",
+          "kk": "тұрғын"
+        },
+        "morning": {
+          "ru": "утром",
+          "en": "morning",
+          "kk": "таңертең"
+        },
+        "day": {
+          "ru": "днём",
+          "en": "by day",
+          "kk": "күндіз"
+        }
+      },
+      {
+        "title": {
+          "ru": "5 · Сценарий: новый магазин в ячейке 206, утро",
+          "en": "5 · Scenario: a new shop in cell 206, morning",
+          "kk": "5 · Сценарий: 206-ұяшықтағы жаңа дүкен, таң"
+        },
+        "text": {
+          "ru": "Гипотетический магазин добавляется к копии данных; исходные результаты не меняются. Сумма предложения по городу растёт, поэтому TSG других ячеек тоже сдвигается.",
+          "en": "A hypothetical shop is added to a copy of the data; the published results are not changed. The citywide supply total grows, so TSG of other cells shifts too.",
+          "kk": "Гипотетикалық дүкен деректердің көшірмесіне қосылады; жарияланған нәтижелер өзгермейді."
+        },
+        "hours": {
+          "ru": "Часы работы",
+          "en": "Opening hours",
+          "kk": "Жұмыс уақыты"
+        },
+        "open": {
+          "ru": "доля утра, когда открыт",
+          "en": "share of the morning open",
+          "kk": "таңның ашық үлесі"
+        },
+        "tsg206": {
+          "ru": "TSG ячейки 206 утром",
+          "en": "TSG of cell 206 in the morning",
+          "kk": "206-ұяшықтың таңғы TSG"
+        },
+        "classChanged": {
+          "ru": "ячеек сменили класс из-за магазина (в том числе вне радиуса 500 м)",
+          "en": "cells changed class because of the shop (incl. outside the 500 m radius)",
+          "kk": "дүкенге байланысты класын өзгерткен ұяшықтар"
+        },
+        "huff": {
+          "ru": "Модельная доля выбора (Хафф, утро) — не прогноз продаж",
+          "en": "Modelled choice share (Huff, morning) — not a sales forecast",
+          "kk": "Модельдік таңдау үлесі (Хафф, таң) — сату болжамы емес"
+        },
+        "huffNote": {
+          "ru": "Доля выбора рассчитана в приложении автора на полных данных: координаты объектов 2ГИС не публикуются, поэтому здесь она не пересчитывается.",
+          "en": "The choice share was computed in the author's app on full data: 2GIS object coordinates are not published, so it is not recomputed here.",
+          "kk": "Таңдау үлесі автордың қосымшасында толық деректермен есептелген."
+        }
+      }
+    ]
   }
 }
