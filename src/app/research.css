@@ -3740,3 +3740,131 @@ html:has(.rs) {
   font-style: italic;
   font-size: 1.05rem;
 }
+
+/* ═════════ calm pass (15.11.2026): one quiet visual system for all chapters ═════════
+   Only page design: backgrounds, decoration, heading type, italics. Tables, maps and figures keep their own styles.
+   Remove this block to restore the per-chapter themes. */
+
+/* 1 · no italics in text — emphasis by colour, not slant (KaTeX keeps its own math italics) */
+.rs em,
+.rs .q-text,
+.rs .verdict,
+.rs .iv blockquote,
+.rs .stat-v,
+.rs .iv-video figcaption,
+.rs .unk,
+.rs .sv-quotes blockquote,
+.rs .sec .h2 {
+  font-style: normal !important;
+}
+.rs em {
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--accent);
+}
+.rs .hero em {
+  color: inherit;
+  opacity: 0.72;
+}
+.rs .q-text,
+.rs .verdict,
+.rs .stat-v,
+.rs .iv blockquote,
+.rs .sv-quotes blockquote,
+.rs .iv-video figcaption {
+  font-family: var(--font-rs-sans), system-ui, sans-serif !important;
+}
+
+/* 2 · one heading style for every chapter */
+.rs .sec .h2 {
+  font-family: var(--font-rs-sans), system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.7rem, 1.2rem + 2vw, 2.6rem) !important;
+  letter-spacing: -0.025em !important;
+}
+.rs .sec .sec-num {
+  font-style: normal !important;
+  font-family: var(--mono) !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+  color: var(--ink-3) !important;
+  -webkit-text-stroke: 0 !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: inline !important;
+  grid-row: auto !important;
+  align-self: auto !important;
+}
+.rs .sec .sec-head {
+  display: block !important;
+}
+.rs .sec .sec-num::after {
+  content: " · ";
+}
+.rs .sec .sec-kicker {
+  color: var(--ink-3) !important;
+}
+.rs .sec .sec-kicker::before {
+  content: none !important;
+}
+.rs .sec .sec-head .h2 {
+  margin-top: 8px !important;
+  max-width: 28ch;
+}
+
+/* 3 · plain backgrounds: white, every other chapter a barely warm grey; no patterns or decorations */
+.rs .research-body .sec {
+  background: #fff !important;
+  background-image: none !important;
+}
+.rs .research-body .sec:nth-of-type(even) {
+  background: #faf9f7 !important;
+}
+.rs .sec::before,
+.rs .sec::after {
+  content: none !important;
+  display: none !important;
+}
+.rs .research-body .sec + .sec {
+  border-top: 1px solid var(--line) !important;
+}
+
+/* 4 · no tilted cards, tape or coloured glow */
+.rs .tone-method .fn-people,
+.rs .tone-method .fn-supply,
+.rs .tone-method .fn-check,
+.rs .tone-method .fn-use,
+.rs .tone-interviews .soon-box,
+.rs .tone-interviews .iv-video .soon-box {
+  transform: none !important;
+}
+.rs .tone-method .flow-grid .fn,
+.rs .tone-interviews .soon-box,
+.rs .tone-app .shot {
+  box-shadow: none !important;
+}
+.rs .tone-interviews .soon-box::before {
+  content: none !important;
+}
+.rs .tone-results .kpi {
+  box-shadow: none !important;
+  border: 1px solid var(--line) !important;
+}
+.rs .tone-results .kpi .kpi-v {
+  color: var(--ink) !important;
+}
+.rs .tone-problem .stat-row {
+  border-top: 1px solid var(--line) !important;
+}
+.rs .tone-sources .table-wrap {
+  box-shadow: none !important;
+}
+.rs .sec .fig,
+.rs .sec .case,
+.rs .sec .table-wrap {
+  border-color: var(--line) !important;
+}
