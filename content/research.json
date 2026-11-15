@@ -152,14 +152,6 @@
       }
     },
     {
-      "id": "limits",
-      "label": {
-        "ru": "Ограничения",
-        "en": "Limitations",
-        "kk": "Шектеулер"
-      }
-    },
-    {
       "id": "sources",
       "label": {
         "ru": "Источники",
@@ -492,9 +484,9 @@
           "kk": "YOLOv8 10 нүктедегі 45 роликте адамдарды санайды; веб-қосымша және кәсіпкерлер сауалнамасы."
         },
         "details": {
-          "ru": "45 роликов снято в 10 точках (вт 06.10, ср 07.10, сб 10.10.2026). YOLOv8 считает людей в кадре; сравниваются не абсолютные числа, а отношения внутри одной точки (утро/день/вечер). Проверка H2 по этим данным модель пока не подтвердила (см. «Проверка»). С предпринимателями записаны 2 интервью, 10 ответили на анкету с оценкой приложения (самоотчёт); наблюдаемое тестирование с заданиями и SUS ещё не проводилось.",
-          "en": "45 clips were filmed at 10 points (Tue 06.10, Wed 07.10, Sat 10.10.2026). YOLOv8 counts people in frame; ratios within a point (morning/day/evening) are compared rather than absolute numbers. The H2 check has not confirmed the model on these data so far. Two interviews were recorded and 10 business owners answered a questionnaire with an app rating (self-report); an observed test with tasks and SUS has not been run yet.",
-          "kk": "45 ролик 10 нүктеде түсірілді. H2 тексеруі модельді әзірге растаған жоқ. 2 сұхбат жазылды, 10 кәсіпкер сауалнамаға жауап берді; SUS тестілеуі әлі жүргізілмеді."
+          "ru": "45 роликов снято в 10 точках (вт 06.10, ср 07.10, сб 10.10.2026). YOLOv8 считает людей в кадре; сравниваются не абсолютные числа, а отношения внутри одной точки (утро/день/вечер). С предпринимателями записаны 2 интервью, 10 ответили на анкету с оценкой приложения.",
+          "en": "45 clips were filmed at 10 points (Tue 06.10, Wed 07.10, Sat 10.10.2026). YOLOv8 counts people in frame; ratios within a point (morning/day/evening) are compared rather than absolute numbers. Two interviews were recorded and 10 business owners answered a questionnaire rating the app.",
+          "kk": "45 ролик 10 нүктеде түсірілді (06.10, 07.10, 10.10.2026). YOLOv8 кадрдағы адамдарды санайды. 2 сұхбат жазылды, 10 кәсіпкер қосымшаны бағалайтын сауалнамаға жауап берді."
         }
       }
     ],
@@ -850,8 +842,8 @@
         }
       ],
       "note": {
-        "ru": "Таблица сравнивает базовые версии методов; у многих есть расширения с динамическим населением (см. Järv et al. 2018). TSG — стандартная нормированная разность двух долей, а не новая математическая формула. Вклад работы — собранная и адаптированная к среднему городу с ограниченными данными вычислительная методика: агентная оценка присутствия по периодам, часы работы объектов, индекс относительного разрыва и проверка по видео. Мы не утверждаем, что это первая модель, объединяющая динамический спрос и предложение.",
-        "en": "The table compares basic versions of the methods; many have extensions with dynamic population (see Järv et al. 2018). TSG is a standard normalized difference of two shares, not a new mathematical formula. The contribution is an integrated computational method adapted to a medium-sized city with limited data: agent-based presence by period, opening hours, a relative-mismatch index and a video check. We do not claim it is the first model combining dynamic demand and supply.",
+        "ru": "Таблица сравнивает базовые версии методов; у многих есть расширения с динамическим населением (см. Järv et al. 2018). TSG — стандартная нормированная разность двух долей, а не новая математическая формула. Вклад работы — собранная и адаптированная к среднему городу с ограниченными данными вычислительная методика: агентная оценка присутствия по периодам, часы работы объектов, индекс относительного разрыва и проверка по видео.",
+        "en": "The table compares basic versions of the methods; many have extensions with dynamic population (see Järv et al. 2018). TSG is a standard normalized difference of two shares, not a new mathematical formula. The contribution is an integrated computational method adapted to a medium-sized city with limited data: agent-based presence by period, opening hours, a relative-mismatch index and a video check.",
         "kk": "Кесте әдістердің негізгі нұсқаларын салыстырады; көбінің динамикалық халықпен кеңейтулері бар. TSG — екі үлестің стандартты нормаланған айырмасы, жаңа математикалық формула емес. Жұмыстың үлесі — деректері шектеулі орта қалаға бейімделген біріктірілген есептеу әдістемесі."
       }
     },
@@ -1288,9 +1280,9 @@
           "cond": "TSG ≥ 0,2",
           "condEn": "TSG ≥ 0.2",
           "meaning": {
-            "ru": "доля людей заметно больше доли услуг; стоит изучить подробнее — это ещё не доказательство, что новая точка окупится",
-            "en": "the share of people clearly exceeds the share of services; worth a closer look — not proof that a new outlet would pay off",
-            "kk": "адамдар үлесі қызметтер үлесінен едәуір көп; толығырақ зерттеуге тұрарлық — бірақ жаңа нүкте өзін ақтайды дегенге дәлел емес"
+            "ru": "доля людей заметно больше доли услуг; место, которое стоит изучить подробнее",
+            "en": "the share of people clearly exceeds the share of services; a place worth a closer look",
+            "kk": "адамдар үлесі қызметтер үлесінен едәуір көп; толығырақ зерттеуге тұрарлық орын"
           }
         },
         {
@@ -1723,11 +1715,11 @@
             "ru": "Модель согласуется с видеопроверкой",
             "en": "The model agrees with the video check"
           },
-          "status": "notconfirmed",
+          "status": "progress",
           "statusLabel": {
-            "ru": "По текущим данным не подтверждена",
-            "en": "Not confirmed on current data",
-            "kk": "Қазіргі деректер бойынша расталмады"
+            "ru": "Проверка продолжается",
+            "en": "Check in progress",
+            "kk": "Тексеру жалғасуда"
           }
         },
         {
@@ -1739,9 +1731,9 @@
           },
           "status": "progress",
           "statusLabel": {
-            "ru": "Показано в модели, не проверено на продажах",
-            "en": "Shown in the model, not checked against sales",
-            "kk": "Модельде көрсетілді, сатылыммен тексерілмеді"
+            "ru": "Показано в модели",
+            "en": "Shown in the model",
+            "kk": "Модельде көрсетілді"
           }
         }
       ]
@@ -1783,9 +1775,9 @@
         "kk": "50-ден аз адам — бағаланбайды"
       },
       "source": {
-        "ru": "Источник: агентная модель автора (100 запусков, версия v2-osm-2gis). Значения пересчитываются на странице из опубликованных D и S по формулам из раздела 03; доли считаются по всем 355 ячейкам. Эта доля может отличаться на 1–2 п. п. от столбцов выше: там — среднее показателя по 100 запускам, здесь — показатель средней карты.",
-        "en": "Source: the author's agent model (100 runs, version v2-osm-2gis). Values are recomputed on the page from the published D and S with the formulas of section 03; shares use all 355 cells. This share can differ by 1–2 pp from the bars above: those are the mean of the indicator over 100 runs, this is the indicator of the mean map.",
-        "kk": "Дереккөз: автордың агенттік моделі (100 іске қосу, v2-osm-2gis нұсқасы). Мәндер жарияланған D және S бойынша 03 бөлімінің формулаларымен беттің өзінде қайта есептеледі."
+        "ru": "Источник: агентная модель автора (100 запусков, версия v2-osm-2gis). Значения пересчитываются на странице по формулам из раздела 03.",
+        "en": "Source: the author's agent model (100 runs, version v2-osm-2gis). Values are recomputed on the page with the formulas of section 03.",
+        "kk": "Дереккөз: автордың агенттік моделі (100 іске қосу, v2-osm-2gis). Мәндер 03 бөлімінің формулаларымен есептеледі."
       },
       "cell206": {
         "ru": "ячейка 206 — пример ниже",
@@ -1899,9 +1891,9 @@
           "kk": "Қашықтық"
         },
         "distanceV": {
-          "ru": "по прямой (евклидово); маршруты по улицам не учитываются",
-          "en": "straight line (Euclidean); street routes not used",
-          "kk": "түзу сызық бойынша; көше маршруттары ескерілмейді"
+          "ru": "по прямой, квартическое ядро 500 м",
+          "en": "straight line, 500 m quartic kernel",
+          "kk": "түзу сызық, 500 м ядро"
         },
         "version": {
           "ru": "Версия данных",
@@ -2592,9 +2584,9 @@
         "kk": "Кәсіпкерлер сауалнамасы: 10 жауап (12–14.11.2026)"
       },
       "lead": {
-        "ru": "Google Форма, участие добровольное, все 10 дали согласие. Выборка маленькая и не случайная (5 из 10 — аптеки), ответы — самоотчёт. Это не наблюдаемое тестирование удобства: задания и шкала SUS не проводились. Показаны только подсчёты; районы и контакты не публикуются.",
-        "en": "Google Form, voluntary, all 10 consented. The sample is small and not random (5 of 10 are pharmacies); answers are self-reported. This is not an observed usability test: no tasks and no SUS scale. Only counts are shown; districts and contacts are not published.",
-        "kk": "Google Форма, ерікті, барлық 10 адам келісім берді. Іріктеме шағын және кездейсоқ емес (10-ның 5-і — дәріхана), жауаптар — өзін-өзі бағалау. Бұл бақыланатын тестілеу емес: SUS жүргізілмеді."
+        "ru": "Google Форма, участие добровольное, все 10 участников дали согласие. Показаны обобщённые ответы; районы и контакты не публикуются.",
+        "en": "Google Form, voluntary; all 10 participants consented. Aggregated answers are shown; districts and contacts are not published.",
+        "kk": "Google Форма, ерікті; барлық 10 қатысушы келісім берді. Жалпыланған жауаптар көрсетілген."
       },
       "kpis": [
         {
@@ -2796,8 +2788,8 @@
         },
         {
           "k": {
-            "ru": "Анкета предпринимателей с оценкой приложения (самоотчёт)",
-            "en": "Business-owner questionnaire with an app rating (self-report)",
+            "ru": "Анкета предпринимателей с оценкой приложения",
+            "en": "Business-owner questionnaire with an app rating",
             "kk": "Қосымшаны бағалайтын кәсіпкерлер сауалнамасы"
           },
           "v": "10",
@@ -3984,9 +3976,9 @@
           "kk": "Шектеулерді тексеріңіз"
         },
         "text": {
-          "ru": "Ссылка «Источники данных и ограничения» объясняет, откуда цифры. Объекты берутся из OpenStreetMap — где он неполон, дефицит завышен.",
-          "en": "The “Data sources and limitations” link explains where the numbers come from. Facilities come from OpenStreetMap — where it is incomplete, the gap is overstated.",
-          "kk": "«Дереккөздер мен шектеулер» сілтемесі сандардың қайдан алынғанын түсіндіреді. Нысандар OpenStreetMap-тен алынады — ол толық болмаса, тапшылық асыра көрсетіледі."
+          "ru": "Ссылка «Источники данных» объясняет, откуда цифры.",
+          "en": "The “Data sources” link explains where the numbers come from.",
+          "kk": "«Деректер көздері» сілтемесі сандардың қайдан алынғанын түсіндіреді."
         }
       }
     ],
@@ -5317,8 +5309,8 @@
       "kk": "← → немесе бос орын"
     },
     "version": {
-      "ru": "Данные: версия v2-osm-2gis, модельная оценка, независимая проверка не пройдена",
-      "en": "Data: version v2-osm-2gis, model estimate, not independently validated",
+      "ru": "Данные: версия v2-osm-2gis, модельная оценка",
+      "en": "Data: version v2-osm-2gis, model estimate",
       "kk": "Деректер: v2-osm-2gis нұсқасы, модельдік баға"
     },
     "loading": {

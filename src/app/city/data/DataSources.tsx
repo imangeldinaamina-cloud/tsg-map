@@ -97,10 +97,10 @@ export function DataSources() {
         </p>
       </div>
       <div className="overflow-x-auto rounded-lg border border-border">
-        <table className="w-full min-w-[760px] text-sm">
+        <table className="w-full min-w-[560px] text-sm">
           <thead className="bg-surface text-left text-xs uppercase tracking-wide text-muted">
             <tr>
-              {(["dataset", "source", "date", "resolution", "limits"] as const).map((c) => (
+              {(["dataset", "source", "date", "resolution"] as const).map((c) => (
                 <th key={c} scope="col" className="px-3 py-2 font-semibold">
                   {t(`city.data.cols.${c}`)}
                 </th>
@@ -117,7 +117,6 @@ export function DataSources() {
                 <td className="px-3 py-2.5">{r.source}</td>
                 <td className="whitespace-nowrap px-3 py-2.5 tabular-nums">{r.date}</td>
                 <td className="whitespace-nowrap px-3 py-2.5">{r.res}</td>
-                <td className="px-3 py-2.5 text-muted">{t(`city.data.lim.${r.key}`)}</td>
               </tr>
             ))}
           </tbody>

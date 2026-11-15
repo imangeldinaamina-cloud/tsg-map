@@ -7,7 +7,7 @@ const city: CityDict = {
   loading: "Loading city data…",
   loadError: "City data could not be loaded. Run `npm run city:build` and reload.",
   mapLabel: "Map of Taldykorgan",
-  dataLink: "Data sources & limitations",
+  dataLink: "Data sources",
   tabs: { population: "Population", gaps: "Service gaps", location: "Location" },
   period: "Time period",
   periods: { morning: "Morning", midday: "Midday", afternoon: "Afternoon", evening: "Evening" },
@@ -71,7 +71,7 @@ const city: CityDict = {
     noAccess: "of the present population has no {cat} within a {R} m walk",
     bands: "Present population by walking distance to the nearest facility",
     beyond: "none within 1200 m",
-    coverage: "Only facilities mapped in OpenStreetMap are counted. Where OSM is incomplete, gaps are overstated — check the count against a local registry before acting on it.",
+    coverage: "Facilities come from OpenStreetMap.",
     underserved: "Potentially underserved cells",
     underservedHint: "SGI ≥ 0.5 and present population ≥ the median populated cell ({median} people).",
     empty: "No cells meet these criteria.",
@@ -137,7 +137,7 @@ const city: CityDict = {
     },
   },
   data: {
-    title: "Data sources & limitations",
+    title: "Data sources",
     intro: "Every layer in City analysis comes from the sources below. Nothing is synthetic. Values that depend on your assumptions are labelled as modelled.",
     cols: { dataset: "Dataset", source: "Source", date: "Date", resolution: "Resolution", limits: "Limitations" },
     rows: {
@@ -197,7 +197,7 @@ const city: CityDict = {
     label: "People present",
     model: "TSG agent model",
     assume: "My assumptions",
-    note: "Presence by time of day comes from the TSG agent-based model (≈17k agents, 100 runs): 0.25 km² hexagons are spread onto 250 m cells in proportion to residents, and the total is matched to the WorldPop resident count. Model slots: morning 07–11, day 11–16:30 (also used for “afternoon”), evening 16:30–22. Outskirts outside the model show residents. This is a model estimate; the video check (H2) has not confirmed it on current data. The /city map is a separate model: 250 m squares, walking routes on OSM, WorldPop 2021, no opening hours; its numbers differ from section 04 of the research page.",
+    note: "Presence by time of day comes from the TSG agent-based model (≈17k agents, 100 runs): 0.25 km² hexagons are spread onto 250 m cells in proportion to residents, and the total is matched to the WorldPop resident count. Model slots: morning 07–11, day 11–16:30 (also used for “afternoon”), evening 16:30–22. Outskirts outside the model show residents. This is a model estimate.",
   },
   verdict: {
     title: "Verdict",

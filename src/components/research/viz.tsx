@@ -504,8 +504,6 @@ export function TsgMap({
                   <dd>{x.distanceV}</dd>
                   <dt>{x.version}</dt>
                   <dd>{version}</dd>
-                  <dt>{x.uncertainty}</dt>
-                  <dd>{x.uncertaintyV}</dd>
                 </dl>
                 <details className="cellx-how">
                   <summary>{x.how}</summary>

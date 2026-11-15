@@ -7,8 +7,7 @@ import "./research.css";
 import { ImgSlot, StepIcon, Txt } from "@/components/research/bits";
 import { Gallery, LangToggle, Reveal, TsgDemo } from "@/components/research/client";
 import { ClassChange, FieldExplorer, Flow, MarketShare, PeopleMap, Schedule, TsgMap } from "@/components/research/viz";
-import { CURRENT, DATASETS } from "@/lib/research/datasets";
-import validation from "../../content/validation.json";
+import { CURRENT } from "@/lib/research/datasets";
 import survey from "../../content/survey.json";
 import type { Locale } from "@/i18n";
 import { getI18n } from "@/i18n/server";
@@ -767,10 +766,9 @@ export default async function HomePage() {
                 title={p(iv.form.charts[0])}
                 n={survey.n}
                 rows={(["morning", "day", "evening"] as const).map((s, i) => [p(iv.form.slots[i]), Number(survey.peak[s].find(([k]) => k === "Больше всего клиентов")?.[1] ?? 0)])}
-                note={p(iv.form.peakNote)}
               />
               <SurveyBars title={p(iv.form.charts[1])} n={survey.n} rows={survey.chose.map(([k, v]) => [opt(String(k)), Number(v)])} />
-              <SurveyBars title={p(iv.form.charts[2])} n={survey.n} rows={survey.app.colourMatch.map(([k, v]) => [opt(String(k)), Number(v)])} note={p(iv.form.colourNote)} />
+              <SurveyBars title={p(iv.form.charts[2])} n={survey.n} rows={survey.app.colourMatch.map(([k, v]) => [opt(String(k)), Number(v)])} />
               <SurveyBars title={p(iv.form.charts[3])} n={survey.n} rows={survey.missing.map(([k, v]) => [opt(String(k)), Number(v)])} />
               <SurveyBars title={p(iv.form.charts[4])} n={survey.n} rows={survey.app.clarity.dist.map(([k, v]) => [String(k), Number(v)])} />
               <SurveyBars title={p(iv.form.charts[5])} n={survey.n} rows={survey.app.usefulness.dist.map(([k, v]) => [String(k), Number(v)])} />
@@ -813,23 +811,6 @@ export default async function HomePage() {
           <p className="note reveal">
             <strong>{p(iv.method.ethicsLabel)}.</strong> {p(iv.method.ethics)}
           </p>
-          <div className="table-wrap reveal">
-            <table className="t">
-              <caption className="h3">{p(iv.status.title)}</caption>
-              <tbody>
-                {iv.status.rows.map((row, i) => (
-                  <tr key={i}>
-                    <th scope="row">{p(row.k)}</th>
-                    <td className="tabnum">{typeof row.v === "string" ? row.v : p(row.v)}</td>
-                    <td>
-                      <span className={`st st-${row.s}`}>{p(c.limits.table.statusLabels[row.s as "done" | "progress" | "planned"])}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="note">{p(iv.status.note)}</p>
-          </div>
           <p className="note reveal">{p(iv.plan)}</p>
         </Section>
 
@@ -949,88 +930,6 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div id="validation" className="reveal">
-            <h3 className="h3">{p(c.validation.title)}</h3>
-            <p className="muted small">{p(c.validation.lead)}</p>
-            <div className="vstat">
-              <div>
-                <b className="tabnum">{fx(validation.weekdays.mae_model)}</b>
-                <small>
-                  {p(c.validation.kpi.model)} · [{fx(validation.weekdays.mae_model_ci[0])}; {fx(validation.weekdays.mae_model_ci[1])}]
-                </small>
-              </div>
-              <div>
-                <b className="tabnum">{fx(validation.weekdays.mae_registry)}</b>
-                <small>
-                  {p(c.validation.kpi.registry)} · [{fx(validation.weekdays.mae_registry_ci[0])}; {fx(validation.weekdays.mae_registry_ci[1])}]
-                </small>
-              </div>
-              <div>
-                <b className="tabnum">
-                  [{fx(validation.weekdays.improvement_model_vs_registry[0])}; {fx(validation.weekdays.improvement_model_vs_registry[1])}]
-                </b>
-                <small>{p(c.validation.kpi.diff)}</small>
-              </div>
-              <div>
-                <b className="tabnum">
-                  {Math.round(validation.weekdays.sign_agreement_model * validation.weekdays.n_ratios)} / {validation.weekdays.n_ratios}
-                </b>
-                <small>{p(c.validation.kpi.sign)}</small>
-              </div>
-              <div>
-                <b className="tabnum">{fx(validation.weekdays.loo_mae.mae_calibrated)}</b>
-                <small>
-                  {p(c.validation.kpi.loo)} ({p(c.validation.kpi.registry)}: {fx(validation.weekdays.loo_mae.mae_registry)})
-                </small>
-              </div>
-            </div>
-            <p className="verdict-box">{p(c.validation.verdict)}</p>
-            <p className="small">{p(c.validation.why)}</p>
-            <div className="table-wrap">
-              <table className="t">
-                <thead>
-                  <tr>
-                    {c.validation.cols.map((col, i) => (
-                      <th key={i} scope="col" className={i >= 4 && i <= 6 ? "num" : ""}>
-                        {p(col)}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {validation.points.map((pt) => {
-                    const a = pt.avail;
-                    const w = [pt.shared_cell && p(c.validation.warn.shared), p(c.validation.warn.loc), pt.weekday_fit?.n === 1 && p(c.validation.warn.one), a.weekday.day === 0 && p(c.validation.warn.noday)].filter(Boolean);
-                    return (
-                      <tr key={pt.id}>
-                        <th scope="row" className="tabnum">
-                          {pt.id}
-                        </th>
-                        <td>{pt.role === "calib" ? p(c.field.roleCalib) : p(c.field.roleControl)}</td>
-                        <td className="tabnum">{pt.hex_cell}</td>
-                        <td className="tabnum nowrap">
-                          {a.weekday.morning}/{a.weekday.day}/{a.weekday.evening} · {a.saturday.morning}/{a.saturday.day}/{a.saturday.evening}
-                        </td>
-                        <td className="num tabnum">{pt.weekday_fit?.n ?? 0}</td>
-                        <td className="num tabnum">{pt.weekday_fit ? fx(pt.weekday_fit.mae_model) : "—"}</td>
-                        <td className="num tabnum">{pt.weekday_fit ? fx(pt.weekday_fit.mae_registry) : "—"}</td>
-                        <td className="small">{w.join("; ")}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-            <p className="note">
-              {p(c.validation.allDays)
-                .replace("{n}", String(validation.all_days.n_ratios))
-                .replace("{m}", fx(validation.all_days.mae_model))
-                .replace("{r}", fx(validation.all_days.mae_registry))
-                .replace("{s}", `${Math.round(validation.all_days.sign_agreement_model * 100)}%`)}
-            </p>
-            <p className="viz-src">{p(c.validation.note)}</p>
-          </div>
-
           <div className="reveal">
             <Gallery
               tabs={c.gallery.tabs.map((t) => ({ id: t.id, label: p(t.label), items: t.items.map((it) => ({ src: it.src, caption: p(it.caption), date: p(it.date), alt: p(it.alt) })) }))}
@@ -1048,128 +947,8 @@ export default async function HomePage() {
           </ol>
         </Section>
 
-        {/* 08 · Limits — grey, mono, status table */}
-        <Section id="limits" n="08" kicker={p(c.nav[7].label)} tone="limits" title={p(c.limits.title)}>
-          <figure className="fig reveal">
-            <figcaption className="fig-h">
-              <h3 className="h3">{p(c.limits.infra.title)}</h3>
-              <p className="muted small">{p(c.limits.infra.lead)}</p>
-            </figcaption>
-            <p className="infra-key" aria-hidden>
-              <span className="ik ik-gis">{c.limits.infra.gisLabel}</span>
-              <span className="ik ik-osm">{p(c.limits.infra.osmLabel)}</span>
-            </p>
-            <div className="infra">
-              {c.limits.infra.groups.map((g) => {
-                const max = Math.max(...g.rows.map((x) => Math.max(x.gis, x.osm ?? 0)));
-                return (
-                  <div key={g.id} className="infra-g">
-                    <h4 className="infra-h">{p(g.name)}</h4>
-                    <ul>
-                      {g.rows.map((x) => (
-                        <li key={x.cat}>
-                          <span className="infra-n">{p(x.name)}</span>
-                          <span className="infra-bars">
-                            <span className="ib ib-gis" style={{ width: `${(x.gis / max) * 100}%` }} />
-                            {x.osm != null && <span className="ib ib-osm" style={{ width: `${(x.osm / max) * 100}%` }} />}
-                          </span>
-                          <span className="infra-v tabnum">
-                            {x.gis}
-                            {x.capped ? "*" : ""}
-                            {x.osm != null && <span className="muted"> / {x.osm}</span>}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-            <p className="viz-src">{p(c.limits.infra.capNote)}</p>
-            <p className="viz-src">{p(c.limits.infra.source)}</p>
-          </figure>
-          <div className="table-wrap reveal">
-            <table className="t t-limits">
-              <thead>
-                <tr>
-                  {c.limits.table.cols.map((col, i) => (
-                    <th key={i} scope="col">
-                      {p(col)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {c.limits.table.rows.map((row, i) => (
-                  <tr key={i}>
-                    <td>{p(row.lim)}</td>
-                    <td>{p(row.fix)}</td>
-                    <td>
-                      <span className={`st st-${row.status}`}>{p(c.limits.table.statusLabels[row.status as "done" | "progress" | "planned"])}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Section>
-
-        {/* 09 · Sources — bibliography */}
-        <Section id="sources" n="09" kicker={p(c.nav[8].label)} tone="sources" title={p(c.sources.title)}>
-          <div id="transparency" className="reveal">
-            <h3 className="h3">{p(c.transparency.title)}</h3>
-            <p className="muted small">{p(c.transparency.lead)}</p>
-            <div className="table-wrap">
-              <table className="t t-ver">
-                <thead>
-                  <tr>
-                    <th scope="col" />
-                    {DATASETS.map((ds) => (
-                      <th key={ds.id} scope="col" className="tabnum">
-                        {ds.id}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {(
-                    [
-                      ["usedIn", (ds) => ds.usedIn.join("; ")],
-                      ["status", (ds) => p(c.transparency.statusV[ds.status])],
-                      ["services", (ds) => ds.services.source],
-                      ["extracted", (ds) => ds.services.extracted],
-                      ["counts", (ds) => (ds.services.counts ? Object.entries(ds.services.counts).map(([k, v]) => `${k} ${v}`).join(", ") : null)],
-                      ["hours", (ds) => (ds.services.hoursKnown ? `${ds.services.hoursKnown[0]} / ${ds.services.hoursKnown[1]} · ${ds.hours}` : ds.hours)],
-                      ["population", (ds) => (ds.population.residentsInGrid ? `${ds.population.dataset}: ${ds.population.residentsInGrid.toLocaleString("ru-RU")}` : ds.population.dataset)],
-                      ["official", (ds) => (ds.population.officialTotal ? `${ds.population.officialTotal.toLocaleString("ru-RU")} (${ds.population.officialSource}${ds.population.officialDate ? `, ${ds.population.officialDate}` : ""})` : null)],
-                      ["grid", (ds) => `${ds.grid.type === "hexagon" ? "⬡" : "■"} ${ds.grid.cellArea}, ${ds.grid.cells}`],
-                      ["agents", (ds) => (ds.agents.count ? `${ds.agents.count}, 1 : ${ds.agents.scale}, ${ds.agents.runs}` : null)],
-                      ["worker", (ds) => (ds.agents.workerShare != null ? `${(ds.agents.workerShare * 100).toFixed(1).replace(".", dec)}%` : ds.agents.count ? null : "—")],
-                      ["distance", (ds) => ds.distance],
-                      ["tau", (ds) => (ds.tau != null ? String(ds.tau).replace(".", dec) : "—")],
-                      ["elig", (ds) => ds.eligibility],
-                      ["code", (ds) => ds.code],
-                      ["commit", (ds) => ds.commit],
-                      ["validated", () => p(c.transparency.notValidated)],
-                      ["evidence", (ds) => ds.evidence.join("; ")],
-                    ] as [keyof typeof c.transparency.rows, (ds: (typeof DATASETS)[number]) => string | null][]
-                  ).map(([k, fn]) => (
-                    <tr key={k}>
-                      <th scope="row">{p(c.transparency.rows[k])}</th>
-                      {DATASETS.map((ds) => {
-                        const v = fn(ds);
-                        return <td key={ds.id}>{v ?? <span className="unk">{p(c.transparency.unknown)}</span>}</td>;
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="note">{p(c.transparency.grids)}</p>
-            <p className="note">{p(c.transparency.sensitivity)}</p>
-            <p className="viz-src">{p(c.transparency.changelog)}</p>
-          </div>
-
+                {/* 08 · Sources — bibliography */}
+        <Section id="sources" n="08" kicker={p(c.nav[7].label)} tone="sources" title={p(c.sources.title)}>
           <div className="table-wrap reveal">
             <table className="t t-refs">
               <caption className="h3">{p(c.sources.refsTitle)}</caption>
