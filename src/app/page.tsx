@@ -9,6 +9,7 @@ import { Gallery, LangToggle, Reveal, TsgDemo } from "@/components/research/clie
 import { ClassChange, FieldExplorer, Flow, MarketShare, PeopleMap, Schedule, TsgMap } from "@/components/research/viz";
 import { CURRENT, DATASETS } from "@/lib/research/datasets";
 import validation from "../../content/validation.json";
+import survey from "../../content/survey.json";
 import type { Locale } from "@/i18n";
 import { getI18n } from "@/i18n/server";
 import { content as c, findGaps, L, pick } from "@/lib/research/content";
@@ -124,6 +125,28 @@ function AppCta({ qr, locale, label }: { qr: string; locale: Locale; label: stri
   );
 }
 
+function SurveyBars({ title, rows, n, note }: { title: string; rows: [string, number][]; n: number; note?: string }) {
+  return (
+    <div className="form-chart">
+      <span className="fc-q">{title}</span>
+      <ul className="sv-bars">
+        {rows.map(([k, v], i) => (
+          <li key={i}>
+            <span className="sv-k">{k}</span>
+            <span className="sv-bar" aria-hidden>
+              <span style={{ width: `${(v / n) * 100}%` }} />
+            </span>
+            <span className="sv-v tabnum">
+              {v} / {n}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {note && <span className="muted small">{note}</span>}
+    </div>
+  );
+}
+
 function Contact({ kind, value, href }: { kind?: string; value: string; href?: string }) {
   if (/\[[^\]]*\]/.test(value)) return <Txt s={value} />;
   if (kind === "link" && href) return <a href={href}>{value}</a>;
@@ -148,6 +171,10 @@ export default async function HomePage() {
   const { locale } = await getI18n();
   const p = (v: L | null | undefined) => pick(v, locale);
   const dec = locale === "en" ? "." : ",";
+  const opt = (k: string) => {
+    const o = (iv.form.opts as Record<string, L>)[k];
+    return o ? p(o) : k;
+  };
   const fx = (v: number, d = 2) => (v < 0 ? "−" : "") + Math.abs(v).toFixed(d).replace(".", dec);
   const qr = await QRCode.toString(c.app.url, { type: "svg", margin: 1, errorCorrectionLevel: "M", color: { dark: "#141215FF", light: "#FFFFFFFF" } });
   const gaps = findGaps().length;
@@ -723,28 +750,44 @@ export default async function HomePage() {
               <p className="muted small">{p(iv.form.lead)}</p>
             </figcaption>
             <div className="form-kpis">
-              {iv.form.kpis.map((k, i) => (
+              {[
+                String(survey.n),
+                `${survey.app.foundCell.filter(([k]) => String(k).startsWith("Да")).reduce((t, [, v]) => t + Number(v), 0)} / ${survey.n}`,
+                fx(survey.app.clarity.median ?? 0, 0),
+                fx(survey.app.usefulness.median ?? 0, 0),
+              ].map((v, i) => (
                 <div key={i} className="form-kpi">
-                  <span className="soon-num" aria-hidden>
-                    —
-                  </span>
-                  <span>{p(k.label)}</span>
+                  <b className="tabnum">{v}</b>
+                  <span>{p(iv.form.kpis[i].label)}</span>
                 </div>
               ))}
             </div>
             <div className="form-charts">
-              {iv.form.charts.map((q, i) => (
-                <div key={i} className="form-chart">
-                  <span className="fc-q">{p(q)}</span>
-                  <div className="fc-bars" aria-hidden>
-                    <span style={{ width: "70%" }} />
-                    <span style={{ width: "45%" }} />
-                    <span style={{ width: "25%" }} />
-                  </div>
-                  <span className="soon-tag">{p(iv.form.soonLabel)}</span>
-                </div>
-              ))}
+              <SurveyBars
+                title={p(iv.form.charts[0])}
+                n={survey.n}
+                rows={(["morning", "day", "evening"] as const).map((s, i) => [p(iv.form.slots[i]), Number(survey.peak[s].find(([k]) => k === "Больше всего клиентов")?.[1] ?? 0)])}
+                note={p(iv.form.peakNote)}
+              />
+              <SurveyBars title={p(iv.form.charts[1])} n={survey.n} rows={survey.chose.map(([k, v]) => [opt(String(k)), Number(v)])} />
+              <SurveyBars title={p(iv.form.charts[2])} n={survey.n} rows={survey.app.colourMatch.map(([k, v]) => [opt(String(k)), Number(v)])} note={p(iv.form.colourNote)} />
+              <SurveyBars title={p(iv.form.charts[3])} n={survey.n} rows={survey.missing.map(([k, v]) => [opt(String(k)), Number(v)])} />
+              <SurveyBars title={p(iv.form.charts[4])} n={survey.n} rows={survey.app.clarity.dist.map(([k, v]) => [String(k), Number(v)])} />
+              <SurveyBars title={p(iv.form.charts[5])} n={survey.n} rows={survey.app.usefulness.dist.map(([k, v]) => [String(k), Number(v)])} />
             </div>
+            <p className="note">{p(iv.form.other)}</p>
+            <h4 className="h3">{p(iv.form.quotesTitle)}</h4>
+            <ul className="sv-quotes">
+              {survey.quotes.map((q, i) => (
+                <li key={i}>
+                  <blockquote lang="ru">«{q.text}»</blockquote>
+                  <span className="muted small">— {opt(q.type)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="viz-src">
+              {p(iv.form.quotesNote)} {survey.source}
+            </p>
           </figure>
 
           <div className="table-wrap reveal">

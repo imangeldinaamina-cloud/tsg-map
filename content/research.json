@@ -246,11 +246,11 @@
         }
       },
       {
-        "value": "2",
+        "value": "10",
         "label": {
-          "ru": "интервью с предпринимателями записаны",
-          "en": "entrepreneur interviews recorded",
-          "kk": "кәсіпкермен сұхбат жазылды"
+          "ru": "предпринимателей ответили на анкету",
+          "en": "business owners answered the questionnaire",
+          "kk": "кәсіпкер сауалнамаға жауап берді"
         }
       }
     ],
@@ -487,14 +487,14 @@
           "kk": "Бейнемен тексеріп, қосымша жасадым"
         },
         "text": {
-          "ru": "Подсчёт людей в кадре нейросетью YOLOv8 на 45 роликах в 10 точках города и веб-приложение для анализа карты.",
-          "en": "YOLOv8 counts people in frame on 45 clips at 10 city points; plus a web app for exploring the map.",
-          "kk": "YOLOv8 нейрожелісі 10 нүктедегі 45 роликте кадрдағы адамдарды санайды; картаны талдауға арналған веб-қосымша."
+          "ru": "Подсчёт людей в кадре нейросетью YOLOv8 на 45 роликах в 10 точках города; веб-приложение и анкета предпринимателей.",
+          "en": "YOLOv8 counts people in frame on 45 clips at 10 city points; a web app and a business-owner questionnaire.",
+          "kk": "YOLOv8 10 нүктедегі 45 роликте адамдарды санайды; веб-қосымша және кәсіпкерлер сауалнамасы."
         },
         "details": {
-          "ru": "45 роликов снято в 10 точках (вт 06.10, ср 07.10, сб 10.10.2026). YOLOv8 считает людей в кадре; сравниваются не абсолютные числа, а отношения внутри одной точки (утро/день/вечер). Проверка H2 по этим данным модель пока не подтвердила (см. раздел «Проверка»). С предпринимателями записаны 2 интервью; тестирование приложения с участниками ещё не завершено, результатов пока нет.",
-          "en": "45 clips were filmed at 10 points (Tue 06.10, Wed 07.10, Sat 10.10.2026). YOLOv8 counts people in frame; ratios within one point (morning/day/evening) are compared rather than absolute numbers. The H2 check has not confirmed the model on these data so far (see “Validation”). Two interviews with entrepreneurs are recorded; app testing with participants is not finished and has no results yet.",
-          "kk": "45 ролик 10 нүктеде түсірілді (06.10, 07.10, 10.10.2026). YOLOv8 кадрдағы адамдарды санайды. H2 тексеруі модельді әзірге растаған жоқ. Кәсіпкерлермен 2 сұхбат жазылды; қосымшаны тестілеу аяқталған жоқ."
+          "ru": "45 роликов снято в 10 точках (вт 06.10, ср 07.10, сб 10.10.2026). YOLOv8 считает людей в кадре; сравниваются не абсолютные числа, а отношения внутри одной точки (утро/день/вечер). Проверка H2 по этим данным модель пока не подтвердила (см. «Проверка»). С предпринимателями записаны 2 интервью, 10 ответили на анкету с оценкой приложения (самоотчёт); наблюдаемое тестирование с заданиями и SUS ещё не проводилось.",
+          "en": "45 clips were filmed at 10 points (Tue 06.10, Wed 07.10, Sat 10.10.2026). YOLOv8 counts people in frame; ratios within a point (morning/day/evening) are compared rather than absolute numbers. The H2 check has not confirmed the model on these data so far. Two interviews were recorded and 10 business owners answered a questionnaire with an app rating (self-report); an observed test with tasks and SUS has not been run yet.",
+          "kk": "45 ролик 10 нүктеде түсірілді. H2 тексеруі модельді әзірге растаған жоқ. 2 сұхбат жазылды, 10 кәсіпкер сауалнамаға жауап берді; SUS тестілеуі әлі жүргізілмеді."
         }
       }
     ],
@@ -2456,9 +2456,9 @@
       "kk": "*Кәсіпкерлер* үні"
     },
     "intro": {
-      "ru": "Два интервью с предпринимателями Талдыкоргана: как они выбирали место, кто их клиенты и когда приходит больше всего людей. Вопросы показаны на карточках. Тестирование приложения идёт сейчас — итоги опроса появятся здесь, когда будут собраны.",
-      "en": "Two interviews with Taldykorgan business owners: how they chose the location, who their customers are and when most people come. Questions are shown on cards. App testing is under way — survey results will appear here once collected.",
-      "kk": "Талдықорған кәсіпкерлерімен екі сұхбат: орынды қалай таңдады, клиенттері кім және адамдар қашан көп келеді. Сұрақтар карточкаларда көрсетілген."
+      "ru": "Два записанных интервью и анкета, на которую ответили 10 предпринимателей Талдыкоргана: как выбирали место, кто клиенты, когда больше всего людей и насколько понятно приложение. Вопросы интервью показаны на карточках.",
+      "en": "Two recorded interviews and a questionnaire answered by 10 Taldykorgan business owners: how they chose the location, who their customers are, when most people come and how clear the app is. Interview questions are shown on cards.",
+      "kk": "Екі жазылған сұхбат және Талдықорғанның 10 кәсіпкері жауап берген сауалнама: орынды қалай таңдады, клиенттері кім, адамдар қашан көп келеді және қосымша қаншалықты түсінікті."
     },
     "method": {
       "title": {
@@ -2585,16 +2585,16 @@
       }
     },
     "form": {
-      "soon": true,
+      "soon": false,
       "title": {
-        "ru": "Итоги опроса (Google Форма)",
-        "en": "Survey results (Google Form)",
-        "kk": "Сауалнама қорытындысы (Google Форма)"
+        "ru": "Анкета предпринимателей: 10 ответов (12–14.11.2026)",
+        "en": "Business-owner questionnaire: 10 responses (12–14.11.2026)",
+        "kk": "Кәсіпкерлер сауалнамасы: 10 жауап (12–14.11.2026)"
       },
       "lead": {
-        "ru": "Здесь будут общие обезличенные результаты анкеты.",
-        "en": "Overall anonymised results of the questionnaire will appear here.",
-        "kk": "Мұнда сауалнаманың жалпы нәтижелері болады."
+        "ru": "Google Форма, участие добровольное, все 10 дали согласие. Выборка маленькая и не случайная (5 из 10 — аптеки), ответы — самоотчёт. Это не наблюдаемое тестирование удобства: задания и шкала SUS не проводились. Показаны только подсчёты; районы и контакты не публикуются.",
+        "en": "Google Form, voluntary, all 10 consented. The sample is small and not random (5 of 10 are pharmacies); answers are self-reported. This is not an observed usability test: no tasks and no SUS scale. Only counts are shown; districts and contacts are not published.",
+        "kk": "Google Форма, ерікті, барлық 10 адам келісім берді. Іріктеме шағын және кездейсоқ емес (10-ның 5-і — дәріхана), жауаптар — өзін-өзі бағалау. Бұл бақыланатын тестілеу емес: SUS жүргізілмеді."
       },
       "kpis": [
         {
@@ -2606,33 +2606,176 @@
         },
         {
           "label": {
-            "ru": "средний балл удобства SUS",
-            "en": "mean SUS usability score",
-            "kk": "SUS орташа балы"
+            "ru": "нашли свою ячейку на карте",
+            "en": "found their cell on the map",
+            "kk": "картадан өз ұяшығын тапты"
           }
         },
         {
           "label": {
-            "ru": "выполнили задания",
-            "en": "completed the tasks",
-            "kk": "тапсырманы орындады"
+            "ru": "медиана понятности приложения (1–5)",
+            "en": "median app clarity (1–5)",
+            "kk": "қосымшаның түсініктілігі, медиана (1–5)"
+          }
+        },
+        {
+          "label": {
+            "ru": "медиана полезности для выбора места (1–5)",
+            "en": "median usefulness for choosing a location (1–5)",
+            "kk": "орын таңдауға пайдалылығы, медиана (1–5)"
           }
         }
       ],
       "charts": [
         {
-          "ru": "Как вы сейчас выбираете место?",
-          "en": "How do you choose a location now?"
+          "ru": "Когда больше всего клиентов («больше всего» в периоде)",
+          "en": "When customers peak (“most customers” in the period)",
+          "kk": "Клиенттер қашан көп"
         },
         {
-          "ru": "Помог бы вам такой инструмент?",
-          "en": "Would such a tool help you?"
+          "ru": "Что было главным при выборе места",
+          "en": "Main factor when choosing the location",
+          "kk": "Орын таңдағанда басты нәрсе"
+        },
+        {
+          "ru": "Совпадает ли цвет ячейки днём с тем, что видите каждый день",
+          "en": "Does the daytime cell colour match what you see every day",
+          "kk": "Ұяшықтың күндізгі түсі күнделікті көргеніңізге сәйкес пе"
+        },
+        {
+          "ru": "Каких услуг не хватает в районе (открытый ответ, сгруппировано)",
+          "en": "Which services are missing nearby (open answer, grouped)",
+          "kk": "Ауданда қандай қызметтер жетіспейді"
+        },
+        {
+          "ru": "Понятность приложения, 1–5",
+          "en": "App clarity, 1–5",
+          "kk": "Түсініктілік, 1–5"
+        },
+        {
+          "ru": "Полезность для выбора места, 1–5",
+          "en": "Usefulness for choosing a location, 1–5",
+          "kk": "Пайдалылық, 1–5"
         }
       ],
       "soonLabel": {
         "ru": "скоро",
         "en": "soon",
         "kk": "жақында"
+      },
+      "slots": [
+        {
+          "ru": "Утро",
+          "en": "Morning",
+          "kk": "Таң"
+        },
+        {
+          "ru": "День",
+          "en": "Day",
+          "kk": "Күндіз"
+        },
+        {
+          "ru": "Вечер",
+          "en": "Evening",
+          "kk": "Кеш"
+        }
+      ],
+      "peakNote": {
+        "ru": "8 из 10 называют вечер временем наибольшего числа клиентов. Это ответы о клиентах конкретных точек, а не о присутствии людей в ячейке, поэтому они не являются проверкой модели.",
+        "en": "8 of 10 name the evening as their busiest time. These answers are about customers of particular outlets, not about presence in a cell, so they are not a validation of the model.",
+        "kk": "10-ның 8-і кешті клиенттер ең көп уақыт деп атайды. Бұл модельді тексеру емес."
+      },
+      "colourNote": {
+        "ru": "Ответ «совпадает» — субъективная оценка участника по карте приложения, а не количественная проверка.",
+        "en": "“Matches” is the participant's subjective judgement on the app map, not a quantitative check.",
+        "kk": "«Сәйкес» — қатысушының субъективті бағасы, сандық тексеру емес."
+      },
+      "quotesTitle": {
+        "ru": "Слова участников (с их разрешения, без имён и адресов)",
+        "en": "In participants' words (with permission, no names or addresses)",
+        "kk": "Қатысушылар сөзі (рұқсатымен)"
+      },
+      "quotesNote": {
+        "ru": "Цитаты приводятся на языке ответа; исправлены только опечатки. 2 участника разрешили использовать ответы только в цифрах — их слова не цитируются.",
+        "en": "Quotes are in the original language; only typos were fixed. 2 participants allowed only numbers — their words are not quoted.",
+        "kk": "Дәйексөздер жауап тілінде берілген. 2 қатысушы тек сандарға рұқсат берді."
+      },
+      "other": {
+        "ru": "Ещё: 6 из 10 воспользовались бы таким отчётом перед открытием новой точки, 4 — «возможно»; 4 из 10 изменили бы решение о часах работы, 5 — «возможно». Сумму, которую разумно платить за отчёт, назвали 6 человек; разброс большой, и в среднее мы её не сводим.",
+        "en": "Also: 6 of 10 would use such a report before opening a new outlet, 4 said “maybe”; 4 of 10 would change their opening-hours decision, 5 said “maybe”. Six named a reasonable price for a report; the spread is wide and we do not average it.",
+        "kk": "Сондай-ақ: 10-ның 6-ы жаңа нүкте ашар алдында мұндай есепті пайдаланар еді, 4-і «мүмкін»."
+      },
+      "opts": {
+        "Жилые дома рядом": {
+          "ru": "Жилые дома рядом",
+          "en": "Residential buildings nearby",
+          "kk": "Жақын тұрғын үйлер"
+        },
+        "Поток людей": {
+          "ru": "Поток людей",
+          "en": "Foot traffic",
+          "kk": "Адамдар ағыны"
+        },
+        "Конкуренты рядом или их отсутствие": {
+          "ru": "Конкуренты рядом или их отсутствие",
+          "en": "Competitors nearby or their absence",
+          "kk": "Жақын бәсекелестер немесе олардың жоқтығы"
+        },
+        "Совет знакомых": {
+          "ru": "Совет знакомых",
+          "en": "Advice of acquaintances",
+          "kk": "Таныстардың кеңесі"
+        },
+        "Да": {
+          "ru": "Да",
+          "en": "Yes",
+          "kk": "Иә"
+        },
+        "Частично": {
+          "ru": "Частично",
+          "en": "Partly",
+          "kk": "Ішінара"
+        },
+        "Не смог(ла) определить": {
+          "ru": "Не смог(ла) определить",
+          "en": "Could not tell",
+          "kk": "Анықтай алмадым"
+        },
+        "Аптеки": {
+          "ru": "Аптеки",
+          "en": "Pharmacies",
+          "kk": "Дәріханалар"
+        },
+        "Досуг ночью (игровые клубы)": {
+          "ru": "Досуг ночью (игровые клубы)",
+          "en": "Night leisure (gaming clubs)",
+          "kk": "Түнгі демалыс"
+        },
+        "Другое / без категории": {
+          "ru": "Другое (ответ «утром»)",
+          "en": "Other (answer “in the morning”)",
+          "kk": "Басқа"
+        },
+        "Продуктовые магазины": {
+          "ru": "Продуктовые магазины",
+          "en": "Grocery stores",
+          "kk": "Азық-түлік дүкендері"
+        },
+        "Детские медцентры": {
+          "ru": "Детские медцентры",
+          "en": "Children's medical centres",
+          "kk": "Балалар медорталықтары"
+        },
+        "Аптека": {
+          "ru": "Аптека",
+          "en": "Pharmacy",
+          "kk": "Дәріхана"
+        },
+        "Частный детский сад, образовательный центр": {
+          "ru": "Частный детский сад, образовательный центр",
+          "en": "Private kindergarten / education centre",
+          "kk": "Жеке балабақша"
+        }
       }
     },
     "status": {
@@ -2653,9 +2796,18 @@
         },
         {
           "k": {
-            "ru": "Тестирование приложения (задания + SUS) с результатами",
-            "en": "App usability tests (tasks + SUS) with results",
-            "kk": "Қосымшаны тестілеу нәтижелерімен"
+            "ru": "Анкета предпринимателей с оценкой приложения (самоотчёт)",
+            "en": "Business-owner questionnaire with an app rating (self-report)",
+            "kk": "Қосымшаны бағалайтын кәсіпкерлер сауалнамасы"
+          },
+          "v": "10",
+          "s": "done"
+        },
+        {
+          "k": {
+            "ru": "Наблюдаемое тестирование (задания + SUS)",
+            "en": "Observed usability test (tasks + SUS)",
+            "kk": "Бақыланатын тестілеу (тапсырмалар + SUS)"
           },
           "v": "0",
           "s": "progress"
@@ -2667,30 +2819,30 @@
             "kk": "Жоспарланған"
           },
           "v": {
-            "ru": "6–10 предпринимателей, 10–15 жителей",
-            "en": "6–10 entrepreneurs, 10–15 residents",
-            "kk": "6–10 кәсіпкер, 10–15 тұрғын"
+            "ru": "ещё предприниматели и 10–15 жителей",
+            "en": "more business owners and 10–15 residents",
+            "kk": "тағы кәсіпкерлер және 10–15 тұрғын"
           },
           "s": "planned"
         },
         {
           "k": {
-            "ru": "Результаты, ожидающие анализа",
-            "en": "Results awaiting analysis",
-            "kk": "Талдауды күтетін нәтижелер"
+            "ru": "Сопоставление ответов с классами TSG",
+            "en": "Matching answers with TSG classes",
+            "kk": "Жауаптарды TSG кластарымен салыстыру"
           },
           "v": {
-            "ru": "нет",
-            "en": "none",
-            "kk": "жоқ"
+            "ru": "нет точных адресов",
+            "en": "no exact addresses",
+            "kk": "нақты мекенжай жоқ"
           },
           "s": "planned"
         }
       ],
       "note": {
-        "ru": "Оценки удобства (SUS) и доли выполненных заданий появятся только после реальных тестов. Ранее на сайте было написано «10 предпринимателей протестировали» — документов, подтверждающих это, в проекте нет, поэтому формулировка снята.",
-        "en": "Usability scores (SUS) and task success will appear only after real tests. The site previously said “10 entrepreneurs tested the app”; the project has no records supporting this, so the claim was removed.",
-        "kk": "SUS бағалары тек нақты тесттерден кейін пайда болады. Бұрын сайтта «10 кәсіпкер сынады» деп жазылған еді — оны растайтын құжат жоқ, сондықтан алынып тасталды."
+        "ru": "Оценки понятности и полезности — по шкале 1–5 из анкеты, это не SUS. Задания с замером времени и доли успеха ещё не проводились.",
+        "en": "Clarity and usefulness are 1–5 ratings from the questionnaire, not SUS. Timed tasks with success rates have not been run yet.",
+        "kk": "Түсініктілік пен пайдалылық — сауалнамадағы 1–5 шкаласы, SUS емес."
       }
     }
   },
@@ -2731,16 +2883,16 @@
           {
             "src": "/research/gallery/C093.jpg",
             "caption": {
-              "ru": "P08 · Перекрёсток Каратал (ТРЦ, остановки), ролик C093",
-              "en": "P08 · Karatal crossing (mall, stops), clip C093"
+              "ru": "P08 · Атамекен (у ТРЦ), ролик C093",
+              "en": "P08 · Atameken (by the mall), clip C093"
             },
             "date": {
               "ru": "10.10.2026, сб, 17:20 (вечер)",
               "en": "10.10.2026, Sat, 17:20 (evening)"
             },
             "alt": {
-              "ru": "Кадр с точки P08 · Перекрёсток Каратал (ТРЦ, остановки): прохожие в зелёных рамках детектора, головы размыты",
-              "en": "Frame at P08 · Karatal crossing (mall, stops): pedestrians in green detector boxes, heads blurred"
+              "ru": "Кадр с точки P08 · Атамекен (у ТРЦ): прохожие в зелёных рамках детектора, головы размыты",
+              "en": "Frame at P08 · Atameken (by the mall): pedestrians in green detector boxes, heads blurred"
             }
           },
           {
@@ -2911,15 +3063,15 @@
           {
             "src": "/research/video/C066-yolo.jpg",
             "caption": {
-              "ru": "P10 · Атамекен, ролик C066",
-              "en": "P10 · Atameken, clip C066"
+              "ru": "P10 · Каратал, ролик C066",
+              "en": "P10 · Karatal, clip C066"
             },
             "date": {
               "ru": "07.10.2026, 12:46 (день)",
               "en": "07.10.2026, 12:46 (day)"
             },
             "alt": {
-              "ru": "Кадр с точки P10 · Атамекен: прохожие в зелёных рамках YOLOv8, головы размыты",
+              "ru": "Кадр с точки P10 · Каратал: прохожие в зелёных рамках YOLOv8, головы размыты",
               "en": "Frame at P10: passers-by in YOLOv8 boxes, heads blurred"
             }
           }
@@ -4157,12 +4309,12 @@
       {
         "id": "P08",
         "name": {
-          "ru": "Каратал",
-          "en": "Karatal"
+          "ru": "Атамекен",
+          "en": "Atameken"
         },
         "type": {
-          "ru": "смешанный",
-          "en": "mixed"
+          "ru": "крупный ТРЦ",
+          "en": "large mall"
         },
         "role": "calib",
         "clips": 5,
@@ -4203,12 +4355,12 @@
       {
         "id": "P10",
         "name": {
-          "ru": "Атамекен",
-          "en": "Atameken"
+          "ru": "Каратал",
+          "en": "Karatal"
         },
         "type": {
-          "ru": "крупный ТРЦ",
-          "en": "large mall"
+          "ru": "смешанный",
+          "en": "mixed"
         },
         "role": "calib",
         "clips": 3,
@@ -5133,8 +5285,8 @@
       "kk": "Алтыбұрышты модель және /city картасы — әртүрлі кеңістіктік модельдер; олардың нәтижелерін бір есептеу ретінде салыстыруға болмайды."
     },
     "changelog": {
-      "ru": "Журнал изменений методики: 13.11.2026 — объекты и часы 2ГИС, доля работающих 42,5% (БНС); 15.11.2026 — значения карты пересчитываются на странице по опубликованным D и S; исправлена классификация по округлённым значениям (продукты днём: 35,5% → 36,2% по средней карте); формулировки приведены к относительному смыслу TSG; статус H2 изменён на «не подтверждена» по отчёту research/H2_REPORT.md.",
-      "en": "Method changelog: 13.11.2026 — 2GIS places and hours, worker share 42.5% (BNS); 15.11.2026 — map values are recomputed on the page from the published D and S; fixed classification of rounded values (groceries by day: 35.5% → 36.2% on the mean map); wording aligned with the relative meaning of TSG; H2 status changed to “not confirmed” per research/H2_REPORT.md.",
+      "ru": "Журнал изменений методики: 13.11.2026 — объекты и часы 2ГИС, доля работающих 42,5% (БНС); 15.11.2026 — значения карты пересчитываются на странице по опубликованным D и S; исправлена классификация по округлённым значениям (продукты днём: 35,5% → 36,2% по средней карте); формулировки приведены к относительному смыслу TSG; статус H2 изменён на «не подтверждена» по отчёту research/H2_REPORT.md. 15.11.2026 — исправлены перепутанные названия точек P08 (Атамекен) и P10 (Каратал); добавлены итоги анкеты предпринимателей (10 ответов).",
+      "en": "Method changelog: 13.11.2026 — 2GIS places and hours, worker share 42.5% (BNS); 15.11.2026 — map values are recomputed on the page from the published D and S; fixed classification of rounded values (groceries by day: 35.5% → 36.2% on the mean map); wording aligned with the relative meaning of TSG; H2 status changed to “not confirmed” per research/H2_REPORT.md. 15.11.2026 — fixed swapped names of points P08 (Atameken) and P10 (Karatal); added the business-owner questionnaire results (10 responses).",
       "kk": "Әдістеме өзгерістері: 13.11.2026 — 2ГИС нысандары; 15.11.2026 — карта мәндері бетте қайта есептеледі, H2 мәртебесі «расталмады» болып өзгертілді."
     }
   },

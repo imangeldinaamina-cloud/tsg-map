@@ -3684,3 +3684,59 @@ html:has(.rs) {
   color: #9a3412;
   font-style: italic;
 }
+
+/* survey results (06) */
+.rs .form-res .form-kpi {
+  border-style: solid;
+  border-color: var(--line);
+}
+.rs .form-kpi b {
+  font-family: var(--wide);
+  font-size: 1.9rem;
+  line-height: 1.05;
+  color: var(--ink);
+  font-weight: 600;
+}
+.rs .sv-bars {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  display: grid;
+  gap: 6px;
+}
+.rs .sv-bars li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(60px, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.84rem;
+}
+.rs .sv-bar {
+  height: 10px;
+  background: #f1efec;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.rs .sv-bar span {
+  display: block;
+  height: 100%;
+  background: #7347a3;
+  border-radius: 99px;
+}
+.rs .sv-v {
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
+.rs .sv-quotes {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+.rs .sv-quotes blockquote {
+  margin: 0;
+  font-family: var(--font-rs-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+}
